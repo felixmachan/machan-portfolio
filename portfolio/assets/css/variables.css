@@ -1,0 +1,30 @@
+﻿:root {
+  --color-bg: #f6efe4;
+  --color-surface: #ffffff;
+  --color-ink: #3a2e23;
+  --color-muted: #6b5b4a;
+  --color-accent: #8b5e34;
+  --color-border: #d9c9b5;
+  --color-nav-dot: #8b5e34;
+  --shadow-soft: 0 12px 30px rgba(58, 46, 35, 0.12);
+
+  --font-body: "IBM Plex Sans", "Segoe UI", Tahoma, sans-serif;
+  --font-mono: "IBM Plex Mono", "Consolas", "Courier New", monospace;
+
+  --fs-900: clamp(2.4rem, 4vw, 3.4rem);
+  --fs-700: clamp(1.6rem, 2.8vw, 2.2rem);
+  --fs-600: 1.25rem;
+  --fs-500: 1.1rem;
+  --fs-400: 1rem;
+  --fs-300: 0.92rem;
+
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+  --space-8: 4rem;
+  --space-9: 5.5rem;
+  --radius: 16px;
+}
