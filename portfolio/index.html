@@ -20,9 +20,13 @@
         <span class="side-nav__dot" aria-hidden="true"></span>
         <span class="side-nav__label">About</span>
       </a>
-      <a class="side-nav__item" href="#cv">
+      <a class="side-nav__item" href="#experience">
         <span class="side-nav__dot" aria-hidden="true"></span>
-        <span class="side-nav__label">CV</span>
+        <span class="side-nav__label">Experience</span>
+      </a>
+      <a class="side-nav__item" href="#education">
+        <span class="side-nav__dot" aria-hidden="true"></span>
+        <span class="side-nav__label">Education</span>
       </a>
       <a class="side-nav__item" href="#projects">
         <span class="side-nav__dot" aria-hidden="true"></span>
@@ -56,7 +60,10 @@
 <section id="about" class="section">
   <div class="container">
     <div class="panel reveal">
-      <h2 class="section-title">About</h2>
+      <h2 class="section-title"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-file-person" viewBox="0 0 16 16">
+  <path d="M12 1a1 1 0 0 1 1 1v10.755S12 11 8 11s-5 1.755-5 1.755V2a1 1 0 0 1 1-1zM4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z"/>
+  <path d="M8 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/>
+</svg> About</h2>
       <p class="section-lead" style="max-width: 90% !important;">
         Engineering student with a hands-on approach to system design and implementation.
         I build practical, end-to-end solutions spanning embedded systems, software, and infrastructure, with a strong emphasis on understanding how things work — not just making them work.
@@ -65,12 +72,12 @@
         <div class="card">
           <h3>System Design</h3>
           <p>I approach problems by breaking them down into clear components and interfaces.
-              hether it’s an embedded system, a backend service, or a full project architecture, I focus on simplicity, scalability, and maintainability.</p>
+              hether it's an embedded system, a backend service, or a full project architecture, I focus on simplicity, scalability, and maintainability.</p>
         </div>
         <div class="card">
           <h3>Reliability</h3>
           <p>I care about systems behaving predictably.
-            That means proper error handling, monitoring, documentation, and designing with real-world constraints in mind — not just ideal conditions.</p>
+            That means proper error handling, monitoring, documentation, and designing with real-world constraints in mind - not just ideal conditions.</p>
         </div>
         <div class="card">
           <h3>Delivery</h3>
@@ -78,35 +85,78 @@
               From prototyping and iteration to testing and refinement, I focus on delivering tangible results and continuously improving them based on feedback.</p>
         </div>
       </div>
-    </div>
-  </div>
-</section>
-<section id="cv" class="section">
-  <div class="container">
-    <div class="panel reveal">
-      <h2 class="section-title">Professional Experience</h2>
-      <p class="section-lead" style="margin-bottom: 25px;">Current and past roles.</p>
-      <div class="stack">
-        <div class="card">
-          <h3>DevOps & IoT Engineer Intern · MPTR kft.</h3>
-          <p>Architected a multi-region platform that reduced latency by 32% while scaling to 10M requests/day.</p>
-        </div>
-        <div class="card">
-          <h3>Engineering Manager · Northwind Labs</h3>
-          <p>Led a cross-functional team delivering an observability suite adopted across six product lines.</p>
-        </div>
-        <div class="card">
-          <h3>Senior Software Engineer · Coreline</h3>
-          <p>Designed batch and streaming pipelines supporting real-time operational intelligence.</p>
+      <h3 style="margin-top: 20px !important;">My attitude</h3>
+      <div class="chart-block reveal" style="margin-top: 10px !important;">
+        <div class="chart-frame">
+          <div class="chart-axis">
+            <span class="chart-label chart-label-y">Knowledge</span>
+            <canvas id="knowledge-chart" class="chart-canvas" aria-label="Knowledge over time chart"></canvas>
+          </div>
+          <div class="chart-label chart-label-x">Time</div>
         </div>
       </div>
     </div>
   </div>
 </section>
+
+
+
+<section id="experience" class="section">
+  <div class="container">
+    <div class="panel reveal">
+      <h2 class="section-title"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-suitcase-lg-fill" viewBox="0 0 16 16">
+  <path d="M7 0a2 2 0 0 0-2 2H1.5A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14H2a.5.5 0 0 0 1 0h10a.5.5 0 0 0 1 0h.5a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2H11a2 2 0 0 0-2-2zM6 2a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1zM3 13V3h1v10zm9 0V3h1v10z"/>
+</svg> Professional Experience</h2>
+      <div class="stack">
+        <div class="card">
+          <h3 style="margin-bottom: 3px !important;">DevOps & IoT Engineer Intern · MPTR kft.</h3>
+          <h4 style="margin-bottom: 5px !important;">2025.09. - Present</h4>
+          <p>Developing a centralized platform to integrate commercial and custom IoT devices, while supporting DevOps and operational tasks.</p>
+        </div>
+        <div class="card">
+          <h3 style="margin-bottom: 3px !important;">Engineering Intern · Tuttnauer kft.</h3>
+          <h4 style="margin-bottom: 5px !important;">2024.02. - 2025.11.</h4>
+          <p>Supported the Engineering team with various tasks and projects, broadening my practical and theoretical knowledge of several fields of Engineering. </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+<section id="education" class="section">
+  <div class="container">
+    <div class="panel reveal">
+      <h2 class="section-title"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-mortarboard" viewBox="0 0 16 16">
+  <path d="M8.211 2.047a.5.5 0 0 0-.422 0l-7.5 3.5a.5.5 0 0 0 .025.917l7.5 3a.5.5 0 0 0 .372 0L14 7.14V13a1 1 0 0 0-1 1v2h3v-2a1 1 0 0 0-1-1V6.739l.686-.275a.5.5 0 0 0 .025-.917zM8 8.46 1.758 5.965 8 3.052l6.242 2.913z"/>
+  <path d="M4.176 9.032a.5.5 0 0 0-.656.327l-.5 1.7a.5.5 0 0 0 .294.605l4.5 1.8a.5.5 0 0 0 .372 0l4.5-1.8a.5.5 0 0 0 .294-.605l-.5-1.7a.5.5 0 0 0-.656-.327L8 10.466zm-.068 1.873.22-.748 3.496 1.311a.5.5 0 0 0 .352 0l3.496-1.311.22.748L8 12.46z"/>
+</svg> Education</h2>
+      <div class="stack">
+        <div class="card">
+          <h3 style="margin-bottom: 3px !important;">Budapest University of Technology and Economics</h3>
+          <h4 style="margin-bottom: 5px !important;">BSc in Mechatronics Engineering with a specialization in Cyber-Physical Systems</h4>
+          <h4 style="margin-bottom: 5px !important;">2022.09. - Present</h4>
+        </div>
+        <div class="card">
+          <h3 style="margin-bottom: 3px !important;">VSZC György Boronkay Technical Secondary School</h3>
+          <h4 style="margin-bottom: 5px !important;">Bilingual class with an outstanding graduation record</h4>
+          <h4 style="margin-bottom: 5px !important;">2017.09. - 2022.06.</h4>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
 <section id="projects" class="section">
   <div class="container">
     <div class="panel reveal">
-      <h2 class="section-title">Projects</h2>
+      <h2 class="section-title"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-cpu" viewBox="0 0 16 16">
+  <path d="M5 0a.5.5 0 0 1 .5.5V2h1V.5a.5.5 0 0 1 1 0V2h1V.5a.5.5 0 0 1 1 0V2h1V.5a.5.5 0 0 1 1 0V2A2.5 2.5 0 0 1 14 4.5h1.5a.5.5 0 0 1 0 1H14v1h1.5a.5.5 0 0 1 0 1H14v1h1.5a.5.5 0 0 1 0 1H14v1h1.5a.5.5 0 0 1 0 1H14a2.5 2.5 0 0 1-2.5 2.5v1.5a.5.5 0 0 1-1 0V14h-1v1.5a.5.5 0 0 1-1 0V14h-1v1.5a.5.5 0 0 1-1 0V14h-1v1.5a.5.5 0 0 1-1 0V14A2.5 2.5 0 0 1 2 11.5H.5a.5.5 0 0 1 0-1H2v-1H.5a.5.5 0 0 1 0-1H2v-1H.5a.5.5 0 0 1 0-1H2v-1H.5a.5.5 0 0 1 0-1H2A2.5 2.5 0 0 1 4.5 2V.5A.5.5 0 0 1 5 0m-.5 3A1.5 1.5 0 0 0 3 4.5v7A1.5 1.5 0 0 0 4.5 13h7a1.5 1.5 0 0 0 1.5-1.5v-7A1.5 1.5 0 0 0 11.5 3zM5 6.5A1.5 1.5 0 0 1 6.5 5h3A1.5 1.5 0 0 1 11 6.5v3A1.5 1.5 0 0 1 9.5 11h-3A1.5 1.5 0 0 1 5 9.5zM6.5 6a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5z"/>
+</svg> Projects</h2>
       <p class="section-lead">Representative work that blends engineering depth with business outcomes.</p>
       <div class="card-grid">
         <div class="card">
@@ -154,7 +204,9 @@
 <section id="contact" class="section">
   <div class="container">
     <div class="panel reveal">
-      <h2 class="section-title">Contact</h2>
+      <h2 class="section-title"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-envelope" viewBox="0 0 16 16">
+  <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1zm13 2.383-4.708 2.825L15 11.105zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741M1 11.105l4.708-2.897L1 5.383z"/>
+</svg> Contact</h2>
       <p class="section-lead">Ready to collaborate on resilient systems and impactful engineering.</p>
       <div class="stack">
         <div class="card">

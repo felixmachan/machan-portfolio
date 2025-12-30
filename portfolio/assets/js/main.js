@@ -74,11 +74,155 @@
     });
   };
 
+  const initKnowledgeChart = () => {
+    const canvas = document.querySelector('#knowledge-chart');
+    if (!canvas) return;
+
+    const section = canvas.closest('section');
+    const context = canvas.getContext('2d');
+    if (!context) return;
+
+    const accent = getComputedStyle(document.documentElement)
+      .getPropertyValue('--color-accent')
+      .trim();
+    const border = getComputedStyle(document.documentElement)
+      .getPropertyValue('--color-border')
+      .trim();
+
+    const resizeCanvas = () => {
+      const rect = canvas.getBoundingClientRect();
+      const ratio = window.devicePixelRatio || 1;
+      canvas.width = rect.width * ratio;
+      canvas.height = rect.height * ratio;
+      context.setTransform(ratio, 0, 0, ratio, 0, 0);
+    };
+
+    const draw = (progress) => {
+      const width = canvas.clientWidth;
+      const height = canvas.clientHeight;
+      const padding = 28;
+      const left = padding;
+      const bottom = height - padding;
+      const right = width - padding;
+      const top = padding;
+
+      context.clearRect(0, 0, width, height);
+      const gridCount = 6;
+      context.lineWidth = 1;
+      context.strokeStyle = border;
+      context.beginPath();
+      for (let i = 0; i <= gridCount; i += 1) {
+        const x = left + ((right - left) / gridCount) * i;
+        const y = top + ((bottom - top) / gridCount) * i;
+        context.moveTo(x, top);
+        context.lineTo(x, bottom);
+        context.moveTo(left, y);
+        context.lineTo(right, y);
+      }
+      context.stroke();
+
+      context.lineWidth = 2;
+      context.strokeStyle = border;
+      context.beginPath();
+      context.moveTo(left, top);
+      context.lineTo(left, bottom);
+      context.lineTo(right, bottom);
+      context.stroke();
+
+      const arrowSize = 6;
+      context.beginPath();
+      context.moveTo(left, top);
+      context.lineTo(left - arrowSize, top + arrowSize);
+      context.moveTo(left, top);
+      context.lineTo(left + arrowSize, top + arrowSize);
+      context.moveTo(right, bottom);
+      context.lineTo(right - arrowSize, bottom - arrowSize);
+      context.moveTo(right, bottom);
+      context.lineTo(right - arrowSize, bottom + arrowSize);
+      context.stroke();
+
+      context.lineWidth = 3;
+      context.strokeStyle = accent || '#8b5e34';
+      context.shadowColor = accent || '#8b5e34';
+      context.shadowBlur = 5;
+      context.shadowOffsetX = 0;
+      context.shadowOffsetY = 0;
+      context.beginPath();
+
+      const startX = left;
+      const endX = right;
+      const usableWidth = endX - startX;
+      const xMax = startX + usableWidth * progress;
+
+      let first = true;
+      for (let x = startX; x <= xMax; x += usableWidth / 80) {
+        const t = (x - startX) / usableWidth;
+        const y = bottom - (bottom - top) * (t * 0.9);
+        if (first) {
+          context.moveTo(left, bottom);
+          if (x > left) {
+            context.lineTo(x, y);
+          }
+          first = false;
+        } else {
+          context.lineTo(x, y);
+        }
+      }
+      context.stroke();
+      context.shadowColor = 'transparent';
+      context.shadowBlur = 0;
+    };
+
+    let animated = false;
+    const animate = () => {
+      if (animated) return;
+      animated = true;
+      const start = performance.now();
+      const duration = 1400;
+
+      const tick = (now) => {
+        const progress = Math.min((now - start) / duration, 1);
+        draw(progress);
+        if (progress < 1) {
+          requestAnimationFrame(tick);
+        }
+      };
+      requestAnimationFrame(tick);
+    };
+
+    resizeCanvas();
+    draw(0);
+
+    if (section) {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              animate();
+              observer.disconnect();
+            }
+          });
+        },
+        { threshold: 0.4 }
+      );
+      observer.observe(section);
+    } else {
+      animate();
+    }
+
+    window.addEventListener('resize', () => {
+      resizeCanvas();
+      draw(animated ? 1 : 0);
+    });
+  };
+
   loadSections()
     .then(() => {
       initScrollSpy();
+      initKnowledgeChart();
     })
     .catch(() => {
       initScrollSpy();
+      initKnowledgeChart();
     });
 })();
