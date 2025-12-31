@@ -9,6 +9,14 @@
   transform: translateY(0);
 }
 
+.education-card.reveal {
+  transform: translateX(var(--education-offset, 0));
+}
+
+.education-card.reveal.visible {
+  transform: translateX(0);
+}
+
 .typewriter-line {
   display: inline-block;
   white-space: nowrap;
@@ -23,11 +31,17 @@
 
 .typewriter-line--caret {
   border-right: 2px solid transparent;
+  padding-right: 0;
   animation: typewriter-reveal 0s linear var(--tw-delay, 0.3s) forwards,
     typewriter-typing var(--tw-duration, 2.4s)
       steps(var(--tw-steps, 21)) var(--tw-delay, 0.3s) 1 both,
-    typewriter-caret var(--tw-duration, 2.4s) linear
+    typewriter-caret calc(var(--tw-duration, 2.4s) + var(--tw-hold, 0s)) linear
       var(--tw-delay, 0.3s) 1 forwards;
+}
+
+.typewriter-suffix {
+  opacity: 0;
+  animation: typewriter-reveal 0s linear var(--tw-delay, 0.3s) forwards;
 }
 
 @keyframes typewriter-reveal {
@@ -41,7 +55,7 @@
     width: 0;
   }
   to {
-    width: calc(var(--tw-steps, 21) * 1ch);
+    width: calc((var(--tw-steps, 21) - var(--tw-offset, 0)) * 1ch);
   }
 }
 

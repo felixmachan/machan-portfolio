@@ -11,7 +11,11 @@ html {
 body {
   font-family: var(--font-body);
   color: var(--color-ink);
-  background: radial-gradient(circle at top, #ffffff 0%, #f2e7d8 45%, #e7d7c4 100%);
+  background-color: #f6efe4;
+  background-image: radial-gradient(circle at top, #ffffff 0%, #f2e7d8 45%, #e7d7c4 100%);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
   line-height: 1.6;
   min-height: 100vh;
 }

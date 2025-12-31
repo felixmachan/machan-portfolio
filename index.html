@@ -43,19 +43,19 @@
     </nav>
 
     <main>
-<section id="hero" class="section section--hero">
-  <div class="container">
-    <div class="panel split hero-stack">
-      <div class="reveal">
-        <img class="hero-photo" src="./assets/img/felix.png" alt="Portrait of Felix" />
-      </div>
-      <div class="reveal">
-        <h1 class="section-title"><span class="typewriter-line typewriter-line--caret" style="--tw-steps: 22; --tw-duration: 2.2s; --tw-delay: 0.2s;">Hi, my name is <span style="color: rgb(218, 158, 110);">Felix</span>,</span></h1>
-        <p class="section-lead"><span class="typewriter-line typewriter-line--caret" style="--tw-steps: 20; --tw-duration: 2s; --tw-delay: 2.5s;">and I'm an <span style="font-style: italic;">Engineer.</span></span></p>
+  <section id="hero" class="section section--hero">
+    <div class="container">
+      <div class="panel split hero-stack">
+        <div class="reveal">
+          <img class="hero-photo" src="./assets/img/felix.png" alt="Portrait of Felix" />
+        </div>
+        <div class="reveal">
+          <h1 class="section-title"><span class="typewriter-line typewriter-line--caret" style="--tw-steps: 21; --tw-offset: 4; --tw-duration: 2.2s; --tw-delay: 0.2s; --tw-hold: 1s;">Hi, my name is <span style="color: rgb(218, 158, 110);">Felix</span>,</span></h1>
+          <p class="section-lead"><span class="typewriter-line typewriter-line--caret" style="--tw-steps: 20; --tw-offset: 2; --tw-duration: 2s; --tw-delay: 4.4s; --tw-hold: 0.5s;">and I'm an <span style="font-style: italic;">Engineer.</span></span></p>
+        </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
 <section id="about" class="section">
   <div class="container">
@@ -140,21 +140,45 @@
 
 <section id="education" class="section">
   <div class="container">
-    <div class="panel reveal">
-      <h2 class="section-title"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-mortarboard" viewBox="0 0 16 16">
-  <path d="M8.211 2.047a.5.5 0 0 0-.422 0l-7.5 3.5a.5.5 0 0 0 .025.917l7.5 3a.5.5 0 0 0 .372 0L14 7.14V13a1 1 0 0 0-1 1v2h3v-2a1 1 0 0 0-1-1V6.739l.686-.275a.5.5 0 0 0 .025-.917zM8 8.46 1.758 5.965 8 3.052l6.242 2.913z"/>
+    <div class="panel reveal education-panel">
+      <h2 class="section-title" style="margin-bottom: 60px;"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-mortarboard" viewBox="0 0 16 16">
+  <path d="M8.211 2.047a.5.5 0 0 0-.422 0l-7.5 3.5a.5.5 0 0 0 .025.917l7.5 3a.5.5 0 0 0 .372 0L14 7.14V13a1 1 0 0 0-1 1v2h3v-2a1 1 0 0 0-1-1V6.739l.686-.275a.5.5 0 0 0 .025-.917z"/>
   <path d="M4.176 9.032a.5.5 0 0 0-.656.327l-.5 1.7a.5.5 0 0 0 .294.605l4.5 1.8a.5.5 0 0 0 .372 0l4.5-1.8a.5.5 0 0 0 .294-.605l-.5-1.7a.5.5 0 0 0-.656-.327L8 10.466zm-.068 1.873.22-.748 3.496 1.311a.5.5 0 0 0 .352 0l3.496-1.311.22.748L8 12.46z"/>
 </svg> Education</h2>
-      <div class="stack">
-        <div class="card">
-          <h3 style="margin-bottom: 3px !important;">Budapest University of Technology and Economics</h3>
-          <h4 style="margin-bottom: 5px !important;">BSc in Mechatronics Engineering with a specialization in Cyber-Physical Systems</h4>
-          <h4 style="margin-bottom: 5px !important;">2022.09. - Present</h4>
+      <div class="education-timeline">
+        <div class="education-row">
+          <article class="education-card education-card--left reveal">
+            <h3>Budapest University of Technology and Economics</h3>
+            <p class="education-subtitle">BSc in Mechatronics Engineering, Cyber-Physical Systems</p>
+            <ul class="education-list">
+              <li>Systems engineering focus</li>
+              <li>Embedded and control systems</li>
+            </ul>
+          </article>
+          <div class="education-axis">
+            <span class="education-logo" aria-hidden="true">
+              <img class="education-logo-image" src="assets/img/BME_logo_transparent_0.png" alt="BME logo">
+            </span>
+            <span class="education-date">2022 - Present</span>
+          </div>
+          <div></div>
         </div>
-        <div class="card">
-          <h3 style="margin-bottom: 3px !important;">VSZC György Boronkay Technical Secondary School</h3>
-          <h4 style="margin-bottom: 5px !important;">Bilingual class with an outstanding graduation record</h4>
-          <h4 style="margin-bottom: 5px !important;">2017.09. - 2022.06.</h4>
+        <div class="education-row">
+          <div></div>
+          <div class="education-axis education-axis--left">
+            <span class="education-logo" aria-hidden="true">
+              <img class="education-logo-image" src="assets/img/Boronkay-Kozepiskola.png" alt="Boronkay logo">
+            </span>
+            <span class="education-date">2017 - 2022</span>
+          </div>
+          <article class="education-card education-card--right reveal">
+            <h3>VSZC Gyorgy Boronkay Technical Secondary School</h3>
+            <p class="education-subtitle">Bilingual class with an outstanding graduation record</p>
+            <ul class="education-list">
+              <li>Technical foundations</li>
+              <li>STEM-focused program</li>
+            </ul>
+          </article>
         </div>
       </div>
     </div>
@@ -179,6 +203,14 @@
             <p>A CNC-machined pedal set designed and engineered end-to-end, from hardware to control electronics.</p>
           </div>
         </a>
+        <a class="project-card" href="projects/buttonbox.html">
+          <img class="project-image" src="assets/img/pcb.png" alt="Custom Sim Racing Button Box preview" />
+          <div class="project-body">
+            <h3>Custom Sim Racing Button Box</h3>
+            <p class="project-subtitle">MACHAN ENGINEERING</p>
+            <p>Fully custom made Button Box for sim racing setups. 3D printed case with in-house designed PCB.</p>
+          </div>
+        </a>
         <a class="project-card" href="projects/iot-device-hub.html">
           <img class="project-image" src="assets/img/icon.png" alt="IoT Device Hub System preview" />
           <div class="project-body">
@@ -187,15 +219,22 @@
             <p>Centralized hub that unifies commercial and custom IoT devices with a single control plane.</p>
           </div>
         </a>
-        <a class="project-card" href="projects/secure-deployment-pipeline.html">
-          <img class="project-image" src="assets/img/project-placeholder.svg" alt="Secure Deployment Pipeline preview" />
+        <a class="project-card" href="projects/talppont.html">
+          <img class="project-image" src="assets/img/talppont.jpg" alt="Massage saloon website with appointment system - Talppont" />
           <div class="project-body">
-            <h3>Secure Deployment Pipeline</h3>
-            <p class="project-subtitle">Compliance-ready delivery</p>
+            <h3>Massage saloon website with appointment system - Talppont</h3>
+            <p class="project-subtitle">React based frontend with lightweight flask backend</p>
             <p>Automated CI/CD checks with audit trails and release tracking for regulated teams.</p>
           </div>
         </a>
-        </article>
+        <a class="project-card" href="projects/network.html">
+          <img class="project-image" src="assets/img/proxmox_Logo.png" alt="Network project preview" style="object-fit: contain; object-position: center; background: #fff;" />
+          <div class="project-body">
+            <h3>Home server</h3>
+            <p class="project-subtitle">personal server with crucial services</p>
+            <p>Automated CI/CD checks with audit trails and release tracking for regulated teams.</p>
+          </div>
+        </a>
       </div>
     </div>
   </div>
