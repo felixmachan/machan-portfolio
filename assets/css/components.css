@@ -350,13 +350,13 @@
 .skills-marquee {
   position: relative;
   overflow: hidden;
-  border-radius: 999px;
-  border: 1px solid var(--color-border);
-  background: var(--color-surface);
-  box-shadow: var(--shadow-soft);
-  padding: var(--space-2) 0;
-  -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
-  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+  background: transparent;
+  box-shadow: none;
+  padding: var(--space-3) 0;
+  margin-left: calc(-1 * var(--space-6));
+  margin-right: calc(-1 * var(--space-6));
 }
 
 .skills-track {
@@ -377,34 +377,27 @@
   align-items: center;
   gap: 10px;
   white-space: nowrap;
-  padding: 10px 18px;
-  border-radius: 999px;
-  border: 1px solid var(--color-border);
-  background: #fff;
+  padding: 0;
+  border: none;
+  background: transparent;
   color: var(--color-accent);
-  font-size: 0.95rem;
-  letter-spacing: 0.02em;
 }
 
 .skill-icon {
-  width: 26px;
-  height: 26px;
-  border-radius: 50%;
-  border: 1px solid var(--color-border);
-  background: #fff;
+  font-size: 1.1rem;
+  line-height: 1;
   color: var(--color-accent);
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-size: 0.65rem;
   font-weight: 700;
   letter-spacing: 0.06em;
   text-transform: uppercase;
 }
 
 .skill-logo {
-  width: 26px;
-  height: 26px;
+  width: 40px;
+  height: 40px;
   color: var(--color-accent);
   display: inline-flex;
 }
