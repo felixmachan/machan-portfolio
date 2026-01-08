@@ -28,7 +28,7 @@
           </div>
           <div class="project-detail reveal">
             <h2>Overview</h2>
-            <p class="section-lead" style="max-width: 80% !important">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce sollicitudin ut arcu ut porta. Quisque rutrum magna ut nisi sagittis eleifend. Etiam pellentesque tellus quis nulla elementum faucibus ac nec mi. Morbi ac est in nisi facilisis vehicula. Nullam placerat interdum nibh, eu luctus massa suscipit quis. Nam semper ante nunc, ac consectetur libero accumsan bibendum. Sed at ante nec est blandit consectetur quis non magna.</p>
+            <p class="section-lead" style="max-width: 80% !important">This project documents the mechanical design journey of my custom sim racing pedal set, from early concepts to the current build. The focus is on achieving a bold, CNC-machined aesthetic while improving durability, serviceability, and sensor accuracy. Along the way I iterated on the pedal arm geometry, revised the piston support and ball joint mounting, and rethought the endstop and bearing layout. The result is a more robust platform ready for electronics integration.</p>
             <div class="project-rows">
               <div class="project-row">
                 <h3>Problem</h3>
@@ -42,11 +42,70 @@
                 <h3>Approach</h3>
                 <p>Of course the first step was a bit of research and planning to understand the requirements and constraints. Most professional pedals use the sheet metal approach. I thought a CNC-machined design would offer better precision and durability, and also allow for a more custom look. 
                   I started by the mechanical design, with the consideration of the utilization of load cells and high quality, high precision hall sensors. Using these types of sensors would ensure accurate and reliable input for the sim racing experience. The loadcell, in comparison with the traditional potentiometer based pedals, provides a more realistic and consistent feel, as it measures the actual force applied to the pedal rather than just the position. This results in a more immersive and authentic driving experience. The throttle and clutch pedals utilize hall sensors for position sensing, which are contactless and provide high precision and durability.
+
+                </br>In the beginning, several iterations of the mechanical design were created. I knew from the beginning that I wanted my design to be instantly recognizable, so I opted for a bold and aggressive look. 
                 </p>
-              </div>
-              <div class="project-row">
-                <h3>Result</h3>
-                <p>Summarize measurable results, performance, or user impact.</p>
+                <div style="width: 100%; text-align: center; display: flex; justify-content: center;">
+                <img src="../assets/img/early.jpg" alt="Pedal Design" style="max-width: 70%; margin-top: 15px; margin-bottom: 15px;" />
+                </div>
+                <p>
+                  In the early stage, I tried this design with the fork-like piston support, which turned out to be not a great idea for several reasons. For example, the longitudinal axis of the piston is changing during the pedal travel, which requires the support to be able to rotate with the shaft. This is not possible with the fixed fork design. Also, the moment created by pushing the pedal is causing high load on the top side of the fork design, which can lead to bending or even breaking of the part, with time. 
+                  <div style="width: 100%; text-align: center; display: flex; justify-content: center;">
+                  <img src="../assets/img/fork.jpg" alt="Fork redesigned" style="max-width: 70%; margin-top: 15px; margin-bottom: 15px;" />
+                  </div>
+                  As it can be seen in the image, the mounting of the ball joint functioning as the shaft axis is also not ideal, as it makes the manufacturing process more complicated.
+                  Instead of the two side supporting of the ball joint, I redesigned the arm to have a single, assimetric support on one side. However, this can cause uneven load on the ball joint, again requiring a special solution with low tolerances. I designed a custom clevis pin with an axial threaded blind hole. This way, the pin can be tightly fastened to the arm, eliminating any play or movement that could lead to uneven surface pressure load distribution on the ball joint or the pedal arm holes. The redesigned arm with the new ball joint support can be seen in the images below.
+                  <div style="width: 100%; text-align: center; display: flex; justify-content: center;">
+                  <img src="../assets/img/shaftaxis.jpg" alt="Fork redesigned" style="max-width: 70%; margin-top: 15px; margin-bottom: 15px;" />
+                  </div>
+                  <div style="width: 100%; text-align: center; display: flex; justify-content: center;">
+                  <img src="../assets/img/shaftaxiscs.jpg" alt="Fork redesigned" style="max-width: 70%; margin-top: 15px; margin-bottom: 15px;" />
+                  </div>
+                </p>
+                <p>
+                  
+                  Also, the rotational axis of the pedal arms had to be rethought as well. In the first design, I intended to use a ball bearing mounted in the pedal arm itself. I realized that it would be much more efficient to put the bearings in the side plates. This means that a shaft pin rigidly fixed to the arm has to be used,
+                  which the bearings are pressed onto. The solution to this is a small set screw that is pressing the shaft to the pedal arm hole inside surface. This also requires tight tolarences, but results in a much more robust and reliable design, with easier assembly and maintenance. The axial support of this main shaft is ensured on one side by the clevis pin head, and on the other side by a Seeger-ring.
+                </br>
+                  The rotation of the throttle and clutch pedal arms is sensed by rotational hall effect sensors. This means that the neodymium magnet have to be diagonally magnetized. To use this magnet, my idea was to make a pocket in the head of the custom designed arm shaft, in which the magnet can be inserted. The sensor itself is an AS5600 board, which is mounted in a small 3D printed casing screwed on the side plate. The magnet is positioned directly in front of the sensor, at a distance of about 1 mm, in order to ensure correct air gap for precision.
+
+                </p>
+
+                <div style="width: 100%; text-align: center; display: flex; justify-content: center;">
+                  <img src="../assets/img/armshaft.jpg" alt="New shaft design" style="width: 70%; margin-top: 15px; margin-bottom: 15px;" />
+                  </div>
+                  <div style="width: 100%; text-align: center; display: flex; justify-content: center;">
+                  <img src="../assets/img/seeger.png" alt="New shaft design" style="width: 70%; margin-top: 15px; margin-bottom: 15px;" />
+                  </div>
+                  <p>Another issue I was facing is the endstops of the pedals. After some thinking, I redesigned the pedal arm itself to have surfaces for both the starting and the ending endstops. The good thing about this design is that you can easily adjust the endstop positions by changing the mounting points on the side plates. You just have to unscrew a bolt and screw it back to the new position.</p>
+              
+                  <div style="width: 100%; text-align: center; display: flex; justify-content: center;">
+                  <img src="../assets/img/endstops.jpg" alt="New shaft design" style="width: 30%; margin-top: 15px; margin-bottom: 15px;" />
+                  </div>
+                  <p>Starting position:</p>
+                  <div style="width: 100%; text-align: center; display: flex; justify-content: center;">
+                  <img src="../assets/img/startendstop.png" alt="New shaft design" style="width: 60%; margin-top: 15px; margin-bottom: 15px;" />
+                  </div>
+                  <p>Final position:</p>
+                  <div style="width: 100%; text-align: center; display: flex; justify-content: center;">
+                  <img src="../assets/img/endendstop.jpg" alt="New shaft design" style="width: 60%; margin-top: 15px; margin-bottom: 15px;" />
+                  </div>
+                  <p>As it can be seen in the images, the beginning endstop can be personalized between two, the final endstop between 5 positions. </p>
+                <p>
+                  Sideplates for the loadcell (brake) pedals was designed a bit differently, because it does not need the upper through holes. The support for the piston is mounted directly on the loadcell, since that itself has to be pushed for it to sense stress. 
+                </p>
+              <div style="width: 100%; text-align: center; display: flex; justify-content: center;">
+                  <img src="../assets/img/sideplates.png" alt="New shaft design" style="width: 60%; margin-top: 15px; margin-bottom: 15px;" />
+                  </div>
+                  <p>These were the main design considerations for the mechanical parts of the pedals. The mentioned iterations and improvements helped to achieve the following robust and adjustable design.</p>
+                  <div style="width: 100%; text-align: center; display: flex; justify-content: center;">
+                  <img src="../assets/img/assy.png" alt="New shaft design" style="width: 60%; margin-top: 15px; margin-bottom: 15px;" />
+                  </div>
+                </div>
+             <div class="project-row">
+                <h3>Current state</h3>
+                <p>The mechanical parts of the pedals have been almost completely manufactured, some minor turned parts are still pending. The development of the electronics, mainly the PCB is about to get started, when the mechanical assembly is finished. The firmware and software development will follow the electronics phase.
+                </p>
               </div>
             </div>
             </div>

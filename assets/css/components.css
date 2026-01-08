@@ -178,8 +178,8 @@
 }
 
 .education-logo {
-  width: 46px;
-  height: 46px;
+  width: 69px;
+  height: 69px;
   border-radius: 50%;
   border: 2px solid var(--color-border);
   background: var(--color-surface);
@@ -210,14 +210,14 @@
   letter-spacing: 0.04em;
   position: absolute;
   top: 50%;
-  left: calc(50% + 43px);
+  left: calc(50% + 65px);
   transform: translateY(-50%);
   white-space: nowrap;
 }
 
 .education-axis--left .education-date {
   left: auto;
-  right: calc(50% + 43px);
+  right: calc(50% + 65px);
   text-align: right;
 }
 
@@ -356,6 +356,71 @@
 .button.secondary {
   background: var(--color-bg);
   color: var(--color-accent);
+}
+
+.skills-grid {
+  display: grid;
+  gap: var(--space-4);
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  margin-top: var(--space-5);
+}
+
+.skill-tile {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-4);
+  border-radius: 14px;
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-soft);
+  overflow: hidden;
+  transition: box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.skill-tile::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  background:
+    radial-gradient(circle at var(--gx, 50%) var(--gy, 50%), rgba(231, 215, 196, 0.7), rgba(231, 215, 196, 0) 55%),
+    linear-gradient(135deg, rgba(231, 215, 196, 0.2) 0%, rgba(231, 215, 196, 0.5) 55%, rgba(246, 239, 228, 0.1) 100%);
+  transition: opacity 0.2s ease;
+}
+
+.skill-tile:hover {
+  border-color: var(--color-nav-dot);
+  box-shadow: 0 16px 30px rgba(58, 46, 35, 0.18);
+}
+
+.skill-tile:hover::before {
+  opacity: 1;
+}
+
+.skill-tile .skill-logo {
+  width: 56px;
+  height: 56px;
+  position: relative;
+  z-index: 1;
+  object-fit: contain;
+  display: block;
+}
+
+.skill-tile .skill-logo--large {
+  width: 72px;
+  height: 72px;
+}
+
+.skill-tile .skill-logo svg {
+  width: 100%;
+  height: 100%;
+}
+
+.skill-tile .skill-logo--mqtt {
+  width: 90px;
+  height: 36px;
 }
 
 .stack {
@@ -765,7 +830,7 @@
 
   .education-logo {
     position: absolute;
-    left: -42px;
+    left: -63px;
     top: 50%;
     transform: translate(-50%, -50%);
   }
@@ -863,5 +928,31 @@
 
   .side-nav__label {
     display: none;
+  }
+}
+
+@media (max-width: 600px) {
+  .skills-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--space-3);
+  }
+
+  .skill-tile {
+    padding: var(--space-3);
+  }
+
+  .skill-tile .skill-logo {
+    width: 42px;
+    height: 42px;
+  }
+
+  .skill-tile .skill-logo--large {
+    width: 54px;
+    height: 54px;
+  }
+
+  .skill-tile .skill-logo--mqtt {
+    width: 70px;
+    height: 28px;
   }
 }

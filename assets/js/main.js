@@ -68,6 +68,18 @@
 
     sections.forEach((section) => observer.observe(section));
 
+    const handleScroll = () => {
+      if (items.length === 0) return;
+      const scrollBottom = window.scrollY + window.innerHeight;
+      const docHeight = document.documentElement.scrollHeight;
+      if (scrollBottom >= docHeight - 2) {
+        setActive(items[items.length - 1]);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
+
     window.addEventListener('resize', () => {
       const activeItem = nav.querySelector('.side-nav__item.is-active');
       if (activeItem) setActive(activeItem);
@@ -216,13 +228,37 @@
     });
   };
 
+  const initSkillTiles = () => {
+    const tiles = Array.from(document.querySelectorAll('.skill-tile'));
+    if (tiles.length === 0) return;
+
+    tiles.forEach((tile) => {
+      const update = (event) => {
+        const rect = tile.getBoundingClientRect();
+        const x = ((event.clientX - rect.left) / rect.width) * 100;
+        const y = ((event.clientY - rect.top) / rect.height) * 100;
+        tile.style.setProperty('--gx', `${x.toFixed(2)}%`);
+        tile.style.setProperty('--gy', `${y.toFixed(2)}%`);
+      };
+
+      tile.addEventListener('mousemove', update);
+      tile.addEventListener('mouseenter', update);
+      tile.addEventListener('mouseleave', () => {
+        tile.style.removeProperty('--gx');
+        tile.style.removeProperty('--gy');
+      });
+    });
+  };
+
   loadSections()
     .then(() => {
       initScrollSpy();
       initKnowledgeChart();
+      initSkillTiles();
     })
     .catch(() => {
       initScrollSpy();
       initKnowledgeChart();
+      initSkillTiles();
     });
 })();
