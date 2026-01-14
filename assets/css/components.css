@@ -610,7 +610,7 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background: #fff;
+  background: var(--color-surface);
   color: var(--color-accent);
   border: 1px solid var(--color-border);
 }
@@ -740,6 +740,55 @@
   z-index: 10;
   --nav-dot-size: 10px;
   --nav-gap: 0.75rem;
+}
+
+.theme-toggle {
+  position: fixed;
+  top: 1.6rem;
+  right: 2rem;
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  color: var(--color-accent);
+  display: grid;
+  place-items: center;
+  box-shadow: var(--shadow-soft);
+  cursor: pointer;
+  z-index: 20;
+}
+
+.theme-toggle:focus-visible {
+  outline: 2px solid var(--color-nav-dot);
+  outline-offset: 3px;
+}
+
+.theme-toggle .theme-icon {
+  grid-area: 1 / 1;
+  width: 20px;
+  height: 20px;
+  transition: opacity 0.2s ease, transform 0.25s ease;
+}
+
+.theme-toggle .theme-icon--sun {
+  opacity: 0;
+  transform: rotate(90deg) scale(0.6);
+}
+
+.theme-toggle .theme-icon--moon {
+  opacity: 1;
+  transform: rotate(0deg) scale(1);
+}
+
+:root[data-theme="dark"] .theme-toggle .theme-icon--sun {
+  opacity: 1;
+  transform: rotate(0deg) scale(1);
+}
+
+:root[data-theme="dark"] .theme-toggle .theme-icon--moon {
+  opacity: 0;
+  transform: rotate(-90deg) scale(0.6);
 }
 
 .side-nav__indicator {
@@ -934,7 +983,7 @@
   .project-image {
     height: auto;
     object-fit: contain;
-    background: #fff;
+    background: var(--color-surface);
   }
 
   .side-nav {
@@ -951,6 +1000,11 @@
 
   .side-nav__label {
     display: none;
+  }
+
+  .theme-toggle {
+    top: 1rem;
+    right: 1rem;
   }
 }
 

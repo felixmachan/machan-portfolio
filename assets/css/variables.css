@@ -1,5 +1,8 @@
 ﻿:root {
   --color-bg: #f6efe4;
+  --color-bg-top: #ffffff;
+  --color-bg-mid: #f2e7d8;
+  --color-bg-bottom: #e7d7c4;
   --color-surface: #ffffff;
   --color-ink: #3a2e23;
   --color-muted: #6b5b4a;
@@ -7,6 +10,9 @@
   --color-border: #d9c9b5;
   --color-nav-dot: #8b5e34;
   --shadow-soft: 0 12px 30px rgba(58, 46, 35, 0.12);
+  --color-chart-grid: #b9a48e;
+  --color-chart-axis: #8e7a65;
+  --color-chart-line: #c88e4f;
 
   --font-body: "IBM Plex Sans", "Segoe UI", Tahoma, sans-serif;
   --font-mono: "IBM Plex Mono", "Consolas", "Courier New", monospace;
@@ -27,4 +33,18 @@
   --space-8: 4rem;
   --space-9: 5.5rem;
   --radius: 16px;
+}
+
+:root[data-theme="dark"] {
+  --color-bg: #15110d;
+  --color-bg-top: #241c16;
+  --color-bg-mid: #1b1510;
+  --color-bg-bottom: #120e0a;
+  --color-surface: #30261e;
+  --color-ink: #f0e6d8;
+  --color-muted: #c3b2a0;
+  --color-accent: #d8a86c;
+  --color-border: #3a2f24;
+  --color-nav-dot: #d8a86c;
+  --shadow-soft: 0 14px 28px rgba(0, 0, 0, 0.35);
 }

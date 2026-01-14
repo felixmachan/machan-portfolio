@@ -11,8 +11,13 @@ html {
 body {
   font-family: var(--font-body);
   color: var(--color-ink);
-  background-color: #f6efe4;
-  background-image: radial-gradient(circle at top, #ffffff 0%, #f2e7d8 45%, #e7d7c4 100%);
+  background-color: var(--color-bg);
+  background-image: radial-gradient(
+    circle at top,
+    var(--color-bg-top) 0%,
+    var(--color-bg-mid) 45%,
+    var(--color-bg-bottom) 100%
+  );
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -66,6 +71,7 @@ img {
 .section-lead {
   color: var(--color-muted);
   max-width: 60ch;
+  font-size: 20px;
 }
 
 main {
@@ -77,6 +83,26 @@ main {
   padding: var(--space-5) 0;
   color: var(--color-muted);
   font-size: var(--fs-300);
+}
+
+.theme-ready body,
+.theme-ready .panel,
+.theme-ready .card,
+.theme-ready .project-card,
+.theme-ready .education-card,
+.theme-ready .skill-tile,
+.theme-ready .contact-card,
+.theme-ready .contact-icon,
+.theme-ready .site-footer,
+.theme-ready .chart-frame,
+.theme-ready .side-nav__dot,
+.theme-ready .side-nav__indicator,
+.theme-ready .side-nav__item::after {
+  transition:
+    background-color 0.35s ease,
+    color 0.35s ease,
+    border-color 0.35s ease,
+    box-shadow 0.35s ease;
 }
 
 @media (max-width: 768px) {

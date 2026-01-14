@@ -1,5 +1,50 @@
 // Load modular sections and wire up scroll spy once content is in place.
 (function () {
+  const initThemeToggle = () => {
+    const root = document.documentElement;
+    const toggle = document.querySelector('.theme-toggle');
+    if (!toggle) return;
+
+    const swapThemeImages = (theme) => {
+      const themedImages = document.querySelectorAll('[data-light][data-dark]');
+      themedImages.forEach((img) => {
+        const nextSrc = theme === 'dark' ? img.dataset.dark : img.dataset.light;
+        if (nextSrc) {
+          img.setAttribute('src', nextSrc);
+        }
+      });
+    };
+
+    const applyTheme = (theme) => {
+      if (theme === 'dark') {
+        root.setAttribute('data-theme', 'dark');
+      } else {
+        root.removeAttribute('data-theme');
+      }
+      toggle.setAttribute('aria-pressed', theme === 'dark' ? 'true' : 'false');
+      toggle.setAttribute(
+        'aria-label',
+        theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'
+      );
+      swapThemeImages(theme);
+    };
+
+    const stored = localStorage.getItem('theme');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const initialTheme = stored || (prefersDark ? 'dark' : 'light');
+    applyTheme(initialTheme);
+    requestAnimationFrame(() => {
+      root.classList.add('theme-ready');
+    });
+
+    toggle.addEventListener('click', () => {
+      const isDark = root.getAttribute('data-theme') === 'dark';
+      const nextTheme = isDark ? 'light' : 'dark';
+      localStorage.setItem('theme', nextTheme);
+      applyTheme(nextTheme);
+    });
+  };
+
   const includeTargets = Array.from(document.querySelectorAll('[data-include]'));
 
   const loadSections = async () => {
@@ -94,12 +139,10 @@
     const context = canvas.getContext('2d');
     if (!context) return;
 
-    const accent = getComputedStyle(document.documentElement)
-      .getPropertyValue('--color-accent')
-      .trim();
-    const border = getComputedStyle(document.documentElement)
-      .getPropertyValue('--color-border')
-      .trim();
+    const styles = getComputedStyle(document.documentElement);
+    const accent = styles.getPropertyValue('--color-chart-line').trim();
+    const grid = styles.getPropertyValue('--color-chart-grid').trim();
+    const axis = styles.getPropertyValue('--color-chart-axis').trim();
 
     const resizeCanvas = () => {
       const rect = canvas.getBoundingClientRect();
@@ -121,7 +164,7 @@
       context.clearRect(0, 0, width, height);
       const gridCount = 6;
       context.lineWidth = 1;
-      context.strokeStyle = border;
+      context.strokeStyle = grid;
       context.beginPath();
       for (let i = 0; i <= gridCount; i += 1) {
         const x = left + ((right - left) / gridCount) * i;
@@ -134,7 +177,7 @@
       context.stroke();
 
       context.lineWidth = 2;
-      context.strokeStyle = border;
+      context.strokeStyle = axis;
       context.beginPath();
       context.moveTo(left, top);
       context.lineTo(left, bottom);
@@ -154,8 +197,8 @@
       context.stroke();
 
       context.lineWidth = 3;
-      context.strokeStyle = accent || '#8b5e34';
-      context.shadowColor = accent || '#8b5e34';
+      context.strokeStyle = accent || '#c88e4f';
+      context.shadowColor = accent || '#c88e4f';
       context.shadowBlur = 5;
       context.shadowOffsetX = 0;
       context.shadowOffsetY = 0;
@@ -252,11 +295,13 @@
 
   loadSections()
     .then(() => {
+      initThemeToggle();
       initScrollSpy();
       initKnowledgeChart();
       initSkillTiles();
     })
     .catch(() => {
+      initThemeToggle();
       initScrollSpy();
       initKnowledgeChart();
       initSkillTiles();
