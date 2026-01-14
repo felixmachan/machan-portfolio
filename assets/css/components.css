@@ -361,8 +361,31 @@
 .skills-grid {
   display: grid;
   gap: var(--space-4);
-  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
   margin-top: var(--space-5);
+}
+
+.skills-groups {
+  display: grid;
+  gap: var(--space-6);
+  margin-top: var(--space-5);
+}
+
+.skills-group {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.skills-group__header h3 {
+  margin: 0;
+  font-size: var(--fs-400);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+.skills-group .skills-grid {
+  margin-top: 0;
 }
 
 .skill-tile {
