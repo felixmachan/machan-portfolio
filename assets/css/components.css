@@ -63,7 +63,21 @@
   border: 1px solid var(--color-border);
   border-radius: 12px;
   padding: var(--space-5);
+  position: relative;
+  overflow: hidden;
   transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.project-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(120deg, rgba(255, 255, 255, 0) 0%, rgba(230, 201, 165, 0.35) 45%, rgba(255, 255, 255, 0) 70%);
+  opacity: 0;
+  transform: translateX(40%);
+  transition: opacity 0.3s ease, transform 0.4s ease;
+  pointer-events: none;
 }
 
 .project-card:hover,
@@ -72,12 +86,24 @@
   transform: translateY(-2px);
 }
 
+.project-card:hover::before,
+.project-card:focus-visible::before {
+  opacity: 1;
+  transform: translateX(0);
+}
+
 .project-image {
   width: 100%;
   height: 210px;
   object-fit: cover;
   border-radius: 10px;
   border: 1px solid var(--color-border);
+  transition: transform 0.3s ease;
+}
+
+.project-card:hover .project-image,
+.project-card:focus-visible .project-image {
+  transform: scale(1.02);
 }
 
 .project-body h3 {
@@ -398,7 +424,8 @@
   border: 1px solid var(--color-border);
   background: var(--color-surface);
   box-shadow: var(--shadow-soft);
-  overflow: hidden;
+  overflow: visible;
+  cursor: pointer;
   transition: box-shadow 0.2s ease, border-color 0.2s ease;
 }
 
@@ -413,6 +440,55 @@
   transition: opacity 0.2s ease;
 }
 
+.skill-tile[data-skill]::after {
+  content: attr(data-skill);
+  position: absolute;
+  left: 50%;
+  bottom: calc(100% + 10px);
+  transform: translate(-50%, 6px);
+  background: var(--color-surface);
+  color: var(--color-ink);
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  padding: 4px 10px;
+  font-size: var(--fs-300);
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  opacity: 0;
+  box-shadow: var(--shadow-soft);
+  pointer-events: none;
+  transition: opacity 0.2s ease, transform 0.25s ease;
+  z-index: 2;
+}
+
+.skill-detail {
+  position: absolute;
+  inset: 0;
+  padding: var(--space-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.05s ease, transform 0.08s ease;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.skill-detail__title {
+  font-size: var(--fs-300);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-ink);
+  font-weight: 600;
+}
+
+.skill-detail__body {
+  font-size: var(--fs-300);
+  color: var(--color-muted);
+  line-height: 1.5;
+}
+
 .skill-tile:hover {
   border-color: var(--color-nav-dot);
   box-shadow: 0 16px 30px rgba(58, 46, 35, 0.18);
@@ -422,6 +498,37 @@
   opacity: 1;
 }
 
+.skill-tile:hover::after,
+.skill-tile:focus-visible::after {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+.skill-tile.is-expanded {
+  grid-column: span 2;
+  min-height: 180px;
+  align-items: flex-start;
+}
+
+.skill-tile.is-expanded::after {
+  opacity: 0;
+}
+
+.skill-tile.is-expanded .skill-logo {
+  opacity: 0;
+  transform: scale(0.92);
+}
+
+.skill-tile.is-expanded .skill-detail {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.skill-tile:focus-visible {
+  outline: 2px solid var(--color-nav-dot);
+  outline-offset: 3px;
+}
+
 .skill-tile .skill-logo {
   width: 56px;
   height: 56px;
@@ -429,6 +536,7 @@
   z-index: 1;
   object-fit: contain;
   display: block;
+  transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
 .skill-tile .skill-logo--large {
@@ -1031,5 +1139,9 @@
   .skill-tile .skill-logo--mqtt {
     width: 70px;
     height: 28px;
+  }
+
+  .skill-tile.is-expanded {
+    grid-column: span 3;
   }
 }

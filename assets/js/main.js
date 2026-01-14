@@ -275,7 +275,15 @@
     const tiles = Array.from(document.querySelectorAll('.skill-tile'));
     if (tiles.length === 0) return;
 
+    const collapseAll = () => {
+      tiles.forEach((tile) => {
+        tile.classList.remove('is-expanded');
+        tile.setAttribute('aria-expanded', 'false');
+      });
+    };
+
     tiles.forEach((tile) => {
+      tile.setAttribute('aria-expanded', 'false');
       const update = (event) => {
         const rect = tile.getBoundingClientRect();
         const x = ((event.clientX - rect.left) / rect.width) * 100;
@@ -290,6 +298,35 @@
         tile.style.removeProperty('--gx');
         tile.style.removeProperty('--gy');
       });
+
+      tile.addEventListener('click', (event) => {
+        event.preventDefault();
+        const isExpanded = tile.classList.contains('is-expanded');
+        collapseAll();
+        if (!isExpanded) {
+          tile.classList.add('is-expanded');
+          tile.setAttribute('aria-expanded', 'true');
+        }
+      });
+
+      tile.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter' || event.key === ' ') {
+          event.preventDefault();
+          tile.click();
+        }
+      });
+    });
+
+    document.addEventListener('click', (event) => {
+      if (!event.target.closest('.skill-tile')) {
+        collapseAll();
+      }
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') {
+        collapseAll();
+      }
     });
   };
 
