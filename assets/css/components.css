@@ -437,8 +437,8 @@
   clip-path: inset(0 round 14px);
   opacity: 0;
   background:
-    radial-gradient(circle at var(--gx, 50%) var(--gy, 50%), rgba(231, 215, 196, 0.7), rgba(231, 215, 196, 0) 55%),
-    linear-gradient(135deg, rgba(231, 215, 196, 0.2) 0%, rgba(231, 215, 196, 0.5) 55%, rgba(246, 239, 228, 0.1) 100%);
+    radial-gradient(circle at var(--gx, 50%) var(--gy, 50%), rgba(212, 179, 145, 0.22), rgba(212, 179, 145, 0) 55%),
+    linear-gradient(135deg, rgba(196, 163, 129, 0.08) 0%, rgba(212, 179, 145, 0.18) 55%, rgba(235, 215, 193, 0.05) 100%);
   transition: opacity 0.2s ease;
 }
 
