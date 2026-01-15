@@ -434,6 +434,7 @@
   position: absolute;
   inset: 0;
   border-radius: inherit;
+  clip-path: inset(0 round 14px);
   opacity: 0;
   background:
     radial-gradient(circle at var(--gx, 50%) var(--gy, 50%), rgba(231, 215, 196, 0.7), rgba(231, 215, 196, 0) 55%),
