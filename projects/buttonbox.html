@@ -3,50 +3,89 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Custom Sim Racing Pedals - ME1</title>
+    <title>Custom Sim Racing Button Box</title>
     <link rel="stylesheet" href="../assets/css/variables.css" />
     <link rel="stylesheet" href="../assets/css/base.css" />
     <link rel="stylesheet" href="../assets/css/components.css" />
     <link rel="stylesheet" href="../assets/css/animations.css" />
   </head>
   <body>
+    <button class="theme-toggle" type="button" aria-label="Switch to dark mode" aria-pressed="false">
+      <svg class="theme-icon theme-icon--moon" aria-hidden="true" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M21.53 14.37a.75.75 0 0 0-.86-.3 7.5 7.5 0 0 1-9.79-9.8.75.75 0 0 0-1.16-.83 9.75 9.75 0 1 0 12.04 12.04.75.75 0 0 0-.23-1.11z"/>
+      </svg>
+      <svg class="theme-icon theme-icon--sun" aria-hidden="true" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0-5a1 1 0 0 1 1 1v2a1 1 0 1 1-2 0V3a1 1 0 0 1 1-1zm0 18a1 1 0 0 1 1 1v2a1 1 0 1 1-2 0v-2a1 1 0 0 1 1-1zm10-9a1 1 0 0 1-1 1h-2a1 1 0 1 1 0-2h2a1 1 0 0 1 1 1zM5 12a1 1 0 0 1-1 1H2a1 1 0 1 1 0-2h2a1 1 0 0 1 1 1zm14.95-6.95a1 1 0 0 1 0 1.41l-1.42 1.42a1 1 0 1 1-1.41-1.42l1.41-1.41a1 1 0 0 1 1.42 0zM6.88 17.12a1 1 0 0 1 0 1.41L5.46 19.95a1 1 0 1 1-1.41-1.41l1.42-1.42a1 1 0 0 1 1.41 0zm12.07 1.41a1 1 0 0 1-1.41 0l-1.42-1.42a1 1 0 0 1 1.42-1.41l1.41 1.41a1 1 0 0 1 0 1.42zM7.29 6.88a1 1 0 0 1-1.41 0L4.46 5.46a1 1 0 1 1 1.41-1.41l1.42 1.42a1 1 0 0 1 0 1.41z"/>
+      </svg>
+    </button>
     <main>
       <section class="section section--hero">
         <div class="container" style="margin-top: 30px; margin-bottom: 30px;">
           <div class="panel project-page">
           <div class="project-hero">
             <div class="reveal">
-              <img class="project-hero-image" src="../assets/img/pedals.jpg" alt="Custom Sim Racing Pedals" />
+              <img class="project-hero-image" src="../assets/img/pcb.png" alt="Custom Sim Racing Button Box" />
             </div>
             <div class="project-hero-body reveal">
               <a class="button secondary" href="../index.html#projects" style="margin-top: 30px; margin-bottom: 30px;">Back to Projects</a>
-              <h1>Custom Sim Racing Pedals - ME1</h1>
-              <p class="section-lead">Mechatronics build</p>
-              <p class="section-lead" style="max-width: 100%;">A CNC-machined pedal set, combining hardware, sensing, and embedded control for sim racing.</p>
+              <h1>Custom Sim Racing Button Box</h1>
+              <p class="section-lead" style="max-width: 100%;">My first end-to-end PCB design, from schematic capture to routing.</p>
             
             </div>
           </div>
           <div class="project-detail reveal">
-            <h2>Overview</h2>
-            <p class="section-lead" style="max-width: 80% !important">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce sollicitudin ut arcu ut porta. Quisque rutrum magna ut nisi sagittis eleifend. Etiam pellentesque tellus quis nulla elementum faucibus ac nec mi. Morbi ac est in nisi facilisis vehicula. Nullam placerat interdum nibh, eu luctus massa suscipit quis. Nam semper ante nunc, ac consectetur libero accumsan bibendum. Sed at ante nec est blandit consectetur quis non magna.</p>
             <div class="project-rows">
               <div class="project-row">
                 <h3>Problem</h3>
-                <p>I have been sim racing for several years, but this hobby is quite an expensive one. I wanted to upgrade my pedals to a loadcell based system for better accuracy and realism., but the prices were prohibitively high for my budget. This was the time that I decided to build my own set of custom pedals.</p>
+                <p>Button boxes are essential peripherals in sim racing, enabling rapid access to controls and a more immersive workflow. Due to the niche market and low production volumes, commercially available options are limited. This gap motivated the decision to design and build a bespoke unit.</p>
               </div>
               <div class="project-row">
                 <h3>Goal</h3>
-                <p>To design and build a cost-effective, high-performance set of sim racing pedals that provide realistic feedback and durability.</p>
+                <p>Deliver a reliable, configurable button box tailored to my sim racing setup.</p>
               </div>
               <div class="project-row">
                 <h3>Approach</h3>
-                <p>Of course the first step was a bit of research and planning to understand the requirements and constraints. Most professional pedals use the sheet metal approach. I thought a CNC-machined design would offer better precision and durability, and also allow for a more custom look. 
-                  I started by the mechanical design, with the consideration of the utilization of load cells and high quality, high precision hall sensors. Using these types of sensors would ensure accurate and reliable input for the sim racing experience. The loadcell, in comparison with the traditional potentiometer based pedals, provides a more realistic and consistent feel, as it measures the actual force applied to the pedal rather than just the position. This results in a more immersive and authentic driving experience. The throttle and clutch pedals utilize hall sensors for position sensing, which are contactless and provide high precision and durability.
-                </p>
+                <p>The initial concept used discrete buttons with an Arduino Pro Micro, which was selected for native HID support. However, its limited I/O required a button matrix, and the wiring effort became excessive. Each switch and encoder needed individual soldering, plus diode isolation to prevent key ghosting. The prototype was therefore paused before assembly.</p>
+                <p>Time-intensive wiring phase before the PCB approach:</p>
+                <div style="width: 100%; text-align: center; display: flex; justify-content: center;">
+                <img src="../assets/img/IMG_9149.webp" alt="Pedal Design" style="max-width: 70%; margin-top: 15px; margin-bottom: 15px;" />
+                </div>
+                <p>At that point, I committed to a dedicated PCB design. I already had foundational experience with KiCad from university projects, which made it a practical choice for schematic and layout work.</p>
+                <p>The first decision was the MCU. I selected the Raspberry RP2040 for its strong ecosystem and approachable development flow. Because fabrication was planned with JLCPCB, component selection and footprint validation were handled up front, followed by the schematic capture.</p>
+                <p>Building the schematic was the most demanding learning phase. Understanding component constraints and proper wiring required iteration, but the design stabilized into a coherent system.</p>
+                <div style="width: 100%; text-align: center; display: flex; justify-content: center;">
+                <img src="../assets/img/mcu.jpg" alt="Pedal Design" style="max-width: 70%; margin-top: 15px; margin-bottom: 15px;" />
+                </div>
+                <div style="width: 100%; text-align: center; display: flex; justify-content: center;">
+                <img src="../assets/img/bmatrix.png" alt="Pedal Design" style="max-width: 70%; margin-top: 15px; margin-bottom: 15px;" />
+                </div>
+                <div style="width: 100%; text-align: center; display: flex; justify-content: center;">
+                <img src="../assets/img/flash.jpg" alt="Pedal Design" style="max-width: 70%; margin-top: 15px; margin-bottom: 15px;" />
+                </div>
+                <div style="width: 100%; text-align: center; display: flex; justify-content: center;">
+                <img src="../assets/img/power.jpg" alt="Pedal Design" style="max-width: 70%; margin-top: 15px; margin-bottom: 15px;" />
+                </div>
+                <div style="width: 100%; text-align: center; display: flex; justify-content: center;">
+                <img src="../assets/img/encoders.jpg" alt="Pedal Design" style="max-width: 70%; margin-top: 15px; margin-bottom: 15px;" />
+                </div>
+                <div style="width: 100%; text-align: center; display: flex; justify-content: center;">
+                <img src="../assets/img/crystal.jpg" alt="Pedal Design" style="max-width: 70%; margin-top: 15px; margin-bottom: 15px;" />
+                </div>
+                <p>For a first full PCB project, the schematic captured the complete feature set and interfaces.</p>
+                <p>Routing introduced a second major challenge.</p>
+                <div style="width: 100%; text-align: center; display: flex; justify-content: center;">
+                <img src="../assets/img/IMG_9404.webp" alt="Pedal Design" style="max-width: 70%; margin-top: 15px; margin-bottom: 15px;" />
+                </div>
+                <p>After several iterations of re-routing and reviewing best practices, the board reached a stable layout. The per-button and per-encoder LED plan increased routing complexity significantly, and I did not have access to a formal design review. The final layout reflects the best practices and constraints I could validate independently.</p>
+                <p>A 3D render of the final design is shown below.</p>
+                <div style="width: 100%; text-align: center; display: flex; justify-content: center;">
+                <img src="../assets/img/pcb.png" alt="Pedal Design" style="max-width: 85%; margin-top: 15px; margin-bottom: 15px;" />
+                </div>
+                <p>The next step is fabrication. The remaining decision is whether to order an assembled PCB or a bare board for manual assembly.</p>
               </div>
               <div class="project-row">
                 <h3>Result</h3>
-                <p>Summarize measurable results, performance, or user impact.</p>
+                <p>A completed button box PCB design ready for manufacturing.</p>
               </div>
             </div>
             </div>
@@ -57,5 +96,6 @@
     </main>
 
     <script src="../assets/js/reveal.js" defer></script>
+    <script src="../assets/js/main.js" defer></script>
   </body>
 </html>

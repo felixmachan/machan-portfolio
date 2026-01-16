@@ -366,6 +366,10 @@
   font-size: var(--fs-300);
 }
 
+.project-row p + p {
+  margin-top: var(--space-3);
+}
+
 .button {
   display: inline-flex;
   align-items: center;
