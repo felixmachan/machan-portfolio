@@ -183,7 +183,7 @@
 
 .education-row {
   display: grid;
-  grid-template-columns: 1fr 180px 1fr;
+  grid-template-columns: minmax(0, 1fr) 180px minmax(0, 1fr);
   align-items: center;
   gap: var(--space-5);
   position: relative;
@@ -982,11 +982,14 @@
   .education-timeline::before {
     left: 26px;
     z-index: 0;
+    top: -12px;
+    bottom: -24px;
   }
 
   .education-timeline::after {
     left: 26px;
     z-index: 1;
+    top: -12px;
   }
 
   .education-row {
@@ -1016,7 +1019,7 @@
 
   .education-logo {
     position: absolute;
-    left: -63px;
+    left: -42px;
     top: 50%;
     transform: translate(-50%, -50%);
   }

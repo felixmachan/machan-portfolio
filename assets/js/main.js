@@ -113,8 +113,29 @@
 
     sections.forEach((section) => observer.observe(section));
 
+    items.forEach((item) => {
+      item.addEventListener('click', (event) => {
+        const targetSelector = item.getAttribute('href');
+        if (!targetSelector || !targetSelector.startsWith('#')) return;
+        const target = document.querySelector(targetSelector);
+        if (!target) return;
+        event.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        setActive(item);
+      });
+    });
+
     const handleScroll = () => {
       if (items.length === 0) return;
+      const marker = window.scrollY + window.innerHeight * 0.35;
+      let activeIndex = 0;
+      sections.forEach((section, index) => {
+        if (marker >= section.offsetTop) {
+          activeIndex = index;
+        }
+      });
+      setActive(items[activeIndex]);
+
       const scrollBottom = window.scrollY + window.innerHeight;
       const docHeight = document.documentElement.scrollHeight;
       if (scrollBottom >= docHeight - 2) {
