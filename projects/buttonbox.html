@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="../assets/css/variables.css" />
     <link rel="stylesheet" href="../assets/css/base.css" />
     <link rel="stylesheet" href="../assets/css/components.css" />
+    <link rel="stylesheet" href="../assets/css/project.css" />
     <link rel="stylesheet" href="../assets/css/animations.css" />
   </head>
   <body>
@@ -18,79 +19,81 @@
         <path d="M12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0-5a1 1 0 0 1 1 1v2a1 1 0 1 1-2 0V3a1 1 0 0 1 1-1zm0 18a1 1 0 0 1 1 1v2a1 1 0 1 1-2 0v-2a1 1 0 0 1 1-1zm10-9a1 1 0 0 1-1 1h-2a1 1 0 1 1 0-2h2a1 1 0 0 1 1 1zM5 12a1 1 0 0 1-1 1H2a1 1 0 1 1 0-2h2a1 1 0 0 1 1 1zm14.95-6.95a1 1 0 0 1 0 1.41l-1.42 1.42a1 1 0 1 1-1.41-1.42l1.41-1.41a1 1 0 0 1 1.42 0zM6.88 17.12a1 1 0 0 1 0 1.41L5.46 19.95a1 1 0 1 1-1.41-1.41l1.42-1.42a1 1 0 0 1 1.41 0zm12.07 1.41a1 1 0 0 1-1.41 0l-1.42-1.42a1 1 0 0 1 1.42-1.41l1.41 1.41a1 1 0 0 1 0 1.42zM7.29 6.88a1 1 0 0 1-1.41 0L4.46 5.46a1 1 0 1 1 1.41-1.41l1.42 1.42a1 1 0 0 1 0 1.41z"/>
       </svg>
     </button>
-    <main>
-      <section class="section section--hero">
-        <div class="container" style="margin-top: 30px; margin-bottom: 30px;">
-          <div class="panel project-page">
-          <div class="project-hero">
-            <div class="reveal">
-              <img class="project-hero-image" src="../assets/img/pcb.png" alt="Custom Sim Racing Button Box" />
+    <main class="width">
+      <section class="section section--hero project-section" style="display: flex; justify-content: center; align-items: center;">
+        <div class="container" style="margin-top: 30px; margin-bottom: 30px; display: flex; justify-content: center; align-items: center;">
+          <div class="panel project-page" style="width: 85%;">
+            <div class="project-hero">
+              <div class="reveal">
+                <img class="project-hero-image" src="../assets/img/pcb.png" alt="Custom Sim Racing Button Box" />
+              </div>
+              <div class="project-hero-body reveal">
+                <a class="button secondary" href="../index.html#projects" style="margin-top: 10px;">Back to Projects</a>
+                <h1 style="margin-top: 20px;">Custom Sim Racing Button Box</h1>
+                <p class="section-lead" style="max-width: 100%; margin-top: 30px;">My first end-to-end PCB design, from schematic capture to routing.</p>
+              </div>
             </div>
-            <div class="project-hero-body reveal">
-              <a class="button secondary" href="../index.html#projects" style="margin-top: 30px; margin-bottom: 30px;">Back to Projects</a>
-              <h1>Custom Sim Racing Button Box</h1>
-              <p class="section-lead" style="max-width: 100%;">My first end-to-end PCB design, from schematic capture to routing.</p>
-            
+            <div class="project-detail reveal">
+              <div class="project-rows" style="margin-top: 0px;">
+                <div class="project-row">
+                  <h2>Problem</h2>
+                  <p class="section-lead">Button boxes are essential peripherals in sim racing, enabling rapid access to controls and a more immersive workflow. Due to the niche market and low production volumes, commercially available options are limited. This gap motivated the decision to design and build a bespoke unit.</p>
+                </div>
+                <div class="project-row">
+                  <h2>Goal</h2>
+                  <p class="section-lead">Deliver a reliable, configurable button box tailored to my sim racing setup.</p>
+                </div>
+                <div class="project-row">
+                  <h2 style="margin-bottom: 20px;">Approach</h2>
+
+                  <div class="project-feature reveal">
+                    <div class="project-feature__text">
+                      <h4>The Point-to-Point Era</h4>
+                      <p>The initial concept used discrete buttons with an Arduino Pro Micro, which was selected for native HID support. However, its limited I/O required a button matrix, and the wiring effort became excessive. Each switch and encoder needed individual soldering, plus diode isolation to prevent key ghosting. The prototype was therefore paused before assembly.</p>
+                    </div>
+                    <img src="../assets/img/IMG_9149.jpg" alt="Time-intensive wiring phase" class="project-feature__image" style="max-width: 400px;" />
+                  </div>
+
+                  <div class="project-feature reveal">
+                    <div class="project-feature__text">
+                      <h4>Schematic Capture</h4>
+                      <p>At that point, I committed to a dedicated PCB design. I already had foundational experience with KiCad from university projects, which made it a practical choice for schematic and layout work.</p>
+                      <p>The first decision was the MCU. I selected the Raspberry RP2040 for its strong ecosystem and approachable development flow. Because fabrication was planned with JLCPCB, component selection and footprint validation were handled up front, followed by the schematic capture.</p>
+                      <p>Building the schematic was the most demanding learning phase. Understanding component constraints and proper wiring required iteration, but the design stabilized into a coherent system.</p>
+                    </div>
+                    <div class="project-feature__image-group project-feature__image-group--cols-2">
+                      <img src="../assets/img/mcu.jpg" alt="MCU Schematic" class="project-gallery__image" />
+                      <img src="../assets/img/bmatrix.png" alt="Button Matrix Schematic" class="project-gallery__image" />
+                      <img src="../assets/img/flash.jpg" alt="Flash Memory Schematic" class="project-gallery__image" />
+                      <img src="../assets/img/power.jpg" alt="Power Schematic" class="project-gallery__image" />
+                      <img src="../assets/img/encoders.jpg" alt="Encoder Schematic" class="project-gallery__image" />
+                      <img src="../assets/img/crystal.jpg" alt="Crystal Schematic" class="project-gallery__image" />
+                    </div>
+                  </div>
+
+                  <div class="project-feature reveal">
+                    <div class="project-feature__text">
+                      <h4>PCB Routing</h4>
+                      <p>Routing introduced a second major challenge. After several iterations of re-routing and reviewing best practices, the board reached a stable layout. The per-button and per-encoder LED plan increased routing complexity significantly, and I did not have access to a formal design review. The final layout reflects the best practices and constraints I could validate independently.</p>
+                    </div>
+                    <img src="../assets/img/IMG_9404.jpg" alt="PCB Routing" class="project-feature__image" style="max-width: 400px;"/>
+                  </div>
+
+                  <div class="project-feature reveal">
+                     <div class="project-feature__text">
+                      <h4>Final Design</h4>
+                      <p>A 3D render of the final design is shown below. The next step is fabrication. The remaining decision is whether to order an assembled PCB or a bare board for manual assembly.</p>
+                    </div>
+                    <img src="../assets/img/pcb.png" alt="Final PCB 3D Render" class="project-feature__image" />
+                  </div>
+                </div>
+                <div class="project-row">
+                  <h2>Result</h2>
+                  <p class="section-lead">A completed button box PCB design ready for manufacturing.</p>
+                </div>
+              </div>
             </div>
           </div>
-          <div class="project-detail reveal">
-            <div class="project-rows">
-              <div class="project-row">
-                <h3>Problem</h3>
-                <p>Button boxes are essential peripherals in sim racing, enabling rapid access to controls and a more immersive workflow. Due to the niche market and low production volumes, commercially available options are limited. This gap motivated the decision to design and build a bespoke unit.</p>
-              </div>
-              <div class="project-row">
-                <h3>Goal</h3>
-                <p>Deliver a reliable, configurable button box tailored to my sim racing setup.</p>
-              </div>
-              <div class="project-row">
-                <h3>Approach</h3>
-                <p>The initial concept used discrete buttons with an Arduino Pro Micro, which was selected for native HID support. However, its limited I/O required a button matrix, and the wiring effort became excessive. Each switch and encoder needed individual soldering, plus diode isolation to prevent key ghosting. The prototype was therefore paused before assembly.</p>
-                <p>Time-intensive wiring phase before the PCB approach:</p>
-                <div style="width: 100%; text-align: center; display: flex; justify-content: center;">
-                <img src="../assets/img/IMG_9149.webp" alt="Pedal Design" style="max-width: 70%; margin-top: 15px; margin-bottom: 15px;" />
-                </div>
-                <p>At that point, I committed to a dedicated PCB design. I already had foundational experience with KiCad from university projects, which made it a practical choice for schematic and layout work.</p>
-                <p>The first decision was the MCU. I selected the Raspberry RP2040 for its strong ecosystem and approachable development flow. Because fabrication was planned with JLCPCB, component selection and footprint validation were handled up front, followed by the schematic capture.</p>
-                <p>Building the schematic was the most demanding learning phase. Understanding component constraints and proper wiring required iteration, but the design stabilized into a coherent system.</p>
-                <div style="width: 100%; text-align: center; display: flex; justify-content: center;">
-                <img src="../assets/img/mcu.jpg" alt="Pedal Design" style="max-width: 70%; margin-top: 15px; margin-bottom: 15px;" />
-                </div>
-                <div style="width: 100%; text-align: center; display: flex; justify-content: center;">
-                <img src="../assets/img/bmatrix.png" alt="Pedal Design" style="max-width: 70%; margin-top: 15px; margin-bottom: 15px;" />
-                </div>
-                <div style="width: 100%; text-align: center; display: flex; justify-content: center;">
-                <img src="../assets/img/flash.jpg" alt="Pedal Design" style="max-width: 70%; margin-top: 15px; margin-bottom: 15px;" />
-                </div>
-                <div style="width: 100%; text-align: center; display: flex; justify-content: center;">
-                <img src="../assets/img/power.jpg" alt="Pedal Design" style="max-width: 70%; margin-top: 15px; margin-bottom: 15px;" />
-                </div>
-                <div style="width: 100%; text-align: center; display: flex; justify-content: center;">
-                <img src="../assets/img/encoders.jpg" alt="Pedal Design" style="max-width: 70%; margin-top: 15px; margin-bottom: 15px;" />
-                </div>
-                <div style="width: 100%; text-align: center; display: flex; justify-content: center;">
-                <img src="../assets/img/crystal.jpg" alt="Pedal Design" style="max-width: 70%; margin-top: 15px; margin-bottom: 15px;" />
-                </div>
-                <p>For a first full PCB project, the schematic captured the complete feature set and interfaces.</p>
-                <p>Routing introduced a second major challenge.</p>
-                <div style="width: 100%; text-align: center; display: flex; justify-content: center;">
-                <img src="../assets/img/IMG_9404.webp" alt="Pedal Design" style="max-width: 70%; margin-top: 15px; margin-bottom: 15px;" />
-                </div>
-                <p>After several iterations of re-routing and reviewing best practices, the board reached a stable layout. The per-button and per-encoder LED plan increased routing complexity significantly, and I did not have access to a formal design review. The final layout reflects the best practices and constraints I could validate independently.</p>
-                <p>A 3D render of the final design is shown below.</p>
-                <div style="width: 100%; text-align: center; display: flex; justify-content: center;">
-                <img src="../assets/img/pcb.png" alt="Pedal Design" style="max-width: 85%; margin-top: 15px; margin-bottom: 15px;" />
-                </div>
-                <p>The next step is fabrication. The remaining decision is whether to order an assembled PCB or a bare board for manual assembly.</p>
-              </div>
-              <div class="project-row">
-                <h3>Result</h3>
-                <p>A completed button box PCB design ready for manufacturing.</p>
-              </div>
-            </div>
-            </div>
-          </div>
-        </div>
         </div>
       </section>
     </main>
