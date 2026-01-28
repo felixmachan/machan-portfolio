@@ -212,7 +212,7 @@
   width: 69px;
   height: 69px;
   border-radius: 50%;
-  border: 2px solid var(--color-border);
+  border: 2px solid var(--color-timeline-line);
   background: var(--color-surface);
   box-shadow: var(--shadow-soft);
   display: inline-flex;
