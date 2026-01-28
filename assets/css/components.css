@@ -401,11 +401,19 @@
   background: var(--color-nav-dot);
   font-size: var(--fs-300);
   gap: var(--space-2);
+  transition: all 0.3s ease;
+  margin-top: 30px;
+  margin-bottom: 30px;
 }
 
 .button.secondary {
   background: var(--color-bg);
   color: var(--color-accent);
+}
+
+.button.secondary:hover {
+  background: var(--color-accent);
+  color: var(--color-bg);
 }
 
 .skills-grid {

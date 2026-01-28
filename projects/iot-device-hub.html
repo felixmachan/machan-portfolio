@@ -9,15 +9,8 @@
     <link rel="stylesheet" href="../assets/css/components.css" />
     <link rel="stylesheet" href="../assets/css/project.css" />
     <link rel="stylesheet" href="../assets/css/animations.css" />
-    <style>
-      .project-image {
-        max-width: 100%;
-        height: auto;
-        margin-top: 1rem;
-        margin-bottom: 2rem;
-        border-radius: 4px;
-      }
-    </style>
+    <link rel="stylesheet" href="../assets/css/lightbox.css" />
+    
   </head>
   <body>
     <button class="theme-toggle" type="button" aria-label="Switch to dark mode" aria-pressed="false">
@@ -37,9 +30,14 @@
                 <img class="project-hero-image" src="../assets/img/mptrhome/dashboard.jpg" alt="MPTRhome Dashboard" />
               </div>
               <div class="project-hero-body reveal">
-                <a class="button secondary" href="../index.html#projects" style="margin-top: 10px;">Back to Projects</a>
+                <a class="button secondary" href="../index.html#projects">Back to Projects</a>
                 <h1 style="margin-top: 20px;">Home IoT Management System - MPTRhome</h1>
-                <p class="section-lead" style="max-width: 100%; margin-top: 30px;">A modular home IoT management system designed to unify heterogeneous smart devices into a single, controllable platform.</p>
+                <p class="section-lead" style="max-width: 100%; margin-top: 15px;">A modular home IoT management system designed to unify heterogeneous smart devices into a single, controllable platform.</p>
+                <div class="pill-container">
+                  <span class="pill">IoT</span>
+                  <span class="pill">Full-Stack</span>
+                  <span class="pill">Software</span>
+                </div>
               </div>
             </div>
             <div class="project-detail reveal">
@@ -60,7 +58,7 @@
                     <p>The main dashboard provides a quick overview of the entire smart home network. It summarizes key device statuses, active scenes, and recent events, offering a centralized starting point for monitoring and control. Users can quickly assess the state of their home and navigate to specific areas for more detailed interaction.
                       Users can see their Rooms and device cards referenced in those rooms. Custom made quick actions can be placed on the dashboard for easy access to frequently used automations or device controls. Additional helper widgets can be added as well.
                     </p>
-                    <img src="../assets/img/mptrhome/dashboard.jpg" alt="Dashboard" class="project-image" />
+                    <img src="../assets/img/mptrhome/dashboard.jpg" alt="Dashboard" class="project-gallery__image" />
                   </div>
 
                   <div class="reveal">
@@ -69,43 +67,43 @@
                     
                     <h4>Device List</h4>
                     <p>This view shows all connected devices, their status, and the rooms they are assigned to. It serves as the central hub for managing all hardware in the system.</p>
-                    <img src="../assets/img/mptrhome/devices.jpg" alt="Device List" class="project-image" />
+                    <img src="../assets/img/mptrhome/devices.jpg" alt="Device List" class="project-gallery__image" />
 
                     <h4>Adding a New Device</h4>
                     <p>Users can add new devices to the system database via this page. Permit join button allows new devices to be discovered and added via the Zigbee engine behind the scenes, Zigbee2MQTT. The search button initiates the scanning of the devices connected to the network. 
                       The user can then select the device they want to add from the list of discovered devices.
                     </p>
-                    <img src="../assets/img/mptrhome/Addevicepage.jpg" alt="Add Device" class="project-image" />
+                    <img src="../assets/img/mptrhome/Addevicepage.jpg" alt="Add Device" class="project-gallery__image" />
 
                     <h4>Post-adding Configuration</h4>
                     <p>After a device is added, it appears in the configuration panel, where it can be assigned a name and a room before being finalized into the system. If the system failed at identifying the device type (e.g. Temperature Sensor), the user can correct it here.</p>
-                    <img src="../assets/img/mptrhome/configdeviceafteradd.jpg" alt="Configure Device" class="project-image" />
+                    <img src="../assets/img/mptrhome/configdeviceafteradd.jpg" alt="Configure Device" class="project-gallery__image" />
 
                     <h4>Device Page</h4>
                     <p>Each device has its own dedicated page that exposes all its controllable entities, such as switches, sensors, or lights. Users can interact with the device in real-time from this interface. In the top row, users can see the most important data of the specific device, chosen by the user in the device settings page.</p>
-                    <img src="../assets/img/mptrhome/Devicepage.jpg" alt="Device Page" class="project-image" />
+                    <img src="../assets/img/mptrhome/Devicepage.jpg" alt="Device Page" class="project-gallery__image" />
 
                     <h4>Data Visualization</h4>
                     <p>For devices that produce time-series data (like temperature or energy sensors), the system automatically generates historical graphs. This allows users to track trends and monitor device performance over time. There are multiple chart views, like real time, last hour, year, and custom ranges.</p>
-                    <img src="../assets/img/mptrhome/devicepage_datavisualization.jpg" alt="Data Visualization" class="project-image" />
+                    <img src="../assets/img/mptrhome/devicepage_datavisualization.jpg" alt="Data Visualization" class="project-gallery__image" />
                   </div>
 
                   <div class="reveal">
                     <h3>Device Settings</h3>
                     <p>Each device has a dedicated settings panel where users can fine-tune its behavior. This includes changing the device name, assigning it to a different area, or viewing detailed entity information. The system also provides a straightforward process for choosing the desired data to plot, or to send alerts about. Alerts can be sent to an email address, and the logical criteria for triggering these alerts can be customized.</p>
-                    <img src="../assets/img/mptrhome/devicesettins1.jpg" alt="Device Settings 1" class="project-image" />
+                    <img src="../assets/img/mptrhome/devicesettins1.jpg" alt="Device Settings 1" class="project-gallery__image" />
 
                     <h4>Advanced Settings</h4>
                     <p>Users can access more advanced configuration options, such as customizing the device behaviour, based on the entities exposed by the device.</p>
-                    <img src="../assets/img/mptrhome/devicesettings2.jpg" alt="Device Settings 2" class="project-image" />
+                    <img src="../assets/img/mptrhome/devicesettings2.jpg" alt="Device Settings 2" class="project-gallery__image" />
 
                     <h4>Related Entities</h4>
                     <p>This view shows all the individual sensors and controls (entities) that make up a single hardware device, giving a detailed look into its functions.</p>
-                    <img src="../assets/img/mptrhome/devicesettings3.jpg" alt="Device Settings 3" class="project-image" />
+                    <img src="../assets/img/mptrhome/devicesettings3.jpg" alt="Device Settings 3" class="project-gallery__image" />
 
                     <h4>Deleting a Device</h4>
                     <p>A confirmation step ensures that devices are not accidentally removed from the system. The system warns the user if there are automations referenced by the device before allowing deletion. The user can then decide whether to delete the automations as well, or keep them and edit them later.</p>
-                    <img src="../assets/img/mptrhome/devicesettings4delete.jpg" alt="Delete Device" class="project-image" />
+                    <img src="../assets/img/mptrhome/devicesettings4delete.jpg" alt="Delete Device" class="project-gallery__image" />
                   </div>
 
                   <div class="reveal">
@@ -114,17 +112,17 @@
 
                     <h4>Trigger definition</h4>
                     <p>The user can create automations with numerous settings to define triggers, conditions, and actions. User can implement complex logic with OR and AND conditions to tailor the automation behavior precisely. Trigger can be a recurring date/hour, or a device event. </p>
-                    <img src="../assets/img/mptrhome/automations1.jpg" alt="Automations" class="project-image" />
+                    <img src="../assets/img/mptrhome/automations1.jpg" alt="Automations" class="project-gallery__image" />
 
                     <h4>Action definition</h4>
                     <p>The user can set the action triggered by the trigger. Multiple ones can be implemented independently.</p>
                     <h4>Manual automations</h4>
                     <p>Users can set up automations that require manual activation, providing flexibility for user-initiated actions. Manual automations can be tied to a quick action button, which makes it easy to fire the automation with a single click.</p>
-                    <img src="../assets/img/mptrhome/automations2.jpg" alt="Editing an Automation" class="project-image" />
+                    <img src="../assets/img/mptrhome/automations2.jpg" alt="Editing an Automation" class="project-gallery__image" />
 
                     <h4>My Automations</h4>
                     <p>Users can see, edit, disable/enable, and delete the currently active automations.</p>
-                    <img src="../assets/img/mptrhome/automations3shortcuts.jpg" alt="Automation Shortcuts" class="project-image" />
+                    <img src="../assets/img/mptrhome/automations3shortcuts.jpg" alt="Automation Shortcuts" class="project-gallery__image" />
                   </div>
 
                   <div class="reveal">
@@ -133,24 +131,24 @@
                     
                     <h4>Room settings, Metric storage, and Tags</h4>
                     <p>The central navigation for all system-level configurations. Users can add or remove Rooms. Metric logging settings are also accessible here. Tags can be created, to make custom device groups.</p>
-                    <img src="../assets/img/mptrhome/settings1.jpg" alt="System Settings" class="project-image" />
+                    <img src="../assets/img/mptrhome/settings1.jpg" alt="System Settings" class="project-gallery__image" />
 
                     <h4>User Management, Alert settings</h4>
                     <p>Here users can be added, removed or edited. Permissions can also be set based on your needs. Alert settings allow customization of notification preferences, for example smtp server to use, app password, email to send from and to send to.</p>
-                    <img src="../assets/img/mptrhome/settings2.jpg" alt="User Management" class="project-image" />
+                    <img src="../assets/img/mptrhome/settings2.jpg" alt="User Management" class="project-gallery__image" />
 
                     <h4>MQTT Settings</h4>
                     <p>MQTT Server connection can be set up here. A debug panel is implemented as well, to monitor and troubleshoot MQTT messages in real-time.</p>
-                    <img src="../assets/img/mptrhome/settings3.jpg" alt="MQTT Settings" class="project-image" />
+                    <img src="../assets/img/mptrhome/settings3.jpg" alt="MQTT Settings" class="project-gallery__image" />
                     <h4>Custom widgets</h4>
                     <p>Users can add to additional widgets to dashboard from here. Numerous widgets are available, including charts, gauges, weather, energy-related and control elements. New widgets are introduced regularly to enhance functionality and user experience.</p>
-                    <img src="../assets/img/mptrhome/settings4.jpg" alt="People" class="project-image" />
+                    <img src="../assets/img/mptrhome/settings4.jpg" alt="People" class="project-gallery__image" />
                   </div>
                   
                   <div class="reveal">
                     <h3>Logbook</h3>
                     <p>The logbook provides a detailed, time-stamped record of every event that occurs within the system. This is invaluable for debugging, understanding device behavior, and auditing system activity. Users can filter the logbook to quickly find specific events or analyze patterns over time.</p>
-                    <img src="../assets/img/mptrhome/logbook.jpg" alt="Logbook" class="project-image" />
+                    <img src="../assets/img/mptrhome/logbook.jpg" alt="Logbook" class="project-gallery__image" />
                   </div>
                 </div>
                 <div class="project-row">
@@ -166,5 +164,6 @@
 
     <script src="../assets/js/reveal.js" defer></script>
     <script src="../assets/js/main.js" defer></script>
+    <script src="../assets/js/lightbox.js" defer></script>
   </body>
 </html>

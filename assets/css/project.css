@@ -18,6 +18,14 @@
   color: var(--color-accent);
 }
 
+.project-image {
+  max-width: 100%;
+  height: auto;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+  border-radius: 10px !important;
+      }
+
 section > * {
   color: rgb(139, 94, 52)
 }
@@ -40,7 +48,7 @@ section > * {
 .project-feature__image {
   width: 100%;
   height: auto;
-  border-radius: var(--radius);
+  border-radius: 10px;
   border: 1px solid var(--color-border);
   box-shadow: var(--shadow-soft);
 }
@@ -57,9 +65,11 @@ section > * {
 .project-gallery__image {
   width: 100%;
   height: auto;
-  border-radius: var(--radius);
+  border-radius: 10px;
   border: 1px solid var(--color-border);
   box-shadow: var(--shadow-soft);
+  margin-top: 15px;
+  margin-bottom: 15px
 }
 
 .project-feature__image-group {
@@ -102,4 +112,32 @@ section > * {
   .project-page{
     width: 90% !important;
   }
+}
+
+/* Pill tags */
+.pill-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-top: var(--space-4);
+  margin-bottom: var(--space-4);
+}
+
+.pill {
+  display: inline-block;
+  padding: var(--space-2) var(--space-4);
+  border: 1px solid var(--color-accent);
+  border-radius: 100px; /* Fully rounded corners */
+  background-color: transparent;
+  color: var(--color-accent);
+  font-size: var(--fs-300);
+  font-weight: 600;
+  text-decoration: none;
+  line-height: 1;
+}
+
+[data-theme="dark"] .pill {
+  background-color: var(--color-accent);
+  color: var(--color-surface);
+  font-weight: 500;
 }

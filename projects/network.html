@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="../assets/css/base.css" />
     <link rel="stylesheet" href="../assets/css/components.css" />
     <link rel="stylesheet" href="../assets/css/animations.css" />
+    <link rel="stylesheet" href="../assets/css/lightbox.css" />
+    <link rel="stylesheet" href="../assets/css/project.css" />
   </head>
   <body>
     <button class="theme-toggle" type="button" aria-label="Switch to dark mode" aria-pressed="false">
@@ -20,16 +22,21 @@
     </button>
     <main>
       <section class="section section--hero">
-        <div class="container" style="margin-top: 30px; margin-bottom: 30px;">
+        <div class="container" style="margin-top: 15px; margin-bottom: 30px;">
           <div class="panel project-page">
           <div class="project-hero">
             <div class="reveal">
               <img class="project-hero-image" src="../assets/img/MODEM.jpg" alt="Home network architecture diagram" />
             </div>
             <div class="project-hero-body reveal">
-              <a class="button secondary" href="../index.html#projects" style="margin-top: 30px; margin-bottom: 30px;">Back to Projects</a>
+              <a class="button secondary" href="../index.html#projects">Back to Projects</a>
               <h1>Home network and server stack</h1>
               <p class="section-lead" style="max-width: 100%;">A local, reliable, and scalable setup that anchors smart home automation and lab projects on solid infrastructure.</p>
+              <div class="pill-container">
+                <span class="pill">Networking</span>
+                <span class="pill">Home Lab</span>
+                <span class="pill">Infrastructure</span>
+              </div>
         
             
             </div>
@@ -53,11 +60,15 @@
                 <ul class="service-list" style="margin-bottom: 20px;">
                   <li><strong>Proxmox VE</strong> - hypervisor that separates VMs and enables snapshots for quick recovery.</li>
                   <li><strong>Home Assistant</strong> - the automation brain for Hue, IKEA, Sonoff, and other devices.</li>
-                  <li><strong>Zigbee integration</strong> - stable local device communication without cloud dependency.</li>
-                  <li><strong>NAS and storage</strong> - file sharing, backups, and centralized data for projects and media.</li>
-                  <li><strong>Vault/password service</strong> - secure storage for credentials and internal secrets.</li>
-                  <li><strong>VPN/remote access</strong> - secure access from outside the network over encrypted tunnels.</li>
-                  <li><strong>Raspberry Pi services</strong> - low-power, always-on helpers that keep the network stable.</li>
+                  <li><strong>Zigbee2MQTT</strong> - stable local device communication engine for Zigbee devices without cloud dependency.</li>
+                  <li><strong>TrueNAS</strong> - file sharing, backups, and centralized data for projects and media.</li>
+                  <li><strong>Vaultwarden</strong> - secure storage for credentials and internal secrets.</li>
+                  <li><strong>Tailscale</strong> - secure access from outside the network over encrypted tunnels.</li>
+                  <li><strong>Plex</strong> - For streaming my own media to various devices.</li>
+                  <li><strong>RustDesk</strong> - For remote desktop access to devices within the network.</li>
+                  <li><strong>PiHole</strong> - Network-wide ad blocking and DNS filtering.</li>
+                  <li><strong>Nginx Proxy Manager</strong> - For managing reverse proxies and SSL certificates. Making local dns records to easily find my important services via a subdomain of machan.hu.</li>
+
                 </ul>
                 <p>The Bambu Lab printer and Hue, IKEA, and Sonoff ecosystems are all integrated under a single control plane, keeping real-time status and automation logic in one place.</p>
               </div>
@@ -75,5 +86,6 @@
 
     <script src="../assets/js/reveal.js" defer></script>
     <script src="../assets/js/main.js" defer></script>
+    <script src="../assets/js/lightbox.js" defer></script>
   </body>
 </html>
