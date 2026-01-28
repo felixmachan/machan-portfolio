@@ -101,6 +101,11 @@
   transition: transform 0.3s ease;
 }
 
+.project-image--light-bg {
+  background: #ffffff;
+  object-fit: contain;
+}
+
 .project-card:hover .project-image,
 .project-card:focus-visible .project-image {
   transform: scale(1.02);
@@ -164,7 +169,7 @@
   bottom: 12px;
   left: 50%;
   width: 2px;
-  background: var(--color-border);
+  background: var(--color-timeline-line);
   transform: translateX(-50%);
 }
 
@@ -178,7 +183,7 @@
   height: 0;
   border-left: 6px solid transparent;
   border-right: 6px solid transparent;
-  border-bottom: 10px solid var(--color-border);
+  border-bottom: 10px solid var(--color-timeline-line);
 }
 
 .education-row {
@@ -368,6 +373,21 @@
 
 .project-row p + p {
   margin-top: var(--space-3);
+}
+
+.service-list {
+  margin-top: 10px;
+  padding-left: 1.2rem;
+  list-style-position: outside;
+  color: var(--color-muted);
+}
+
+.service-list li {
+  margin-bottom: 0.35rem;
+}
+
+.service-list li:last-child {
+  margin-bottom: 0;
 }
 
 .button {

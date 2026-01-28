@@ -8,6 +8,7 @@
   --color-muted: #6b5b4a;
   --color-accent: #8b5e34;
   --color-border: #d9c9b5;
+  --color-timeline-line: #d9c9b5;
   --color-nav-dot: #8b5e34;
   --shadow-soft: 0 12px 30px rgba(58, 46, 35, 0.12);
   --color-chart-grid: #b9a48e;
@@ -45,6 +46,7 @@
   --color-muted: #c3b2a0;
   --color-accent: #d8a86c;
   --color-border: #3a2f24;
+  --color-timeline-line: #cbb48f;
   --color-nav-dot: #d8a86c;
   --shadow-soft: 0 14px 28px rgba(0, 0, 0, 0.35);
 }

@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Custom Sim Racing Pedals - ME1</title>
+    <title>Home Network & Server Stack</title>
     <link rel="stylesheet" href="../assets/css/variables.css" />
     <link rel="stylesheet" href="../assets/css/base.css" />
     <link rel="stylesheet" href="../assets/css/components.css" />
@@ -24,31 +24,46 @@
           <div class="panel project-page">
           <div class="project-hero">
             <div class="reveal">
-              <img class="project-hero-image" src="../assets/img/talppont.jpg" alt="Custom Sim Racing Pedals" />
+              <img class="project-hero-image" src="../assets/img/MODEM.jpg" alt="Home network architecture diagram" />
             </div>
             <div class="project-hero-body reveal">
               <a class="button secondary" href="../index.html#projects" style="margin-top: 30px; margin-bottom: 30px;">Back to Projects</a>
-              <h1>Informational and Appointment system for a massage saloon -  Talppont</h1>
+              <h1>Home network and server stack</h1>
+              <p class="section-lead" style="max-width: 100%;">A local, reliable, and scalable setup that anchors smart home automation and lab projects on solid infrastructure.</p>
         
             
             </div>
           </div>
           <div class="project-detail reveal">
             <h2>Overview</h2>
-            <p class="section-lead" style="max-width: 80% !important">Talppont is a </p>
+            <p class="section-lead" style="max-width: 80% !important">I built this network to avoid a pile of isolated boxes and cloud-dependent smart home apps. The WAN hits the modem, runs in bridge mode to the router, and then lands on a Lenovo ThinkCentre M710Q where services run in isolated instances. The core goal was simple: every critical function should work locally, even if the internet is down.</p>
             <div class="project-rows">
               <div class="project-row">
                 <h3>Problem</h3>
-                <p>Most home automation ecosystems are fragmented: different protocols, closed ecosystems, cloud dependency, and limited customization. Integrating Zigbee, Wi-Fi, and custom IoT devices into a single system often requires multiple tools and complex configuration, which is inefficient and hard to maintain.</p>
+                <p>Home devices were scattered across separate apps and protocols. Cloud dependency, imprecise automation timing, and weak observability made the system fragile. Without a centralized, local-first backbone, it was hard to build stable, expandable automations.</p>
               </div>
               <div class="project-row">
                 <h3>Goal</h3>
-                <p>The goal was to design a centralized IoT management system that can discover, register, monitor, and control diverse devices through a unified interface, while remaining scalable, protocol-agnostic, and suitable for custom hardware integrations.</p>
+                <p>The goal was a home stack where services run isolated, every device can be controlled locally, and remote access is secure. Reliability, data ownership, and a single control plane were non-negotiable.</p>
               </div>
               <div class="project-row">
                 <h3>Approach</h3>
-                <p>The system was designed around a modular backend architecture with clear separation between device discovery, communication, and data persistence. Standard protocols (e.g. Zigbee, MQTT, HTTP) are abstracted behind a common device model, allowing both commercial and custom IoT devices to be handled uniformly. Emphasis was placed on local operation, reliability, and long-term maintainability.
-                </p>
+                <p>The stack is anchored by Proxmox VE, which provides a virtualization layer so services are isolated and recoverable. The router handles traffic and internal segments, while the server hosts dedicated VMs and containers for each function.</p>
+                <p>Services and why they exist:</p>
+                <ul class="service-list" style="margin-bottom: 20px;">
+                  <li><strong>Proxmox VE</strong> - hypervisor that separates VMs and enables snapshots for quick recovery.</li>
+                  <li><strong>Home Assistant</strong> - the automation brain for Hue, IKEA, Sonoff, and other devices.</li>
+                  <li><strong>Zigbee integration</strong> - stable local device communication without cloud dependency.</li>
+                  <li><strong>NAS and storage</strong> - file sharing, backups, and centralized data for projects and media.</li>
+                  <li><strong>Vault/password service</strong> - secure storage for credentials and internal secrets.</li>
+                  <li><strong>VPN/remote access</strong> - secure access from outside the network over encrypted tunnels.</li>
+                  <li><strong>Raspberry Pi services</strong> - low-power, always-on helpers that keep the network stable.</li>
+                </ul>
+                <p>The Bambu Lab printer and Hue, IKEA, and Sonoff ecosystems are all integrated under a single control plane, keeping real-time status and automation logic in one place.</p>
+              </div>
+              <div class="project-row">
+                <h3>Result</h3>
+                <p>A stable, maintainable, and future-proof home infrastructure where services are separated yet operate as one system, updated regularly. It delivers daily smart home reliability while supporting development and hobby projects with confidence.</p>
               </div>
             </div>
             </div>
