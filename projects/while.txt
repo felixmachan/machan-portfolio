@@ -1,0 +1,18 @@
+> Think harder...
+
+ 
+while(curious) {
+ 
+question everything();
+ 
+dig_deeper();
+ 
+connect_dots(unexpected);
+ 
+if (stuck) {
+ 
+keep_thinking();
+ 
+}
+ 
+}

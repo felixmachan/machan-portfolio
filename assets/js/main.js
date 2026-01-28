@@ -31,7 +31,7 @@
 
     const stored = localStorage.getItem('theme');
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    const initialTheme = stored || (prefersDark ? 'dark' : 'light');
+    const initialTheme = stored || 'light';
     applyTheme(initialTheme);
     requestAnimationFrame(() => {
       root.classList.add('theme-ready');

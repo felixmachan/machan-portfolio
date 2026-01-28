@@ -1106,7 +1106,7 @@
   }
 
   .project-hero-image {
-    height: 240px;
+    height: auto;
   }
 
   .project-row {
@@ -1174,3 +1174,30 @@
     grid-column: span 3;
   }
 }
+
+
+/* Pill Tags */
+.pills-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-top: var(--space-5);
+}
+
+.pill {
+  display: inline-block;
+  padding: var(--space-2) var(--space-4);
+  font-size: var(--fs-300);
+  font-weight: 500;
+  color: var(--color-accent);
+  background-color: transparent;
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.pill:hover {
+  background-color: var(--color-accent);
+  color: var(--color-surface);
+}
+
