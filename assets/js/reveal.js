@@ -1,4 +1,4 @@
-(function () {
+document.addEventListener('DOMContentLoaded', () => {
   const reveals = Array.from(document.querySelectorAll('.reveal'));
   if (!('IntersectionObserver' in window) || reveals.length === 0) {
     reveals.forEach((el) => el.classList.add('visible'));
@@ -18,4 +18,4 @@
   );
 
   reveals.forEach((el) => observer.observe(el));
-})();
+});
