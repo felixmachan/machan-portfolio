@@ -30,7 +30,7 @@
               </div>
               <div class="project-hero-body reveal">
                 <a class="button secondary" href="../index.html#projects">Back to Projects</a>
-                <h1 style="margin-top: 20px;">Custom Sim Racing Pedals - ME1</h1>
+                <h1 style="margin-top: 15px;">Custom Sim Racing Pedals - ME1</h1>
                 <p class="section-lead" style="max-width: 100%; margin-top: 30px;">A CNC-machined pedal set, combining hardware, sensing, and embedded control for sim racing.</p>
                 <div class="pill-container">
                   <span class="pill">Mechanical Design</span>
@@ -59,7 +59,9 @@
                       <p>Sensor selection guided the mechanical layout. The brake uses a load cell for force-based measurement, delivering a more realistic feel than potentiometer-based position sensing. The throttle and clutch use hall-effect sensors for contactless, high-precision position feedback.</p>
                       <p>Early iterations explored a bold, recognizable silhouette and established the overall packaging.</p>
                     </div>
+                    <div data-tooltip="Early pedal design iteration">
                     <img src="../assets/img/early.jpg" alt="Pedal Design" class="project-feature__image" width="881" height="751" />
+                      </div>
                   </div>
 
                   <div class="project-feature reveal">
@@ -68,7 +70,9 @@
                       <p>One early concept used a fork-style piston support. During pedal travel the piston axis changes, requiring rotation that the fixed fork could not accommodate. The resulting bending moment on the fork would also introduce long-term fatigue risk.</p>
                       <p>The ball-joint mounting in that layout also complicated machining. I replaced the dual-sided support with a single-sided, asymmetric arm and designed a custom clevis pin with an axial threaded blind hole. This allows the pin to clamp tightly, minimizing play and distributing load more evenly across the joint.</p>
                     </div>
+                    <div data-tooltip="Side plate final design">
                     <img src="../assets/img/fork.jpg" alt="Fork redesigned" class="project-feature__image" width="782" height="701" />
+                      </div>
                   </div>
                   
                   <div class="project-feature reveal">
@@ -78,10 +82,18 @@
                       <p>Throttle and clutch rotation is measured with hall-effect sensors. A diagonally magnetized neodymium magnet is seated in a pocket machined into the shaft head. The AS5600 sensor is mounted in a small 3D-printed housing, positioned roughly 1 mm from the magnet to maintain a precise air gap.</p>
                     </div>
                     <div class="project-feature__image-group project-feature__image-group--cols-2">
+                      <div data-tooltip="New shaft design">
                       <img src="../assets/img/armshaft.jpg" alt="New shaft design" class="project-gallery__image" />
+                      </div>
+                      <div data-tooltip="Seeger ring">
                       <img src="../assets/img/seeger.png" alt="Seeger ring detail" class="project-gallery__image" />
-                      <img src="../assets/img/shaftaxis.jpg" alt="Shaft axis detail" class="project-gallery__image" />
-                      <img src="../assets/img/shaftaxiscs.jpg" alt="Shaft axis cross-section" class="project-gallery__image" />
+                      </div>
+                      <div data-tooltip="Piston axis detail">
+                      <img src="../assets/img/shaftaxis.jpg" alt="Piston axis detail" class="project-gallery__image" />
+                      </div>
+                      <div data-tooltip="Piston pivot point cross-section">
+                      <img src="../assets/img/shaftaxiscs.jpg" alt="Piston pivot point cross-section" class="project-gallery__image" />
+                      </div>
                     </div>
                   </div>
 
@@ -92,8 +104,12 @@
                        <p>Starting and final positions:</p>
                     </div>
                     <div class="project-feature__image-group project-feature__image-group--cols-2">
+                      <div data-tooltip="Starting endstop position">
                       <img src="../assets/img/startendstop.png" alt="Starting endstop position" class="project-gallery__image image-group__image--square" />
+                      </div>
+                      <div data-tooltip="Final endstop position">
                       <img src="../assets/img/endendstop.jpg" alt="Final endstop position" class="project-gallery__image image-group__image--square" />
+                    </div>
                     </div>
                   </div>
 
@@ -102,15 +118,20 @@
                       <h4>Brake Assembly</h4>
                       <p>Brake side plates are designed differently because they do not require the upper through-holes. The piston support is mounted directly to the load cell, which must be loaded in compression to measure force accurately.</p>
                     </div>
+                      <div data-tooltip="Brake side plates">
                      <img src="../assets/img/sideplates.png" alt="Brake side plates" class="project-feature__image" width="740" height="633" />
                   </div>
+                  </div>
+
 
                   <div class="project-feature reveal">
                      <div class="project-feature__text">
                       <h4>Final Assembly</h4>
                       <p>These iterations resulted in a robust, adjustable mechanical platform, shown below.</p>
                     </div>
+                    <div data-tooltip="Final Assembly">
                     <img src="../assets/img/assy.png" alt="Final Assembly" class="project-feature__image" width="888" height="631" />
+                  </div>
                   </div>
                 </div>
                 <div class="project-row">

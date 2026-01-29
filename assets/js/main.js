@@ -63,6 +63,71 @@
     await Promise.all(fetches);
   };
 
+
+  const initSectionPager = () => {
+    const pager = document.querySelector('.section-pager');
+    if (!pager) return;
+
+    const btnUp = pager.querySelector('.section-pager__btn[data-dir="up"]');
+    const btnDown = pager.querySelector('.section-pager__btn[data-dir="down"]');
+    if (!btnUp || !btnDown) return;
+
+    const sections = Array.from(document.querySelectorAll('main > section[id]'));
+    if (sections.length === 0) return;
+
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    const clamp = (n, min, max) => Math.max(min, Math.min(max, n));
+
+    const getCurrentIndex = () => {
+      const probeY = window.innerHeight * 0.35;
+      let idx = 0;
+      for (let i = 0; i < sections.length; i += 1) {
+        const rect = sections[i].getBoundingClientRect();
+        if (rect.top <= probeY) idx = i;
+        else break;
+      }
+      return idx;
+    };
+
+    const updateDisabled = () => {
+      const idx = getCurrentIndex();
+
+      btnUp.disabled = idx <= 0;
+      btnDown.disabled = idx >= sections.length - 1;
+
+      btnUp.setAttribute('aria-disabled', btnUp.disabled ? 'true' : 'false');
+      btnDown.setAttribute('aria-disabled', btnDown.disabled ? 'true' : 'false');
+    };
+
+    const scrollToIndex = (idx) => {
+      const target = sections[clamp(idx, 0, sections.length - 1)];
+      if (!target) return;
+      target.scrollIntoView({ behavior: prefersReduced ? 'auto' : 'smooth', block: 'start' });
+    };
+
+    pager.addEventListener('click', (e) => {
+      const btn = e.target.closest('.section-pager__btn');
+      if (!btn || btn.disabled) return;
+
+      const dir = btn.dataset.dir;
+      const current = getCurrentIndex();
+      const next = dir === 'up' ? current - 1 : current + 1;
+      scrollToIndex(next);
+
+      // smooth scroll alatt később “érkezik meg”, ezért kis késleltetés:
+      window.setTimeout(updateDisabled, prefersReduced ? 0 : 250);
+    });
+
+    window.addEventListener('scroll', updateDisabled, { passive: true });
+    window.addEventListener('resize', updateDisabled);
+
+    updateDisabled();
+  };
+
+
+
+
   const initScrollSpy = () => {
     const nav = document.querySelector('.side-nav');
     if (!nav) return;
@@ -355,12 +420,14 @@
     .then(() => {
       initThemeToggle();
       initScrollSpy();
+      initSectionPager();
       initKnowledgeChart();
       initSkillTiles();
     })
     .catch(() => {
       initThemeToggle();
       initScrollSpy();
+      initSectionPager();
       initKnowledgeChart();
       initSkillTiles();
     });

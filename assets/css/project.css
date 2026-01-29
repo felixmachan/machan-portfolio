@@ -114,6 +114,43 @@ section > * {
   }
 }
 
+
+
+/* Generic tooltip (uses data-tooltip="...") */
+[data-tooltip] {
+  position: relative;
+}
+
+[data-tooltip]::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  left: 50%;
+  bottom: calc(100% + 10px);
+  transform: translate(-50%, 6px);
+
+  background: var(--color-surface);
+  color: var(--color-ink);
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  padding: 4px 10px;
+
+  font-size: var(--fs-300);
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  opacity: 0;
+  box-shadow: var(--shadow-soft);
+  pointer-events: none;
+  transition: opacity 0.2s ease, transform 0.25s ease;
+  z-index: 50;
+}
+
+[data-tooltip]:hover::after,
+[data-tooltip]:focus-visible::after {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+
 /* Pill tags */
 .pill-container {
   display: flex;

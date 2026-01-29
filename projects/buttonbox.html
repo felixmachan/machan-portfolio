@@ -57,7 +57,9 @@
                       <h4>The Point-to-Point Era</h4>
                       <p>The initial concept used discrete buttons with an Arduino Pro Micro, which was selected for native HID support. However, its limited I/O required a button matrix, and the wiring effort became excessive. Each switch and encoder needed individual soldering, plus diode isolation to prevent key ghosting. The prototype was therefore paused before assembly.</p>
                     </div>
-                    <img src="../assets/img/IMG_9149.jpg" alt="Time-intensive wiring phase" class="project-feature__image" style="max-width: 400px;" />
+                    <div data-tooltip="First iteration: Arduino Pro Micro">
+                    <img src="../assets/img/IMG_9149.jpg" alt="Time-intensive wiring phase" class="project-feature__image" style="max-width: 400px;"/>
+                  </div>
                   </div>
 
                   <div class="project-feature reveal">
@@ -68,12 +70,24 @@
                       <p>Building the schematic was the most demanding learning phase. Understanding component constraints and proper wiring required iteration, but the design stabilized into a coherent system.</p>
                     </div>
                     <div class="project-feature__image-group project-feature__image-group--cols-2">
+                      <div data-tooltip="MCU Schematic">
                       <img src="../assets/img/mcu.jpg" alt="MCU Schematic" class="project-gallery__image" />
+                      </div>
+                      <div data-tooltip="Button Matrix Schematic">
                       <img src="../assets/img/bmatrix.png" alt="Button Matrix Schematic" class="project-gallery__image" />
+                      </div>
+                      <div data-tooltip="Flash Schematic">
                       <img src="../assets/img/flash.jpg" alt="Flash Memory Schematic" class="project-gallery__image" />
+                      </div>
+                      <div data-tooltip="Power Schematic">
                       <img src="../assets/img/power.jpg" alt="Power Schematic" class="project-gallery__image" />
+                      </div>
+                      <div data-tooltip="Encoder Schematic">
                       <img src="../assets/img/encoders.jpg" alt="Encoder Schematic" class="project-gallery__image" />
+                      </div>
+                      <div data-tooltip="Crystal Schematic">
                       <img src="../assets/img/crystal.jpg" alt="Crystal Schematic" class="project-gallery__image" />
+                      </div>
                     </div>
                   </div>
 
@@ -82,7 +96,9 @@
                       <h4>PCB Routing</h4>
                       <p>Routing introduced a second major challenge. After several iterations of re-routing and reviewing best practices, the board reached a stable layout. The per-button and per-encoder LED plan increased routing complexity significantly, and I did not have access to a formal design review. The final layout reflects the best practices and constraints I could validate independently.</p>
                     </div>
+                    <div data-tooltip="PCB Routing Phase">
                     <img src="../assets/img/IMG_9404.jpg" alt="PCB Routing" class="project-feature__image" style="max-width: 400px;"/>
+                    </div>
                   </div>
 
                   <div class="project-feature reveal">
@@ -90,7 +106,9 @@
                       <h4>Final Design</h4>
                       <p>A 3D render of the final design is shown below. The next step is fabrication. The remaining decision is whether to order an assembled PCB or a bare board for manual assembly.</p>
                     </div>
+                    <div data-tooltip="Final PCB 3D Render">
                     <img src="../assets/img/pcb.png" alt="Final PCB 3D Render" class="project-feature__image" />
+                  </div>
                   </div>
                 </div>
                 <div class="project-row">
