@@ -105,8 +105,15 @@ main {
     box-shadow 0.35s ease;
 }
 
+
 @media (max-width: 768px) {
-  .section {
-    padding: var(--space-8) 0;
-  }
+
+  .container {
+  width: 95%;
+}
+
+.project-page{
+  width: 100% !important;
+}
+
 }
