@@ -65,7 +65,25 @@
   padding: var(--space-5);
   position: relative;
   overflow: hidden;
-  transition: box-shadow 0.2s ease, transform 0.2s ease;
+  transition: box-shadow 0.2s ease, transform 0.6s ease, opacity 0.6s ease;
+}
+
+/* Project Card Reveal Animation */
+.project-card.reveal {
+  opacity: 0;
+}
+
+.project-card.reveal:nth-child(odd) {
+  transform: translateX(-50px);
+}
+
+.project-card.reveal:nth-child(even) {
+  transform: translateX(50px);
+}
+
+.project-card.reveal.visible {
+  opacity: 1;
+  transform: translateX(0);
 }
 
 .project-card::before {
