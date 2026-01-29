@@ -115,6 +115,29 @@
                   <h2>Result</h2>
                   <p class="section-lead">A completed button box PCB design ready for manufacturing.</p>
                 </div>
+                <section class="project-row reveal">
+                    <h2>Final Assembly – Interactive 3D</h2>
+
+                    <div class="project-model-frame">
+                      <model-viewer
+                        id="pedal-viewer"
+                        src="../assets/models/pcb1.glb"
+                        alt="Pedal assembly 3D view"
+                        camera-controls
+                        touch-action="pan-y"
+                        environment-image="neutral"
+                        exposure="1"
+                        shadow-intensity="3"
+                        shadow-softness="0.7"
+                        camera-orbit="40deg 71deg 0.8m"
+                        interaction-prompt="none"
+                        auto-rotate
+                        camera-target="0m 0m 0m"
+                        class="project-model-viewer"
+                        loading="lazy"
+                      ></model-viewer>
+                    </div>
+                  </section>
               </div>
             </div>
           </div>
@@ -125,5 +148,10 @@
     <script src="../assets/js/reveal.js" defer></script>
     <script src="../assets/js/main.js" defer></script>
     <script src="../assets/js/lightbox.js" defer></script>
+    <script src="../assets/js/3d.js" defer></script>
+    <script
+      type="module"
+      src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js">
+    </script>
   </body>
 </html>

@@ -42,19 +42,17 @@
             </div>
           </div>
           <div class="project-detail reveal">
-            <h2>Overview</h2>
-            <p class="section-lead" style="max-width: 80% !important">I built this network to avoid a pile of isolated boxes and cloud-dependent smart home apps. The WAN hits the modem, runs in bridge mode to the router, and then lands on a Lenovo ThinkCentre M710Q where services run in isolated instances. The core goal was simple: every critical function should work locally, even if the internet is down.</p>
             <div class="project-rows">
               <div class="project-row">
-                <h3>Problem</h3>
+                <h2>Problem</h2>
                 <p>Home devices were scattered across separate apps and protocols. Cloud dependency, imprecise automation timing, and weak observability made the system fragile. Without a centralized, local-first backbone, it was hard to build stable, expandable automations.</p>
               </div>
               <div class="project-row">
-                <h3>Goal</h3>
+                <h2>Goal</h2>
                 <p>The goal was a home stack where services run isolated, every device can be controlled locally, and remote access is secure. Reliability, data ownership, and a single control plane were non-negotiable.</p>
               </div>
               <div class="project-row">
-                <h3>Approach</h3>
+                <h2>Approach</h2>
                 <p>The stack is anchored by Proxmox VE, which provides a virtualization layer so services are isolated and recoverable. The router handles traffic and internal segments, while the server hosts dedicated VMs and containers for each function.</p>
                 <p>Services and why they exist:</p>
                 <ul class="service-list" style="margin-bottom: 20px;">
@@ -73,7 +71,7 @@
                 <p>The Bambu Lab printer and Hue, IKEA, and Sonoff ecosystems are all integrated under a single control plane, keeping real-time status and automation logic in one place.</p>
               </div>
               <div class="project-row">
-                <h3>Result</h3>
+                <h2>Result</h2>
                 <p>A stable, maintainable, and future-proof home infrastructure where services are separated yet operate as one system, updated regularly. It delivers daily smart home reliability while supporting development and hobby projects with confidence.</p>
               </div>
             </div>

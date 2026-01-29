@@ -219,9 +219,9 @@ section > * {
 :root[data-theme="dark"] .project-model-frame {
   background: linear-gradient(
     135deg,
-    #5a504a 0%,
-    #42372b 55%,
-    #2f261e 100%
+    #776b64 0%,
+    #6b5d4e 55%,
+    #524234 100%
   );
 }
 
