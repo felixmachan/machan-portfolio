@@ -1154,16 +1154,50 @@
   .education-date,
   .education-axis--left .education-date {
     position: static;
-    transform: translateY(0px) !important;
-    transform: translateX(15px) !important;
+    transform: translateX(15px) translateY(0px) !important;
   }
 
-    .education-card {
-          justify-self: stretch;
-          /* transform: translateX(0); */
-          order: 2;
-          overflow: visible;
-        }
+  .education-card {
+    justify-self: stretch;
+    /* transform: translateX(0); -- This was blocking animation */
+    order: 2;
+    overflow: visible;
+  }
+
+  /* --- Slide in from Right Animation --- */
+
+  /* Add transitions for animation */
+  .education-card, .education-date {
+    transition: opacity 0.5s ease 0s, transform 0.5s ease 0s;
+  }
+
+  /* Initial state: Off-screen right and invisible */
+  .education-row .education-card.reveal {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+
+  .education-row .education-date.reveal {
+    opacity: 0;
+    transform: translateX(55px) translateY(0px) !important; /* Start 40px to the right of the final 15px position */
+  }
+
+  /* Final state: In position and visible */
+  .education-row .education-card.visible {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .education-row .education-date.visible {
+    opacity: 1;
+    transform: translateX(15px) translateY(0px) !important; /* User's final position */
+  }
+
+  /* Stagger the animations (New Order) */
+  .education-row:nth-child(1) .education-date { transition-delay: 0.1s; } /* pill 1 */
+  .education-row:nth-child(1) .education-card { transition-delay: 0.2s; } /* article 1 */
+  .education-row:nth-child(2) .education-date { transition-delay: 0.3s; } /* pill 2 */
+  .education-row:nth-child(2) .education-card { transition-delay: 0.4s; } /* article 2 */
   .education-card--left::before,
   .education-card--left::after,
   .education-card--right::before,
