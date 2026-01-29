@@ -45,6 +45,29 @@
     });
   };
 
+  const initProgressBar = () => {
+    // The bar should only appear on project pages, and only on mobile.
+    // CSS handles the mobile-only part. JS just needs to find the element.
+    const progressBar = document.querySelector('.progress-bar');
+    if (!progressBar) return;
+
+    const updateProgress = () => {
+      const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+      const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      if (scrollHeight <= 0) {
+        progressBar.style.width = '0%';
+        return;
+      }
+      const scrollPercent = (scrollTop / scrollHeight) * 100;
+      progressBar.style.width = scrollPercent + '%';
+    };
+
+    window.addEventListener('scroll', updateProgress, { passive: true });
+    window.addEventListener('resize', updateProgress);
+    updateProgress();
+  };
+  initProgressBar(); // Call the function
+
   const includeTargets = Array.from(document.querySelectorAll('[data-include]'));
 
   const loadSections = async () => {

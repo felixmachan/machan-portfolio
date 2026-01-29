@@ -328,7 +328,7 @@
 
 .education-card--left::after {
   right: -10px;
-  border-left: 10px solid var(--color-surface);
+  border-left: 10px solid var(--color-border);
 }
 
 .education-card--right::before {
@@ -338,7 +338,7 @@
 
 .education-card--right::after {
   left: -10px;
-  border-right: 10px solid var(--color-surface);
+  border-right: 10px solid var(--color-border);
 }
 
 .education-card.reveal {
@@ -1236,12 +1236,12 @@
   }
 
   .education-card::before {
-    border-right: 22px solid var(--color-border);
+    border-right: 22px solid var(--color-accent);
   }
 
   .education-card::after {
     left: -20px;
-    border-right: 20px solid var(--color-surface);
+    border-right: 20px solid var(--color-accent);
   }
 
   .about-intro {
