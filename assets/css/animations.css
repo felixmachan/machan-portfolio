@@ -1,20 +1,38 @@
-.reveal {
+.reveal:not(.education-card) {
   opacity: 0;
   transform: translateY(16px);
   transition: opacity 0.6s ease, transform 0.6s ease;
 }
 
-.reveal.visible {
+.reveal.visible:not(.education-card) {
   opacity: 1;
   transform: translateY(0);
 }
 
 .education-card.reveal {
+  opacity: 0;
   transform: translateX(var(--education-offset, 0));
+  transition: opacity 0.6s ease, transform 0.6s ease;
 }
 
 .education-card.reveal.visible {
+  opacity: 1;
   transform: translateX(0);
+}
+
+.education-date.reveal {
+  opacity: 0;
+  transform: translateY(-50%) translateX(40px); /* Default slide from right */
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.education-axis--left .education-date.reveal {
+  transform: translateY(-50%) translateX(-40px); /* Slide from left for the left axis */
+}
+
+.education-date.reveal.visible {
+  opacity: 1;
+  transform: translateY(-50%) translateX(0);
 }
 
 .typewriter-line {

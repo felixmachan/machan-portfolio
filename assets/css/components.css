@@ -244,6 +244,7 @@
   left: calc(50% + 65px);
   transform: translateY(-50%);
   white-space: nowrap;
+  
 }
 
 .education-axis--left .education-date {
@@ -824,6 +825,7 @@
   object-position: center 80%;
   justify-self: center;
   display: block;
+  margin-inline: auto;
 }
 
 .chart-block {
@@ -1079,6 +1081,10 @@
   transition: background-color 0.2s ease, color 0.2s ease;
 }
 
+.edu{
+  border: 1px solid var(--color-timeline-line) !important;
+}
+
 .pill:hover {
   background-color: var(--color-accent);
   color: var(--color-surface);
@@ -1126,6 +1132,7 @@
     position: relative;
     width: 100%;
     height: auto;
+    min-height: 69px;
     display: flex;
     align-items: center;
     gap: 12px;
@@ -1147,16 +1154,16 @@
   .education-date,
   .education-axis--left .education-date {
     position: static;
-    transform: none;
+    transform: translateY(0px) !important;
+    transform: translateX(15px) !important;
   }
 
-  .education-card {
-    justify-self: stretch;
-    transform: translateX(0);
-    order: 2;
-    overflow: visible;
-  }
-
+    .education-card {
+          justify-self: stretch;
+          /* transform: translateX(0); */
+          order: 2;
+          overflow: visible;
+        }
   .education-card--left::before,
   .education-card--left::after,
   .education-card--right::before,
