@@ -249,3 +249,53 @@ section > * {
   background: var(--color-accent);
   width: 0%;
 }
+
+.project-hero-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-3);
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.project-hero-actions .button {
+  margin: 0;
+}
+
+.button.pill-button {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--color-accent);
+  background: transparent;
+  color: var(--color-accent);
+  transition: transform 0.35s ease, box-shadow 0.35s ease, background 0.35s ease, color 0.35s ease;
+}
+
+.button.pill-button::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    120deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.45) 45%,
+    rgba(255, 255, 255, 0) 70%
+  );
+  transform: translateX(-140%);
+  transition: transform 0.6s ease;
+  pointer-events: none;
+}
+
+.button.pill-button:hover,
+.button.pill-button:focus-visible {
+  background: linear-gradient(135deg, #b98a57 0%, #8b5e34 55%, #6e4a2b 100%);
+  color: white;
+  transform: translateY(-3px) scale(1.01);
+  box-shadow: 0 18px 30px rgba(58, 46, 35, 0.22);
+}
+
+.button.pill-button:hover::before,
+.button.pill-button:focus-visible::before {
+  transform: translateX(140%);
+}
