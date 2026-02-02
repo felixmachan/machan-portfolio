@@ -525,7 +525,13 @@
             <span class="contact-handle">@machanfelix</span>
           </div>
         </a>
-        <!--<a class="contact-card contact-card--link" href="mailto:felix.machan@gmail.com" aria-label="Email address">
+        <button
+          class="contact-card contact-card--link contact-card--toggle"
+          type="button"
+          data-contact-toggle
+          aria-expanded="false"
+          aria-controls="contact-form"
+        >
           <span class="contact-icon" aria-hidden="true">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
               <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1z"/>
@@ -534,9 +540,27 @@
           </span>
           <div class="contact-card-body">
             <span class="contact-title">Email</span>
-            <span class="contact-handle">felix.machan@gmail.com</span>
+            <span class="contact-handle">Open contact form</span>
           </div>
-        </a>-->
+        </button>
+      </div>
+      <div class="contact-form" id="contact-form" hidden>
+        <form class="contact-form__inner" action="https://api.web3forms.com/submit" method="POST">
+          <input type="hidden" name="access_key" value="5c115f1a-b24e-496d-8e85-08c2f2da261a" />
+          <label class="contact-form__label">
+            <span>Your name:</span>
+            <input type="text" name="name" required />
+          </label>
+          <label class="contact-form__label">
+            <span>Your email:</span>
+            <input type="email" name="email" required />
+          </label>
+          <label class="contact-form__label contact-form__label--full">
+            <span>Your message:</span>
+            <textarea name="message" required></textarea>
+          </label>
+          <button class="contact-form__submit contact-form__submit--full" type="submit">Submit</button>
+        </form>
       </div>
     </div>
   </div>

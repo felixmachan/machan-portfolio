@@ -439,6 +439,27 @@
     });
   };
 
+  const initContactFormToggle = () => {
+    const toggle = document.querySelector('[data-contact-toggle]');
+    const form = document.querySelector('#contact-form');
+    if (!toggle || !form) return;
+
+    const setOpen = (isOpen) => {
+      toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      if (isOpen) {
+        form.removeAttribute('hidden');
+        form.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      } else {
+        form.setAttribute('hidden', '');
+      }
+    };
+
+    toggle.addEventListener('click', () => {
+      const isOpen = toggle.getAttribute('aria-expanded') === 'true';
+      setOpen(!isOpen);
+    });
+  };
+
   loadSections()
     .then(() => {
       initThemeToggle();
@@ -446,6 +467,7 @@
       initSectionPager();
       initKnowledgeChart();
       initSkillTiles();
+      initContactFormToggle();
     })
     .catch(() => {
       initThemeToggle();
@@ -453,5 +475,6 @@
       initSectionPager();
       initKnowledgeChart();
       initSkillTiles();
+      initContactFormToggle();
     });
 })();

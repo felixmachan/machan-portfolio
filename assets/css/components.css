@@ -766,6 +766,104 @@
   transform: translateY(-2px);
 }
 
+.contact-card--toggle {
+  appearance: none;
+  width: 100%;
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+
+.contact-form {
+  border-radius: 20px;
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-soft);
+  padding: var(--space-5);
+  margin-top: var(--space-5);
+}
+
+.contact-form[hidden] {
+  display: none;
+}
+
+.contact-form__inner {
+  display: grid;
+  gap: var(--space-4);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.contact-form__label {
+  display: grid;
+  gap: var(--space-2);
+  font-size: var(--fs-300);
+  color: var(--color-muted);
+}
+
+.contact-form__label--full {
+  grid-column: span 2;
+}
+
+.contact-form__label input,
+.contact-form__label textarea {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1px solid var(--color-border);
+  background: var(--color-bg);
+  color: var(--color-ink);
+  font-family: inherit;
+  font-size: var(--fs-300);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.contact-form__label textarea {
+  min-height: 140px;
+  resize: vertical;
+}
+
+.contact-form__label input:focus-visible,
+.contact-form__label textarea:focus-visible {
+  outline: none;
+  border-color: var(--color-nav-dot);
+  box-shadow: 0 0 0 3px rgba(173, 126, 88, 0.18);
+}
+
+.contact-form__submit {
+  justify-self: start;
+  padding: 12px 20px;
+  border-radius: 999px;
+  border: 1px solid var(--color-nav-dot);
+  background: var(--color-nav-dot);
+  color: #fff;
+  font-size: var(--fs-300);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.contact-form__submit--full {
+  grid-column: span 2;
+}
+
+.contact-form__submit:hover,
+.contact-form__submit:focus-visible {
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+}
+
+@media (max-width: 600px) {
+  .contact-form__inner {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-form__label--full,
+  .contact-form__submit--full {
+    grid-column: auto;
+  }
+}
+
 .contact-icon {
   width: 44px;
   height: 44px;
