@@ -49,6 +49,12 @@ section > * {
   color: var(--color-muted);
 }
 
+/* Project pages should not inherit the global section lead line-length limit. */
+.project-page .section-lead {
+  max-width: none;
+  width: 100%;
+}
+
 .project-feature__image {
   width: 100%;
   height: auto;
