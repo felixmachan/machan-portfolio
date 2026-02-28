@@ -5,7 +5,7 @@
 
   const getCurrentLang = () => {
     const lang = document.documentElement.getAttribute('lang');
-    return SUPPORTED_LANGS.includes(lang) ? lang : 'hu';
+    return SUPPORTED_LANGS.includes(lang) ? lang : 'en';
   };
 
   const setText = (selector, value) => {
@@ -536,7 +536,7 @@
     };
 
     const applyLanguage = (lang) => {
-      const nextLang = SUPPORTED_LANGS.includes(lang) ? lang : 'hu';
+      const nextLang = SUPPORTED_LANGS.includes(lang) ? lang : 'en';
       root.setAttribute('lang', nextLang);
       root.setAttribute('data-lang', nextLang);
       localStorage.setItem(LANG_STORAGE_KEY, nextLang);
@@ -545,7 +545,7 @@
     };
 
     const storedLang = localStorage.getItem(LANG_STORAGE_KEY);
-    const initialLang = SUPPORTED_LANGS.includes(storedLang) ? storedLang : 'hu';
+    const initialLang = SUPPORTED_LANGS.includes(storedLang) ? storedLang : 'en';
     applyLanguage(initialLang);
 
     toggle.addEventListener('click', () => {
