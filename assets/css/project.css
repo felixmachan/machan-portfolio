@@ -103,6 +103,21 @@ section > * {
   box-shadow: var(--shadow-soft);
 }
 
+.project-hero-image--pacerra {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: contain;
+  object-position: center;
+  padding: clamp(24px, 9%, 68px);
+}
+
+.pacerra-page .project-feature__image--mockup {
+  border: 0;
+  box-shadow: none;
+  background: transparent;
+  border-radius: 0;
+}
+
 /* Pill tags */
 .pill-container {
   display: flex;

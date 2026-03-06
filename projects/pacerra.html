@@ -1,0 +1,204 @@
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Pacerra - AI Endurance Coach</title>
+    <meta
+      name="description"
+      content="Pacerra: AI endurance coaching app Strava sync-kel, heti edzéstervekkel és edzésenkénti visszajelzésekkel."
+    />
+    <link rel="canonical" href="https://felixmachan.hu/projects/pacerra.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Pacerra - AI Endurance Coach" />
+    <meta
+      property="og:description"
+      content="AI-supported endurance coaching with weekly plans, Strava sync, and workout-level coaching feedback."
+    />
+    <meta property="og:url" content="https://felixmachan.hu/projects/pacerra.html" />
+    <meta property="og:image" content="https://felixmachan.hu/assets/img/pacerra/favicon.svg" />
+    <meta property="og:locale" content="hu_HU" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Pacerra - AI Endurance Coach" />
+    <meta
+      name="twitter:description"
+      content="AI-supported endurance coaching with weekly plans, Strava sync, and workout-level coaching feedback."
+    />
+    <meta name="twitter:image" content="https://felixmachan.hu/assets/img/pacerra/favicon.svg" />
+    <link rel="stylesheet" href="../assets/css/variables.css" />
+    <link rel="stylesheet" href="../assets/css/base.css" />
+    <link rel="stylesheet" href="../assets/css/components.css" />
+    <link rel="stylesheet" href="../assets/css/project.css" />
+    <link rel="stylesheet" href="../assets/css/animations.css" />
+    <link rel="stylesheet" href="../assets/css/lightbox.css" />
+  </head>
+  <body class="pacerra-page">
+    <div class="progress-container">
+      <div class="progress-bar"></div>
+    </div>
+    <button class="lang-toggle" type="button" aria-label="Language switch">
+      <span class="lang-toggle__opt" data-lang-option="hu">HU</span><span class="lang-toggle__sep">/</span><span class="lang-toggle__opt is-active" data-lang-option="en">EN</span>
+    </button>
+    <button class="theme-toggle" type="button" aria-label="Switch to dark mode" aria-pressed="false">
+      <svg class="theme-icon theme-icon--moon" aria-hidden="true" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M21.53 14.37a.75.75 0 0 0-.86-.3 7.5 7.5 0 0 1-9.79-9.8.75.75 0 0 0-1.16-.83 9.75 9.75 0 1 0 12.04 12.04.75.75 0 0 0-.23-1.11z"/>
+      </svg>
+      <svg class="theme-icon theme-icon--sun" aria-hidden="true" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0-5a1 1 0 0 1 1 1v2a1 1 0 1 1-2 0V3a1 1 0 0 1 1-1zm0 18a1 1 0 0 1 1 1v2a1 1 0 1 1-2 0v-2a1 1 0 0 1 1-1zm10-9a1 1 0 0 1-1 1h-2a1 1 0 1 1 0-2h2a1 1 0 0 1 1 1zM5 12a1 1 0 0 1-1 1H2a1 1 0 1 1 0-2h2a1 1 0 0 1 1 1zm14.95-6.95a1 1 0 0 1 0 1.41l-1.42 1.42a1 1 0 1 1-1.41-1.42l1.41-1.41a1 1 0 0 1 1.42 0zM6.88 17.12a1 1 0 0 1 0 1.41L5.46 19.95a1 1 0 1 1-1.41-1.41l1.42-1.42a1 1 0 0 1 1.41 0zm12.07 1.41a1 1 0 0 1-1.41 0l-1.42-1.42a1 1 0 0 1 1.42-1.41l1.41 1.41a1 1 0 0 1 0 1.42zM7.29 6.88a1 1 0 0 1-1.41 0L4.46 5.46a1 1 0 1 1 1.41-1.41l1.42 1.42a1 1 0 0 1 0 1.41z"/>
+      </svg>
+    </button>
+    <main class="width">
+      <section class="section section--hero project-section" style="display: flex; justify-content: center; align-items: center;">
+        <div class="container" style="margin-top: 30px; margin-bottom: 30px; display: flex; justify-content: center; align-items: center;">
+          <div class="panel project-page" style="width: 85%;">
+            <div class="project-hero">
+              <div class="reveal">
+                <img class="project-hero-image project-image--pacerra project-hero-image--pacerra" src="../assets/img/pacerra/favicon.svg" alt="Pacerra app preview" />
+              </div>
+              <div class="project-hero-body reveal">
+                <div class="project-hero-actions">
+                  <a class="button secondary" href="../index.html#projects">Back to Projects</a>
+                  <a class="button pill-button" href="https://pacerra.hu/" target="_blank" rel="noopener noreferrer">Check project</a>
+                </div>
+                <h1 style="margin-top: 20px;">Pacerra - AI Endurance Coach</h1>
+                <p class="section-lead" style="max-width: 100%; margin-top: 15px;">
+                  An AI-powered endurance coaching app for runners, cyclists, swimmers, and triathletes, built around Strava-connected training data.
+                </p>
+                <div class="pill-container">
+                  <span class="pill">TypeScript</span>
+                  <span class="pill">Django</span>
+                  <span class="pill">Full Stack</span>
+                </div>
+              </div>
+            </div>
+            <div class="project-detail reveal">
+              <div class="project-rows" style="margin-top: 0;">
+                <div class="project-row">
+                  <h2>Problem</h2>
+                  <p class="section-lead">
+                    One of my current "hobbies" is running. This year I decided to run a half marathon, more precisely the <span style="font-style: italic;">Telekom Vivicittá Half Marathon</span>. I thought that if I do this, I have to do it as professionally as possible. However, I can't afford a running coach,
+                    so my best option was to use <span style="font-weight: bold;">Artificial Intelligence</span> to coach me. I asked for a training plan, and after every training session, I passed the screenshots of my workout recording to my digital coach to evaluate my performance and give me feedback. 
+                  </br>
+                  This is how it was going for weeks, when I got tired of always screenshotting my Apple Fitnes workout recording and sending it to my coach. I thought, there must be a better way to do this. So I decided to build an app that can connect to Strava, pull my workout data, and give me feedback without me having to do anything manually.
+                  </p>
+                </div>
+                <div class="project-row">
+                  <h2>Goal</h2>
+                  <p class="section-lead">
+                    To create an app that automatically rates and plans my workouts, with it being able to instruct me based on my profile, past training sessions and data. It should visualize my performance and progress in a way that is easy to understand and motivates me to keep going. It should also be able to give me feedback on my workouts, so I can learn from my mistakes and improve my performance.
+                  </p>
+                </div>
+                <div class="project-row">
+                  <h2 style="margin-bottom: 20px;">Approach</h2>
+
+                  <div class="project-feature reveal">
+                    <div class="project-feature__text">
+                      <h4>Dashboard snapshot</h4>
+                      <p>The dashboard gives an immediate overview of current training state, helping the user to quickly get hold of their progress, performance trends and the upcoming sessions planned by the coach. With every workout completed, the user receives a weekly evaluation about their success at trainings relative of the training plan for the certain week.</p>
+                    </div>
+                    <img src="../assets/img/pacerra_mockups/IMG_0077-portrait.avif" alt="Pacerra dashboard mockup" class="project-feature__image project-feature__image--mockup" />
+                  </div>
+
+                  <div class="project-feature reveal">
+                    <div class="project-feature__text">
+                      <h4>Weekly trends</h4>
+                      <p>On the dashboard, the user can see their progress of the weekly goal set by themselves, next workout, and the weekly distance done distributed by sports. User can also view their activity time relatively to past weeks.</p>
+                    </div>
+                    <img src="../assets/img/pacerra_mockups/IMG_0078-portrait.avif" alt="Pacerra weekly plan mockup" class="project-feature__image project-feature__image--mockup" />
+                  </div>
+
+                  <div class="project-feature reveal">
+                    <div class="project-feature__text">
+                      <h4>Workout list and history</h4>
+                      <p>The dashboard also has information about aerobic efficiency trends of the recent few weeks.</p>
+                    </div>
+                    <img src="../assets/img/pacerra_mockups/IMG_0079-portrait.avif" alt="Pacerra workout history mockup" class="project-feature__image project-feature__image--mockup" />
+                  </div>
+
+                  <div class="project-feature reveal">
+                    <div class="project-feature__text">
+                      <h4>Detailed workout page</h4>
+                      <p>Each workout includes practical detail and context, so execution and post-session reflection both stay grounded in the same screen. In the summary panel, the most important information / metrics can be found related to the specific workout session. For example distance, average pace, average heart rate and calories. Users can write a workout note, so they can follow their performance progress with verbal information as well. In the summary, user can also find their achievements for the specific training session, if there are.</p>
+                    </div>
+                    <img src="../assets/img/pacerra_mockups/IMG_0080-portrait.avif" alt="Pacerra workout detail mockup" class="project-feature__image project-feature__image--mockup" />
+                  </div>
+
+                  <div class="project-feature reveal">
+                    <div class="project-feature__text">
+                      <h4>Goal setup flow</h4>
+                      <p>Each workout has a coach evaluation. Coach can rate your training, and based on your performance, provide personalized feedback and adjustments to your training plan.</p>
+                    </div>
+                    <img src="../assets/img/pacerra_mockups/IMG_0081-portrait.avif" alt="Pacerra goal setup mockup" class="project-feature__image project-feature__image--mockup" />
+                  </div>
+
+                  <div class="project-feature reveal">
+                    <div class="project-feature__text">
+                      <h4>AI reaction output</h4>
+                      <p>For people who prefer numbers over words, a number of informational charts can be found per workouts, with specific insight data.</p>
+                    </div>
+                    <img src="../assets/img/pacerra_mockups/IMG_0082-portrait.avif" alt="Pacerra AI reaction mockup" class="project-feature__image project-feature__image--mockup" />
+                  </div>
+
+                  <div class="project-feature reveal">
+                    <div class="project-feature__text">
+                      <h4>HR & Pace</h4>
+                      <p>Users can see their heart rate paired to their pace on the combined HR/Pace chart. It is really useful to see how their heart reacts to the change of pace. The best efforts are also visible per workouts, so users can see if they have a personal best time within the given training.</p>
+                    </div>
+                    <img src="../assets/img/pacerra_mockups/IMG_0083-portrait.avif" alt="Pacerra coach chat mockup" class="project-feature__image project-feature__image--mockup" />
+                  </div>
+
+                  <div class="project-feature reveal">
+                    <div class="project-feature__text">
+                      <h4>Splits & Heart rate zones</h4>
+                      <p>Users can view useful information about their HR Zones to know how much time they spent in which zone in the current workout.</p>
+                    </div>
+                    <img src="../assets/img/pacerra_mockups/IMG_0084-portrait.avif" alt="Pacerra Strava connection mockup" class="project-feature__image project-feature__image--mockup" />
+                  </div>
+
+                  <div class="project-feature reveal">
+                    <div class="project-feature__text">
+                      <h4>Goals</h4>
+                      <p>An initial Goal can be set at the onboarding stage. In the goals page, users can see their goal to keep themselves reminded what they are working for.</p>
+                    </div>
+                    <img src="../assets/img/pacerra_mockups/IMG_0085-portrait.avif" alt="Pacerra sync controls mockup" class="project-feature__image project-feature__image--mockup" />
+                  </div>
+
+                  <div class="project-feature reveal">
+                    <div class="project-feature__text">
+                      <h4>Weekly goal</h4>
+                      <p>Users can set and track their weekly goals, more specifically, set their goal of weekly sessions and which days they want to do training. They also get an info about when their next week's plan going to be ready.</p>
+                    </div>
+                    <img src="../assets/img/pacerra_mockups/IMG_0086-portrait.avif" alt="Pacerra plan preferences mockup" class="project-feature__image project-feature__image--mockup" />
+                  </div>
+
+                  <div class="project-feature reveal">
+                    <div class="project-feature__text">
+                      <h4>Readiness</h4>
+                      <p>Based on the past performance, there is a progress bar about the readiness of the user for the specific goal. This panel updates you about the remaining weeks your preparation phase as well.</p>
+                    </div>
+                    <img src="../assets/img/pacerra_mockups/IMG_0087-portrait.avif" alt="Pacerra settings mockup" class="project-feature__image project-feature__image--mockup" />
+                  </div>
+
+                  <div class="project-feature reveal">
+                    <div class="project-feature__text">
+                      <h4>Upcoming activities</h4>
+                      <p>The upcoming activities for the current week can be seen on the bottom of the Plan page. There is an overview for each sessions coming up, and all of them can be imported in your phone's calendar.</p>
+                    </div>
+                    <img src="../assets/img/pacerra_mockups/IMG_0088-portrait.avif" alt="Pacerra training overview mockup" class="project-feature__image project-feature__image--mockup" />
+                  </div>
+                </div>
+                <div class="project-row">
+                  <h2>Current state</h2>
+                  <p>The app is live with key capabilities for Strava sync, weekly plan generation, and workout-level AI feedback. Development continues around coaching quality and control depth.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script src="../assets/js/reveal.js" defer></script>
+    <script src="../assets/js/main.js" defer></script>
+    <script src="../assets/js/lightbox.js" defer></script>
+  </body>
+</html>

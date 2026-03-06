@@ -52,6 +52,25 @@
   margin-top: var(--space-5);
 }
 
+.project-groups {
+  display: grid;
+  gap: var(--space-7);
+  margin-top: var(--space-5);
+}
+
+.project-category {
+  display: grid;
+  gap: var(--space-3);
+}
+
+.project-category__title {
+  margin: 0;
+  font-size: clamp(1.1rem, 1.4vw, 1.4rem);
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
 .project-card {
   text-decoration: none;
   color: inherit;
@@ -124,6 +143,16 @@
   max-height: 210px;     /* plafon */
   width: 100%;
   object-fit: cover;
+}
+
+.project-image--pacerra {
+  object-fit: contain;
+  object-position: center;
+  padding: 28px;
+  background:
+    radial-gradient(circle at 50% 45%, rgba(34, 211, 238, 0.16), rgba(15, 23, 42, 0.92) 62%),
+    linear-gradient(145deg, #0f172a, #111827);
+  border-color: rgba(148, 163, 184, 0.35);
 }
 
 .project-card:hover .project-image,
@@ -472,6 +501,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  min-height: 108px;
   padding: var(--space-4);
   border-radius: 14px;
   border: 1px solid var(--color-border);
@@ -1488,6 +1518,7 @@
 
   .skill-tile {
     padding: var(--space-3);
+    min-height: 96px;
   }
 
   .skill-tile .skill-logo {
