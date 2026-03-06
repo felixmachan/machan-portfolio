@@ -456,16 +456,62 @@
     }
 
     if (page === 'talppont.html') {
-      localizeTextList('.project-hero-body h1', lang, ['Masszázsszalon weboldal - Talppont']);
+      localizeTextList('.project-hero-body h1', lang, ['MasszĂˇzsszalon weboldal - Talppont']);
       localizeTextList('.project-hero-body .section-lead', lang, [
-        'Statikus weboldal a váci Talppont számára, nyugodt, vonzó megjelenésre fókuszálva.',
+        'Statikus weboldal a vĂˇci Talppont szĂˇmĂˇra, nyugodt, vonzĂł megjelenĂ©sre fĂłkuszĂˇlva.',
       ]);
       localizeTextList('.project-hero-body .pill', lang, ['Webdesign', 'Statikus oldal', 'UI/UX']);
       localizeTextList('.project-row > p', lang, [
-        'Egy közeli barátom édesanyja egyszerű és nyugodt hangulatú weboldalt szeretett volna a masszázsszalonjához. Tudta, hogy webfejlesztéssel foglalkozom, ezért engem kért fel. Ez lett a végeredmény.',
-        'Egy olyan weboldal tervezése és fejlesztése volt a cél, ahol gyorsan elérhetők a legfontosabb információk a szalonról és szolgáltatásairól, például a kezeléstípusok és árak.',
-        'A márka fő színei a királykék és a világoskék, ezért a designt ezek köré építettem. Nyugodt hangulatot akartam teremteni színekkel, tipográfiával és képekkel, sok whitespace használatával, hogy a tartalom könnyen befogadható legyen.',
+        'Egy kĂ¶zeli barĂˇtom Ă©desanyja egyszerĹ± Ă©s nyugodt hangulatĂş weboldalt szeretett volna a masszĂˇzsszalonjĂˇhoz. Tudta, hogy webfejlesztĂ©ssel foglalkozom, ezĂ©rt engem kĂ©rt fel. Ez lett a vĂ©geredmĂ©ny.',
+        'Egy olyan weboldal tervezĂ©se Ă©s fejlesztĂ©se volt a cĂ©l, ahol gyorsan elĂ©rhetĹ‘k a legfontosabb informĂˇciĂłk a szalonrĂłl Ă©s szolgĂˇltatĂˇsairĂłl, pĂ©ldĂˇul a kezelĂ©stĂ­pusok Ă©s Ăˇrak.',
+        'A mĂˇrka fĹ‘ szĂ­nei a kirĂˇlykĂ©k Ă©s a vilĂˇgoskĂ©k, ezĂ©rt a designt ezek kĂ¶rĂ© Ă©pĂ­tettem. Nyugodt hangulatot akartam teremteni szĂ­nekkel, tipogrĂˇfiĂˇval Ă©s kĂ©pekkel, sok whitespace hasznĂˇlatĂˇval, hogy a tartalom kĂ¶nnyen befogadhatĂł legyen.',
       ]);
+      return;
+    }
+
+    if (page === 'pacerra.html') {
+      localizeTextList('.project-hero-body h1', lang, ['Pacerra - MI Allokepessegi Edzo']);
+      localizeTextList('.project-hero-body .section-lead', lang, [
+        'MI-alapu allokepessegi coaching alkalmazas futoknak, kerekparosoknak, uszoknak es triatlonistaknak, Strava-adatokra epitve.',
+      ]);
+      localizeTextList('.project-hero-body .pill', lang, ['Szoftverfejlesztes', 'MI coaching', 'Strava integracio']);
+
+      localizeTextList('.project-row:nth-of-type(1) > p', lang, [
+        'Az allokepessegi sportolok gyakran kulon eszkozben kovetik az edzeseket, kulon feluleten elemzik a trendeket, es mashol terveznek. Ez a szettagoltsag megneheziti a konzisztens, kontextusalapu donteshozatalt hetrol hetre.',
+      ]);
+      localizeTextList('.project-row:nth-of-type(2) > p', lang, [
+        'A cel egy egyseges coaching folyamat letrehozasa volt, ahol a Strava adatok, a heti tervezes es az MI-visszajelzes osszekapcsolodik, igy a nyers aktivitasokbol gyorsan egyertelmu edzesdontesek szulethetnek.',
+      ]);
+      localizeTextList('.project-row:nth-of-type(4) > p', lang, [
+        'Az alkalmazas jelenleg elesben fut: Strava szinkron, heti tervgeneralas es edzesenkenti MI-visszajelzes elerheto. A fejlesztes fokusza a coaching minosegenek es a finomhangolasi lehetosegek tovabbi bovitese.',
+      ]);
+      localizeHtmlList('.project-row:nth-of-type(5) > p', lang, [
+        'Nyilvanos oldal: <a href="https://pacerra.hu/" target="_blank" rel="noopener noreferrer">pacerra.hu</a>',
+      ]);
+
+      localizeTextList('.project-feature__text h4', lang, [
+        'Dashboard attekintes', 'Heti terv nezet', 'Edzeslista es elozmenyek', 'Reszletes edzesoldal', 'Celbeallitasi folyamat',
+        'MI reakcio kimenet', 'Coach chat interakcio', 'Strava kapcsolati allapot', 'Adatszinkron vezerlok', 'Tervpreferenciak',
+        'Beallitasok es szemelyre szabas', 'Edzesattekintes bovitett nezet', 'Teljes coaching folyamat',
+      ]);
+
+      localizeTextList('.project-feature__text p', lang, [
+        'A dashboard azonnali kepet ad az aktualis edzesallapotrol, igy a felhasznalo gyorsan latja, hol tart a heti ciklusban.',
+        'A heti tervezes az atlathatosagra epul: kulcsedzesek, konnyebb napok es progresszio egy osszefuggo nezetben jelenik meg.',
+        'Az aktivitaslista gyors attekintest ad az elmult edzesekrol, ezzel tamogatja a trendek koveteset es a folyamatossagot.',
+        'Minden edzesoldal gyakorlati reszleteket es kontextust ad, igy a vegrehajtas es az utolagos ertekeles ugyanazon feluleten tortenik.',
+        'A celmegadas eredmenyorientaltta teszi a tervezest, es a heti ajanlasokat konkret verseny- vagy teljesitmenycelokhoz koti.',
+        'Az edzesenkenti MI-visszajelzes a kozelmult terhelesi kontextusat rovid, azonnal hasznalhato javaslatokka alakitja.',
+        'A coach chat beszelgeteses reteget ad a strukturalt tervezes melle, gyors ertelmezest es kovetkezo lepes tamogatast nyujtva.',
+        'Az integracios nezetek egyertelmuen mutatjak a kapcsolat es szinkron allapotat, csokkentve a bizonytalansagot az adatforrasok korul.',
+        'A felhasznalo indithat es ellenorizhet frissiteseket, igy a coaching kimenetek mindig a legfrissebb aktivitasokra es streamekre tamaszkodnak.',
+        'A preferenciak finomhangolasaval a rendszer jobban illeszkedik az edzesritmushoz es a tervezesi szokasokhoz.',
+        'A szemelyre szabasi beallitasok rugalmasabba teszik a hasznalatot ugy, hogy kozben a napi felulet egyszeru marad.',
+        'Ez a nezet melyebb trendlathatosagot ad a keszenleti allapot, konzisztencia es fejlodesi irany gyors felmeresehez.',
+        'A kepernyok egyutt egy teljes lancot mutatnak: adatingesziotol a tervezesen at az MI-coaching visszajelzesig, egy osszekapcsolt rendszerben.',
+      ]);
+      localizeTextList('.project-row:nth-of-type(5) > h2', lang, ['Hivatkozas']);
+      return;
     }
   };
 
