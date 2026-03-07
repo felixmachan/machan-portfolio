@@ -1,5 +1,37 @@
 // Load modular sections and wire up scroll spy once content is in place.
 (function () {
+  const forceTopOnFreshLoad = () => {
+    // Keep deep-links working (e.g. index.html#projects),
+    // but treat #hero as exact top.
+    const hash = window.location.hash;
+    if (hash && hash !== '#hero') return;
+
+    if ('scrollRestoration' in history) {
+      history.scrollRestoration = 'manual';
+    }
+
+    if (hash === '#hero') {
+      history.replaceState(null, '', `${window.location.pathname}${window.location.search}`);
+    }
+
+    const jumpTop = () => window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+    jumpTop();
+    requestAnimationFrame(jumpTop);
+    setTimeout(jumpTop, 0);
+    setTimeout(jumpTop, 120);
+
+    // Covers refresh + BFCache restores in some browsers.
+    window.addEventListener('pageshow', () => {
+      const currentHash = window.location.hash;
+      if (!currentHash || currentHash === '#hero') {
+        jumpTop();
+        setTimeout(jumpTop, 0);
+      }
+    });
+  };
+
+  forceTopOnFreshLoad();
+
   const LANG_STORAGE_KEY = 'lang';
   const SUPPORTED_LANGS = ['hu', 'en'];
 
@@ -158,6 +190,8 @@
     setAttr('.section-pager', 'aria-label', t.pager[2]);
     setAttr('.section-pager__btn[data-dir="up"]', 'aria-label', t.pager[0]);
     setAttr('.section-pager__btn[data-dir="down"]', 'aria-label', t.pager[1]);
+    setAttr('.side-nav__arrow[data-side-nav-dir="up"]', 'aria-label', t.pager[0]);
+    setAttr('.side-nav__arrow[data-side-nav-dir="down"]', 'aria-label', t.pager[1]);
 
     setHtml('#hero .section-title .typewriter-line', t.heroTitle);
     setHtml('#hero .section-lead .typewriter-line', t.heroLead);
@@ -192,10 +226,8 @@
       const node = projectCards[index];
       if (!node) return;
       const title = node.querySelector('h3');
-      const subtitle = node.querySelector('.project-subtitle');
       const desc = node.querySelector('.project-body p:last-child');
       if (title) title.textContent = card[0];
-      if (subtitle) subtitle.textContent = card[1];
       if (desc) desc.textContent = card[2];
     });
 
@@ -761,10 +793,12 @@
     if (!nav) return;
 
     const items = Array.from(nav.querySelectorAll('.side-nav__item'));
-    const indicator = nav.querySelector('.side-nav__indicator');
+    const progressValue = nav.querySelector('.side-nav__expand .side-nav__progress-value');
+    const navArrows = Array.from(nav.querySelectorAll('.side-nav__arrow[data-side-nav-dir]'));
     const sections = items
       .map((item) => document.querySelector(item.getAttribute('href')))
       .filter(Boolean);
+    if (items.length === 0) return;
 
     const setActive = (item) => {
       items.forEach((el) => {
@@ -776,35 +810,7 @@
           el.removeAttribute('aria-current');
         }
       });
-
-      if (!indicator) return;
-      const dot = item.querySelector('.side-nav__dot');
-      if (!dot) return;
-      const navRect = nav.getBoundingClientRect();
-      const dotRect = dot.getBoundingClientRect();
-      const top = dotRect.top - navRect.top + dotRect.height / 2;
-      indicator.style.top = `${top}px`;
     };
-
-    if (items.length > 0) {
-      setActive(items[0]);
-    }
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visible = entries
-          .filter((entry) => entry.isIntersecting)
-          .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
-        if (visible.length === 0) return;
-        const index = sections.indexOf(visible[0].target);
-        if (index >= 0) {
-          setActive(items[index]);
-        }
-      },
-      { rootMargin: '-20% 0px -60% 0px', threshold: 0.1 }
-    );
-
-    sections.forEach((section) => observer.observe(section));
 
     items.forEach((item) => {
       item.addEventListener('click', (event) => {
@@ -813,36 +819,97 @@
         const target = document.querySelector(targetSelector);
         if (!target) return;
         event.preventDefault();
-        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
         setActive(item);
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
       });
     });
 
-    const handleScroll = () => {
-      if (items.length === 0) return;
+    const getCurrentIndex = () => {
+      if (sections.length === 0) return 0;
       const marker = window.scrollY + window.innerHeight * 0.35;
       let activeIndex = 0;
+
       sections.forEach((section, index) => {
-        if (marker >= section.offsetTop) {
-          activeIndex = index;
-        }
+        if (marker >= section.offsetTop) activeIndex = index;
       });
-      setActive(items[activeIndex]);
 
       const scrollBottom = window.scrollY + window.innerHeight;
       const docHeight = document.documentElement.scrollHeight;
       if (scrollBottom >= docHeight - 2) {
-        setActive(items[items.length - 1]);
+        activeIndex = items.length - 1;
+      }
+      return activeIndex;
+    };
+
+    navArrows.forEach((arrow) => {
+      arrow.addEventListener('click', (event) => {
+        event.preventDefault();
+        if (sections.length === 0) return;
+        const current = getCurrentIndex();
+        const dir = arrow.dataset.sideNavDir;
+        const next = dir === 'up'
+          ? Math.max(0, current - 1)
+          : Math.min(sections.length - 1, current + 1);
+        const target = sections[next];
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+
+    const updateActiveFromScroll = () => {
+      if (sections.length === 0) return;
+      const activeIndex = getCurrentIndex();
+
+      const item = items[activeIndex];
+      if (item) {
+        setActive(item);
       }
     };
 
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    handleScroll();
+    const updateScrollPercent = () => {
+      if (!progressValue) return;
+      const doc = document.documentElement;
+      const max = doc.scrollHeight - window.innerHeight;
+      const percent = max > 0 ? Math.round((window.scrollY / max) * 100) : 0;
+      progressValue.textContent = `${percent}%`;
+    };
 
+    const handleScroll = () => {
+      updateActiveFromScroll();
+      updateScrollPercent();
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
     window.addEventListener('resize', () => {
-      const activeItem = nav.querySelector('.side-nav__item.is-active');
-      if (activeItem) setActive(activeItem);
+      updateActiveFromScroll();
+      updateScrollPercent();
     });
+
+    requestAnimationFrame(() => {
+      if (items[0]) {
+        setActive(items[0]);
+      }
+      handleScroll();
+    });
+
+    if (sections.length > 0) {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          const visible = entries
+            .filter((entry) => entry.isIntersecting)
+            .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
+          if (visible.length === 0) return;
+          const index = sections.indexOf(visible[0].target);
+          if (index >= 0 && items[index]) {
+            setActive(items[index]);
+          }
+        },
+        { rootMargin: '-20% 0px -60% 0px', threshold: 0.1 }
+      );
+
+      sections.forEach((section) => observer.observe(section));
+    }
   };
 
   const initKnowledgeChart = () => {
@@ -989,11 +1056,62 @@
     const tiles = Array.from(document.querySelectorAll('.skill-tile'));
     if (tiles.length === 0) return;
 
-    const collapseAll = () => {
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    const animateGridReflow = (mutate) => {
+      if (prefersReducedMotion) {
+        mutate();
+        return;
+      }
+
+      const first = new Map();
       tiles.forEach((tile) => {
-        tile.classList.remove('is-expanded');
-        tile.setAttribute('aria-expanded', 'false');
+        first.set(tile, tile.getBoundingClientRect());
       });
+
+      mutate();
+
+      tiles.forEach((tile) => {
+        const from = first.get(tile);
+        const to = tile.getBoundingClientRect();
+        if (!from || !to) return;
+
+        const dx = from.left - to.left;
+        const dy = from.top - to.top;
+        const sx = from.width / to.width;
+        const sy = from.height / to.height;
+
+        const moved = Math.abs(dx) > 0.5 || Math.abs(dy) > 0.5;
+        const resized = Math.abs(sx - 1) > 0.01 || Math.abs(sy - 1) > 0.01;
+        if (!moved && !resized) return;
+
+        tile.animate(
+          [
+            { transform: `translate(${dx}px, ${dy}px) scale(${sx}, ${sy})` },
+            { transform: 'translate(0, 0) scale(1, 1)' },
+          ],
+          {
+            duration: 360,
+            easing: 'cubic-bezier(0.22, 1, 0.36, 1)',
+          }
+        );
+      });
+    };
+
+    const setExpanded = (targetTile) => {
+      animateGridReflow(() => {
+        tiles.forEach((tile) => {
+          const isExpanded = targetTile === tile;
+          tile.classList.toggle('is-expanded', isExpanded);
+          tile.setAttribute('aria-expanded', isExpanded ? 'true' : 'false');
+        });
+      });
+    };
+
+    const collapseAll = () => {
+      const hasExpanded = tiles.some((tile) => tile.classList.contains('is-expanded'));
+      if (!hasExpanded) return;
+      setExpanded(null);
     };
 
     tiles.forEach((tile) => {
@@ -1016,11 +1134,7 @@
       tile.addEventListener('click', (event) => {
         event.preventDefault();
         const isExpanded = tile.classList.contains('is-expanded');
-        collapseAll();
-        if (!isExpanded) {
-          tile.classList.add('is-expanded');
-          tile.setAttribute('aria-expanded', 'true');
-        }
+        setExpanded(isExpanded ? null : tile);
       });
 
       tile.addEventListener('keydown', (event) => {

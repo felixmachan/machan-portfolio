@@ -35,35 +35,50 @@
   </head>
   <body>
     <nav class="side-nav" aria-label="Section navigation">
-      <span class="side-nav__indicator" aria-hidden="true"></span>
-      <a class="side-nav__item" href="#hero">
-        <span class="side-nav__dot" aria-hidden="true"></span>
-        <span class="side-nav__label">Hello</span>
-      </a>
-      <a class="side-nav__item" href="#about">
-        <span class="side-nav__dot" aria-hidden="true"></span>
-        <span class="side-nav__label">About</span>
-      </a>
-      <a class="side-nav__item" href="#experience">
-        <span class="side-nav__dot" aria-hidden="true"></span>
-        <span class="side-nav__label">Experience</span>
-      </a>
-      <a class="side-nav__item" href="#education">
-        <span class="side-nav__dot" aria-hidden="true"></span>
-        <span class="side-nav__label">Education</span>
-      </a>
-      <a class="side-nav__item" href="#projects">
-        <span class="side-nav__dot" aria-hidden="true"></span>
-        <span class="side-nav__label">Projects</span>
-      </a>
-      <a class="side-nav__item" href="#skills">
-        <span class="side-nav__dot" aria-hidden="true"></span>
-        <span class="side-nav__label">Skills</span>
-      </a>
-      <a class="side-nav__item" href="#contact">
-        <span class="side-nav__dot" aria-hidden="true"></span>
-        <span class="side-nav__label">Contact</span>
-      </a>
+      <div class="side-nav__mini" aria-hidden="true">
+        <button class="side-nav__arrow" type="button" data-side-nav-dir="up" aria-label="Previous section">
+          <svg aria-hidden="true" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 8.5 6.5 14a1 1 0 0 0 1.4 1.4L12 11.3l4.1 4.1A1 1 0 1 0 17.5 14L12 8.5z"/>
+          </svg>
+        </button>
+        <button class="side-nav__arrow" type="button" data-side-nav-dir="down" aria-label="Next section">
+          <svg aria-hidden="true" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 15.5 17.5 10a1 1 0 1 0-1.4-1.4L12 12.7 7.9 8.6A1 1 0 1 0 6.5 10l5.5 5.5z"/>
+          </svg>
+        </button>
+      </div>
+      <div class="side-nav__expand">
+        <span class="side-nav__indicator" aria-hidden="true"></span>
+        <span class="side-nav__progress" aria-hidden="true"><span class="side-nav__progress-value">0%</span></span>
+        <a class="side-nav__item" href="#hero">
+          <span class="side-nav__dot" aria-hidden="true"></span>
+          <span class="side-nav__label">Hello</span>
+        </a>
+        <a class="side-nav__item" href="#about">
+          <span class="side-nav__dot" aria-hidden="true"></span>
+          <span class="side-nav__label">About</span>
+        </a>
+        <a class="side-nav__item" href="#experience">
+          <span class="side-nav__dot" aria-hidden="true"></span>
+          <span class="side-nav__label">Experience</span>
+        </a>
+        <a class="side-nav__item" href="#education">
+          <span class="side-nav__dot" aria-hidden="true"></span>
+          <span class="side-nav__label">Education</span>
+        </a>
+        <a class="side-nav__item" href="#projects">
+          <span class="side-nav__dot" aria-hidden="true"></span>
+          <span class="side-nav__label">Projects</span>
+        </a>
+        <a class="side-nav__item" href="#skills">
+          <span class="side-nav__dot" aria-hidden="true"></span>
+          <span class="side-nav__label">Skills</span>
+        </a>
+        <a class="side-nav__item" href="#contact">
+          <span class="side-nav__dot" aria-hidden="true"></span>
+          <span class="side-nav__label">Contact</span>
+        </a>
+      </div>
     </nav>
     <button class="lang-toggle" type="button" aria-label="Language switch">
       <span class="lang-toggle__opt" data-lang-option="hu">HU</span><span class="lang-toggle__sep">/</span><span class="lang-toggle__opt is-active" data-lang-option="en">EN</span>
@@ -230,7 +245,12 @@
               <img class="project-image" src="assets/img/pedals/pedals.avif" alt="Custom Sim Racing Pedals preview" />
               <div class="project-body">
                 <h3>Custom Sim Racing Pedals - ME1</h3>
-                <p class="project-subtitle">Mechanical design</p>
+                <p class="project-subtitle">2024 - Present</p>
+                <div class="project-tags" aria-label="Project tags">
+                  <span class="project-tag">CNC</span>
+                  <span class="project-tag">CAD</span>
+                  <span class="project-tag">Firmware</span>
+                </div>
                 <p>A CNC-machined pedal set designed and engineered end-to-end, from hardware to control electronics.</p>
               </div>
             </a>
@@ -243,7 +263,12 @@
               <img class="project-image" src="assets/img/buttonbox/pcb.avif" alt="Custom Sim Racing Button Box preview" />
               <div class="project-body">
                 <h3>Custom Sim Racing Button Box</h3>
-                <p class="project-subtitle">PCB design</p>
+                <p class="project-subtitle">2025</p>
+                <div class="project-tags" aria-label="Project tags">
+                  <span class="project-tag">KiCad</span>
+                  <span class="project-tag">PCB</span>
+                  <span class="project-tag">3D Print</span>
+                </div>
                 <p>Fully custom made Button Box for sim racing setups. 3D printed case with in-house designed PCB.</p>
               </div>
             </a>
@@ -256,7 +281,12 @@
               <img class="project-image project-image--light-bg" src="assets/img/mptrwhite.avif" alt="IoT Device Hub System preview" />
               <div class="project-body">
                 <h3>IoT Device Hub System - MPTRhome</h3>
-                <p class="project-subtitle">home automation</p>
+                <p class="project-subtitle">2025 - Present</p>
+                <div class="project-tags" aria-label="Project tags">
+                  <span class="project-tag">IoT</span>
+                  <span class="project-tag">MQTT</span>
+                  <span class="project-tag">Flask</span>
+                </div>
                 <p>Centralized hub that unifies commercial and custom IoT devices with a single control plane.</p>
               </div>
             </a>
@@ -264,7 +294,12 @@
               <img class="project-image" src="assets/img/talppont/talppont-welcome.avif" alt="Massage saloon website with appointment system - Talppont" />
               <div class="project-body">
                 <h3>Massage parlour website - Talppont</h3>
-                <p class="project-subtitle">UI focused website</p>
+                <p class="project-subtitle">2024</p>
+                <div class="project-tags" aria-label="Project tags">
+                  <span class="project-tag">Frontend</span>
+                  <span class="project-tag">UX</span>
+                  <span class="project-tag">Booking</span>
+                </div>
                 <p>A massage parlour website built to attract customers.</p>
               </div>
             </a>
@@ -272,7 +307,12 @@
               <img class="project-image" src="assets/img/MODEM.avif" alt="Network project preview" style="object-fit: contain; object-position: center; background: #fff;" />
               <div class="project-body">
                 <h3>Home server</h3>
-                <p class="project-subtitle">networking</p>
+                <p class="project-subtitle">2023 - Present</p>
+                <div class="project-tags" aria-label="Project tags">
+                  <span class="project-tag">Proxmox</span>
+                  <span class="project-tag">DNS</span>
+                  <span class="project-tag">VPN</span>
+                </div>
                 <p>DNS, DHCP, VPN and other essential services for the home server lab.</p>
               </div>
             </a>
@@ -280,7 +320,12 @@
               <img class="project-image project-image--pacerra" src="assets/img/pacerra/favicon.svg" alt="Pacerra AI endurance coach app preview" />
               <div class="project-body">
                 <h3>Pacerra - AI Endurance Coach</h3>
-                <p class="project-subtitle">AI powered app development</p>
+                <p class="project-subtitle">2026</p>
+                <div class="project-tags" aria-label="Project tags">
+                  <span class="project-tag">AI</span>
+                  <span class="project-tag">TypeScript</span>
+                  <span class="project-tag">Django</span>
+                </div>
                 <p>AI-powered endurance coaching app with Strava sync, personalized weekly plans, and per-workout AI feedback.</p>
               </div>
             </a>

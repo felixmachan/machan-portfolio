@@ -49,6 +49,33 @@ section > * {
   color: var(--color-muted);
 }
 
+/* Project pages: gradient on body, not on inner panels */
+body {
+  background-image: linear-gradient(
+    180deg,
+    var(--color-bg-top) 0%,
+    var(--color-bg-mid) 52%,
+    var(--color-bg-bottom) 100%
+  );
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/* Match project pages to the wider homepage content width */
+main .container {
+  width: min(1600px, 85vw);
+}
+
+main .section.project-section {
+  background: transparent !important;
+  border-top: 0 !important;
+  border-bottom: 0 !important;
+}
+
+main .project-page {
+  width: 100% !important;
+}
+
 /* Project pages should not inherit the global section lead line-length limit. */
 .project-page .section-lead {
   max-width: none;
@@ -147,6 +174,10 @@ section > * {
 }
 
 @media (max-width: 768px) {
+  main .container {
+    width: 94vw;
+  }
+
   .project-feature {
     grid-template-columns: 1fr;
     gap: var(--space-5);
@@ -161,9 +192,8 @@ section > * {
     margin-inline: auto;
   }
 
-  .panel 
-  .project-page{
-    width: 90% !important;
+  .panel .project-page {
+    width: 100% !important;
   }
 
  .pill-container {
@@ -237,24 +267,12 @@ section > * {
   border: 1px solid var(--color-border);
   box-shadow: var(--shadow-soft);
   overflow: hidden;
-
-  /* Light mode: white -> beige */
-  background: linear-gradient(
-    135deg,
-    #ffffff 0%,
-    #f6efe4 45%,
-    #ead9c4 100%
-  );
+  background: var(--color-surface);
 }
 
-/* Dark mode: gray -> darker beige */
+/* Dark mode */
 :root[data-theme="dark"] .project-model-frame {
-  background: linear-gradient(
-    135deg,
-    #776b64 0%,
-    #6b5d4e 55%,
-    #524234 100%
-  );
+  background: var(--color-surface);
 }
 
 /* Maga a viewer töltse ki a frame-et */
