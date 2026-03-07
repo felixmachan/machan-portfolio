@@ -117,22 +117,20 @@ main {
 }
 
 .footer-social {
-  width: 38px;
-  height: 38px;
-  border-radius: 999px;
-  border: 1px solid var(--color-border);
-  background: var(--color-surface);
+  width: auto;
+  height: auto;
+  border: 0;
+  background: transparent;
   color: var(--color-accent);
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  transition: color 0.2s ease, transform 0.2s ease;
 }
 
 .footer-social:hover,
 .footer-social:focus-visible {
-  border-color: var(--color-nav-dot);
-  box-shadow: 0 10px 20px rgba(46, 33, 18, 0.14);
+  color: var(--color-nav-dot);
   transform: translateY(-1px);
 }
 

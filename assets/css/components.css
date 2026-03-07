@@ -781,9 +781,18 @@
   flex-wrap: wrap;
 }
 
+.contact-header .section-title {
+  margin-bottom: 0;
+}
+
+.contact-panel > .section-lead {
+  margin-top: var(--space-3);
+}
+
 .contact-cv {
   white-space: nowrap;
-  display: none;
+  display: inline-flex;
+  margin: 0;
 }
 
 .contact-grid {

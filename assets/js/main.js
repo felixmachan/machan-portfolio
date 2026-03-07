@@ -240,7 +240,12 @@
     setHeadingWithIcon('#contact .section-title', t.contactTitle);
     setText('#contact .section-lead', t.contactLead);
     setText('#contact .contact-cv', t.cv);
-    setText('.footer-cv', t.cv);
+    const cvLink = document.querySelector('#contact .contact-cv');
+    if (cvLink) {
+      const enCv = cvLink.dataset.cvEn || cvLink.getAttribute('href') || '#';
+      const huCv = cvLink.dataset.cvHu || enCv;
+      cvLink.setAttribute('href', lang === 'hu' ? huCv : enCv);
+    }
     setText('#contact [data-contact-toggle] .contact-handle', t.openForm);
     setText('#contact .contact-form__label:nth-of-type(1) span', t.yourName);
     setText('#contact .contact-form__label:nth-of-type(2) span', t.yourEmail);
