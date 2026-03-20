@@ -64,8 +64,6 @@
                 <span class="pill">HomeLab</span>
                 <span class="pill">Infra</span>
               </div>
-        
-            
             </div>
           </div>
           <div class="project-detail reveal">
@@ -78,24 +76,114 @@
                 <h2>Goal</h2>
                 <p>The goal was a home stack where services run isolated, every device can be controlled locally, and remote access is secure. Reliability, data ownership, and a single control plane were non-negotiable.</p>
               </div>
-              <div class="project-row">
-                <h2>Approach</h2>
-                <p>The stack is anchored by Proxmox VE, which provides a virtualization layer so services are isolated and recoverable. The router handles traffic and internal segments, while the server hosts dedicated VMs and containers for each function.</p>
-                <p>Services and why they exist:</p>
-                <ul class="service-list" style="margin-bottom: 20px;">
-                  <li><strong>Proxmox VE</strong> - hypervisor that separates VMs and enables snapshots for quick recovery.</li>
-                  <li><strong>Home Assistant</strong> - the automation brain for Hue, IKEA, Sonoff, and other devices.</li>
-                  <li><strong>Zigbee2MQTT</strong> - stable local device communication engine for Zigbee devices without cloud dependency.</li>
-                  <li><strong>TrueNAS</strong> - file sharing, backups, and centralized data for projects and media.</li>
-                  <li><strong>Vaultwarden</strong> - secure storage for credentials and internal secrets.</li>
-                  <li><strong>Tailscale</strong> - secure access from outside the network over encrypted tunnels.</li>
-                  <li><strong>Plex</strong> - For streaming my own media to various devices.</li>
-                  <li><strong>RustDesk</strong> - For remote desktop access to devices within the network.</li>
-                  <li><strong>PiHole</strong> - Network-wide ad blocking and DNS filtering.</li>
-                  <li><strong>Nginx Proxy Manager</strong> - For managing reverse proxies and SSL certificates. Making local dns records to easily find my important services via a subdomain of machan.hu.</li>
 
-                </ul>
-                <p>The Bambu Lab printer and Hue, IKEA, and Sonoff ecosystems are all integrated under a single control plane, keeping real-time status and automation logic in one place.</p>
+              <div class="project-row">
+                <h2>Infrastructure & Services</h2>
+                <p>The stack is anchored by Proxmox VE, providing a virtualization layer for service isolation and recovery. Below are the key services that form the backbone of this ecosystem:</p>
+                
+                <div class="service-grid">
+                  <div class="service-card reveal">
+                    <div class="service-card__header">
+                      <div class="service-card__icon">
+                        <img src="../assets/img/logos/proxmox.svg" alt="Proxmox logo" />
+                      </div>
+                      <h3>Proxmox VE</h3>
+                    </div>
+                    <p>Hypervisor that separates VMs and enables snapshots for quick recovery and testing.</p>
+                  </div>
+
+                  <div class="service-card reveal">
+                    <div class="service-card__header">
+                      <div class="service-card__icon">
+                        <img src="../assets/img/logos/home-assistant.svg" alt="Home Assistant logo" />
+                      </div>
+                      <h3>Home Assistant</h3>
+                    </div>
+                    <p>The automation brain unifying Hue, IKEA, Sonoff, and custom ESP32 devices.</p>
+                  </div>
+
+                  <div class="service-card reveal">
+                    <div class="service-card__header">
+                      <div class="service-card__icon">
+                        <img src="../assets/img/logos/z2m.svg" alt="Zigbee2MQTT logo" />
+                      </div>
+                      <h3>Zigbee2MQTT</h3>
+                    </div>
+                    <p>Stable local device communication engine for Zigbee devices without cloud dependency.</p>
+                  </div>
+
+                  <div class="service-card reveal">
+                    <div class="service-card__header">
+                      <div class="service-card__icon">
+                        <img src="../assets/img/logos/truenas.svg" alt="TrueNAS logo" />
+                      </div>
+                      <h3>TrueNAS</h3>
+                    </div>
+                    <p>Centralized data storage, backups, and media assets with ZFS reliability.</p>
+                  </div>
+
+                  <div class="service-card reveal">
+                    <div class="service-card__header">
+                      <div class="service-card__icon">
+                        <img src="../assets/img/logos/vaultwarden-light.svg" alt="Vaultwarden logo" />
+                      </div>
+                      <h3>Vaultwarden</h3>
+                    </div>
+                    <p>Secure, self-hosted credential storage for internal services and project secrets.</p>
+                  </div>
+
+                  <div class="service-card reveal">
+                    <div class="service-card__header">
+                      <div class="service-card__icon">
+                        <img src="../assets/img/logos/tailscale-light.svg" alt="Tailscale logo" />
+                      </div>
+                      <h3>Tailscale</h3>
+                    </div>
+                    <p>Zero-config Mesh VPN for secure remote access to the home lab from anywhere.</p>
+                  </div>
+
+                  <div class="service-card reveal">
+                    <div class="service-card__header">
+                      <div class="service-card__icon">
+                        <img src="../assets/img/logos/plex.svg" alt="Plex logo" />
+                      </div>
+                      <h3>Plex</h3>
+                    </div>
+                    <p>High-performance media streaming across all local and remote devices.</p>
+                  </div>
+
+                  <div class="service-card reveal">
+                    <div class="service-card__header">
+                      <div class="service-card__icon">
+                        <img src="../assets/img/logos/rustdesk.svg" alt="RustDesk logo" />
+                      </div>
+                      <h3>RustDesk</h3>
+                    </div>
+                    <p>Self-hosted remote desktop solution for managing headless machines on the network.</p>
+                  </div>
+
+                  <div class="service-card reveal">
+                    <div class="service-card__header">
+                      <div class="service-card__icon">
+                        <img src="../assets/img/logos/pi-hole.svg" alt="Pi-hole logo" />
+                      </div>
+                      <h3>Pi-hole</h3>
+                    </div>
+                    <p>Network-wide ad blocking and local DNS resolution for faster, cleaner browsing.</p>
+                  </div>
+
+                  <div class="service-card reveal">
+                    <div class="service-card__header">
+                      <div class="service-card__icon">
+                        <img src="../assets/img/logos/nginx-proxy-manager.svg" alt="Nginx Proxy Manager logo" />
+                      </div>
+                      <h3>Nginx Proxy Manager</h3>
+                    </div>
+                    <p>SSL termination and reverse proxy management for custom machan.hu subdomains.</p>
+                  </div>
+                </div>
+
+                <p style="margin-top: 30px;">The Bambu Lab printer and Hue, IKEA, and Sonoff ecosystems are all integrated under a single control plane, keeping real-time status and automation logic in one place.</p>
               </div>
               <div class="project-row">
                 <h2>Result</h2>

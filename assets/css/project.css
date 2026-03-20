@@ -362,6 +362,173 @@ main .project-page {
   transform: translateX(140%);
 }
 
+/* Network Project Specifics */
+.network-architecture {
+  margin: var(--space-6) 0;
+  padding: var(--space-5);
+  background: var(--color-bg-mid);
+  border-radius: var(--radius);
+  border: 1px solid var(--color-border);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.architecture-layer {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-5);
+  width: 100%;
+  flex-wrap: wrap;
+  z-index: 2;
+}
+
+.arch-node {
+  background: var(--color-surface);
+  border: 1px solid var(--color-accent);
+  padding: var(--space-3) var(--space-4);
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+  min-width: 120px;
+  box-shadow: var(--shadow-soft);
+  transition: transform 0.3s ease;
+}
+
+.arch-node:hover {
+  transform: translateY(-5px);
+}
+
+.arch-node img,
+.arch-node svg {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+}
+
+.arch-node--main {
+  border-width: 2px;
+  padding: var(--space-4) var(--space-6);
+  background: var(--color-accent);
+}
+
+.arch-node--main span {
+  color: var(--color-surface);
+  font-size: var(--fs-300);
+  font-weight: 600;
+  text-align: center;
+}
+
+.arch-node--main img,
+.arch-node--main svg {
+  filter: brightness(0) invert(1);
+}
+
+.arch-connector {
+  width: 2px;
+  height: var(--space-6);
+  background: var(--color-accent);
+  opacity: 0.4;
+}
+
+/* Service Grid */
+.service-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: var(--space-5);
+  margin-top: var(--space-5);
+}
+
+.service-card {
+  position: relative;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: var(--space-5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  transition: all 0.3s ease;
+  box-shadow: var(--shadow-soft);
+  overflow: hidden;
+}
+
+.service-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  opacity: 0;
+  background:
+    radial-gradient(circle at var(--gx, 50%) var(--gy, 50%), rgba(212, 179, 145, 0.22), rgba(212, 179, 145, 0) 55%),
+    linear-gradient(135deg, rgba(196, 163, 129, 0.08) 0%, rgba(212, 179, 145, 0.18) 55%, rgba(235, 215, 193, 0.05) 100%);
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.service-card:hover::before {
+  opacity: 1;
+}
+
+.service-card:hover {
+  border-color: var(--color-accent);
+  transform: translateY(-5px);
+}
+
+.service-card__header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.service-card__icon {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-bg-mid);
+  border-radius: 10px;
+  padding: 8px;
+  flex-shrink: 0;
+}
+
+.service-card__icon img,
+.service-card__icon svg {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.service-card h3 {
+  margin: 0;
+  font-size: var(--fs-500);
+  color: var(--color-accent);
+}
+
+.service-card p {
+  margin: 0;
+  font-size: var(--fs-400);
+  color: var(--color-muted);
+  line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+  .architecture-layer {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .arch-connector {
+    height: var(--space-4);
+  }
+}
+
 @keyframes cta-breathe {
   0%,
   100% {

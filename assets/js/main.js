@@ -1185,6 +1185,28 @@
     });
   };
 
+  const initServiceCards = () => {
+    const cards = Array.from(document.querySelectorAll('.service-card'));
+    if (cards.length === 0) return;
+
+    cards.forEach((card) => {
+      const update = (event) => {
+        const rect = card.getBoundingClientRect();
+        const x = ((event.clientX - rect.left) / rect.width) * 100;
+        const y = ((event.clientY - rect.top) / rect.height) * 100;
+        card.style.setProperty('--gx', `${x.toFixed(2)}%`);
+        card.style.setProperty('--gy', `${y.toFixed(2)}%`);
+      };
+
+      card.addEventListener('mousemove', update);
+      card.addEventListener('mouseenter', update);
+      card.addEventListener('mouseleave', () => {
+        card.style.removeProperty('--gx');
+        card.style.removeProperty('--gy');
+      });
+    });
+  };
+
   loadSections()
     .then(() => {
       initLanguageToggle();
@@ -1193,6 +1215,7 @@
       initSectionPager();
       initKnowledgeChart();
       initSkillTiles();
+      initServiceCards();
       initContactFormToggle();
     })
     .catch(() => {
@@ -1202,6 +1225,7 @@
       initSectionPager();
       initKnowledgeChart();
       initSkillTiles();
+      initServiceCards();
       initContactFormToggle();
     });
 })();
