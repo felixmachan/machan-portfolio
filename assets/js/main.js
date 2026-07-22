@@ -228,14 +228,16 @@
     setHeadingWithIcon('#projects .section-title', t.projTitle);
     setText('#projects .section-lead', t.projLead);
     const projectCards = document.querySelectorAll('#projects .project-card[data-project-id]');
+    const localizedSubtitleProjectIds = new Set(['vanoor', 'cheerlify']);
     projectCards.forEach((node) => {
-      const card = t.projCards[node.dataset.projectId];
+      const projectId = node.dataset.projectId;
+      const card = t.projCards[projectId];
       if (!card) return;
       const title = node.querySelector('h3');
       const subtitle = node.querySelector('.project-subtitle');
       const desc = node.querySelector('.project-body p:last-child');
       if (title) title.textContent = card[0];
-      if (subtitle) subtitle.textContent = card[1];
+      if (subtitle && localizedSubtitleProjectIds.has(projectId)) subtitle.textContent = card[1];
       if (desc) desc.textContent = card[2];
     });
 
