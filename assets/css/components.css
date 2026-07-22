@@ -155,6 +155,17 @@
   border-color: rgba(148, 163, 184, 0.35);
 }
 
+.project-image--vanoor {
+  object-position: center;
+}
+
+.project-image--cheerlify {
+  object-fit: contain;
+  padding: 42px;
+  background: linear-gradient(145deg, #ff7a45, #ff4f17);
+  border-color: rgba(255, 90, 31, 0.35);
+}
+
 .project-card:hover .project-image,
 .project-card:focus-visible .project-image {
   transform: scale(1.02);

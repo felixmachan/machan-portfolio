@@ -331,3 +331,96 @@ section > * {
 .button.pill-button:focus-visible::before {
   transform: translateX(140%);
 }
+
+/* Product case studies use the existing project language with a compact,
+   responsive shell for real app imagery and brand diagrams. */
+.project-shell {
+  margin-block: 30px;
+}
+
+.product-project-page .project-page {
+  width: min(1100px, 92vw);
+  margin-inline: auto;
+}
+
+.product-project-hero__visual {
+  overflow: hidden;
+  border-radius: 14px;
+  background: #0d3329;
+}
+
+.product-project-hero__visual .project-hero-image {
+  display: block;
+  max-height: 560px;
+  object-fit: cover;
+}
+
+.product-project-hero__visual--brand {
+  min-height: clamp(280px, 48vw, 520px);
+  display: grid;
+  place-items: center;
+  background:
+    radial-gradient(circle at 50% 42%, rgba(255, 255, 255, 0.22), transparent 28%),
+    linear-gradient(145deg, #ff7a45, #ff4f17);
+}
+
+.brand-hero-mark {
+  width: clamp(140px, 26vw, 260px);
+  height: auto;
+  filter: drop-shadow(0 18px 28px rgba(99, 27, 0, 0.24));
+}
+
+.product-shot--phone,
+.product-shot--watch {
+  max-height: 560px;
+  object-fit: contain;
+  border: 0;
+  box-shadow: none;
+  background: transparent;
+}
+
+.diagram-image {
+  background: #fff8f4;
+}
+
+.brand-feature-card {
+  min-height: 300px;
+  display: grid;
+  place-items: center;
+  align-content: center;
+  gap: var(--space-4);
+  padding: var(--space-6);
+  border-radius: 14px;
+  background: linear-gradient(145deg, #ff7a45, #ff4f17);
+  color: #fff;
+  text-align: center;
+  font-weight: 700;
+  box-shadow: var(--shadow-soft);
+}
+
+.brand-feature-card img {
+  width: min(150px, 45%);
+  height: auto;
+}
+
+@media (max-width: 768px) {
+  .product-project-page .project-page {
+    width: min(94vw, 680px) !important;
+    padding: var(--space-4);
+  }
+
+  .project-shell {
+    margin-block: 16px;
+  }
+
+  .product-project-hero__visual .project-hero-image {
+    min-height: 260px;
+  }
+
+  .product-shot--phone,
+  .product-shot--watch,
+  .diagram-image {
+    width: 100%;
+    max-height: 480px;
+  }
+}

@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Cheerlify - Private Race-day Support</title>
+    <meta name="description" content="Cheerlify: private live race tracking for any GPX route, with voice and video cheers delivered to the runner during the event." />
+    <link rel="canonical" href="https://felixmachan.hu/projects/cheerlify.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Cheerlify - Private Race-day Support" />
+    <meta property="og:description" content="Private GPX race tracking where friends follow without an account and send cheers that play in the runner's headphones." />
+    <meta property="og:url" content="https://felixmachan.hu/projects/cheerlify.html" />
+    <meta property="og:image" content="https://felixmachan.hu/assets/img/cheerlify/icon.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="stylesheet" href="../assets/css/variables.css" />
+    <link rel="stylesheet" href="../assets/css/base.css" />
+    <link rel="stylesheet" href="../assets/css/components.css" />
+    <link rel="stylesheet" href="../assets/css/project.css" />
+    <link rel="stylesheet" href="../assets/css/animations.css" />
+  </head>
+  <body class="product-project-page cheerlify-page">
+    <div class="progress-container"><div class="progress-bar"></div></div>
+    <button class="lang-toggle" type="button" aria-label="Language switch"><span class="lang-toggle__opt" data-lang-option="hu">HU</span><span class="lang-toggle__sep">/</span><span class="lang-toggle__opt is-active" data-lang-option="en">EN</span></button>
+    <button class="theme-toggle" type="button" aria-label="Switch to dark mode" aria-pressed="false">
+      <svg class="theme-icon theme-icon--moon" aria-hidden="true" viewBox="0 0 24 24" fill="currentColor"><path d="M21.53 14.37a.75.75 0 0 0-.86-.3 7.5 7.5 0 0 1-9.79-9.8.75.75 0 0 0-1.16-.83 9.75 9.75 0 1 0 12.04 12.04.75.75 0 0 0-.23-1.11z"/></svg>
+      <svg class="theme-icon theme-icon--sun" aria-hidden="true" viewBox="0 0 24 24" fill="currentColor"><path d="M12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0-5a1 1 0 0 1 1 1v2a1 1 0 1 1-2 0V3a1 1 0 0 1 1-1zm0 18a1 1 0 0 1 1 1v2a1 1 0 1 1-2 0v-2a1 1 0 0 1 1-1zm10-9a1 1 0 0 1-1 1h-2a1 1 0 1 1 0-2h2a1 1 0 0 1 1 1zM5 12a1 1 0 0 1-1 1H2a1 1 0 1 1 0-2h2a1 1 0 0 1 1 1z"/></svg>
+    </button>
+    <main class="width">
+      <section class="section section--hero project-section">
+        <div class="container project-shell">
+          <article class="panel project-page">
+            <div class="project-hero product-project-hero">
+              <div class="product-project-hero__visual product-project-hero__visual--brand reveal"><img class="brand-hero-mark" src="../assets/img/cheerlify/logo-mark.png" alt="Cheerlify location pin and audio waveform logo" data-i18n-alt="heroAlt" /></div>
+              <div class="project-hero-body reveal">
+                <div class="project-hero-actions"><a class="button secondary" href="../index.html#projects">Back to Projects</a><a class="button pill-button" href="https://cheerlify.com/" target="_blank" rel="noopener noreferrer">Check project</a></div>
+                <h1 data-i18n="title">Cheerlify - Private Race-day Support</h1>
+                <p class="section-lead" data-i18n="lead">A private platform for any GPX route where friends follow a runner live and send voice or video cheers that play in the runner's headphones during the race.</p>
+                <div class="pill-container"><span class="pill">React Native</span><span class="pill">React</span><span class="pill">Django</span><span class="pill">Real-time</span></div>
+              </div>
+            </div>
+            <div class="project-detail reveal">
+              <div class="project-rows">
+                <section class="project-row"><h2 data-i18n="problemTitle">Problem</h2><p data-i18n="problem">Race tracking usually reduces a runner to a moving dot and is often tied to an official event or a specific ecosystem. Friends and family may know where the runner is, but they cannot turn that visibility into meaningful support at the difficult moment when it matters most.</p></section>
+                <section class="project-row"><h2 data-i18n="goalTitle">Goal</h2><p data-i18n="goal">Make remote supporters feel present on race day. A runner should be able to use any GPX route, invite only their own people, and hear real voices during the run. Supporters should need no app and no account: a private link, an access code, and a display name are enough.</p></section>
+                <section class="project-row">
+                  <h2 data-i18n="approachTitle">Approach and features</h2>
+                  <div class="project-feature reveal"><div class="project-feature__text"><h4 data-i18n="feature1Title">A private event around any route</h4><p data-i18n="feature1">The runner creates an event from a GPX file and shares a protected race link and code. The mobile app records background location, while the browser dashboard projects live progress onto the route for invited followers.</p></div><img class="project-feature__image diagram-image" src="../assets/img/cheerlify/flow.svg" alt="Diagram of the Cheerlify race-day flow from GPX event to private link, live follow, cheer, and recap" data-i18n-alt="flowAlt" data-i18n-src="flowImage" /></div>
+                  <div class="project-feature reveal"><div class="project-feature__text"><h4 data-i18n="feature2Title">Cheers delivered in context</h4><p data-i18n="feature2">Followers can record voice or video messages from the web. Cheers may trigger by route distance, time, or manual delivery and play through the runner's headphones, with audio handling designed for an active workout.</p></div><div class="brand-feature-card"><img src="../assets/img/cheerlify/logo-mark.png" alt="Cheerlify brand mark" data-i18n-alt="brandAlt" /><span data-i18n="brandCaption">Your people, present when the race gets hard.</span></div></div>
+                  <div class="project-feature reveal"><div class="project-feature__text"><h4 data-i18n="feature3Title">A memory after the finish</h4><p data-i18n="feature3">After the event, the product can turn the route, race statistics, and received cheers into a recap. This keeps the system centred on human moments rather than building another public fitness feed.</p></div><img class="project-feature__image diagram-image" src="../assets/img/cheerlify/flow.svg" alt="Cheerlify product flow ending in a race recap" data-i18n-alt="recapAlt" data-i18n-src="flowImage" /></div>
+                </section>
+                <section class="project-row"><h2 data-i18n="architectureTitle">Architecture decisions</h2><p data-i18n="architecture">Cheerlify is a monorepo with an Expo React Native runner app, a Vite and React TypeScript follower experience, a Django REST backend, and a shared TypeScript domain package. API units are standardized at the domain boundary, and follower sessions stay anonymous by design. The deployed stack uses Docker Compose behind Cloudflare; event access is private, and payment capability is separated from the free tracking layer.</p></section>
+                <section class="project-row"><h2 data-i18n="challengesTitle">Engineering challenges</h2><p data-i18n="challenges">The product combines background GPS, real-time location delivery, route projection, private access, browser media capture, uploads, timed playback, background audio, and payments. Reliability matters more than novelty: a cheer delivered late or not at all misses its emotional purpose. Security work includes conservative production defaults, encrypted integration tokens, request throttling, and explicit payment fallbacks, while on-device long-run validation remains an important release gate.</p></section>
+                <section class="project-row"><h2 data-i18n="resultTitle">Result and current state</h2><p data-i18n="result">Felix is the builder and engineer behind the end-to-end product. The current implementation covers live tracking, voice and video cheers, event packs and payments, invitation sharing, and recap foundations across mobile, web, and backend services. The system is online for controlled testing; real-run background validation and launch operations are the main open MVP work, so the portfolio describes the product as actively being built rather than claiming unverified adoption or performance metrics.</p></section>
+                <section class="project-row"><h2 data-i18n="linkTitle">Project link</h2><p><span data-i18n="linkIntro">Product website:</span> <a href="https://cheerlify.com/" target="_blank" rel="noopener noreferrer">cheerlify.com</a>. <span data-i18n="accessNote">Protected by Cloudflare Access during controlled testing.</span></p></section>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+    </main>
+    <script src="../assets/js/reveal.js" defer></script><script src="../assets/js/main.js" defer></script>
+  </body>
+</html>
