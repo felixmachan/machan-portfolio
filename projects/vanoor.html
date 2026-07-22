@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Vanoor - Apple Watch-first Running</title>
+    <meta name="description" content="Vanoor: a clean, Apple Watch-first running app with GPX navigation, structured workouts, pacing, HealthKit, and offline-first route tools." />
+    <link rel="canonical" href="https://felixmachan.hu/projects/vanoor.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Vanoor - Apple Watch-first Running" />
+    <meta property="og:description" content="A premium, non-social running app focused on reliable run execution, GPX routes, structured workouts, and native Apple platform integration." />
+    <meta property="og:url" content="https://felixmachan.hu/projects/vanoor.html" />
+    <meta property="og:image" content="https://felixmachan.hu/assets/img/vanoor/hero-map.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="stylesheet" href="../assets/css/variables.css" />
+    <link rel="stylesheet" href="../assets/css/base.css" />
+    <link rel="stylesheet" href="../assets/css/components.css" />
+    <link rel="stylesheet" href="../assets/css/project.css" />
+    <link rel="stylesheet" href="../assets/css/animations.css" />
+    <link rel="stylesheet" href="../assets/css/lightbox.css" />
+  </head>
+  <body class="product-project-page vanoor-page">
+    <div class="progress-container"><div class="progress-bar"></div></div>
+    <button class="lang-toggle" type="button" aria-label="Language switch"><span class="lang-toggle__opt" data-lang-option="hu">HU</span><span class="lang-toggle__sep">/</span><span class="lang-toggle__opt is-active" data-lang-option="en">EN</span></button>
+    <button class="theme-toggle" type="button" aria-label="Switch to dark mode" aria-pressed="false">
+      <svg class="theme-icon theme-icon--moon" aria-hidden="true" viewBox="0 0 24 24" fill="currentColor"><path d="M21.53 14.37a.75.75 0 0 0-.86-.3 7.5 7.5 0 0 1-9.79-9.8.75.75 0 0 0-1.16-.83 9.75 9.75 0 1 0 12.04 12.04.75.75 0 0 0-.23-1.11z"/></svg>
+      <svg class="theme-icon theme-icon--sun" aria-hidden="true" viewBox="0 0 24 24" fill="currentColor"><path d="M12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0-5a1 1 0 0 1 1 1v2a1 1 0 1 1-2 0V3a1 1 0 0 1 1-1zm0 18a1 1 0 0 1 1 1v2a1 1 0 1 1-2 0v-2a1 1 0 0 1 1-1zm10-9a1 1 0 0 1-1 1h-2a1 1 0 1 1 0-2h2a1 1 0 0 1 1 1zM5 12a1 1 0 0 1-1 1H2a1 1 0 1 1 0-2h2a1 1 0 0 1 1 1z"/></svg>
+    </button>
+    <main class="width">
+      <section class="section section--hero project-section">
+        <div class="container project-shell">
+          <article class="panel project-page">
+            <div class="project-hero product-project-hero">
+              <div class="product-project-hero__visual reveal"><img class="project-hero-image" src="../assets/img/vanoor/hero-map.png" alt="Vanoor route-following map with live position and completed route progress" data-i18n-alt="heroAlt" /></div>
+              <div class="project-hero-body reveal">
+                <div class="project-hero-actions"><a class="button secondary" href="../index.html#projects">Back to Projects</a><a class="button pill-button" href="https://vanoor.app/" target="_blank" rel="noopener noreferrer">Check project</a></div>
+                <h1 data-i18n="title">Vanoor - Apple Watch-first Running</h1>
+                <p class="section-lead" data-i18n="lead">A clean, premium running app that combines Apple Workout simplicity with GPX navigation, configurable run screens, structured intervals, and race pacing.</p>
+                <div class="pill-container"><span class="pill">Swift</span><span class="pill">SwiftUI</span><span class="pill">watchOS</span><span class="pill">HealthKit</span></div>
+              </div>
+            </div>
+            <div class="project-detail reveal">
+              <div class="project-rows">
+                <section class="project-row"><h2 data-i18n="problemTitle">Problem</h2><p data-i18n="problem">Apple Watch is capable running hardware, but runners who need GPX route guidance, structured intervals, configurable metrics, or race pacing often have to choose between Apple's simple interface and dense third-party power-user apps. The experience becomes fragmented across route tools, workout builders, activity history, and export utilities.</p></section>
+                <section class="project-row"><h2 data-i18n="goalTitle">Goal</h2><p data-i18n="goal">Build the running app Apple could have shipped: focused, reliable, HealthKit-native, and intentionally non-social. It should help a runner prepare and execute a session well without accounts, feeds, coaching noise, or a subscription-first experience.</p></section>
+                <section class="project-row">
+                  <h2 data-i18n="approachTitle">Approach and features</h2>
+                  <div class="project-feature reveal"><div class="project-feature__text"><h4 data-i18n="feature1Title">Plan on iPhone, execute on Watch</h4><p data-i18n="feature1">The iPhone app manages imported GPX routes and structured workouts. Work, rest, and repeat blocks can use distance or time extents with pace, heart-rate-zone, or heart-rate-range targets, then sync to the Watch for focused execution.</p></div><img class="project-feature__image product-shot product-shot--phone" src="../assets/img/vanoor/iphone-workout-editor-portrait.png" alt="Vanoor structured workout editor on iPhone" data-i18n-alt="workoutAlt" /></div>
+                  <div class="project-feature reveal"><div class="project-feature__text"><h4 data-i18n="feature2Title">Route guidance without cockpit clutter</h4><p data-i18n="feature2">The Watch map overlays GPX progress, live position, and the remaining route on Apple Maps. A follow mode recentres after manual exploration, while an offline OSM option is designed for no-phone and trail use.</p></div><img class="project-feature__image product-shot product-shot--watch" src="../assets/img/vanoor/watch-map.png" alt="Vanoor Apple Watch route map screen" data-i18n-alt="mapAlt" /></div>
+                  <div class="project-feature reveal"><div class="project-feature__text"><h4 data-i18n="feature3Title">Pacing, cues, and native activity history</h4><p data-i18n="feature3">A split engine advances targets automatically, shows remaining distance or time, and uses haptics for transitions and configurable pace, heart-rate, and distance cues. Completed sessions are saved with their GPS route to Apple Health and can be reviewed with native charts or exported as FIT and GPX.</p></div><img class="project-feature__image product-shot product-shot--watch" src="../assets/img/vanoor/watch-pacer.png" alt="Vanoor Apple Watch live pacing target screen" data-i18n-alt="pacerAlt" /></div>
+                </section>
+                <section class="project-row"><h2 data-i18n="architectureTitle">Architecture decisions</h2><p data-i18n="architecture">Shared Swift domain models keep routes, workout structures, pacing logic, settings, and transfer envelopes consistent between iPhone and Watch. WatchConnectivity sends structured, checksummed data; the Watch expands repeat blocks only at the execution boundary. HealthKit owns workout recording, CloudKit extends an offline-first local route library, and platform-native SwiftUI, MapKit, Swift Charts, StoreKit, and haptics keep the system close to Apple's reliability model.</p></section>
+                <section class="project-row"><h2 data-i18n="challengesTitle">Engineering challenges</h2><p data-i18n="challenges">The hardest work sits at system boundaries: preserving route progress on loops and self-crossings, keeping background GPS resilient through screen-off runs and transient failures, fitting readable controls onto a Watch, synchronizing editable hierarchical workouts across devices, and supporting offline map tiles within provider and storage constraints. Pure route, split, encoding, and merge logic is isolated for unit testing; device-dependent HealthKit and location behaviour still requires real-hardware validation.</p></section>
+                <section class="project-row"><h2 data-i18n="resultTitle">Result and current state</h2><p data-i18n="result">Felix is building and engineering the native iPhone and Apple Watch product end to end. The current app includes route import and sync, structured workouts with repeat blocks, live maps and pacing, HealthKit recording and history, FIT/GPX export, configurable screens, cues, and an offline-first route library. The remaining release work is deliberately concrete: complete the real-device test matrix, validate long background runs and hardware-dependent metrics, and finish production service configuration.</p></section>
+                <section class="project-row"><h2 data-i18n="linkTitle">Public link</h2><p><span data-i18n="linkIntro">Product website:</span> <a href="https://vanoor.app/" target="_blank" rel="noopener noreferrer">vanoor.app</a></p></section>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+    </main>
+    <script src="../assets/js/reveal.js" defer></script><script src="../assets/js/main.js" defer></script><script src="../assets/js/lightbox.js" defer></script>
+  </body>
+</html>

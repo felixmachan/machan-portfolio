@@ -106,13 +106,16 @@
           eduBorBullets: ['Műszaki alapok', 'STEM fókuszú képzés'],
           projTitle: 'Projektek',
           projLead: 'Válogatott munkák, ahol a mérnöki mélység üzleti eredményekkel találkozik.',
-          projCards: [
-            ['Egyedi Sim Racing pedálszett - ME1', 'Gépészeti tervezés', 'CNC-vel gyártott pedálszett, teljes körű tervezéssel a hardvertől a vezérlő elektronikáig.'],
-            ['Egyedi Sim Racing Button Box', 'NYÁK-tervezés', 'Teljesen egyedi Button Box sim versenyzéshez. 3D nyomtatott ház és saját tervezésű NYÁK.'],
-            ['IoT Device Hub rendszer - MPTRhome', 'otthonautomatizálás', 'Központi hub, amely egyetlen vezérlési síkba fogja össze a kereskedelmi és egyedi IoT eszközöket.'],
-            ['Masszázsszalon weboldal - Talppont', 'UI fókuszú weboldal', 'Masszázsszalon weboldal ügyfélszerzésre optimalizálva.'],
-            ['Otthoni szerver', 'hálózat', 'DNS, DHCP, VPN és más alapvető szolgáltatások az otthoni szerverlaborhoz.'],
-          ],
+          projCards: {
+            pedals: ['Egyedi Sim Racing pedálszett - ME1', 'Gépészeti tervezés', 'CNC-vel gyártott pedálszett, teljes körű tervezéssel a hardvertől a vezérlő elektronikáig.'],
+            buttonbox: ['Egyedi Sim Racing Button Box', 'NYÁK-tervezés', 'Teljesen egyedi Button Box sim versenyzéshez. 3D nyomtatott ház és saját tervezésű NYÁK.'],
+            mptrhome: ['IoT Device Hub rendszer - MPTRhome', 'otthonautomatizálás', 'Központi hub, amely egyetlen vezérlési síkba fogja össze a kereskedelmi és egyedi IoT-eszközöket.'],
+            talppont: ['Masszázsszalon weboldal - Talppont', 'UI-központú weboldal', 'Ügyfélszerzésre optimalizált, nyugodt hangulatú masszázsszalon-weboldal.'],
+            network: ['Otthoni szerver', 'hálózat', 'DNS, DHCP, VPN és más alapvető szolgáltatások az otthoni szerverlaborhoz.'],
+            pacerra: ['Pacerra - MI-alapú állóképességi edző', 'MI-alapú alkalmazásfejlesztés', 'Strava-szinkronra, személyre szabott heti tervekre és edzésenkénti MI-visszajelzésre épülő állóképességi edzőalkalmazás.'],
+            vanoor: ['Vanoor - Apple Watch-központú futóalkalmazás', 'natív alkalmazásfejlesztés', 'Letisztult GPX-navigáció, strukturált edzések, tempótartás és HealthKit-integráció iPhone-ra és Apple Watchra.'],
+            cheerlify: ['Cheerlify - Privát versenynapi támogatás', 'mobil és valós idejű platform', 'Privát élő követés bármilyen GPX-útvonalon, a futóhoz verseny közben eljutó hang- és videóbuzdításokkal.'],
+          },
           skillsTitle: 'Készségek',
           skillGroups: ['Beágyazott', 'DevOps', 'CAD', 'Web', 'Grafika'],
           contactTitle: 'Kapcsolat',
@@ -157,13 +160,16 @@
           eduBorBullets: ['Technical foundations', 'STEM-focused program'],
           projTitle: 'Projects',
           projLead: 'Representative work that blends engineering depth with business outcomes.',
-          projCards: [
-            ['Custom Sim Racing Pedals - ME1', 'Mechanical design', 'A CNC-machined pedal set designed and engineered end-to-end, from hardware to control electronics.'],
-            ['Custom Sim Racing Button Box', 'PCB design', 'Fully custom made Button Box for sim racing setups. 3D printed case with in-house designed PCB.'],
-            ['IoT Device Hub System - MPTRhome', 'home automation', 'Centralized hub that unifies commercial and custom IoT devices with a single control plane.'],
-            ['Massage parlour website - Talppont', 'UI focused website', 'A massage parlour website built to attract customers.'],
-            ['Home server', 'networking', 'DNS, DHCP, VPN and other essential services for the home server lab.'],
-          ],
+          projCards: {
+            pedals: ['Custom Sim Racing Pedals - ME1', 'Mechanical design', 'A CNC-machined pedal set designed and engineered end-to-end, from hardware to control electronics.'],
+            buttonbox: ['Custom Sim Racing Button Box', 'PCB design', 'Fully custom made Button Box for sim racing setups. 3D printed case with in-house designed PCB.'],
+            mptrhome: ['IoT Device Hub System - MPTRhome', 'home automation', 'Centralized hub that unifies commercial and custom IoT devices with a single control plane.'],
+            talppont: ['Massage parlour website - Talppont', 'UI focused website', 'A massage parlour website built to attract customers.'],
+            network: ['Home server', 'networking', 'DNS, DHCP, VPN and other essential services for the home server lab.'],
+            pacerra: ['Pacerra - AI Endurance Coach', 'AI powered app development', 'AI-powered endurance coaching app with Strava sync, personalized weekly plans, and per-workout AI feedback.'],
+            vanoor: ['Vanoor - Apple Watch-first Running', 'native app engineering', 'Clean GPX navigation, structured workouts, pacing, and HealthKit integration for iPhone and Apple Watch.'],
+            cheerlify: ['Cheerlify - Private Race-day Support', 'mobile and real-time platform', 'Private live tracking for any GPX route, with voice and video cheers delivered to the runner mid-race.'],
+          },
           skillsTitle: 'Skills',
           skillGroups: ['Embedded', 'DevOps', 'CAD', 'Web', 'Graphics'],
           contactTitle: 'Contact',
@@ -221,13 +227,15 @@
 
     setHeadingWithIcon('#projects .section-title', t.projTitle);
     setText('#projects .section-lead', t.projLead);
-    const projectCards = document.querySelectorAll('#projects .project-card');
-    t.projCards.forEach((card, index) => {
-      const node = projectCards[index];
-      if (!node) return;
+    const projectCards = document.querySelectorAll('#projects .project-card[data-project-id]');
+    projectCards.forEach((node) => {
+      const card = t.projCards[node.dataset.projectId];
+      if (!card) return;
       const title = node.querySelector('h3');
+      const subtitle = node.querySelector('.project-subtitle');
       const desc = node.querySelector('.project-body p:last-child');
       if (title) title.textContent = card[0];
+      if (subtitle) subtitle.textContent = card[1];
       if (desc) desc.textContent = card[2];
     });
 
@@ -336,8 +344,142 @@
     });
   };
 
+  const localizeDataText = (lang, huValues) => {
+    document.querySelectorAll('[data-i18n]').forEach((node) => {
+      if (!Object.prototype.hasOwnProperty.call(node.dataset, 'enText')) {
+        node.dataset.enText = node.textContent;
+      }
+      const key = node.dataset.i18n;
+      node.textContent = lang === 'hu' && huValues[key]
+        ? huValues[key]
+        : node.dataset.enText;
+    });
+  };
+
+  const localizeProjectAttributes = (lang, huValues) => {
+    document.querySelectorAll('[data-i18n-alt]').forEach((node) => {
+      if (!Object.prototype.hasOwnProperty.call(node.dataset, 'enAlt')) {
+        node.dataset.enAlt = node.getAttribute('alt') || '';
+      }
+      const key = node.dataset.i18nAlt;
+      node.setAttribute('alt', lang === 'hu' && huValues.alts[key]
+        ? huValues.alts[key]
+        : node.dataset.enAlt);
+    });
+
+    document.querySelectorAll('[data-i18n-src]').forEach((node) => {
+      if (!Object.prototype.hasOwnProperty.call(node.dataset, 'enSrc')) {
+        node.dataset.enSrc = node.getAttribute('src') || '';
+      }
+      const key = node.dataset.i18nSrc;
+      node.setAttribute('src', lang === 'hu' && huValues.sources[key]
+        ? huValues.sources[key]
+        : node.dataset.enSrc);
+    });
+
+    const titleNode = document.querySelector('title');
+    if (titleNode) {
+      if (!Object.prototype.hasOwnProperty.call(titleNode.dataset, 'enText')) {
+        titleNode.dataset.enText = titleNode.textContent;
+      }
+      titleNode.textContent = lang === 'hu' ? huValues.pageTitle : titleNode.dataset.enText;
+    }
+
+    const localizeMeta = (selector, huContent) => {
+      document.querySelectorAll(selector).forEach((node) => {
+        if (!Object.prototype.hasOwnProperty.call(node.dataset, 'enContent')) {
+          node.dataset.enContent = node.getAttribute('content') || '';
+        }
+        node.setAttribute('content', lang === 'hu' ? huContent : node.dataset.enContent);
+      });
+    };
+
+    localizeMeta('meta[property="og:title"]', huValues.pageTitle);
+    localizeMeta('meta[name="description"], meta[property="og:description"]', huValues.description);
+  };
+
   const applyProjectPageTranslations = (lang) => {
     const page = window.location.pathname.split('/').pop() || '';
+
+    if (page === 'vanoor.html') {
+      localizeDataText(lang, {
+        title: 'Vanoor - Apple Watch-központú futóalkalmazás',
+        lead: 'Letisztult, prémium futóalkalmazás, amely az Apple Workout egyszerűségét GPX-navigációval, konfigurálható futóképernyőkkel, strukturált intervallumokkal és versenytempó-tervezéssel ötvözi.',
+        problemTitle: 'Probléma',
+        problem: 'Az Apple Watch képességei alapján kiváló futóóra lehetne, de a GPX-útvonalkövetést, strukturált intervallumokat, személyre szabható mérőszámokat vagy versenytempó-tervezést igénylő futóknak gyakran választaniuk kell az Apple egyszerű felülete és a zsúfolt, haladó felhasználóknak szánt külső alkalmazások között. Az élmény útvonalkezelőkre, edzésszerkesztőkre, aktivitáselőzményekre és exportáló eszközökre töredezik.',
+        goalTitle: 'Cél',
+        goal: 'Megépíteni azt a futóalkalmazást, amelyet akár az Apple is kiadhatott volna: fókuszált, megbízható, HealthKit-natív és tudatosan közösségi funkcióktól mentes. Segítse a futót az edzés előkészítésében és pontos végrehajtásában fiókok, hírfolyamok, felesleges coachingzaj és előfizetés-központú működés nélkül.',
+        approachTitle: 'Megközelítés és funkciók',
+        feature1Title: 'Tervezés iPhone-on, végrehajtás az órán',
+        feature1: 'Az iPhone-alkalmazás kezeli az importált GPX-útvonalakat és a strukturált edzéseket. A munka-, pihenő- és ismétlődő blokkok távolság- vagy időalapúak lehetnek, tempó-, pulzuszóna- vagy pulzustartomány-céllal, majd fókuszált végrehajtásra szinkronizálhatók az Apple Watchra.',
+        feature2Title: 'Útvonalvezetés zsúfolt műszerfal nélkül',
+        feature2: 'Az óra térképe az Apple Maps fölött jeleníti meg a GPX-előrehaladást, az aktuális pozíciót és a hátralévő útvonalat. A követő mód a kézi böngészés után visszaközpontosít, az offline OSM-lehetőség pedig telefon nélküli és terepfutásra készül.',
+        feature3Title: 'Tempótartás, jelzések és natív aktivitáselőzmények',
+        feature3: 'A szakaszmotor automatikusan lépteti a célokat, mutatja a hátralévő távolságot vagy időt, és haptikus jelzéseket ad az átmenetekhez, valamint a beállítható tempó-, pulzus- és távolsághatárokhoz. A befejezett edzések GPS-útvonallal együtt kerülnek az Apple Healthbe, natív grafikonokon elemezhetők, továbbá FIT- és GPX-formátumban exportálhatók.',
+        architectureTitle: 'Architekturális döntések',
+        architecture: 'A megosztott Swift tartománymodellek egységesen kezelik az útvonalakat, edzésstruktúrákat, tempólogikát, beállításokat és adatátviteli burkolókat az iPhone és az Apple Watch között. A WatchConnectivity strukturált, ellenőrzőösszeggel védett adatot továbbít; az óra csak a végrehajtási határon bontja ki az ismétlődő blokkokat. Az edzésrögzítést a HealthKit végzi, a CloudKit egy offline-központú helyi útvonaltárat egészít ki, a SwiftUI, MapKit, Swift Charts, StoreKit és a natív haptika pedig az Apple platform megbízhatósági modelljéhez közel tartja a rendszert.',
+        challengesTitle: 'Mérnöki kihívások',
+        challenges: 'A legnehezebb munka a rendszerhatárokon jelentkezik: az útvonal-előrehaladás megőrzése körpályákon és önkereszteződéseknél, a háttérben futó GPS helyreállítása lezárt képernyő és átmeneti hibák mellett, olvasható vezérlők kialakítása az óra kis felületén, szerkeszthető hierarchikus edzések eszközök közötti szinkronizálása, valamint offline térképcsempék kezelése szolgáltatói és tárhelykorlátok között. Az útvonal-, szakasz-, kódoló- és összeolvasztási logika tiszta egységtesztelhető rétegben él; a HealthKit- és helyfüggő működéshez továbbra is valódi hardveres ellenőrzés szükséges.',
+        resultTitle: 'Eredmény és jelenlegi állapot',
+        result: 'Felix a natív iPhone- és Apple Watch-terméket végponttól végpontig építi és mérnököli. A jelenlegi alkalmazás útvonalimportot és -szinkront, ismétlődő blokkokat is kezelő strukturált edzéseket, élő térképet és tempótartást, HealthKit-rögzítést és előzményeket, FIT/GPX-exportot, konfigurálható képernyőket, jelzéseket és offline-központú útvonaltárat tartalmaz. A hátralévő kiadási munka konkrét: a valódi eszközös tesztmátrix lezárása, a hosszú háttérfutások és hardverfüggő mérőszámok ellenőrzése, valamint az éles szolgáltatások konfigurációjának befejezése.',
+        linkTitle: 'Nyilvános hivatkozás',
+        linkIntro: 'Termékoldal:',
+      });
+      localizeProjectAttributes(lang, {
+        pageTitle: 'Vanoor - Apple Watch-központú futóalkalmazás',
+        description: 'Vanoor: letisztult, Apple Watch-központú futóalkalmazás GPX-navigációval, strukturált edzésekkel, tempótartással, HealthKittel és offline-központú útvonalkezeléssel.',
+        alts: {
+          heroAlt: 'A Vanoor útvonalkövető térképe élő pozícióval és teljesített útvonallal',
+          workoutAlt: 'A Vanoor strukturált edzésszerkesztője iPhone-on',
+          mapAlt: 'A Vanoor Apple Watch-os útvonaltérképe',
+          pacerAlt: 'A Vanoor élő tempócél-képernyője Apple Watchon',
+        },
+        sources: {},
+      });
+      return;
+    }
+
+    if (page === 'cheerlify.html') {
+      localizeDataText(lang, {
+        title: 'Cheerlify - Privát versenynapi támogatás',
+        lead: 'Privát platform bármilyen GPX-útvonalhoz, ahol a barátok élőben követik a futót, és olyan hang- vagy videóbuzdításokat küldenek, amelyek verseny közben a futó fülhallgatójában szólalnak meg.',
+        problemTitle: 'Probléma',
+        problem: 'A versenykövetés általában egy mozgó ponttá egyszerűsíti a futót, és gyakran hivatalos eseményhez vagy egy adott ökoszisztémához kötött. A család és a barátok láthatják, hol jár, de ezt a láthatóságot nem tudják valódi támogatássá alakítani abban a nehéz pillanatban, amikor arra a legnagyobb szükség van.',
+        goalTitle: 'Cél',
+        goal: 'A távol lévő támogatók is érezzék úgy, hogy jelen vannak a versenyen. A futó bármilyen GPX-útvonalat használhasson, csak a saját embereit hívja meg, és futás közben valódi hangokat halljon. A támogatóknak ne kelljen alkalmazás vagy fiók: elég legyen egy privát link, egy belépőkód és egy megjelenítendő név.',
+        approachTitle: 'Megközelítés és funkciók',
+        feature1Title: 'Privát esemény bármilyen útvonal köré',
+        feature1: 'A futó GPX-fájlból eseményt hoz létre, majd védett versenylinket és kódot oszt meg. A mobilalkalmazás a háttérben rögzíti a helyzetét, a böngészős irányítópult pedig az útvonalra vetítve, élőben mutatja az előrehaladást a meghívott követőknek.',
+        feature2Title: 'Kontextusban célba érő buzdítások',
+        feature2: 'A követők a weben hang- vagy videóüzenetet rögzíthetnek. A buzdítás útvonaltávolság, idő vagy kézi indítás alapján szólalhat meg a futó fülhallgatójában, az aktív edzéshez igazított hangkezeléssel.',
+        brandCaption: 'A szeretteid veled vannak, amikor nehézzé válik a verseny.',
+        feature3Title: 'Emlék a célba érés után',
+        feature3: 'Az esemény után a termék az útvonalból, a versenystatisztikákból és a beérkezett buzdításokból összefoglalót készíthet. Így a rendszer az emberi pillanatokra összpontosít, nem egy újabb nyilvános fitneszhírfolyam építésére.',
+        architectureTitle: 'Architekturális döntések',
+        architecture: 'A Cheerlify monorepóban készül: a futó alkalmazása Expo és React Native alapú, a követői élmény Vite, React és TypeScript technológiát használ, a REST backendet Django adja, a kliensek pedig közös TypeScript tartománycsomagon osztoznak. Az API mértékegységei a tartományhatáron egységesek, a követői munkamenetek pedig tudatosan névtelenek maradnak. A telepített stack Docker Compose-zal, Cloudflare mögött fut; az eseményhozzáférés privát, a fizetési képesség pedig elkülönül az ingyenes követési rétegtől.',
+        challengesTitle: 'Mérnöki kihívások',
+        challenges: 'A termék egyesíti a háttér-GPS-t, a valós idejű helyzetküldést, az útvonalra vetítést, a privát hozzáférést, a böngészős médiarögzítést, a feltöltéseket, az időzített lejátszást, a háttérhangot és a fizetéseket. A megbízhatóság fontosabb az újdonságnál: a későn vagy egyáltalán nem kézbesített buzdítás elveszíti érzelmi célját. A biztonsági munka konzervatív éles alapbeállításokat, titkosított integrációs tokeneket, kéréskorlátozást és egyértelmű fizetési tartalékágakat foglal magában, miközben a hosszú, valódi futások eszközös ellenőrzése továbbra is fontos kiadási feltétel.',
+        resultTitle: 'Eredmény és jelenlegi állapot',
+        result: 'Felix a teljes termék építője és mérnöke. A jelenlegi megvalósítás mobil-, webes és backend szolgáltatásokon át lefedi az élő követést, a hang- és videóbuzdításokat, az eseménycsomagokat és fizetéseket, a meghívók megosztását, valamint az összefoglalók alapjait. A rendszer ellenőrzött tesztelésre online elérhető; az MVP fő nyitott feladata a valódi futás közbeni háttérműködés validálása és a bevezetési üzemeltetés, ezért a portfólió aktívan épülő termékként mutatja be, ellenőrizetlen használati vagy teljesítménymutatók állítása nélkül.',
+        linkTitle: 'Projektlink',
+        linkIntro: 'Termékoldal:',
+        accessNote: 'Az ellenőrzött tesztidőszakban Cloudflare Access védi.',
+      });
+      localizeProjectAttributes(lang, {
+        pageTitle: 'Cheerlify - Privát versenynapi támogatás',
+        description: 'Cheerlify: privát élő versenykövetés bármilyen GPX-útvonalhoz, a futóhoz verseny közben eljutó hang- és videóbuzdításokkal.',
+        alts: {
+          heroAlt: 'A Cheerlify helyjelölőt és hanghullámot ábrázoló logója',
+          flowAlt: 'A Cheerlify versenynapi folyamata a GPX-eseménytől a privát linken és élő követésen át a buzdításokig és az összefoglalóig',
+          brandAlt: 'A Cheerlify márkajele',
+          recapAlt: 'A Cheerlify termékfolyamata a verseny utáni összefoglalóig',
+        },
+        sources: {
+          flowImage: '../assets/img/cheerlify/flow-hu.svg',
+        },
+      });
+      return;
+    }
 
     if (page === 'custom-sim-racing-pedals.html') {
       localizeTextList('.project-hero-body h1', lang, ['Egyedi Sim Racing pedálszett - ME1']);
@@ -625,6 +767,7 @@
       root.setAttribute('data-lang', nextLang);
       localStorage.setItem(LANG_STORAGE_KEY, nextLang);
       setActiveOption(nextLang);
+      toggle.setAttribute('aria-label', nextLang === 'hu' ? 'Nyelvváltás' : 'Language switch');
       applyTranslations(nextLang);
     };
 
