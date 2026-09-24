@@ -43,8 +43,8 @@ CARDS = [
 ]
 
 TEMPLATE = """<!doctype html><html><head><meta charset="utf-8"><style>
-@font-face{{font-family:Archivo;src:url('{fonts}/archivo-normal-100-900-latin.woff2') format('woff2');font-weight:100 900;font-stretch:62% 125%}}
-@font-face{{font-family:Archivo;src:url('{fonts}/archivo-normal-100-900-latin-ext.woff2') format('woff2');font-weight:100 900;font-stretch:62% 125%;unicode-range:U+0100-02BA,U+1E00-1EFF}}
+@font-face{{font-family:Archivo;src:url('{fonts}/archivo-normal-400-800-latin.woff2') format('woff2');font-weight:400 800;font-stretch:100% 116%}}
+@font-face{{font-family:Archivo;src:url('{fonts}/archivo-normal-400-800-latin-ext.woff2') format('woff2');font-weight:400 800;font-stretch:100% 116%;unicode-range:U+0100-02BA,U+1E00-1EFF}}
 @font-face{{font-family:Plex;src:url('{fonts}/ibm-plex-mono-normal-500-latin.woff2') format('woff2');font-weight:500}}
 *{{margin:0;box-sizing:border-box}}
 html,body{{width:1200px;height:630px;overflow:hidden}}
