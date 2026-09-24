@@ -13,15 +13,17 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 PAGES = [ROOT / "index.html", *sorted((ROOT / "projects").glob("*.html"))]
-VARIANT_W = 640
-MIN_W_FOR_VARIANT = 700
+VARIANTS = (320, 640)
+MIN_W_FOR_VARIANT = 480
 
 SIZES = {
-    "doc-header__figure": "(max-width: 900px) 92vw, 560px",
-    "case-banner": "(max-width: 720px) 92vw, 1280px",
-    "project-card__media": "(max-width: 760px) 92vw, 600px",
+    "doc-header__figure": "(max-width: 900px) calc(100vw - 64px), 560px",
+    "case-banner": "(max-width: 720px) calc(100vw - 48px), 1280px",
+    "project-card__media": "(max-width: 760px) calc(100vw - 48px), 600px",
+    "case-image--phone": "(max-width: 780px) 42vw, 310px",
+    "case-image--watch": "(max-width: 780px) 42vw, 330px",
 }
-DEFAULT_SIZES = "(max-width: 780px) 92vw, 600px"
+DEFAULT_SIZES = "(max-width: 780px) calc(100vw - 64px), 600px"
 
 
 def dims(path: Path):
@@ -36,8 +38,8 @@ def dims(path: Path):
     return int(w), int(h)
 
 
-def make_variant(src: Path) -> Path:
-    out = src.with_name(f"{src.stem}-{VARIANT_W}.webp")
+def make_variant(src: Path, width: int) -> Path:
+    out = src.with_name(f"{src.stem}-{width}.webp")
     if out.exists():
         return out
     source = src
@@ -46,7 +48,7 @@ def make_variant(src: Path) -> Path:
         subprocess.run(["sips", "-s", "format", "png", str(src), "--out", str(tmp)],
                        capture_output=True, check=True)
         source = tmp
-    subprocess.run(["cwebp", "-quiet", "-q", "80", "-resize", str(VARIANT_W), "0",
+    subprocess.run(["cwebp", "-quiet", "-q", "80", "-resize", str(width), "0",
                     str(source), "-o", str(out)], check=True)
     return out
 
@@ -66,6 +68,8 @@ for page in PAGES:
     out, last = [], 0
     for m in re.finditer(r"<img\b[^>]*>", html):
         tag = m.group(0)
+        if "-640.webp" in tag:  # regenerate srcsets this script produced earlier
+            tag = re.sub(r'\s(srcset|sizes)="[^"]*"', "", tag)
         src_m = re.search(r'\ssrc="([^"]+)"', tag)
         if not src_m or src_m.group(1).startswith(("http", "data:")):
             continue
@@ -78,11 +82,11 @@ for page in PAGES:
             new = new.replace("<img", f'<img width="{size[0]}" height="{size[1]}"', 1)
         if (size and src.suffix in (".webp", ".png", ".jpg", ".jpeg", ".avif")
                 and size[0] > MIN_W_FOR_VARIANT and "srcset=" not in tag and "data-light" not in tag):
-            variant = make_variant(src)
-            rel_variant = src_m.group(1).rsplit("/", 1)[0] + "/" + variant.name
+            base = src_m.group(1).rsplit("/", 1)[0] + "/"
+            entries = [f"{base}{make_variant(src, w).name} {w}w" for w in VARIANTS if w < size[0]]
             sizes = context_sizes(html, m.start())
             new = new.replace(f'src="{src_m.group(1)}"',
-                              f'src="{src_m.group(1)}" srcset="{rel_variant} {VARIANT_W}w, {src_m.group(1)} {size[0]}w" sizes="{sizes}"', 1)
+                              f'src="{src_m.group(1)}" srcset="{", ".join(entries)}, {src_m.group(1)} {size[0]}w" sizes="{sizes}"', 1)
         out.append(html[last:m.start()] + new)
         last = m.end()
     out.append(html[last:])

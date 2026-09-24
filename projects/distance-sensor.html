@@ -25,8 +25,8 @@
         } catch (e) {}
       })();
     </script>
-    <link rel="preload" as="image" href="../assets/img/distancesensor/v2-iso.webp" imagesrcset="../assets/img/distancesensor/v2-iso-640.webp 640w, ../assets/img/distancesensor/v2-iso.webp 1160w" imagesizes="(max-width: 900px) 92vw, 560px" fetchpriority="high" />
-    <link rel="stylesheet" href="../assets/css/style.min.css?v=20260924p" />
+    <link rel="preload" as="image" href="../assets/img/distancesensor/v2-iso.webp" imagesrcset="../assets/img/distancesensor/v2-iso-320.webp 320w, ../assets/img/distancesensor/v2-iso-640.webp 640w, ../assets/img/distancesensor/v2-iso.webp 1160w" imagesizes="(max-width: 900px) calc(100vw - 64px), 560px" fetchpriority="high" />
+    <link rel="stylesheet" href="../assets/css/style.min.css?v=20260924q" />
   </head>
   <body data-page="sensor">
     <div class="progress" aria-hidden="true"><div class="progress__bar"></div></div>
@@ -76,7 +76,7 @@
               <span class="current">FM-EE-002</span>
             </nav>
             <div class="doc-header__grid">
-              <div class="reveal">
+              <div>
                 <span class="eyebrow" data-i18n="dom_elec">Electrical</span>
                 <h1 class="doc-header__title" data-i18n="h1">Zigbee ToF Distance Sensor</h1>
                 <p class="doc-header__lead" data-i18n="lead">A fully custom smart-home sensor that measures distance to the millimetre with a laser time-of-flight chip and reports it over Zigbee into Home Assistant. I designed every layer myself: the schematic and PCB in KiCad, the power electronics for battery operation, the C firmware on ESP-IDF and the Zigbee2MQTT integration.</p>
@@ -90,8 +90,8 @@
                   <div class="spec__cell"><span class="spec__key" data-i18n="spec_tooling">Tooling</span><span class="spec__value">ESP32-H2 · KiCad · C</span></div>
                 </div>
               </div>
-              <figure class="doc-header__figure reveal">
-                <img fetchpriority="high" src="../assets/img/distancesensor/v2-iso.webp" srcset="../assets/img/distancesensor/v2-iso-640.webp 640w, ../assets/img/distancesensor/v2-iso.webp 1160w" sizes="(max-width: 900px) 92vw, 560px" class="case-hero-wide" width="1160" height="860" alt="3D render of the v2.0 sensor board with the ESP32-H2 module, boost converter and sensor header" />
+              <figure class="doc-header__figure">
+                <img fetchpriority="high" src="../assets/img/distancesensor/v2-iso.webp" srcset="../assets/img/distancesensor/v2-iso-320.webp 320w, ../assets/img/distancesensor/v2-iso-640.webp 640w, ../assets/img/distancesensor/v2-iso.webp 1160w" sizes="(max-width: 900px) calc(100vw - 64px), 560px" class="case-hero-wide" width="1160" height="860" alt="3D render of the v2.0 sensor board with the ESP32-H2 module, boost converter and sensor header" />
                 <figcaption><span data-i18n="figcap">Fig. 01 — Board v2.0, 3D render from KiCad</span><span>FM-EE-002</span></figcaption>
               </figure>
             </div>
@@ -139,7 +139,7 @@
                 <p data-i18n="f1_p1">A distance sensor is most useful where there is no socket: above a garage door, next to a tank, under a desk. So battery power was a requirement from the first revision. v1 was built around the ESP32-H2-MINI-1 module, which is both the Zigbee radio and the main processor, with ST's VL53L4CD time-of-flight sensor on I2C. A TPS61023 boost converter, a load switch for the sensor and reverse-polarity protection made up the power path. Its job was to prove the full chain: laser measurement, firmware, Zigbee mesh and a live value in Home Assistant.</p>
               </div>
               <figure class="fig fig--contain">
-                <img width="1568" height="1176" src="../assets/img/distancesensor/board-render.png" srcset="../assets/img/distancesensor/board-render-640.webp 640w, ../assets/img/distancesensor/board-render.png 1568w" sizes="(max-width: 780px) 92vw, 600px" alt="Render of the first board revision" loading="lazy" />
+                <img width="1568" height="1176" src="../assets/img/distancesensor/board-render.png" srcset="../assets/img/distancesensor/board-render-320.webp 320w, ../assets/img/distancesensor/board-render-640.webp 640w, ../assets/img/distancesensor/board-render.png 1568w" sizes="(max-width: 780px) calc(100vw - 64px), 600px" alt="Render of the first board revision" loading="lazy" />
                 <figcaption data-i18n="f1_cap">Fig. 02 — Board v1, ESP32-H2-MINI-1</figcaption>
               </figure>
             </div>
@@ -150,7 +150,7 @@
                 <p data-i18n="f2_p2">The board was shrunk to the minimum, with a keep-out zone around the antenna. Test points were added to every important net for bring-up, and the sensor sits on its own header so it can face the target while the board stays out of the way.</p>
               </div>
               <figure class="fig fig--contain">
-                <img width="1000" height="1000" src="../assets/img/distancesensor/v2-top.webp" srcset="../assets/img/distancesensor/v2-top-640.webp 640w, ../assets/img/distancesensor/v2-top.webp 1000w" sizes="(max-width: 780px) 92vw, 600px" alt="Top view render of board v2.0" loading="lazy" />
+                <img width="1000" height="1000" src="../assets/img/distancesensor/v2-top.webp" srcset="../assets/img/distancesensor/v2-top-320.webp 320w, ../assets/img/distancesensor/v2-top-640.webp 640w, ../assets/img/distancesensor/v2-top.webp 1000w" sizes="(max-width: 780px) calc(100vw - 64px), 600px" alt="Top view render of board v2.0" loading="lazy" />
                 <figcaption data-i18n="f2_cap">Fig. 03 — Board v2.0, top view</figcaption>
               </figure>
             </div>
@@ -241,7 +241,7 @@
       </footer>
     </div>
 
-    <script src="../assets/js/i18n.js?v=20260924p" defer></script>
-    <script src="../assets/js/app.js?v=20260924p" defer></script>
+    <script src="../assets/js/i18n.js?v=20260924q" defer></script>
+    <script src="../assets/js/app.js?v=20260924q" defer></script>
   </body>
 </html>

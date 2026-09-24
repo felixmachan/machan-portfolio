@@ -27,8 +27,8 @@
         } catch (e) {}
       })();
     </script>
-    <link rel="preload" as="image" href="../assets/img/cheerlify/feature-graphic.webp" imagesrcset="../assets/img/cheerlify/feature-graphic-640.webp 640w, ../assets/img/cheerlify/feature-graphic.webp 1024w" imagesizes="(max-width: 900px) 92vw, 560px" fetchpriority="high" />
-    <link rel="stylesheet" href="../assets/css/style.min.css?v=20260924p" />
+    <link rel="preload" as="image" href="../assets/img/cheerlify/feature-graphic.webp" imagesrcset="../assets/img/cheerlify/feature-graphic-320.webp 320w, ../assets/img/cheerlify/feature-graphic-640.webp 640w, ../assets/img/cheerlify/feature-graphic.webp 1024w" imagesizes="(max-width: 900px) calc(100vw - 64px), 560px" fetchpriority="high" />
+    <link rel="stylesheet" href="../assets/css/style.min.css?v=20260924q" />
   </head>
   <body data-page="cheerlify">
     <div class="progress" aria-hidden="true"><div class="progress__bar"></div></div>
@@ -78,7 +78,7 @@
               <span class="current">FM-SW-004</span>
             </nav>
             <div class="doc-header__grid">
-              <div class="reveal">
+              <div>
                 <span class="eyebrow" data-i18n="eyebrow">Software · Product · 2026</span>
                 <h1 class="doc-header__title" data-i18n="h1">Cheerlify — Live race tracking with voice cheers</h1>
                 <p class="doc-header__lead" data-i18n="lead">Friends and family follow a runner live in any browser. There's no app to install, but everyone joins under their own name through a private invite. They record a voice cheer, pin it to a kilometre, and it plays in the runner's earbuds right when that kilometre arrives. I designed and built the whole product: the mobile app, the web app, the backend and the infrastructure.</p>
@@ -93,8 +93,8 @@
                   <div class="spec__cell"><span class="spec__key" data-i18n="spec_tooling">Tooling</span><span class="spec__value">React Native · React · Django · PostGIS</span></div>
                 </div>
               </div>
-              <figure class="doc-header__figure reveal">
-                <img fetchpriority="high" src="../assets/img/cheerlify/feature-graphic.webp" srcset="../assets/img/cheerlify/feature-graphic-640.webp 640w, ../assets/img/cheerlify/feature-graphic.webp 1024w" sizes="(max-width: 900px) 92vw, 560px" class="case-hero-wide" width="1024" height="500" alt="Cheerlify: the runner's live map on an iPhone, with a voice cheer from Mum arriving at kilometre 30" />
+              <figure class="doc-header__figure">
+                <img fetchpriority="high" src="../assets/img/cheerlify/feature-graphic.webp" srcset="../assets/img/cheerlify/feature-graphic-320.webp 320w, ../assets/img/cheerlify/feature-graphic-640.webp 640w, ../assets/img/cheerlify/feature-graphic.webp 1024w" sizes="(max-width: 900px) calc(100vw - 64px), 560px" class="case-hero-wide" width="1024" height="500" alt="Cheerlify: the runner's live map on an iPhone, with a voice cheer from Mum arriving at kilometre 30" />
                 <figcaption><span data-i18n="figcap">Fig. 01 — Store feature graphic</span><span>cheerlify.com</span></figcaption>
               </figure>
             </div>
@@ -136,7 +136,7 @@
                 <p class="case-intro" data-i18n="s1_p2">Existing race trackers show a dot on a map, but the communication only goes one way. Chip-timing apps update at timing mats every 5 km, and fitness apps want every supporter to install something and create an account. None of them let the people at home actually <strong>reach</strong> the runner.</p>
                 <p class="case-intro" data-i18n="s1_p3">Cheerlify closes that loop. Supporters follow the runner live, and their recorded voices arrive in the runner's earbuds at the kilometre they chose.</p>
               </div>
-              <figure class="fig case-image"><img width="800" height="450" src="../assets/img/cheerlify/photo-spectators-cheer.webp" srcset="../assets/img/cheerlify/photo-spectators-cheer-640.webp 640w, ../assets/img/cheerlify/photo-spectators-cheer.webp 800w" sizes="(max-width: 780px) 92vw, 600px" alt="Spectators cheering at the side of a city race" loading="lazy" decoding="async" /><figcaption><span data-i18n="cap_2">Fig. 02 — The roadside moment only lasts seconds</span><a class="fig__credit" href="https://unsplash.com/photos/RTMDQeVYo2A" target="_blank" rel="noopener noreferrer"><span data-i18n="photo_by">Photo</span>: Leviosa Hou / Unsplash</a></figcaption></figure>
+              <figure class="fig case-image"><img width="800" height="450" src="../assets/img/cheerlify/photo-spectators-cheer.webp" srcset="../assets/img/cheerlify/photo-spectators-cheer-320.webp 320w, ../assets/img/cheerlify/photo-spectators-cheer-640.webp 640w, ../assets/img/cheerlify/photo-spectators-cheer.webp 800w" sizes="(max-width: 780px) calc(100vw - 64px), 600px" alt="Spectators cheering at the side of a city race" loading="lazy" decoding="async" /><figcaption><span data-i18n="cap_2">Fig. 02 — The roadside moment only lasts seconds</span><a class="fig__credit" href="https://unsplash.com/photos/RTMDQeVYo2A" target="_blank" rel="noopener noreferrer"><span data-i18n="photo_by">Photo</span>: Leviosa Hou / Unsplash</a></figcaption></figure>
             </div>
           </div>
         </section>
@@ -153,7 +153,7 @@
               <li data-i18n="step4"><strong>They record a cheer</strong>A voice or video message with a trigger: instantly, at a chosen km, at halfway, in the last 5 km or in the last 1 km.</li>
               <li data-i18n="step5"><strong>It plays at the right km</strong>When the runner reaches the trigger, the music ducks, a short spoken intro ("Cheer from Mum") plays, then the message. This works on the Lock Screen too.</li>
             </ol>
-            <figure class="fig case-banner reveal"><img src="../assets/img/cheerlify/store-strip.webp" srcset="../assets/img/cheerlify/store-strip-640.webp 640w, ../assets/img/cheerlify/store-strip.webp 2400w" sizes="(max-width: 720px) 92vw, 1280px" width="2400" height="1043" alt="Cheerlify App Store screenshot panorama: live tracking, supporters in the browser, a cheer playing at km 30, the race catalog and the recap" loading="lazy" decoding="async" /><figcaption data-i18n="cap_3">Fig. 03 — App Store screenshot set: the whole loop from start to finish on one course line</figcaption></figure>
+            <figure class="fig case-banner reveal"><img src="../assets/img/cheerlify/store-strip.webp" srcset="../assets/img/cheerlify/store-strip-320.webp 320w, ../assets/img/cheerlify/store-strip-640.webp 640w, ../assets/img/cheerlify/store-strip.webp 2400w" sizes="(max-width: 720px) calc(100vw - 48px), 1280px" width="2400" height="1043" alt="Cheerlify App Store screenshot panorama: live tracking, supporters in the browser, a cheer playing at km 30, the race catalog and the recap" loading="lazy" decoding="async" /><figcaption data-i18n="cap_3">Fig. 03 — App Store screenshot set: the whole loop from start to finish on one course line</figcaption></figure>
           </div>
         </section>
 
@@ -168,8 +168,8 @@
                 <p data-i18n="s3_f1_p2">Once tracking starts, the phone goes in a pocket or an armband. A single background location task uploads GPS batches <em>and</em> plays cheers that are due. It keeps running with the screen locked, because that's where the phone actually is during a race.</p>
               </div>
               <div class="case-gallery case-gallery--pair">
-                <figure class="fig case-image case-image--phone"><img width="620" height="1222" src="../assets/img/cheerlify/phone-runner.webp" alt="Runner tracking screen with live map, distance, pace and ETA" loading="lazy" decoding="async" /><figcaption data-i18n="cap_4">Fig. 04 — Live tracking</figcaption></figure>
-                <figure class="fig case-image case-image--phone"><img width="620" height="1222" src="../assets/img/cheerlify/phone-races.webp" alt="Race catalog with official SPAR Budapest Marathon courses" loading="lazy" decoding="async" /><figcaption data-i18n="cap_5">Fig. 05 — Race catalog</figcaption></figure>
+                <figure class="fig case-image case-image--phone"><img width="620" height="1222" src="../assets/img/cheerlify/phone-runner.webp" srcset="../assets/img/cheerlify/phone-runner-320.webp 320w, ../assets/img/cheerlify/phone-runner.webp 620w" sizes="(max-width: 780px) 42vw, 310px" alt="Runner tracking screen with live map, distance, pace and ETA" loading="lazy" decoding="async" /><figcaption data-i18n="cap_4">Fig. 04 — Live tracking</figcaption></figure>
+                <figure class="fig case-image case-image--phone"><img width="620" height="1222" src="../assets/img/cheerlify/phone-races.webp" srcset="../assets/img/cheerlify/phone-races-320.webp 320w, ../assets/img/cheerlify/phone-races.webp 620w" sizes="(max-width: 780px) 42vw, 310px" alt="Race catalog with official SPAR Budapest Marathon courses" loading="lazy" decoding="async" /><figcaption data-i18n="cap_5">Fig. 05 — Race catalog</figcaption></figure>
               </div>
             </div>
             <div class="feature reveal">
@@ -179,7 +179,7 @@
                 <p data-i18n="s3_f2_p2">Claps (lightweight one-tap support) are bundled into one signal per time window. The default is at most one every 20 seconds and three per minute, enforced under a database row lock. Fifty excited friends therefore can't turn a race into a stream of notification sounds.</p>
               </div>
               <div class="case-gallery">
-                <figure class="fig case-image case-image--phone"><img width="620" height="1222" src="../assets/img/cheerlify/phone-lock.webp" alt="iPhone Lock Screen with the Cheerlify Live Activity during a race" loading="lazy" decoding="async" /><figcaption data-i18n="cap_6">Fig. 06 — Live Activity on the Lock Screen</figcaption></figure>
+                <figure class="fig case-image case-image--phone"><img width="620" height="1222" src="../assets/img/cheerlify/phone-lock.webp" srcset="../assets/img/cheerlify/phone-lock-320.webp 320w, ../assets/img/cheerlify/phone-lock.webp 620w" sizes="(max-width: 780px) 42vw, 310px" alt="iPhone Lock Screen with the Cheerlify Live Activity during a race" loading="lazy" decoding="async" /><figcaption data-i18n="cap_6">Fig. 06 — Live Activity on the Lock Screen</figcaption></figure>
               </div>
             </div>
           </div>
@@ -196,7 +196,7 @@
                 <p data-i18n="s4_f1_p2">Behind the scenes, every supporter gets a named session scoped to that one race. There's no password to create, but the name is required and it travels with every cheer and clap. The runner decides how people get in: a signed invite link, a race ID plus an access code of up to 12 characters, or a public link for those who explicitly want one. Access to one race never grants access to another. MapLibre with OpenFreeMap tiles renders the live course.</p>
               </div>
               <div class="case-gallery">
-                <figure class="fig case-image case-image--phone"><img width="620" height="1222" src="../assets/img/cheerlify/phone-follower.webp" alt="Follower view in Safari: live map of the runner, pace and number of people watching" loading="lazy" decoding="async" /><figcaption data-i18n="cap_7">Fig. 07 — Supporter view in the browser</figcaption></figure>
+                <figure class="fig case-image case-image--phone"><img width="620" height="1222" src="../assets/img/cheerlify/phone-follower.webp" srcset="../assets/img/cheerlify/phone-follower-320.webp 320w, ../assets/img/cheerlify/phone-follower.webp 620w" sizes="(max-width: 780px) 42vw, 310px" alt="Follower view in Safari: live map of the runner, pace and number of people watching" loading="lazy" decoding="async" /><figcaption data-i18n="cap_7">Fig. 07 — Supporter view in the browser</figcaption></figure>
               </div>
             </div>
             <div class="feature reveal">
@@ -205,7 +205,7 @@
                 <p data-i18n="s4_f2_p1">Voice and video cheers are recorded with the browser's MediaRecorder API and uploaded to random, unguessable URLs. Each supporter can send up to three cheers per race, which keeps the queue personal and not spammy.</p>
                 <p data-i18n="s4_f2_p2">A separate <em>cheer-only</em> mode is for people who can't watch live. They record a message days in advance, pin it to a kilometre, and never open the tracking screen.</p>
               </div>
-              <figure class="fig case-image"><img width="800" height="1200" src="../assets/img/cheerlify/photo-spectator-phone.webp" srcset="../assets/img/cheerlify/photo-spectator-phone-640.webp 640w, ../assets/img/cheerlify/photo-spectator-phone.webp 800w" sizes="(max-width: 780px) 92vw, 600px" alt="A spectator following a runner on their phone" loading="lazy" decoding="async" /><figcaption><span data-i18n="cap_9">Fig. 08 — Supporters join from wherever they are</span><a class="fig__credit" href="https://unsplash.com/photos/h_fn7OCKa7I" target="_blank" rel="noopener noreferrer"><span data-i18n="photo_by">Photo</span>: Grace Anne Bobadilla / Unsplash</a></figcaption></figure>
+              <figure class="fig case-image"><img width="800" height="1200" src="../assets/img/cheerlify/photo-spectator-phone.webp" srcset="../assets/img/cheerlify/photo-spectator-phone-320.webp 320w, ../assets/img/cheerlify/photo-spectator-phone-640.webp 640w, ../assets/img/cheerlify/photo-spectator-phone.webp 800w" sizes="(max-width: 780px) calc(100vw - 64px), 600px" alt="A spectator following a runner on their phone" loading="lazy" decoding="async" /><figcaption><span data-i18n="cap_9">Fig. 08 — Supporters join from wherever they are</span><a class="fig__credit" href="https://unsplash.com/photos/h_fn7OCKa7I" target="_blank" rel="noopener noreferrer"><span data-i18n="photo_by">Photo</span>: Grace Anne Bobadilla / Unsplash</a></figcaption></figure>
             </div>
           </div>
         </section>
@@ -222,7 +222,7 @@
                 <p data-i18n="s5_f1_p2">Instead, the backend does a sticky, sequential projection in Python. Each ping is matched only within a plausible window ahead of the last known position. If the runner is lost (more than 35 m from the course), they are reacquired only when they are within 20 m and the implied pace is realistic (at most 1.8× the current pace).</p>
                 <p data-i18n="s5_f1_p3">In the 35 km test, a hairpin turn snapped the runner onto the return leg about 60 m too early. The fix uses GPS heading: a candidate segment that points the opposite way gets a 30 m virtual penalty above 1 m/s. When a ping has no heading, it is derived from the previous fixes. Rebuilding a 6,110-point run went from ~5 s to 0.82 s.</p>
               </div>
-              <figure class="fig case-image"><img width="800" height="450" src="../assets/img/cheerlify/photo-runners-city.webp" srcset="../assets/img/cheerlify/photo-runners-city-640.webp 640w, ../assets/img/cheerlify/photo-runners-city.webp 800w" sizes="(max-width: 780px) 92vw, 600px" alt="Runners on a city course" loading="lazy" decoding="async" /><figcaption><span data-i18n="cap_10">Fig. 09 — City courses double back on themselves</span><a class="fig__credit" href="https://unsplash.com/photos/8pNsZRjxtnw" target="_blank" rel="noopener noreferrer"><span data-i18n="photo_by">Photo</span>: Henry Ren / Unsplash</a></figcaption></figure>
+              <figure class="fig case-image"><img width="800" height="450" src="../assets/img/cheerlify/photo-runners-city.webp" srcset="../assets/img/cheerlify/photo-runners-city-320.webp 320w, ../assets/img/cheerlify/photo-runners-city-640.webp 640w, ../assets/img/cheerlify/photo-runners-city.webp 800w" sizes="(max-width: 780px) calc(100vw - 64px), 600px" alt="Runners on a city course" loading="lazy" decoding="async" /><figcaption><span data-i18n="cap_10">Fig. 09 — City courses double back on themselves</span><a class="fig__credit" href="https://unsplash.com/photos/8pNsZRjxtnw" target="_blank" rel="noopener noreferrer"><span data-i18n="photo_by">Photo</span>: Henry Ren / Unsplash</a></figcaption></figure>
             </div>
             <div class="feature reveal">
               <div class="feature__text">
@@ -230,7 +230,7 @@
                 <p data-i18n="s5_f2_p1">The first long test showed supporters a frozen marker. The cause was subtle. Expo's deferred location updates combine the time and distance thresholds with AND, so the original "60 s and 400 m" setting was really bound by distance at running pace. Batches left the phone only every ~3 minutes, and the P95 GPS delay was 164 s.</p>
                 <p data-i18n="s5_f2_p2">The fix is a 20-second window with distance 0 on both platforms. Distance 0 also works as a heartbeat on Android, which pauses JavaScript timers in the background. An offline backlog holds up to 3,000 points for tunnels and dead zones. An adaptive "Eco" mode lowers GPS accuracy when nobody is watching, to save battery.</p>
               </div>
-              <figure class="fig case-image"><img width="800" height="1120" src="../assets/img/cheerlify/photo-runner-armband.webp" srcset="../assets/img/cheerlify/photo-runner-armband-640.webp 640w, ../assets/img/cheerlify/photo-runner-armband.webp 800w" sizes="(max-width: 780px) 92vw, 600px" alt="Runner with a phone in an armband" loading="lazy" decoding="async" /><figcaption><span data-i18n="cap_11">Fig. 10 — The phone lives in a pocket or armband for hours</span><a class="fig__credit" href="https://unsplash.com/photos/XCkRGOX2VgM" target="_blank" rel="noopener noreferrer"><span data-i18n="photo_by">Photo</span>: Filip Mroz / Unsplash</a></figcaption></figure>
+              <figure class="fig case-image"><img width="800" height="1120" src="../assets/img/cheerlify/photo-runner-armband.webp" srcset="../assets/img/cheerlify/photo-runner-armband-320.webp 320w, ../assets/img/cheerlify/photo-runner-armband-640.webp 640w, ../assets/img/cheerlify/photo-runner-armband.webp 800w" sizes="(max-width: 780px) calc(100vw - 64px), 600px" alt="Runner with a phone in an armband" loading="lazy" decoding="async" /><figcaption><span data-i18n="cap_11">Fig. 10 — The phone lives in a pocket or armband for hours</span><a class="fig__credit" href="https://unsplash.com/photos/XCkRGOX2VgM" target="_blank" rel="noopener noreferrer"><span data-i18n="photo_by">Photo</span>: Filip Mroz / Unsplash</a></figcaption></figure>
             </div>
           </div>
         </section>
@@ -265,7 +265,7 @@
                 <p data-i18n="s7_p1">The simulator can't prove that background GPS, audio ducking and network recovery work together for four hours in a pocket. So I ran it: <strong>35 km, 4 h 17 min, 5,726 GPS points, 15 followers, 6 cheers played and 19 claps</strong>, with the backend averaging 2.6% CPU and zero server errors.</p>
                 <p data-i18n="s7_p2">The run produced 12 logged issues, including the hairpin snap, the batching delay, heartbeat pings being dropped as duplicates and a proxy header that broke media URLs in release builds. Eleven are fixed. The last one, a controlled battery test, is still open, and I don't publish a battery claim until it's measured properly.</p>
               </div>
-              <figure class="fig case-image case-image--phone"><img width="620" height="1222" src="../assets/img/cheerlify/phone-recap.webp" alt="Recap screen with distance, pace and every received voice cheer" loading="lazy" decoding="async" /><figcaption data-i18n="cap_12">Fig. 11 — The recap after the finish</figcaption></figure>
+              <figure class="fig case-image case-image--phone"><img width="620" height="1222" src="../assets/img/cheerlify/phone-recap.webp" srcset="../assets/img/cheerlify/phone-recap-320.webp 320w, ../assets/img/cheerlify/phone-recap.webp 620w" sizes="(max-width: 780px) 42vw, 310px" alt="Recap screen with distance, pace and every received voice cheer" loading="lazy" decoding="async" /><figcaption data-i18n="cap_12">Fig. 11 — The recap after the finish</figcaption></figure>
             </div>
             <div class="feature reveal">
               <div class="feature__text">
@@ -339,7 +339,7 @@
       </footer>
     </div>
 
-    <script src="../assets/js/i18n.js?v=20260924p" defer></script>
-    <script src="../assets/js/app.js?v=20260924p" defer></script>
+    <script src="../assets/js/i18n.js?v=20260924q" defer></script>
+    <script src="../assets/js/app.js?v=20260924q" defer></script>
   </body>
 </html>
