@@ -135,7 +135,7 @@
                 <p class="case-intro" data-i18n="s1_p2">Existing race trackers show a dot on a map, but the communication only goes one way. Chip-timing apps update at timing mats every 5 km, and fitness apps want every supporter to install something and create an account. None of them let the people at home actually <strong>reach</strong> the runner.</p>
                 <p class="case-intro" data-i18n="s1_p3">Cheerlify closes that loop. Supporters follow the runner live, and their recorded voices arrive in the runner's earbuds at the kilometre they chose.</p>
               </div>
-              <figure class="fig case-image"><img src="../assets/img/cheerlify/photo-spectators-cheer.webp" alt="Spectators cheering at the side of a city race" loading="lazy" decoding="async" /><figcaption><span data-i18n="cap_2">Fig. 02 — The roadside moment only lasts seconds</span><a class="fig__credit" href="https://unsplash.com/photos/RTMDQeVYo2A" target="_blank" rel="noopener"><span data-i18n="photo_by">Photo</span>: Leviosa Hou / Unsplash</a></figcaption></figure>
+              <figure class="fig case-image"><img src="../assets/img/cheerlify/photo-spectators-cheer.webp" alt="Spectators cheering at the side of a city race" loading="lazy" decoding="async" /><figcaption><span data-i18n="cap_2">Fig. 02 — The roadside moment only lasts seconds</span><a class="fig__credit" href="https://unsplash.com/photos/RTMDQeVYo2A" target="_blank" rel="noopener noreferrer"><span data-i18n="photo_by">Photo</span>: Leviosa Hou / Unsplash</a></figcaption></figure>
             </div>
           </div>
         </section>
@@ -204,7 +204,7 @@
                 <p data-i18n="s4_f2_p1">Voice and video cheers are recorded with the browser's MediaRecorder API and uploaded to random, unguessable URLs. Each supporter can send up to three cheers per race, which keeps the queue personal and not spammy.</p>
                 <p data-i18n="s4_f2_p2">A separate <em>cheer-only</em> mode is for people who can't watch live. They record a message days in advance, pin it to a kilometre, and never open the tracking screen.</p>
               </div>
-              <figure class="fig case-image"><img src="../assets/img/cheerlify/photo-spectator-phone.webp" alt="A spectator following a runner on their phone" loading="lazy" decoding="async" /><figcaption><span data-i18n="cap_9">Fig. 08 — Supporters join from wherever they are</span><a class="fig__credit" href="https://unsplash.com/photos/h_fn7OCKa7I" target="_blank" rel="noopener"><span data-i18n="photo_by">Photo</span>: Grace Anne Bobadilla / Unsplash</a></figcaption></figure>
+              <figure class="fig case-image"><img src="../assets/img/cheerlify/photo-spectator-phone.webp" alt="A spectator following a runner on their phone" loading="lazy" decoding="async" /><figcaption><span data-i18n="cap_9">Fig. 08 — Supporters join from wherever they are</span><a class="fig__credit" href="https://unsplash.com/photos/h_fn7OCKa7I" target="_blank" rel="noopener noreferrer"><span data-i18n="photo_by">Photo</span>: Grace Anne Bobadilla / Unsplash</a></figcaption></figure>
             </div>
           </div>
         </section>
@@ -221,7 +221,7 @@
                 <p data-i18n="s5_f1_p2">Instead, the backend does a sticky, sequential projection in Python. Each ping is matched only within a plausible window ahead of the last known position. If the runner is lost (more than 35 m from the course), they are reacquired only when they are within 20 m and the implied pace is realistic (at most 1.8× the current pace).</p>
                 <p data-i18n="s5_f1_p3">In the 35 km test, a hairpin turn snapped the runner onto the return leg about 60 m too early. The fix uses GPS heading: a candidate segment that points the opposite way gets a 30 m virtual penalty above 1 m/s. When a ping has no heading, it is derived from the previous fixes. Rebuilding a 6,110-point run went from ~5 s to 0.82 s.</p>
               </div>
-              <figure class="fig case-image"><img src="../assets/img/cheerlify/photo-runners-city.webp" alt="Runners on a city course" loading="lazy" decoding="async" /><figcaption><span data-i18n="cap_10">Fig. 09 — City courses double back on themselves</span><a class="fig__credit" href="https://unsplash.com/photos/8pNsZRjxtnw" target="_blank" rel="noopener"><span data-i18n="photo_by">Photo</span>: Henry Ren / Unsplash</a></figcaption></figure>
+              <figure class="fig case-image"><img src="../assets/img/cheerlify/photo-runners-city.webp" alt="Runners on a city course" loading="lazy" decoding="async" /><figcaption><span data-i18n="cap_10">Fig. 09 — City courses double back on themselves</span><a class="fig__credit" href="https://unsplash.com/photos/8pNsZRjxtnw" target="_blank" rel="noopener noreferrer"><span data-i18n="photo_by">Photo</span>: Henry Ren / Unsplash</a></figcaption></figure>
             </div>
             <div class="feature reveal">
               <div class="feature__text">
@@ -229,7 +229,7 @@
                 <p data-i18n="s5_f2_p1">The first long test showed supporters a frozen marker. The cause was subtle. Expo's deferred location updates combine the time and distance thresholds with AND, so the original "60 s and 400 m" setting was really bound by distance at running pace. Batches left the phone only every ~3 minutes, and the P95 GPS delay was 164 s.</p>
                 <p data-i18n="s5_f2_p2">The fix is a 20-second window with distance 0 on both platforms. Distance 0 also works as a heartbeat on Android, which pauses JavaScript timers in the background. An offline backlog holds up to 3,000 points for tunnels and dead zones. An adaptive "Eco" mode lowers GPS accuracy when nobody is watching, to save battery.</p>
               </div>
-              <figure class="fig case-image"><img src="../assets/img/cheerlify/photo-runner-armband.webp" alt="Runner with a phone in an armband" loading="lazy" decoding="async" /><figcaption><span data-i18n="cap_11">Fig. 10 — The phone lives in a pocket or armband for hours</span><a class="fig__credit" href="https://unsplash.com/photos/XCkRGOX2VgM" target="_blank" rel="noopener"><span data-i18n="photo_by">Photo</span>: Filip Mroz / Unsplash</a></figcaption></figure>
+              <figure class="fig case-image"><img src="../assets/img/cheerlify/photo-runner-armband.webp" alt="Runner with a phone in an armband" loading="lazy" decoding="async" /><figcaption><span data-i18n="cap_11">Fig. 10 — The phone lives in a pocket or armband for hours</span><a class="fig__credit" href="https://unsplash.com/photos/XCkRGOX2VgM" target="_blank" rel="noopener noreferrer"><span data-i18n="photo_by">Photo</span>: Filip Mroz / Unsplash</a></figcaption></figure>
             </div>
           </div>
         </section>
