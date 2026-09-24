@@ -1,623 +1,567 @@
-﻿<!doctype html>
-<html lang="en">
+<!doctype html>
+<html lang="en" data-theme="light">
   <head>
-    <meta
-      name="description"
-      content="Machán Félix mechatronikai mérnöki portfóliója. Beágyazott rendszerek, NYÁK-tervezés, IoT, okosotthon-megoldások és full-stack mérnöki projektek."
-    />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Machán Félix - Mérnöki Portfólió</title>
-    <link rel="stylesheet" href="assets/css/variables.css" />
-    <link rel="stylesheet" href="assets/css/base.css" />
-    <link rel="stylesheet" href="assets/css/components.css" />
-    <link rel="stylesheet" href="assets/css/animations.css" />
+    <title>Felix Machán — Engineering Portfolio</title>
+    <meta
+      name="description"
+      content="Felix Machán — mechatronics engineering portfolio. Embedded systems, PCB design, IoT, smart home solutions and full-stack engineering projects."
+    />
     <link rel="canonical" href="https://felixmachan.hu/" />
 
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-    <link rel="manifest" href="/site.webmanifest">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="manifest" href="/site.webmanifest" />
 
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="Machán Félix - Mérnöki Portfólió" />
-    <meta property="og:description" content="Ismerj meg és nézd meg projektjeimet a személyes portfólióoldalamon." />
+    <meta property="og:title" content="Felix Machán — Engineering Portfolio" />
+    <meta property="og:description" content="Mechatronics engineer building real systems — mechanical, electrical, software." />
     <meta property="og:url" content="https://felixmachan.hu/" />
     <meta property="og:image" content="https://felixmachan.hu/og_image.png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:locale" content="hu_HU" />
+    <meta property="og:locale" content="en_US" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Machán Félix - Mérnöki Portfólió" />
-    <meta name="twitter:description" content="Ismerj meg és nézd meg projektjeimet a személyes portfólióoldalamon." />
+    <meta name="twitter:title" content="Felix Machán — Engineering Portfolio" />
+    <meta name="twitter:description" content="Mechatronics engineer building real systems — mechanical, electrical, software." />
     <meta name="twitter:image" content="https://felixmachan.hu/og_image.png" />
 
+    <script>
+      (function () {
+        try {
+          var t = localStorage.getItem('theme');
+          if (!t) t = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+          document.documentElement.setAttribute('data-theme', t);
+        } catch (e) {}
+      })();
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&family=IBM+Plex+Mono:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/css/style.css?v=20260924n" />
   </head>
-  <body>
-    <nav class="side-nav" aria-label="Section navigation">
-      <span class="side-nav__indicator" aria-hidden="true"></span>
-      <a class="side-nav__item" href="#hero">
-        <span class="side-nav__dot" aria-hidden="true"></span>
-        <span class="side-nav__label">Hello</span>
-      </a>
-      <a class="side-nav__item" href="#about">
-        <span class="side-nav__dot" aria-hidden="true"></span>
-        <span class="side-nav__label">About</span>
-      </a>
-      <a class="side-nav__item" href="#experience">
-        <span class="side-nav__dot" aria-hidden="true"></span>
-        <span class="side-nav__label">Experience</span>
-      </a>
-      <a class="side-nav__item" href="#education">
-        <span class="side-nav__dot" aria-hidden="true"></span>
-        <span class="side-nav__label">Education</span>
-      </a>
-      <a class="side-nav__item" href="#projects">
-        <span class="side-nav__dot" aria-hidden="true"></span>
-        <span class="side-nav__label">Projects</span>
-      </a>
-      <a class="side-nav__item" href="#skills">
-        <span class="side-nav__dot" aria-hidden="true"></span>
-        <span class="side-nav__label">Skills</span>
-      </a>
-      <a class="side-nav__item" href="#contact">
-        <span class="side-nav__dot" aria-hidden="true"></span>
-        <span class="side-nav__label">Contact</span>
-      </a>
-    </nav>
-    <button class="lang-toggle" type="button" aria-label="Language switch">
-      <span class="lang-toggle__opt" data-lang-option="hu">HU</span><span class="lang-toggle__sep">/</span><span class="lang-toggle__opt is-active" data-lang-option="en">EN</span>
-    </button>
-    <button class="theme-toggle" type="button" aria-label="Switch to dark mode" aria-pressed="false">
-      <svg class="theme-icon theme-icon--moon" aria-hidden="true" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M21.53 14.37a.75.75 0 0 0-.86-.3 7.5 7.5 0 0 1-9.79-9.8.75.75 0 0 0-1.16-.83 9.75 9.75 0 1 0 12.04 12.04.75.75 0 0 0-.23-1.11z"/>
-      </svg>
-      <svg class="theme-icon theme-icon--sun" aria-hidden="true" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0-5a1 1 0 0 1 1 1v2a1 1 0 1 1-2 0V3a1 1 0 0 1 1-1zm0 18a1 1 0 0 1 1 1v2a1 1 0 1 1-2 0v-2a1 1 0 0 1 1-1zm10-9a1 1 0 0 1-1 1h-2a1 1 0 1 1 0-2h2a1 1 0 0 1 1 1zM5 12a1 1 0 0 1-1 1H2a1 1 0 1 1 0-2h2a1 1 0 0 1 1 1zm14.95-6.95a1 1 0 0 1 0 1.41l-1.42 1.42a1 1 0 1 1-1.41-1.42l1.41-1.41a1 1 0 0 1 1.42 0zM6.88 17.12a1 1 0 0 1 0 1.41L5.46 19.95a1 1 0 1 1-1.41-1.41l1.42-1.42a1 1 0 0 1 1.41 0zm12.07 1.41a1 1 0 0 1-1.41 0l-1.42-1.42a1 1 0 0 1 1.42-1.41l1.41 1.41a1 1 0 0 1 0 1.42zM7.29 6.88a1 1 0 0 1-1.41 0L4.46 5.46a1 1 0 1 1 1.41-1.41l1.42 1.42a1 1 0 0 1 0 1.41z"/>
-      </svg>
-    </button>
+  <body data-page="index">
+    <span class="sheet__mark sheet__mark--tl" aria-hidden="true"></span>
+    <span class="sheet__mark sheet__mark--tr" aria-hidden="true"></span>
+    <span class="sheet__mark sheet__mark--bl" aria-hidden="true"></span>
+    <span class="sheet__mark sheet__mark--br" aria-hidden="true"></span>
 
-    <div class="section-pager" aria-label="Section navigation" role="group">
-  <button class="section-pager__btn" type="button" data-dir="up" aria-label="Previous section">
-    <svg aria-hidden="true" viewBox="0 0 24 24" fill="currentColor">
-      <path d="M12 8.5 6.5 14a1 1 0 0 0 1.4 1.4L12 11.3l4.1 4.1A1 1 0 1 0 17.5 14L12 8.5z"/>
-    </svg>
-  </button>
-
-  <span class="section-pager__divider" aria-hidden="true"></span>
-
-  <button class="section-pager__btn" type="button" data-dir="down" aria-label="Next section">
-    <svg aria-hidden="true" viewBox="0 0 24 24" fill="currentColor">
-      <path d="M12 15.5 17.5 10a1 1 0 1 0-1.4-1.4L12 12.7 7.9 8.6A1 1 0 1 0 6.5 10l5.5 5.5z"/>
-    </svg>
-  </button>
-</div>
-
-
-    <main>
-  <section id="hero" class="section section--hero reveal">
-    <div class="container">
-      <div class="panel split hero-stack">
-        <div class="reveal">
-          <img class="hero-photo" src="./assets/img/felix.avif" alt="Portrait of Felix" />
-        </div>
-        <div class="reveal">
-          <h1 class="section-title"><span class="typewriter-line typewriter-line--caret" style="--tw-steps: 21; --tw-offset: 1; --tw-duration: 2.2s; --tw-delay: 0.2s; --tw-hold: 1s;">Hi, my name is <span style="color: rgb(173, 126, 88);">Felix</span>,</span></h1>
-          <p class="section-lead"><span class="typewriter-line typewriter-line--caret" style="--tw-steps: 20; --tw-offset: 2; --tw-duration: 2s; --tw-delay: 3s; --tw-hold: 0.5s;">and I'm an <span style="font-style: italic;">Engineer.</span></span></p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-<section id="about" class="section reveal">
-  <div class="container">
-    <div class="panel reveal">
-      <h2 class="section-title"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-file-person" viewBox="0 0 16 16">
-  <path d="M12 1a1 1 0 0 1 1 1v10.755S12 11 8 11s-5 1.755-5 1.755V2a1 1 0 0 1 1-1zM4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z"/>
-  <path d="M8 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/>
-</svg> About</h2>
-      <div class="about-intro">
-        <img class="about-photo" src="assets/img/IMG_4304.avif" alt="Portrait of Felix Machan" />
-        <div class="about-text">
-          <p>My name is <span style="font-weight: bold;">Felix Machan</span> and I'm a <span style="font-weight: bold;">23-year-old engineering student</span> coming from a small town near <span style="font-weight: bold;">Budapest, Hungary.</span> Ever since I was a child, I have known that I'm mainly interested in technical subjects and I like <span style="font-weight: bold;">building things.</span> This is exactly why I chose to pursue engineering as my field of study.
-            However, it was not clear to me at first which specific branch of engineering I wanted to specialize in. After some research, I found out about <span style="font-weight: bold;">Mechatronics Engineering</span>, which perfectly combines my interests in mechanical, electrical, and software engineering. With this multidisciplinary approach, I can work on a wide range of projects and solve complex problems that require knowledge from multiple fields. 
-          </p>
-          <p style="margin-top: 15px;">
-            Since the beginning of my studies, I have adopted a hands-on approach to system design and implementation.
-            I build practical, end-to-end solutions spanning embedded systems, software, and infrastructure, with a strong emphasis on understanding how things work - not just making them work.
-          </p>
-        </div>
-      </div>
-      <div class="pills-container">
-        <span class="pill">Curiosity</span>
-        <span class="pill">Creativity</span>
-        <span class="pill">Practicality</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-
-<section id="experience" class="section reveal">
-  <div class="container">
-    <div class="panel reveal">
-      <h2 class="section-title"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-suitcase-lg-fill" viewBox="0 0 16 16">
-  <path d="M7 0a2 2 0 0 0-2 2H1.5A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14H2a.5.5 0 0 0 1 0h10a.5.5 0 0 0 1 0h.5a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2H11a2 2 0 0 0-2-2zM6 2a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1zM3 13V3h1v10zm9 0V3h1v10z"/>
-</svg> Professional Experience</h2>
-        <div class="stack experience-list">
-          <div class="card experience-card reveal">
-          <h3 style="margin-bottom: 3px !important;">DevOps & IoT Engineer Intern</h3>
-          <h3 style="margin-bottom: 3px !important;"> MPTR kft</h3>
-          <h4 style="margin-bottom: 5px !important;">2025.09. - Present</h4>
-          <p>Developing a centralized platform to integrate commercial and custom IoT devices, while supporting DevOps and operational tasks.</p>
-        </div>
-          <div class="card experience-card reveal">
-          <h3 style="margin-bottom: 3px !important;">Engineering Intern</h3>
-          <h3 style="margin-bottom: 3px !important;">Tuttnauer kft</h3>
-          <h4 style="margin-bottom: 5px !important;">2024.02. - 2025.11.</h4>
-          <p>Supported the Engineering team with various tasks and projects, broadening my practical and theoretical knowledge of several fields of Engineering. </p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-
-
-<section id="education" class="section reveal">
-  <div class="container">
-    <div class="panel reveal education-panel">
-      <h2 class="section-title" style="margin-bottom: 60px;"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-mortarboard" viewBox="0 0 16 16">
-  <path d="M8.211 2.047a.5.5 0 0 0-.422 0l-7.5 3.5a.5.5 0 0 0 .025.917l7.5 3a.5.5 0 0 0 .372 0L14 7.14V13a1 1 0 0 0-1 1v2h3v-2a1 1 0 0 0-1-1V6.739l.686-.275a.5.5 0 0 0 .025-.917z"/>
-  <path d="M4.176 9.032a.5.5 0 0 0-.656.327l-.5 1.7a.5.5 0 0 0 .294.605l4.5 1.8a.5.5 0 0 0 .372 0l4.5-1.8a.5.5 0 0 0 .294-.605l-.5-1.7a.5.5 0 0 0-.656-.327L8 10.466zm-.068 1.873.22-.748 3.496 1.311a.5.5 0 0 0 .352 0l3.496-1.311.22.748L8 12.46z"/>
-</svg> Education</h2>
-      <div class="education-timeline">
-        <div class="education-row">
-          <article class="education-card education-card--left reveal">
-            <h3 class="school">Budapest University of Technology and Economics</h3>
-            <p class="education-subtitle">BSc in Mechatronics Engineering, Cyber-Physical Systems</p>
-            <ul class="education-list">
-              <li>Systems engineering focus</li>
-              <li>Embedded and control systems</li>
-            </ul>
-          </article>
-          <div class="education-axis">
-            <span class="education-logo" aria-hidden="true">
-              <img class="education-logo-image" src="assets/img/bme_light.avif" data-light="assets/img/bme_light.avif" data-dark="assets/img/bme_dark.webp" alt="BME logo">
+    <div class="sheet">
+      <header class="nav">
+        <div class="container nav__inner">
+          <a class="nav__brand" href="#top">
+            <span class="nav__monogram" aria-hidden="true">FM</span>
+            <span class="nav__title">
+              <span class="nav__name">Felix Machán</span>
+              <span class="nav__doc" data-i18n="nav_doc">Portfolio · Rev D</span>
             </span>
-            <span class="education-date reveal"><span class="pill edu">2022 - Present</span></span>
+          </a>
+          <nav class="nav__links" aria-label="Sections">
+            <a class="nav__link" href="#about" data-i18n="nav_about">About</a>
+            <a class="nav__link" href="#timeline" data-i18n="nav_timeline">Timeline</a>
+            <a class="nav__link" href="#projects" data-i18n="nav_projects">Projects</a>
+            <a class="nav__link" href="#skills" data-i18n="nav_skills">Skills</a>
+            <a class="nav__link" href="#contact" data-i18n="nav_contact">Contact</a>
+          </nav>
+          <div class="nav__controls">
+            <button class="lang-toggle" type="button" aria-label="Language switch">
+              <span class="lang-toggle__opt" data-lang-option="hu">HU</span><span class="lang-toggle__sep">/</span><span class="lang-toggle__opt is-active" data-lang-option="en">EN</span>
+            </button>
+            <button class="theme-toggle" type="button" aria-label="Toggle dark mode" aria-pressed="false">
+              <svg class="theme-icon theme-icon--moon" aria-hidden="true" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M21.53 14.37a.75.75 0 0 0-.86-.3 7.5 7.5 0 0 1-9.79-9.8.75.75 0 0 0-1.16-.83 9.75 9.75 0 1 0 12.04 12.04.75.75 0 0 0-.23-1.11z"/>
+              </svg>
+              <svg class="theme-icon theme-icon--sun" aria-hidden="true" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0-5a1 1 0 0 1 1 1v2a1 1 0 1 1-2 0V3a1 1 0 0 1 1-1zm0 18a1 1 0 0 1 1 1v2a1 1 0 1 1-2 0v-2a1 1 0 0 1 1-1zm10-9a1 1 0 0 1-1 1h-2a1 1 0 1 1 0-2h2a1 1 0 0 1 1 1zM5 12a1 1 0 0 1-1 1H2a1 1 0 1 1 0-2h2a1 1 0 0 1 1 1zm14.95-6.95a1 1 0 0 1 0 1.41l-1.42 1.42a1 1 0 1 1-1.41-1.42l1.41-1.41a1 1 0 0 1 1.42 0zM6.88 17.12a1 1 0 0 1 0 1.41L5.46 19.95a1 1 0 1 1-1.41-1.41l1.42-1.42a1 1 0 0 1 1.41 0zm12.07 1.41a1 1 0 0 1-1.41 0l-1.42-1.42a1 1 0 0 1 1.42-1.41l1.41 1.41a1 1 0 0 1 0 1.42zM7.29 6.88a1 1 0 0 1-1.41 0L4.46 5.46a1 1 0 1 1 1.41-1.41l1.42 1.42a1 1 0 0 1 0 1.41z"/>
+              </svg>
+            </button>
+            <button class="nav__burger" type="button" aria-label="Menu" aria-expanded="false">
+              <span></span><span></span><span></span>
+            </button>
           </div>
-          <div></div>
         </div>
-        <div class="education-row">
-          <div></div>
-          <div class="education-axis education-axis--left">
-            <span class="education-logo" aria-hidden="true">
-              <img class="education-logo-image" src="assets/img/boro_light.avif" data-light="assets/img/boro_light.avif" data-dark="assets/img/boro_dark.webp" alt="Boronkay logo">
-            </span>
-            <span class="education-date reveal"><span class="pill edu">2017 - 2022</span></span>
-          </div>
-          <article class="education-card education-card--right reveal">
-            <h3 class="school">VSZC Gyorgy Boronkay Technical Secondary School</h3>
-            <p class="education-subtitle">Bilingual class with an outstanding graduation record</p>
-            <ul class="education-list">
-              <li>Technical foundations</li>
-              <li>STEM-focused program</li>
-            </ul>
-          </article>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+      </header>
 
-
-
-<section id="projects" class="section reveal">
-  <div class="container">
-    <div class="panel reveal">
-      <h2 class="section-title"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-cpu" viewBox="0 0 16 16">
-  <path d="M5 0a.5.5 0 0 1 .5.5V2h1V.5a.5.5 0 0 1 1 0V2h1V.5a.5.5 0 0 1 1 0V2h1V.5a.5.5 0 0 1 1 0V2A2.5 2.5 0 0 1 14 4.5h1.5a.5.5 0 0 1 0 1H14v1h1.5a.5.5 0 0 1 0 1H14v1h1.5a.5.5 0 0 1 0 1H14v1h1.5a.5.5 0 0 1 0 1H14a2.5 2.5 0 0 1-2.5 2.5v1.5a.5.5 0 0 1-1 0V14h-1v1.5a.5.5 0 0 1-1 0V14h-1v1.5a.5.5 0 0 1-1 0V14h-1v1.5a.5.5 0 0 1-1 0V14A2.5 2.5 0 0 1 2 11.5H.5a.5.5 0 0 1 0-1H2v-1H.5a.5.5 0 0 1 0-1H2v-1H.5a.5.5 0 0 1 0-1H2v-1H.5a.5.5 0 0 1 0-1H2A2.5 2.5 0 0 1 4.5 2V.5A.5.5 0 0 1 5 0m-.5 3A1.5 1.5 0 0 0 3 4.5v7A1.5 1.5 0 0 0 4.5 13h7a1.5 1.5 0 0 0 1.5-1.5v-7A1.5 1.5 0 0 0 11.5 3zM5 6.5A1.5 1.5 0 0 1 6.5 5h3A1.5 1.5 0 0 1 11 6.5v3A1.5 1.5 0 0 1 9.5 11h-3A1.5 1.5 0 0 1 5 9.5zM6.5 6a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5z"/>
-</svg> Projects</h2>
-      <p class="section-lead">Representative work that blends engineering depth with business outcomes.</p>
-      <div class="project-groups">
-        <section class="project-category reveal" aria-labelledby="projects-mechanical">
-          <h3 class="project-category__title" id="projects-mechanical">Mechanical Design</h3>
-          <div class="project-list">
-            <a class="project-card reveal" href="projects/custom-sim-racing-pedals.html">
-              <img class="project-image" src="assets/img/pedals/pedals.avif" alt="Custom Sim Racing Pedals preview" />
-              <div class="project-body">
-                <h3>Custom Sim Racing Pedals - ME1</h3>
-                <p class="project-subtitle">Mechanical design</p>
-                <p>A CNC-machined pedal set designed and engineered end-to-end, from hardware to control electronics.</p>
+      <main id="top">
+        <!-- ============ HERO ============ -->
+        <section class="hero" aria-label="Intro">
+          <div class="container hero__grid">
+            <div>
+              <p class="hero__meta"><span data-i18n="hero_kicker">Doc no. FM-PF-2026 · Rev D · Budapest, HU</span></p>
+              <h1 class="hero__title">Felix<br />Mach<span class="accent">á</span>n</h1>
+              <p class="hero__fields" data-i18n="hero_fields">Mechanical <span class="x">×</span> Electrical <span class="x">×</span> Software</p>
+              <p class="hero__lead" data-i18n="hero_lead">Mechatronics engineering student at BME who designs, builds and ships real systems — CNC-machined pedals, custom PCBs, embedded firmware and full-stack products. Not just <strong>making it work</strong> — <strong>understanding how it works</strong>.</p>
+              <div class="hero__actions">
+                <a class="btn btn--primary" href="#projects" data-i18n="hero_cta1">View projects</a>
+                <a class="btn" href="#contact" data-i18n="hero_cta2">Get in touch</a>
               </div>
-            </a>
+            </div>
+            <div class="hero__figure">
+              <div class="portrait-frame">
+                <img src="assets/img/felix-headshot.webp" alt="Portrait of Felix Machán" width="1122" height="1402" fetchpriority="high" />
+              </div>
+              <span class="dim dim--v" aria-hidden="true">
+                <span class="dim__line"></span>
+                <span class="dim__label" data-i18n="dim_v">Scale 1:1</span>
+              </span>
+              <span class="dim dim--h" aria-hidden="true">
+                <span class="dim__line"></span>
+                <span class="dim__label" data-i18n="dim_h">F. Machán · est. 2002</span>
+              </span>
+              <span class="callout" aria-hidden="true" data-i18n="callout">Fig. 01 — The engineer</span>
+            </div>
+          </div>
+          <div class="hero__readout" aria-hidden="true">X 0.0 Y 0.0 MM</div>
+        </section>
+
+        <!-- ============ ABOUT ============ -->
+        <section id="about" class="section">
+          <div class="container">
+            <div class="section__head reveal">
+              <div>
+                <span class="eyebrow" data-i18n="sht_about">SHT 02 · About</span>
+                <h2 class="section__title" data-i18n="about_title">About</h2>
+              </div>
+              <span class="section__index">02 / 06</span>
+            </div>
+            <div class="about__grid">
+              <div class="about__text reveal">
+                <p data-i18n="about_p1">My name is <strong>Felix Machán</strong> and I&rsquo;m a <strong>23-year-old engineering student</strong> from a small town near <strong>Budapest, Hungary</strong>. Ever since I was a child I have known that I&rsquo;m mainly interested in technical subjects and that I like <strong>building things</strong> — which is exactly why I chose engineering. At first it wasn&rsquo;t clear which branch to specialise in; then I found <strong>Mechatronics Engineering</strong>, which perfectly combines my interests in mechanical, electrical and software engineering. This multidisciplinary approach lets me work on a wide range of projects and solve complex problems that span multiple fields.</p>
+                <p data-i18n="about_p2">Since the beginning of my studies I have taken a hands-on approach to system design and implementation. I build practical, end-to-end solutions spanning embedded systems, software and infrastructure — with a strong emphasis on understanding how things work, not just making them work.</p>
+                <div class="traits">
+                  <div class="trait">
+                    <span class="trait__key" data-i18n="trait_k1">Trait 01</span>
+                    <span class="trait__value" data-i18n="trait_v1">Curiosity</span>
+                  </div>
+                  <div class="trait">
+                    <span class="trait__key" data-i18n="trait_k2">Trait 02</span>
+                    <span class="trait__value" data-i18n="trait_v2">Creativity</span>
+                  </div>
+                  <div class="trait">
+                    <span class="trait__key" data-i18n="trait_k3">Trait 03</span>
+                    <span class="trait__value" data-i18n="trait_v3">Practicality</span>
+                  </div>
+                </div>
+              </div>
+              <figure class="about__figure reveal">
+                <div class="about__figfloat">
+                  <div class="about__frame">
+                    <img src="assets/img/felix.avif" alt="Felix Machán by a lake at sunset" width="1024" height="1536" loading="lazy" />
+                  </div>
+                  <figcaption class="about__figcaption">
+                    <span data-i18n="about_figcap1">Away from the desk</span>
+                    <span data-i18n="about_figcap2">Fig. 02</span>
+                  </figcaption>
+                </div>
+              </figure>
+            </div>
           </div>
         </section>
-        <section class="project-category reveal" aria-labelledby="projects-electrical">
-          <h3 class="project-category__title" id="projects-electrical">Electrical Design</h3>
-          <div class="project-list">
-            <a class="project-card reveal" href="projects/buttonbox.html">
-              <img class="project-image" src="assets/img/buttonbox/pcb.avif" alt="Custom Sim Racing Button Box preview" />
-              <div class="project-body">
-                <h3>Custom Sim Racing Button Box</h3>
-                <p class="project-subtitle">PCB design</p>
-                <p>Fully custom made Button Box for sim racing setups. 3D printed case with in-house designed PCB.</p>
+
+        <!-- ============ TIMELINE / REVISION HISTORY ============ -->
+        <section id="timeline" class="section">
+          <div class="container">
+            <div class="section__head reveal">
+              <div>
+                <span class="eyebrow" data-i18n="sht_timeline">SHT 03 · Timeline</span>
+                <h2 class="section__title" data-i18n="tl_title">Revision history</h2>
               </div>
-            </a>
+              <span class="section__index">03 / 06</span>
+            </div>
+            <p class="reveal" style="color: var(--muted); max-width: 60ch; margin-bottom: 2rem;" data-i18n="tl_lead">Education and experience, tracked like any living design: revision by revision.</p>
+            <div class="revtable reveal" data-stagger>
+              <div class="revtable__head" aria-hidden="true">
+                <span data-i18n="tl_h_rev">Rev</span>
+                <span data-i18n="tl_h_date">Date</span>
+                <span data-i18n="tl_h_change">Change</span>
+                <span style="text-align:right" data-i18n="tl_h_org">Org</span>
+              </div>
+              <article class="rev reveal">
+                <span class="rev__id">A</span>
+                <span class="rev__date">2017 – 2022</span>
+                <div class="rev__main">
+                  <h3 class="rev__role" data-i18n="revA_role">Technical secondary school, bilingual class</h3>
+                  <p class="rev__org" data-i18n="revA_org">VSZC György Boronkay Technical Secondary School</p>
+                  <p class="rev__desc" data-i18n="revA_desc">Technical foundations and a STEM-focused program, with an outstanding graduation record.</p>
+                </div>
+                <span class="rev__logo"><img src="assets/img/boro_light_crop.webp" data-light="assets/img/boro_light_crop.webp" data-dark="assets/img/boro_dark_crop.webp" alt="Boronkay logo" loading="lazy" /></span>
+              </article>
+              <article class="rev reveal">
+                <span class="rev__id">B</span>
+                <span class="rev__date" data-i18n="revB_date">2022 – present</span>
+                <div class="rev__main">
+                  <h3 class="rev__role" data-i18n="revB_role">BSc in Mechatronics Engineering</h3>
+                  <p class="rev__org" data-i18n="revB_org">Budapest University of Technology and Economics</p>
+                  <p class="rev__desc" data-i18n="revB_desc">Cyber-Physical Systems specialisation — systems engineering focus, embedded and control systems.</p>
+                </div>
+                <span class="rev__logo"><img src="assets/img/bme_light.avif" data-light="assets/img/bme_light.avif" data-dark="assets/img/bme_dark.webp" alt="BME logo" loading="lazy" /></span>
+              </article>
+              <article class="rev reveal">
+                <span class="rev__id">C</span>
+                <span class="rev__date">2024.02 – 2025.11</span>
+                <div class="rev__main">
+                  <h3 class="rev__role" data-i18n="revC_role">Engineering Intern</h3>
+                  <p class="rev__org" data-i18n="revC_org">Tuttnauer Kft.</p>
+                  <p class="rev__desc" data-i18n="revC_desc">Supported the Engineering team with various tasks and projects, broadening my practical and theoretical knowledge across several fields of engineering.</p>
+                </div>
+              </article>
+              <article class="rev reveal">
+                <span class="rev__id">D</span>
+                <span class="rev__date" data-i18n="revD_date">2025.09 – present</span>
+                <div class="rev__main">
+                  <h3 class="rev__role" data-i18n="revD_role">DevOps &amp; IoT Engineer</h3>
+                  <p class="rev__org" data-i18n="revD_org">MPTR Kft.</p>
+                  <p class="rev__desc" data-i18n="revD_desc">Developing a centralized platform to integrate commercial and custom IoT devices, while supporting DevOps and operational tasks.</p>
+                </div>
+                <span class="rev__tag" style="color: var(--accent); border-color: var(--accent);" data-i18n="revD_tag">Current</span>
+              </article>
+            </div>
           </div>
         </section>
-        <section class="project-category reveal" aria-labelledby="projects-software">
-          <h3 class="project-category__title" id="projects-software">Software Development</h3>
-          <div class="project-list">
-            <a class="project-card reveal" href="projects/iot-device-hub.html">
-              <img class="project-image project-image--light-bg" src="assets/img/mptrwhite.avif" alt="IoT Device Hub System preview" />
-              <div class="project-body">
-                <h3>IoT Device Hub System - MPTRhome</h3>
-                <p class="project-subtitle">home automation</p>
-                <p>Centralized hub that unifies commercial and custom IoT devices with a single control plane.</p>
+
+        <!-- ============ PROJECTS ============ -->
+        <section id="projects" class="section">
+          <div class="container">
+            <div class="section__head reveal">
+              <div>
+                <span class="eyebrow" data-i18n="sht_projects">SHT 04 · Projects</span>
+                <h2 class="section__title" data-i18n="proj_title">Projects</h2>
               </div>
-            </a>
-            <a class="project-card reveal" href="projects/talppont.html">
-              <img class="project-image" src="assets/img/talppont/talppont-welcome.avif" alt="Massage saloon website with appointment system - Talppont" />
-              <div class="project-body">
-                <h3>Massage parlour website - Talppont</h3>
-                <p class="project-subtitle">UI focused website</p>
-                <p>A massage parlour website built to attract customers.</p>
+              <span class="section__index">04 / 06</span>
+            </div>
+            <p class="reveal" style="color: var(--muted); max-width: 60ch; margin-bottom: 2.6rem;" data-i18n="proj_lead">Representative work that blends engineering depth with business outcomes.</p>
+
+            <!-- Featured -->
+            <div class="domain reveal">
+              <div class="domain__head">
+                <span class="domain__name" data-i18n="featured">Featured projects</span>
               </div>
-            </a>
-            <a class="project-card reveal" href="projects/network.html">
-              <img class="project-image" src="assets/img/MODEM.avif" alt="Network project preview" style="object-fit: contain; object-position: center; background: #fff;" />
-              <div class="project-body">
-                <h3>Home server</h3>
-                <p class="project-subtitle">networking</p>
-                <p>DNS, DHCP, VPN and other essential services for the home server lab.</p>
+              <div class="projects-grid">
+                <a class="project-card" href="projects/cheerlify.html">
+                  <div class="project-card__media">
+                    <img src="assets/img/cheerlify/cover.webp" width="1280" height="800" alt="Cheerlify logo on the brand orange background" loading="lazy" />
+                  </div>
+                  <div class="project-card__body">
+                    <div class="project-card__meta">
+                      <span>FM-SW-004</span>
+                      <span class="status status--live" data-i18n="st_live">Live</span>
+                    </div>
+                    <h3 class="project-card__title" data-i18n="card_cheerlify_t">Cheerlify — Live race tracking with voice cheers</h3>
+                    <p class="project-card__desc" data-i18n="card_cheerlify_d">Friends follow the runner live in the browser, with no app to install, and their voice cheers play in the runner's earbuds at the kilometre they choose. Mobile app, web app and backend, all built by me.</p>
+                    <div class="project-card__tags">
+                      <span class="tag">React Native</span><span class="tag">React</span><span class="tag">Django</span><span class="tag">PostGIS</span><span class="tag">SSE</span>
+                    </div>
+                    <span class="project-card__cta" data-i18n="view_project">View project</span>
+                  </div>
+                </a>
+                <a class="project-card" href="projects/vanoor.html">
+                  <div class="project-card__media"><img src="assets/img/vanoor/cover.webp" width="1280" height="800" alt="Vanoor logo on the brand green background" loading="lazy" /></div>
+                  <div class="project-card__body">
+                    <div class="project-card__meta"><span>FM-SW-005</span><span class="status status--live" data-i18n="st_live">Live</span></div>
+                    <h3 class="project-card__title" data-i18n="card_vanoor_t">Vanoor — Apple Watch-first running app</h3>
+                    <p class="project-card__desc" data-i18n="card_vanoor_d">Offline GPX navigation on the wrist, structured workouts and split-by-split race pacing. Native iPhone and Apple Watch apps, live on the App Store.</p>
+                    <div class="project-card__tags"><span class="tag">Swift</span><span class="tag">SwiftUI</span><span class="tag">watchOS</span><span class="tag">HealthKit</span><span class="tag">CloudKit</span></div>
+                    <span class="project-card__cta" data-i18n="view_project">View project</span>
+                  </div>
+                </a>
               </div>
-            </a>
-            <a class="project-card reveal" href="projects/pacerra.html">
-              <img class="project-image project-image--pacerra" src="assets/img/pacerra/favicon.svg" alt="Pacerra AI endurance coach app preview" />
-              <div class="project-body">
-                <h3>Pacerra - AI Endurance Coach</h3>
-                <p class="project-subtitle">AI powered app development</p>
-                <p>AI-powered endurance coaching app with Strava sync, personalized weekly plans, and per-workout AI feedback.</p>
+            </div>
+
+            <!-- Mechanical -->
+            <div class="domain reveal">
+              <div class="domain__head">
+                <span class="domain__key" data-i18n="dom_key1">Domain 01</span>
+                <span class="domain__name" data-i18n="dom_mech">Mechanical</span>
               </div>
-            </a>
+              <div class="projects-grid" data-stagger>
+                <a class="project-card reveal" href="projects/custom-sim-racing-pedals.html">
+                  <div class="project-card__media">
+                    <img src="assets/img/pedals/pedals.avif" alt="Custom sim racing pedals CAD render" loading="lazy" />
+                  </div>
+                  <div class="project-card__body">
+                    <div class="project-card__meta">
+                      <span>FM-ME-001</span>
+                      <span class="status status--wip" data-i18n="st_wip">In progress</span>
+                    </div>
+                    <h3 class="project-card__title" data-i18n="card_pedals_t">Custom Sim Racing Pedals — ME1</h3>
+                    <p class="project-card__desc" data-i18n="card_pedals_d">A CNC-machined pedal set designed and engineered end-to-end, from hardware to control electronics.</p>
+                    <div class="project-card__tags">
+                      <span class="tag">CAD</span><span class="tag">CNC</span><span class="tag">Load cell</span><span class="tag">Hall sensor</span>
+                    </div>
+                    <span class="project-card__cta" data-i18n="view_project">View project</span>
+                  </div>
+                </a>
+              </div>
+            </div>
+
+            <!-- Electrical -->
+            <div class="domain reveal">
+              <div class="domain__head">
+                <span class="domain__key" data-i18n="dom_key2">Domain 02</span>
+                <span class="domain__name" data-i18n="dom_elec">Electrical</span>
+              </div>
+              <div class="projects-grid" data-stagger>
+                <a class="project-card reveal" href="projects/buttonbox.html">
+                  <div class="project-card__media">
+                    <img src="assets/img/buttonbox/pcb.avif" alt="Custom sim racing button box PCB render" loading="lazy" />
+                  </div>
+                  <div class="project-card__body">
+                    <div class="project-card__meta">
+                      <span>FM-EE-001</span>
+                      <span class="status status--wip" data-i18n="st_fab">Ready for fab</span>
+                    </div>
+                    <h3 class="project-card__title" data-i18n="card_buttonbox_t">Custom Sim Racing Button Box</h3>
+                    <p class="project-card__desc" data-i18n="card_buttonbox_d">Fully custom button box for sim racing setups. 3D printed case with an in-house designed PCB.</p>
+                    <div class="project-card__tags">
+                      <span class="tag">KiCad</span><span class="tag">RP2040</span><span class="tag">USB HID</span>
+                    </div>
+                    <span class="project-card__cta" data-i18n="view_project">View project</span>
+                  </div>
+                </a>
+                <a class="project-card reveal" href="projects/distance-sensor.html">
+                  <div class="project-card__media">
+                    <img class="card-render" src="assets/img/distancesensor/v2-iso.webp" alt="Zigbee ToF distance sensor, board v2.0 3D render" loading="lazy" />
+                  </div>
+                  <div class="project-card__body">
+                    <div class="project-card__meta">
+                      <span>FM-EE-002</span>
+                      <span class="status status--wip" data-i18n="st_fab">Ready for fab</span>
+                    </div>
+                    <h3 class="project-card__title" data-i18n="card_sensor_t">Zigbee ToF Distance Sensor</h3>
+                    <p class="project-card__desc" data-i18n="card_sensor_d">Battery-powered Zigbee sensor on a custom two-revision KiCad PCB: an ESP32-H2, a laser time-of-flight chip and C firmware reporting millimetre distance into Home Assistant.</p>
+                    <div class="project-card__tags">
+                      <span class="tag">ESP32-H2</span><span class="tag">KiCad</span><span class="tag">Zigbee</span><span class="tag">ESP-IDF</span>
+                    </div>
+                    <span class="project-card__cta" data-i18n="view_project">View project</span>
+                  </div>
+                </a>
+              </div>
+            </div>
+
+            <!-- Software -->
+            <div class="domain reveal">
+              <div class="domain__head">
+                <span class="domain__key" data-i18n="dom_key3">Domain 03</span>
+                <span class="domain__name" data-i18n="dom_soft">Software</span>
+              </div>
+              <div class="projects-grid" data-stagger>
+                <a class="project-card reveal" href="projects/talppont.html">
+                  <div class="project-card__media">
+                    <img src="assets/img/talppont/talppont-welcome.avif" alt="Talppont massage parlour website" loading="lazy" />
+                  </div>
+                  <div class="project-card__body">
+                    <div class="project-card__meta">
+                      <span>FM-SW-002</span>
+                      <span class="status status--live" data-i18n="st_live">Live</span>
+                    </div>
+                    <h3 class="project-card__title" data-i18n="card_talppont_t">Massage Parlour Website — Talppont</h3>
+                    <p class="project-card__desc" data-i18n="card_talppont_d">A massage parlour website built to attract customers.</p>
+                    <div class="project-card__tags">
+                      <span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span>
+                    </div>
+                    <span class="project-card__cta" data-i18n="view_project">View project</span>
+                  </div>
+                </a>
+                <a class="project-card reveal" href="projects/network.html">
+                  <div class="project-card__media">
+                    <img src="assets/img/network/card-light.svg" data-light="assets/img/network/card-light.svg" data-dark="assets/img/network/card-dark.svg" alt="Home network topology diagram" loading="lazy" />
+                  </div>
+                  <div class="project-card__body">
+                    <div class="project-card__meta">
+                      <span>FM-NW-001</span>
+                      <span class="status status--live" data-i18n="st_op">Operational</span>
+                    </div>
+                    <h3 class="project-card__title" data-i18n="card_network_t">Home Server &amp; Network</h3>
+                    <p class="project-card__desc" data-i18n="card_network_d">A Proxmox home server that runs my smart home and hosts production workloads behind a Cloudflare Tunnel, with zero open ports, layered security and encrypted off-site backups.</p>
+                    <div class="project-card__tags">
+                      <span class="tag">Proxmox</span><span class="tag">Docker</span><span class="tag">Cloudflare</span><span class="tag">Home Assistant</span>
+                    </div>
+                    <span class="project-card__cta" data-i18n="view_project">View project</span>
+                  </div>
+                </a>
+              </div>
+            </div>
           </div>
         </section>
-      </div>
-    </div>
-  </div>
-</section>
 
+        <!-- ============ SKILLS ============ -->
+        <section id="skills" class="section">
+          <div class="container">
+            <div class="section__head reveal">
+              <div>
+                <span class="eyebrow" data-i18n="sht_skills">SHT 05 · Skills</span>
+                <h2 class="section__title" data-i18n="skills_title">Skills</h2>
+              </div>
+              <span class="section__index">05 / 06</span>
+            </div>
+            <div class="skills-grid" data-stagger>
+              <article class="skills-group reveal">
+                <header class="skills-group__head">
+                  <span data-i18n="sg_embedded">Embedded</span>
+                  <span class="skills-group__count">06</span>
+                </header>
+                <ul>
+                  <li class="skill" tabindex="0"><span class="skill__logo"><img src="assets/img/logos/Arduino_Logo.svg.avif" alt="" loading="lazy" /></span><span class="skill__name">Arduino</span><span class="skill__desc" data-i18n="sk_arduino">Rapid prototyping for embedded control, sensors and test rigs.</span></li>
+                  <li class="skill" tabindex="0"><span class="skill__logo"><img src="assets/img/logos/raspberrry_pi_logo.avif" alt="" loading="lazy" /></span><span class="skill__name">Raspberry Pi</span><span class="skill__desc" data-i18n="sk_rpi">Edge compute for demos, home lab services and IoT gateway work.</span></li>
+                  <li class="skill" tabindex="0"><span class="skill__logo"><img src="assets/img/logos/zigbee.avif" alt="" loading="lazy" /></span><span class="skill__name">Zigbee</span><span class="skill__desc" data-i18n="sk_zigbee">Low-power mesh device integration in smart-home projects.</span></li>
+                  <li class="skill" tabindex="0"><span class="skill__logo"><img src="assets/img/logos/Mqtt-hor.svg.avif" alt="" loading="lazy" /></span><span class="skill__name">MQTT</span><span class="skill__desc" data-i18n="sk_mqtt">Message backbone for telemetry and command routing.</span></li>
+                  <li class="skill" tabindex="0"><span class="skill__logo"><img src="assets/img/logos/3374914.avif" alt="" loading="lazy" /></span><span class="skill__name">KiCad</span><span class="skill__desc" data-i18n="sk_kicad">Custom PCB layouts for embedded prototypes and peripherals.</span></li>
+                  <li class="skill" tabindex="0"><span class="skill__logo"><img src="assets/img/logos/pngwing.com.avif" alt="" loading="lazy" /></span><span class="skill__name">ESP32</span><span class="skill__desc" data-i18n="sk_esp32">Used across several personal projects, including custom hardware.</span></li>
+                </ul>
+              </article>
+              <article class="skills-group reveal">
+                <header class="skills-group__head">
+                  <span data-i18n="sg_devops">DevOps</span>
+                  <span class="skills-group__count">05</span>
+                </header>
+                <ul>
+                  <li class="skill" tabindex="0"><span class="skill__logo"><img src="assets/img/logos/Linux-Logo.avif" alt="" loading="lazy" /></span><span class="skill__name">Linux</span><span class="skill__desc" data-i18n="sk_linux">Server setup, services and automation for lab work.</span></li>
+                  <li class="skill" tabindex="0"><span class="skill__logo"><img src="assets/img/logos/Proxmox-logo.avif" alt="" loading="lazy" /></span><span class="skill__name">Proxmox</span><span class="skill__desc" data-i18n="sk_proxmox">Virtualization stack for the home server lab.</span></li>
+                  <li class="skill" tabindex="0"><span class="skill__logo"><img src="assets/img/logos/windows.avif" alt="" loading="lazy" /></span><span class="skill__name">Windows</span><span class="skill__desc" data-i18n="sk_windows">Desktop tooling, driver work and test environment.</span></li>
+                  <li class="skill" tabindex="0"><span class="skill__logo"><img src="assets/img/logos/Git_icon.svg.avif" alt="" loading="lazy" /></span><span class="skill__name">Git</span><span class="skill__desc" data-i18n="sk_git">Version control for solo and team projects.</span></li>
+                  <li class="skill" tabindex="0"><span class="skill__logo"><img src="assets/img/logos/python_logo_icon_168886.avif" alt="" loading="lazy" /></span><span class="skill__name">Python</span><span class="skill__desc" data-i18n="sk_python">Automation scripts, tooling and data glue.</span></li>
+                </ul>
+              </article>
+              <article class="skills-group reveal">
+                <header class="skills-group__head">
+                  <span data-i18n="sg_cad">CAD</span>
+                  <span class="skills-group__count">04</span>
+                </header>
+                <ul>
+                  <li class="skill" tabindex="0"><span class="skill__logo"><img src="assets/img/logos/autodesk-inventor-professional-small_social-400.avif" alt="" loading="lazy" /></span><span class="skill__name">Autodesk Inventor</span><span class="skill__desc" data-i18n="sk_inventor">Mechanical assemblies and manufacturing drawings.</span></li>
+                  <li class="skill" tabindex="0"><span class="skill__logo"><img src="assets/img/logos/Fusion360_Logo.svg.avif" alt="" loading="lazy" /></span><span class="skill__name">Fusion 360</span><span class="skill__desc" data-i18n="sk_fusion">Rapid CAD iterations and CAM-ready parts.</span></li>
+                  <li class="skill" tabindex="0"><span class="skill__logo"><img src="assets/img/logos/autocad-seeklogo.avif" alt="" loading="lazy" /></span><span class="skill__name">AutoCAD</span><span class="skill__desc" data-i18n="sk_autocad">2D drawings and clean mechanical documentation.</span></li>
+                  <li class="skill" tabindex="0"><span class="skill__logo"><img src="assets/img/logos/solidworks.avif" alt="" loading="lazy" /></span><span class="skill__name">SolidWorks</span><span class="skill__desc" data-i18n="sk_solidworks">Detailed mechanical design and assemblies.</span></li>
+                </ul>
+              </article>
+              <article class="skills-group reveal">
+                <header class="skills-group__head">
+                  <span data-i18n="sg_web">Web</span>
+                  <span class="skills-group__count">08</span>
+                </header>
+                <ul>
+                  <li class="skill" tabindex="0"><span class="skill__logo"><img src="assets/img/logos/Other-html-5-icon.avif" alt="" loading="lazy" /></span><span class="skill__name">HTML5</span><span class="skill__desc" data-i18n="sk_html">Semantic layout for portfolio and project sites.</span></li>
+                  <li class="skill" tabindex="0"><span class="skill__logo"><img src="assets/img/logos/CSS3_logo_and_wordmark.svg.avif" alt="" loading="lazy" /></span><span class="skill__name">CSS3</span><span class="skill__desc" data-i18n="sk_css">Responsive styling, animations and UI polish.</span></li>
+                  <li class="skill" tabindex="0"><span class="skill__logo"><img src="assets/img/logos/JavaScript-logo.avif" alt="" loading="lazy" /></span><span class="skill__name">JavaScript</span><span class="skill__desc" data-i18n="sk_js">UI interactions and component behavior.</span></li>
+                  <li class="skill" tabindex="0"><span class="skill__logo"><img src="assets/img/logos/Typescript_logo_2020.svg.avif" alt="" loading="lazy" /></span><span class="skill__name">TypeScript</span><span class="skill__desc" data-i18n="sk_ts">Typed front-end development for safer, scalable UI code.</span></li>
+                  <li class="skill" tabindex="0"><span class="skill__logo"><img src="assets/img/logos/Node.js_logo.svg.avif" alt="" loading="lazy" /></span><span class="skill__name">Node.js</span><span class="skill__desc" data-i18n="sk_node">Build tooling and lightweight services.</span></li>
+                  <li class="skill" tabindex="0"><span class="skill__logo"><img src="assets/img/logos/React-icon.svg.avif" alt="" loading="lazy" /></span><span class="skill__name">React</span><span class="skill__desc" data-i18n="sk_react">SPA front ends for client-facing projects.</span></li>
+                  <li class="skill" tabindex="0"><span class="skill__logo"><img src="assets/img/logos/flask_logo_icon_214741.avif" alt="" loading="lazy" class="invert-dark" /></span><span class="skill__name">Flask</span><span class="skill__desc" data-i18n="sk_flask">Lightweight APIs and backend services.</span></li>
+                  <li class="skill" tabindex="0"><span class="skill__logo"><img src="assets/img/logos/django-icon.avif" alt="" loading="lazy" /></span><span class="skill__name">Django</span><span class="skill__desc" data-i18n="sk_django">Structured backend development with robust admin and ORM support.</span></li>
+                </ul>
+              </article>
+              <article class="skills-group reveal">
+                <header class="skills-group__head">
+                  <span data-i18n="sg_graphics">Graphics</span>
+                  <span class="skills-group__count">03</span>
+                </header>
+                <ul>
+                  <li class="skill" tabindex="0"><span class="skill__logo"><img src="assets/img/logos/Adobe_Photoshop_CC_icon.svg.avif" alt="" loading="lazy" /></span><span class="skill__name">Adobe Photoshop</span><span class="skill__desc" data-i18n="sk_ps">Image cleanup, compositing and assets.</span></li>
+                  <li class="skill" tabindex="0"><span class="skill__logo"><img src="assets/img/logos/Adobe_Photoshop_Lightroom_CC_logo.svg.avif" alt="" loading="lazy" /></span><span class="skill__name">Adobe Lightroom</span><span class="skill__desc" data-i18n="sk_lr">Photo grading and batch edits.</span></li>
+                  <li class="skill" tabindex="0"><span class="skill__logo"><img src="assets/img/logos/Adobe_Premiere_Pro_CC_icon.svg.avif" alt="" loading="lazy" /></span><span class="skill__name">Adobe Premiere Pro</span><span class="skill__desc" data-i18n="sk_pr">Short edits and motion cuts for demos.</span></li>
+                </ul>
+              </article>
+            </div>
+          </div>
+        </section>
 
-<section id="skills" class="section reveal">
-  <div class="container">
-    <div class="panel reveal">
-      <h2 class="section-title"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-cpu" viewBox="0 0 16 16">
-  <path d="M5 0a.5.5 0 0 1 .5.5V2h1V.5a.5.5 0 0 1 1 0V2h1V.5a.5.5 0 0 1 1 0V2h.5A2.5 2.5 0 0 1 13 4.5V5h1.5a.5.5 0 0 1 0 1H13v1h1.5a.5.5 0 0 1 0 1H13v1h1.5a.5.5 0 0 1 0 1H13v.5A2.5 2.5 0 0 1 10.5 13H10v1.5a.5.5 0 0 1-1 0V13h-1v1.5a.5.5 0 0 1-1 0V13h-1v1.5a.5.5 0 0 1-1 0V13h-.5A2.5 2.5 0 0 1 2 10.5V10H.5a.5.5 0 0 1 0-1H2V8H.5a.5.5 0 0 1 0-1H2V6H.5a.5.5 0 0 1 0-1H2v-.5A2.5 2.5 0 0 1 4.5 2H5V.5A.5.5 0 0 1 5 0zm-.5 3A1.5 1.5 0 0 0 3 4.5v6A1.5 1.5 0 0 0 4.5 12h6A1.5 1.5 0 0 0 12 10.5v-6A1.5 1.5 0 0 0 10.5 3h-6z"/>
-  <path d="M6 6h4v4H6V6z"/>
-</svg> Skills</h2>
-      <div class="skills-groups">
-        <article class="skills-group">
-          <header class="skills-group__header">
-            <h3>Embedded</h3>
-          </header>
-          <div class="skills-grid" role="list" aria-label="Embedded skills">
-            <div class="skill-tile" role="listitem" data-skill="Arduino" tabindex="0">
-              <img class="skill-logo skill-logo--large" style="width: 60% !important;" src="assets/img/logos/Arduino_Logo.svg.avif" alt="Arduino logo" loading="lazy" />
-              <div class="skill-detail">
-                <span class="skill-detail__title">Arduino</span>
-                <span class="skill-detail__body">Rapid prototyping for embedded control, sensors, and test rigs.</span>
+        <!-- ============ CONTACT ============ -->
+        <section id="contact" class="section">
+          <div class="container">
+            <div class="section__head reveal">
+              <div>
+                <span class="eyebrow" data-i18n="sht_contact">SHT 06 · Contact</span>
+                <h2 class="section__title" data-i18n="contact_title">Contact</h2>
               </div>
+              <span class="section__index">06 / 06</span>
             </div>
-            <div class="skill-tile" role="listitem" data-skill="Raspberry Pi" tabindex="0">
-              <img class="skill-logo" src="assets/img/logos/raspberrry_pi_logo.avif" alt="raspberrry pi logo logo" loading="lazy" />
-              <div class="skill-detail">
-                <span class="skill-detail__title">Raspberry Pi</span>
-                <span class="skill-detail__body">Edge compute for demos, home lab services, and IoT gateway work.</span>
+            <div class="contact__grid">
+              <div class="reveal">
+                <p class="contact__lead" data-i18n="contact_lead">Open to engineering internships, junior roles and ambitious collaborations. <span class="accent">Tell me what you&rsquo;re building.</span></p>
+                <div class="contact-links">
+                  <a class="contact-link" href="https://github.com/felixmachan" target="_blank" rel="noopener noreferrer">
+                    <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+                    <span class="contact-link__label">GitHub</span>
+                    <span class="contact-link__value">github.com/felixmachan</span>
+                  </a>
+                  <a class="contact-link" href="https://www.linkedin.com/in/felix-machan-3186a3268/" target="_blank" rel="noopener noreferrer">
+                    <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zM3.742 5.091c.837 0 1.358-.554 1.358-1.248-.015-.709-.521-1.248-1.343-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.328 1.248h.016zm4.908 8.303V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z"/></svg>
+                    <span class="contact-link__label">LinkedIn</span>
+                    <span class="contact-link__value">felix-machan</span>
+                  </a>
+                  <a class="contact-link" href="https://www.instagram.com/machanfelix/" target="_blank" rel="noopener noreferrer">
+                    <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 5.2A2.8 2.8 0 1 0 8 10.8 2.8 2.8 0 0 0 8 5.2zm0 4.6A1.8 1.8 0 1 1 8 6.2a1.8 1.8 0 0 1 0 3.6zm4.5-4.85a.65.65 0 1 1-1.3 0 .65.65 0 0 1 1.3 0z"/><path d="M4.5 0h7A4.5 4.5 0 0 1 16 4.5v7A4.5 4.5 0 0 1 11.5 16h-7A4.5 4.5 0 0 1 0 11.5v-7A4.5 4.5 0 0 1 4.5 0zm0 1A3.5 3.5 0 0 0 1 4.5v7A3.5 3.5 0 0 0 4.5 15h7a3.5 3.5 0 0 0 3.5-3.5v-7A3.5 3.5 0 0 0 11.5 1h-7z"/></svg>
+                    <span class="contact-link__label">Instagram</span>
+                    <span class="contact-link__value">@machanfelix</span>
+                  </a>
+                </div>
               </div>
-            </div>
-            <div class="skill-tile" role="listitem" data-skill="Zigbee" tabindex="0">
-              <img class="skill-logo skill-logo--large" style="width: 60% !important;" src="assets/img/logos/zigbee.avif" alt="zigbee logo" loading="lazy" />
-              <div class="skill-detail">
-                <span class="skill-detail__title">Zigbee</span>
-                <span class="skill-detail__body">Low-power mesh device integration in smart-home projects.</span>
-              </div>
-            </div>
-            <div class="skill-tile" role="listitem" data-skill="MQTT" tabindex="0">
-              <img class="skill-logo" style="width: 100% !important;" src="assets/img/logos/Mqtt-hor.svg.avif" alt="Mqtt hor.svg logo" loading="lazy" />
-              <div class="skill-detail">
-                <span class="skill-detail__title">MQTT</span>
-                <span class="skill-detail__body">Message backbone for telemetry and command routing.</span>
-              </div>
-            </div>
-            <div class="skill-tile" role="listitem" data-skill="KiCad" tabindex="0">
-              <img class="skill-logo" style="width: 100% !important;" src="assets/img/logos/3374914.avif" alt="Mqtt hor.svg logo" loading="lazy" />
-              <div class="skill-detail">
-                <span class="skill-detail__title">KiCad</span>
-                <span class="skill-detail__body">Custom PCB layouts for embedded prototypes and peripherals.</span>
-              </div>
-            </div>
-            <div class="skill-tile" role="listitem" data-skill="Adafruit (ESP32)" tabindex="0">
-              <img class="skill-logo" style="width: 100% !important;" src="assets/img/logos/pngwing.com.avif" alt="Mqtt hor.svg logo" loading="lazy" />
-              <div class="skill-detail">
-                <span class="skill-detail__title">Adafruit (ESP32)</span>
-                <span class="skill-detail__body">Used ESP32 for several personal minor projects.</span>
-              </div>
-            </div>
-          </div>
-        </article>
-        <article class="skills-group">
-          <header class="skills-group__header">
-            <h3>DevOps</h3>
-          </header>
-          <div class="skills-grid" role="list" aria-label="DevOps skills">
-            <div class="skill-tile" role="listitem" data-skill="Linux" tabindex="0">
-              <img class="skill-logo skill-logo--large" style="width: 100% !important;" src="assets/img/logos/Linux-Logo.avif" alt="Linux Logo logo" loading="lazy" />
-              <div class="skill-detail">
-                <span class="skill-detail__title">Linux</span>
-                <span class="skill-detail__body">Server setup, services, and automation for lab work.</span>
-              </div>
-            </div>
-            <div class="skill-tile" role="listitem" data-skill="Proxmox" tabindex="0">
-              <img class="skill-logo skill-logo--large" style="width: 80% !important;" src="assets/img/logos/Proxmox-logo.avif" alt="zigbee logo" loading="lazy" />
-              <div class="skill-detail">
-                <span class="skill-detail__title">Proxmox</span>
-                <span class="skill-detail__body">Virtualization stack for the home server lab.</span>
-              </div>
-            </div>
-            <div class="skill-tile" role="listitem" data-skill="Windows" tabindex="0">
-              <img class="skill-logo skill-logo--large" style="width: 60% !important;" src="assets/img/logos/windows.avif" alt="autocad" loading="lazy" />
-              <div class="skill-detail">
-                <span class="skill-detail__title">Windows</span>
-                <span class="skill-detail__body">Desktop tooling, driver work, and test environment.</span>
-              </div>
-            </div>
-            <div class="skill-tile" role="listitem" data-skill="Git" tabindex="0">
-              <img class="skill-logo skill-logo--large" style="width: 60% !important;" src="assets/img/logos/Git_icon.svg.avif" alt="git" loading="lazy" />
-              <div class="skill-detail">
-                <span class="skill-detail__title">Git</span>
-                <span class="skill-detail__body">Version control for solo and team projects.</span>
-              </div>
-            </div>
-            <div class="skill-tile" role="listitem" data-skill="Python" tabindex="0">
-              <img class="skill-logo skill-logo--large" style="width: 60% !important;" src="assets/img/logos/python_logo_icon_168886.avif" alt="git" loading="lazy" />
-              <div class="skill-detail">
-                <span class="skill-detail__title">Python</span>
-                <span class="skill-detail__body">Automation scripts, tooling, and data glue.</span>
+              <div class="contact-form reveal">
+                <div class="contact-form__head">
+                  <span data-i18n="form_head">Contact form</span>
+                  <span data-i18n="form_resp">Response &lt; 48h</span>
+                </div>
+                <form action="https://api.web3forms.com/submit" method="POST">
+                  <input type="hidden" name="access_key" value="5c115f1a-b24e-496d-8e85-08c2f2da261a" />
+                  <label class="field">
+                    <span data-i18n="form_name">Name</span>
+                    <input type="text" name="name" required autocomplete="name" />
+                  </label>
+                  <label class="field">
+                    <span data-i18n="form_email">Email</span>
+                    <input type="email" name="email" required autocomplete="email" />
+                  </label>
+                  <label class="field field--full">
+                    <span data-i18n="form_msg">Message</span>
+                    <textarea name="message" required></textarea>
+                  </label>
+                  <p class="form-note" data-i18n="form_ok">// Message sent — I will get back to you soon.</p>
+                  <button class="btn btn--primary" type="submit" data-i18n="form_send">Send message</button>
+                </form>
               </div>
             </div>
           </div>
-        </article>
-        <article class="skills-group">
-          <header class="skills-group__header">
-            <h3>CAD</h3>
-          </header>
-          <div class="skills-grid" role="list" aria-label="CAD skills">
-            <div class="skill-tile" role="listitem" data-skill="Autodesk Inventor" tabindex="0">
-              <img class="skill-logo" src="assets/img/logos/autodesk-inventor-professional-small_social-400.avif" alt="autodesk inventor professional small social 400 logo" loading="lazy" />
-              <div class="skill-detail">
-                <span class="skill-detail__title">Autodesk Inventor</span>
-                <span class="skill-detail__body">Mechanical assemblies and manufacturing drawings.</span>
-              </div>
-            </div>
-            <div class="skill-tile" role="listitem" data-skill="Fusion 360" tabindex="0">
-              <img class="skill-logo" src="assets/img/logos/Fusion360_Logo.svg.avif" alt="Fusion360 Logo.svg logo" loading="lazy" />
-              <div class="skill-detail">
-                <span class="skill-detail__title">Fusion 360</span>
-                <span class="skill-detail__body">Rapid CAD iterations and CAM-ready parts.</span>
-              </div>
-            </div>
-            <div class="skill-tile" role="listitem" data-skill="AutoCAD" tabindex="0">
-              <img class="skill-logo skill-logo--large" style="width: 53% !important;" src="assets/img/logos/autocad-seeklogo.avif" alt="autocad" loading="lazy" />
-              <div class="skill-detail">
-                <span class="skill-detail__title">AutoCAD</span>
-                <span class="skill-detail__body">2D drawings and clean mechanical documentation.</span>
-              </div>
-            </div>
-            <div class="skill-tile" role="listitem" data-skill="SolidWorks" tabindex="0">
-              <img class="skill-logo skill-logo--large" style="width: 100% !important;" src="assets/img/logos/solidworks.avif" alt="solidworks logo png seeklogo 179590 logo" loading="lazy" />
-              <div class="skill-detail">
-                <span class="skill-detail__title">SolidWorks</span>
-                <span class="skill-detail__body">Detailed mechanical design and assemblies.</span>
-              </div>
-            </div>
-          </div>
-        </article>
-        <article class="skills-group">
-          <header class="skills-group__header">
-            <h3>Web</h3>
-          </header>
-          <div class="skills-grid" role="list" aria-label="Web skills">
-            <div class="skill-tile" role="listitem" data-skill="HTML5" tabindex="0">
-              <img class="skill-logo" src="assets/img/logos/Other-html-5-icon.avif" alt="Other html 5 icon logo" loading="lazy" />
-              <div class="skill-detail">
-                <span class="skill-detail__title">HTML5</span>
-                <span class="skill-detail__body">Semantic layout for portfolio and project sites.</span>
-              </div>
-            </div>
-            <div class="skill-tile" role="listitem" data-skill="CSS3" tabindex="0">
-              <img class="skill-logo" src="assets/img/logos/CSS3_logo_and_wordmark.svg.avif" alt="CSS3 logo and wordmark.svg logo" loading="lazy" />
-              <div class="skill-detail">
-                <span class="skill-detail__title">CSS3</span>
-                <span class="skill-detail__body">Responsive styling, animations, and UI polish.</span>
-              </div>
-            </div>
-            <div class="skill-tile" role="listitem" data-skill="JavaScript" tabindex="0">
-              <img class="skill-logo" src="assets/img/logos/JavaScript-logo.avif" alt="JavaScript logo logo" loading="lazy" />
-              <div class="skill-detail">
-                <span class="skill-detail__title">JavaScript</span>
-                <span class="skill-detail__body">UI interactions and component behavior.</span>
-              </div>
-            </div>
-            <div class="skill-tile" role="listitem" data-skill="Node.js" tabindex="0">
-              <img class="skill-logo" style="width: 80% !important;" src="assets/img/logos/Node.js_logo.svg.avif" alt="Node.js logo.svg logo" loading="lazy" />
-              <div class="skill-detail">
-                <span class="skill-detail__title">Node.js</span>
-                <span class="skill-detail__body">Build tooling and lightweight services.</span>
-              </div>
-            </div>
-            <div class="skill-tile" role="listitem" data-skill="React" tabindex="0">
-              <img class="skill-logo" src="assets/img/logos/React-icon.svg.avif" alt="React icon.svg logo" loading="lazy" />
-              <div class="skill-detail">
-                <span class="skill-detail__title">React</span>
-                <span class="skill-detail__body">SPA front ends for client-facing projects.</span>
-              </div>
-            </div>
-            <div class="skill-tile" role="listitem" data-skill="Flask" tabindex="0">
-              <img class="skill-logo skill-logo--large" src="assets/img/logos/flask_logo_icon_214741.avif" alt="flask logo icon 214741 logo" loading="lazy" />
-              <div class="skill-detail">
-                <span class="skill-detail__title">Flask</span>
-                <span class="skill-detail__body">Lightweight APIs and backend services.</span>
-              </div>
-            </div>
-            <div class="skill-tile" role="listitem" data-skill="TypeScript" tabindex="0">
-              <img class="skill-logo" src="assets/img/logos/Typescript_logo_2020.svg.avif" alt="TypeScript logo" loading="lazy" />
-              <div class="skill-detail">
-                <span class="skill-detail__title">TypeScript</span>
-                <span class="skill-detail__body">Typed front-end development for safer, scalable UI code.</span>
-              </div>
-            </div>
-            <div class="skill-tile" role="listitem" data-skill="Django" tabindex="0">
-              <img class="skill-logo" src="assets/img/logos/django-icon.avif" alt="Django logo" loading="lazy" />
-              <div class="skill-detail">
-                <span class="skill-detail__title">Django</span>
-                <span class="skill-detail__body">Structured backend development with robust admin and ORM support.</span>
-              </div>
-            </div>
-          </div>
-        </article>
-        <article class="skills-group">
-          <header class="skills-group__header">
-            <h3>Graphics</h3>
-          </header>
-          <div class="skills-grid" role="list" aria-label="Graphics skills">
-            <div class="skill-tile" role="listitem" data-skill="Adobe Photoshop" tabindex="0">
-              <img class="skill-logo" src="assets/img/logos/Adobe_Photoshop_CC_icon.svg.avif" alt="Adobe Photoshop CC icon.svg logo" loading="lazy" />
-              <div class="skill-detail">
-                <span class="skill-detail__title">Adobe Photoshop</span>
-                <span class="skill-detail__body">Image cleanup, compositing, and assets.</span>
-              </div>
-            </div>
-            <div class="skill-tile" role="listitem" data-skill="Adobe Lightroom" tabindex="0">
-              <img class="skill-logo" src="assets/img/logos/Adobe_Photoshop_Lightroom_CC_logo.svg.avif" alt="Adobe Photoshop Lightroom CC logo.svg logo" loading="lazy" />
-              <div class="skill-detail">
-                <span class="skill-detail__title">Adobe Lightroom</span>
-                <span class="skill-detail__body">Photo grading and batch edits.</span>
-              </div>
-            </div>
-            <div class="skill-tile" role="listitem" data-skill="Adobe Premiere Pro" tabindex="0">
-              <img class="skill-logo" style="width: 100% !important;" src="assets/img/logos/Adobe_Premiere_Pro_CC_icon.svg.avif" alt="Adobe Premiere Pro CC icon.svg logo" loading="lazy" />
-              <div class="skill-detail">
-                <span class="skill-detail__title">Adobe Premiere Pro</span>
-                <span class="skill-detail__body">Short edits and motion cuts for demos.</span>
-              </div>
-            </div>
-          </div>
-        </article>
-      </div>
-    </div>
-  </div>
-</section>
+        </section>
+      </main>
 
-<section id="contact" class="section reveal">
-  <div class="container">
-    <div class="panel reveal contact-panel">
-      <div class="contact-header">
-        <div>
-          <h2 class="section-title"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-envelope" viewBox="0 0 16 16">
-  <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1zm13 2.383-4.708 2.825L15 11.105zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741M1 11.105l4.708-2.897L1 5.383z"/>
-</svg> Contact</h2>
-          <p class="section-lead">Ready to collaborate on resilient systems and impactful engineering.</p>
+      <!-- ============ TITLE BLOCK FOOTER ============ -->
+      <footer class="titleblock">
+        <div class="titleblock__grid">
+          <div class="titleblock__cell">
+            <span class="titleblock__key" data-i18n="tb_k_title">Title</span>
+            <span class="titleblock__value" data-i18n="tb_v_title">Engineering portfolio — Felix Machán</span>
+          </div>
+          <div class="titleblock__cell">
+            <span class="titleblock__key" data-i18n="tb_k_drawn">Drawn by</span>
+            <span class="titleblock__value">F. Machán</span>
+          </div>
+          <div class="titleblock__cell">
+            <span class="titleblock__key" data-i18n="tb_k_date">Date</span>
+            <span class="titleblock__value">2026</span>
+          </div>
+          <div class="titleblock__cell">
+            <span class="titleblock__key" data-i18n="tb_k_sheet">Sheet</span>
+            <span class="titleblock__value">01 / 08</span>
+          </div>
+          <div class="titleblock__cell">
+            <span class="titleblock__key" data-i18n="tb_k_rev">Rev</span>
+            <span class="titleblock__value"><span class="accent">D</span></span>
+          </div>
         </div>
-        <a class="button secondary contact-cv" href="#" download>Download my CV</a>
-      </div>
-      <div class="contact-grid">
-        <a class="contact-card contact-card--link" href="https://github.com/felixmachan" aria-label="GitHub profile">
-          <span class="contact-icon" aria-hidden="true">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
-              <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
-            </svg>
-          </span>
-          <div class="contact-card-body">
-            <span class="contact-title">GitHub</span>
-            <span class="contact-handle">github.com/felixmachan</span>
-          </div>
-        </a>
-        <a class="contact-card contact-card--link" href="https://www.linkedin.com/in/felix-machan-3186a3268/" aria-label="LinkedIn profile">
-          <span class="contact-icon" aria-hidden="true">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
-              <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zM3.742 5.091c.837 0 1.358-.554 1.358-1.248-.015-.709-.521-1.248-1.343-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.328 1.248h.016zm4.908 8.303V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z"/>
-            </svg>
-          </span>
-          <div class="contact-card-body">
-            <span class="contact-title">LinkedIn</span>
-            <span class="contact-handle">linkedin.com/in/felix-machan</span>
-          </div>
-        </a>
-        <a class="contact-card contact-card--link" href="https://www.instagram.com/machanfelix/" aria-label="Instagram profile">
-          <span class="contact-icon" aria-hidden="true">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
-              <path d="M8 5.2A2.8 2.8 0 1 0 8 10.8 2.8 2.8 0 0 0 8 5.2zm0 4.6A1.8 1.8 0 1 1 8 6.2a1.8 1.8 0 0 1 0 3.6zm4.5-4.85a.65.65 0 1 1-1.3 0 .65.65 0 0 1 1.3 0z"/>
-              <path d="M4.5 0h7A4.5 4.5 0 0 1 16 4.5v7A4.5 4.5 0 0 1 11.5 16h-7A4.5 4.5 0 0 1 0 11.5v-7A4.5 4.5 0 0 1 4.5 0zm0 1A3.5 3.5 0 0 0 1 4.5v7A3.5 3.5 0 0 0 4.5 15h7a3.5 3.5 0 0 0 3.5-3.5v-7A3.5 3.5 0 0 0 11.5 1h-7z"/>
-            </svg>
-          </span>
-          <div class="contact-card-body">
-            <span class="contact-title">Instagram</span>
-            <span class="contact-handle">@machanfelix</span>
-          </div>
-        </a>
-        <button
-          class="contact-card contact-card--link contact-card--toggle"
-          type="button"
-          data-contact-toggle
-          aria-expanded="false"
-          aria-controls="contact-form"
-        >
-          <span class="contact-icon" aria-hidden="true">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
-              <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1z"/>
-              <path d="M15 11.105l-4.708-2.897L8 9.583l-2.292-1.375L1 11.105V12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1z"/>
-            </svg>
-          </span>
-          <div class="contact-card-body">
-            <span class="contact-title">Email</span>
-            <span class="contact-handle">Open contact form</span>
-          </div>
-        </button>
-      </div>
-      <div class="contact-form" id="contact-form" hidden>
-        <form class="contact-form__inner" action="https://api.web3forms.com/submit" method="POST">
-          <input type="hidden" name="access_key" value="5c115f1a-b24e-496d-8e85-08c2f2da261a" />
-          <label class="contact-form__label">
-            <span>Your name:</span>
-            <input type="text" name="name" required />
-          </label>
-          <label class="contact-form__label">
-            <span>Your email:</span>
-            <input type="email" name="email" required />
-          </label>
-          <label class="contact-form__label contact-form__label--full">
-            <span>Your message:</span>
-            <textarea name="message" required></textarea>
-          </label>
-          <button class="contact-form__submit contact-form__submit--full" type="submit">Submit</button>
-        </form>
-      </div>
+        <div class="titleblock__copy">
+          <span data-i18n="tb_copy">© 2026 Felix Machán · All dimensions in mm unless otherwise noted</span>
+          <span data-i18n="tb_built">No frameworks — drawn by hand</span>
+        </div>
+      </footer>
     </div>
-  </div>
-</section>
-    </main>
 
-    <footer class="site-footer">
-      <div class="container">
-        <small>© 2026 Machan Engineering. Built for clarity and reliability.</small>
-      </div>
-    </footer>
-
-    <script src="assets/js/reveal.js" defer></script>
-    <script src="assets/js/main.js" defer></script>
+    <script src="assets/js/i18n.js?v=20260924n" defer></script>
+    <script src="assets/js/app.js?v=20260924n" defer></script>
   </body>
 </html>

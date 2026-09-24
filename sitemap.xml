@@ -23,11 +23,6 @@
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://felixmachan.hu/projects/iot-device-hub</loc>
-  <lastmod>2026-01-30T00:20:41+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
   <loc>https://felixmachan.hu/projects/talppont</loc>
   <lastmod>2026-01-30T00:20:41+00:00</lastmod>
   <priority>0.80</priority>
@@ -38,10 +33,20 @@
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://felixmachan.hu/projects/pacerra</loc>
-  <lastmod>2026-03-06T00:00:00+00:00</lastmod>
+  <loc>https://felixmachan.hu/projects/cheerlify.html</loc>
+  <lastmod>2026-09-24</lastmod>
+  <priority>0.90</priority>
+</url>
+<url>
+  <loc>https://felixmachan.hu/projects/distance-sensor</loc>
+  <lastmod>2026-07-05T00:00:00+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 
 
+<url>
+  <loc>https://felixmachan.hu/projects/vanoor.html</loc>
+  <lastmod>2026-09-24</lastmod>
+  <priority>0.90</priority>
+</url>
 </urlset>

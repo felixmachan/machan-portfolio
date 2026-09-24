@@ -1,0 +1,192 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-16 16 1232 770" width="1232" height="770" role="img" aria-labelledby="t d">
+  <title id="t">Home network topology</title>
+  <desc id="d">Internet traffic reaches the public sites through Cloudflare and an outbound Cloudflare Tunnel, with no open inbound ports. A bridged modem and the main router serve LAN clients and a Proxmox VE host (Lenovo ThinkCentre M710q) running Cheerlify, Umami, Pi-hole, Nginx Proxy Manager, TrueNAS, Plex, Vaultwarden, Home Assistant, Tailscale, RustDesk, Netdata and encrypted backups to Cloudflare R2. Remote devices connect through Tailscale; Zigbee and MQTT link Home Assistant to Philips Hue, IKEA, Sonoff and a Bambu Lab printer.</desc>
+  <style>
+    .bg { fill: #1b1e24; }
+    .gridline { stroke: #20232a; stroke-width: 1; }
+    .zone { fill: #16181d; stroke: #2f343c; stroke-width: 1.2; }
+    .zone-tab { fill: #5b6069; }
+    .tab { font: 600 10.5px 'IBM Plex Mono', 'SF Mono', SFMono-Regular, Menlo, Consolas, monospace; letter-spacing: .12em; fill: #1b1e24; }
+    .zone-title { font: 500 10.5px 'IBM Plex Mono', 'SF Mono', SFMono-Regular, Menlo, Consolas, monospace; letter-spacing: .14em; text-transform: uppercase; fill: #9aa0a8; }
+    .node { fill: #22262d; stroke: #5b6069; stroke-width: 1.3; }
+    .node--accent { stroke: #de9552; }
+    .group { fill: #22262d; stroke: #2f343c; stroke-width: 1.2; }
+    .tb { fill: #22262d; stroke: #5b6069; stroke-width: 1.2; }
+    .rule { stroke: #2f343c; stroke-width: 1; }
+    .kicker { font: 500 10px 'IBM Plex Mono', 'SF Mono', SFMono-Regular, Menlo, Consolas, monospace; letter-spacing: .14em; text-transform: uppercase; fill: #de9552; }
+    .name { font: 650 16px 'Archivo', 'Helvetica Neue', Helvetica, Arial, sans-serif; fill: #e8e6e1; }
+    .sub { font: 400 11px 'IBM Plex Mono', 'SF Mono', SFMono-Regular, Menlo, Consolas, monospace; letter-spacing: .04em; fill: #9aa0a8; }
+    .svc { font: 600 14px 'Archivo', 'Helvetica Neue', Helvetica, Arial, sans-serif; fill: #e8e6e1; }
+    .desc { font: 400 10.5px 'IBM Plex Mono', 'SF Mono', SFMono-Regular, Menlo, Consolas, monospace; letter-spacing: .03em; fill: #9aa0a8; }
+    .bullet { fill: none; stroke: #de9552; stroke-width: 1.6; }
+    .link { fill: none; stroke: #5b6069; stroke-width: 1.4; }
+    .link--tunnel { stroke: #de9552; stroke-dasharray: 7 5; stroke-width: 1.6; }
+    .link--radio { stroke-dasharray: 2 4; stroke-linecap: round; stroke-width: 1.8; }
+    .dot { fill: #5b6069; }
+    .link-label { font: 500 10px 'IBM Plex Mono', 'SF Mono', SFMono-Regular, Menlo, Consolas, monospace; letter-spacing: .1em; text-transform: uppercase; fill: #9aa0a8; paint-order: stroke; stroke: #16181d; stroke-width: 5px; }
+    .link-label--accent { fill: #de9552; }
+    .legend { font: 500 10px 'IBM Plex Mono', 'SF Mono', SFMono-Regular, Menlo, Consolas, monospace; letter-spacing: .1em; text-transform: uppercase; fill: #9aa0a8; }
+  </style>
+  <rect class="bg" x="-40" y="0" width="1280" height="800"/>
+  <line class="gridline" x1="0" y1="0" x2="0" y2="800"/><line class="gridline" x1="40" y1="0" x2="40" y2="800"/><line class="gridline" x1="80" y1="0" x2="80" y2="800"/><line class="gridline" x1="120" y1="0" x2="120" y2="800"/><line class="gridline" x1="160" y1="0" x2="160" y2="800"/><line class="gridline" x1="200" y1="0" x2="200" y2="800"/><line class="gridline" x1="240" y1="0" x2="240" y2="800"/><line class="gridline" x1="280" y1="0" x2="280" y2="800"/><line class="gridline" x1="320" y1="0" x2="320" y2="800"/><line class="gridline" x1="360" y1="0" x2="360" y2="800"/><line class="gridline" x1="400" y1="0" x2="400" y2="800"/><line class="gridline" x1="440" y1="0" x2="440" y2="800"/><line class="gridline" x1="480" y1="0" x2="480" y2="800"/><line class="gridline" x1="520" y1="0" x2="520" y2="800"/><line class="gridline" x1="560" y1="0" x2="560" y2="800"/><line class="gridline" x1="600" y1="0" x2="600" y2="800"/><line class="gridline" x1="640" y1="0" x2="640" y2="800"/><line class="gridline" x1="680" y1="0" x2="680" y2="800"/><line class="gridline" x1="720" y1="0" x2="720" y2="800"/><line class="gridline" x1="760" y1="0" x2="760" y2="800"/><line class="gridline" x1="800" y1="0" x2="800" y2="800"/><line class="gridline" x1="840" y1="0" x2="840" y2="800"/><line class="gridline" x1="880" y1="0" x2="880" y2="800"/><line class="gridline" x1="920" y1="0" x2="920" y2="800"/><line class="gridline" x1="960" y1="0" x2="960" y2="800"/><line class="gridline" x1="1000" y1="0" x2="1000" y2="800"/><line class="gridline" x1="1040" y1="0" x2="1040" y2="800"/><line class="gridline" x1="1080" y1="0" x2="1080" y2="800"/><line class="gridline" x1="1120" y1="0" x2="1120" y2="800"/><line class="gridline" x1="1160" y1="0" x2="1160" y2="800"/><line class="gridline" x1="1200" y1="0" x2="1200" y2="800"/><line class="gridline" x1="-40" y1="0" x2="1240" y2="0"/><line class="gridline" x1="-40" y1="40" x2="1240" y2="40"/><line class="gridline" x1="-40" y1="80" x2="1240" y2="80"/><line class="gridline" x1="-40" y1="120" x2="1240" y2="120"/><line class="gridline" x1="-40" y1="160" x2="1240" y2="160"/><line class="gridline" x1="-40" y1="200" x2="1240" y2="200"/><line class="gridline" x1="-40" y1="240" x2="1240" y2="240"/><line class="gridline" x1="-40" y1="280" x2="1240" y2="280"/><line class="gridline" x1="-40" y1="320" x2="1240" y2="320"/><line class="gridline" x1="-40" y1="360" x2="1240" y2="360"/><line class="gridline" x1="-40" y1="400" x2="1240" y2="400"/><line class="gridline" x1="-40" y1="440" x2="1240" y2="440"/><line class="gridline" x1="-40" y1="480" x2="1240" y2="480"/><line class="gridline" x1="-40" y1="520" x2="1240" y2="520"/><line class="gridline" x1="-40" y1="560" x2="1240" y2="560"/><line class="gridline" x1="-40" y1="600" x2="1240" y2="600"/><line class="gridline" x1="-40" y1="640" x2="1240" y2="640"/><line class="gridline" x1="-40" y1="680" x2="1240" y2="680"/><line class="gridline" x1="-40" y1="720" x2="1240" y2="720"/><line class="gridline" x1="-40" y1="760" x2="1240" y2="760"/><line class="gridline" x1="-40" y1="800" x2="1240" y2="800"/>
+  <rect class="zone" x="24" y="24" width="214" height="752"/>
+  <path class="zone-tab" d="M24 24 h44.2 v22 h-44.2 z"/>
+  <text class="tab" x="35" y="39">Z-0</text>
+  <text class="zone-title" x="80.2" y="39.5">Outside</text>
+  <rect class="zone" x="262" y="24" width="914" height="170"/>
+  <path class="zone-tab" d="M262 24 h44.2 v22 h-44.2 z"/>
+  <text class="tab" x="273" y="39">Z-1</text>
+  <text class="zone-title" x="318.2" y="39.5">Edge &amp; LAN</text>
+  <rect class="zone" x="262" y="218" width="640" height="558"/>
+  <path class="zone-tab" d="M262 218 h44.2 v22 h-44.2 z"/>
+  <text class="tab" x="273" y="233">Z-2</text>
+  <text class="zone-title" x="318.2" y="233.5">Proxmox VE host</text>
+  <rect class="zone" x="926" y="218" width="250" height="558"/>
+  <path class="zone-tab" d="M926 218 h44.2 v22 h-44.2 z"/>
+  <text class="tab" x="937" y="233">Z-3</text>
+  <text class="zone-title" x="982.2" y="233.5">Devices</text>
+  <line class="link" x1="216" y1="105" x2="290" y2="105"/>
+  <line class="link" x1="470" y1="115" x2="560" y2="115"/>
+  <line class="link" x1="760" y1="115" x2="850" y2="115"/>
+  <line class="link" x1="131" y1="140" x2="131" y2="214"/>
+  <line class="link" x1="660" y1="160" x2="660" y2="218"/>
+  <circle class="dot" cx="660" cy="160" r="3.5"/>
+  <circle class="dot" cx="660" cy="218" r="3.5"/>
+  <polyline class="link link--tunnel" points="216,266 250,266 250,360 286,360"/>
+  <polyline class="link link--tunnel" points="216,703 250,703 250,660 286,660"/>
+  <polyline class="link link--radio" points="882,526 914,526 914,298 946,298"/>
+  <polyline class="link link--radio" points="1051,334 1051,372"/>
+  <rect class="node" x="46" y="70" width="170" height="70"/>
+  <text class="kicker" x="58" y="89">WAN</text>
+  <text class="name" x="58" y="110">Internet</text>
+  <text class="sub" x="58" y="128">visitors · ISP</text>
+  <rect class="node node--accent" x="46" y="214" width="170" height="104"/>
+  <text class="kicker" x="58" y="233">Edge</text>
+  <text class="name" x="58" y="254">Cloudflare</text>
+  <text class="sub" x="58" y="272">Tunnel · Access</text>
+  <text class="sub" x="58" y="288">TLS 1.2+ · HSTS</text>
+  <rect class="node node--accent" x="46" y="660" width="170" height="86"/>
+  <text class="kicker" x="58" y="679">Remote</text>
+  <text class="name" x="58" y="700">Laptop / phone</text>
+  <text class="sub" x="58" y="718">via Tailscale</text>
+  <rect class="node" x="290" y="70" width="180" height="90"/>
+  <text class="kicker" x="302" y="89">Modem</text>
+  <text class="name" x="302" y="110">ISP modem</text>
+  <text class="sub" x="302" y="128">bridge mode</text>
+  <rect class="node" x="560" y="70" width="200" height="90"/>
+  <text class="kicker" x="572" y="89">Router</text>
+  <text class="name" x="572" y="110">Main router</text>
+  <text class="sub" x="572" y="128">DHCP · NAT · Wi-Fi</text>
+  <rect class="node" x="850" y="70" width="300" height="90"/>
+  <text class="kicker" x="862" y="89">LAN clients</text>
+  <text class="name" x="862" y="110">PC · laptops · phones</text>
+  <text class="sub" x="862" y="128">wired + wireless</text>
+  <text class="kicker" x="286" y="268">Hardware</text>
+  <text class="name" x="286" y="289">Lenovo ThinkCentre M710q</text>
+  <text class="sub" x="878" y="289" text-anchor="end">i5-6500T · 16 GB · VMs + LXC</text>
+  <rect class="group" x="286" y="310" width="290" height="124"/>
+  <text class="kicker" x="298" y="330">Public web</text>
+  <line class="rule" x1="298" y1="338" x2="564" y2="338"/>
+  <rect class="bullet" x="298" y="352" width="7" height="7"/>
+  <text class="svc" x="313" y="360">Cheerlify</text>
+  <text class="desc" x="564" y="360" text-anchor="end">VM · Docker · PostGIS</text>
+  <rect class="bullet" x="298" y="382" width="7" height="7"/>
+  <text class="svc" x="313" y="390">Umami</text>
+  <text class="desc" x="564" y="390" text-anchor="end">LXC · analytics</text>
+  <rect class="bullet" x="298" y="412" width="7" height="7"/>
+  <text class="svc" x="313" y="420">cloudflared</text>
+  <text class="desc" x="564" y="420" text-anchor="end">outbound only</text>
+  <rect class="group" x="592" y="310" width="290" height="94"/>
+  <text class="kicker" x="604" y="330">Network</text>
+  <line class="rule" x1="604" y1="338" x2="870" y2="338"/>
+  <rect class="bullet" x="604" y="352" width="7" height="7"/>
+  <text class="svc" x="619" y="360">Pi-hole</text>
+  <text class="desc" x="870" y="360" text-anchor="end">DNS filtering</text>
+  <rect class="bullet" x="604" y="382" width="7" height="7"/>
+  <text class="svc" x="619" y="390">Nginx Proxy Mgr</text>
+  <text class="desc" x="870" y="390" text-anchor="end">reverse proxy · SSL</text>
+  <rect class="group" x="286" y="460" width="290" height="124"/>
+  <text class="kicker" x="298" y="480">Data &amp; media</text>
+  <line class="rule" x1="298" y1="488" x2="564" y2="488"/>
+  <rect class="bullet" x="298" y="502" width="7" height="7"/>
+  <text class="svc" x="313" y="510">TrueNAS</text>
+  <text class="desc" x="564" y="510" text-anchor="end">storage · backups</text>
+  <rect class="bullet" x="298" y="532" width="7" height="7"/>
+  <text class="svc" x="313" y="540">Plex</text>
+  <text class="desc" x="564" y="540" text-anchor="end">media server</text>
+  <rect class="bullet" x="298" y="562" width="7" height="7"/>
+  <text class="svc" x="313" y="570">Vaultwarden</text>
+  <text class="desc" x="564" y="570" text-anchor="end">passwords</text>
+  <rect class="group" x="592" y="460" width="290" height="124"/>
+  <text class="kicker" x="604" y="480">Home automation</text>
+  <line class="rule" x1="604" y1="488" x2="870" y2="488"/>
+  <rect class="bullet" x="604" y="502" width="7" height="7"/>
+  <text class="svc" x="619" y="510">Home Assistant</text>
+  <text class="desc" x="870" y="510" text-anchor="end">VM · Zigbee USB</text>
+  <rect class="bullet" x="604" y="532" width="7" height="7"/>
+  <text class="svc" x="619" y="540">Zigbee2MQTT</text>
+  <text class="desc" x="870" y="540" text-anchor="end">Zigbee bridge</text>
+  <rect class="bullet" x="604" y="562" width="7" height="7"/>
+  <text class="svc" x="619" y="570">MQTT broker</text>
+  <text class="desc" x="870" y="570" text-anchor="end">Mosquitto</text>
+  <rect class="group" x="286" y="610" width="290" height="94"/>
+  <text class="kicker" x="298" y="630">Remote access</text>
+  <line class="rule" x1="298" y1="638" x2="564" y2="638"/>
+  <rect class="bullet" x="298" y="652" width="7" height="7"/>
+  <text class="svc" x="313" y="660">Tailscale</text>
+  <text class="desc" x="564" y="660" text-anchor="end">subnet router</text>
+  <rect class="bullet" x="298" y="682" width="7" height="7"/>
+  <text class="svc" x="313" y="690">RustDesk</text>
+  <text class="desc" x="564" y="690" text-anchor="end">remote desktop</text>
+  <rect class="group" x="592" y="610" width="290" height="94"/>
+  <text class="kicker" x="604" y="630">Ops</text>
+  <line class="rule" x1="604" y1="638" x2="870" y2="638"/>
+  <rect class="bullet" x="604" y="652" width="7" height="7"/>
+  <text class="svc" x="619" y="660">Netdata</text>
+  <text class="desc" x="870" y="660" text-anchor="end">uptime · temp alerts</text>
+  <rect class="bullet" x="604" y="682" width="7" height="7"/>
+  <text class="svc" x="619" y="690">WAL-G + rclone</text>
+  <text class="desc" x="870" y="690" text-anchor="end">encrypted → R2</text>
+  <rect class="node" x="946" y="262" width="210" height="72"/>
+  <text class="kicker" x="958" y="281">USB</text>
+  <text class="name" x="958" y="302">Zigbee coordinator</text>
+  <text class="sub" x="958" y="320">Sonoff · 2.4 GHz</text>
+  <rect class="group" x="946" y="372" width="210" height="154"/>
+  <text class="kicker" x="958" y="392">Endpoints</text>
+  <line class="rule" x1="958" y1="400" x2="1144" y2="400"/>
+  <rect class="bullet" x="958" y="414" width="7" height="7"/>
+  <text class="svc" x="973" y="422">Philips Hue</text>
+  <text class="desc" x="1144" y="422" text-anchor="end">Zigbee</text>
+  <rect class="bullet" x="958" y="444" width="7" height="7"/>
+  <text class="svc" x="973" y="452">IKEA</text>
+  <text class="desc" x="1144" y="452" text-anchor="end">Zigbee</text>
+  <rect class="bullet" x="958" y="474" width="7" height="7"/>
+  <text class="svc" x="973" y="482">Sonoff</text>
+  <text class="desc" x="1144" y="482" text-anchor="end">Zigbee</text>
+  <rect class="bullet" x="958" y="504" width="7" height="7"/>
+  <text class="svc" x="973" y="512">Bambu Lab</text>
+  <text class="desc" x="1144" y="512" text-anchor="end">LAN · MQTT</text>
+  <text class="link-label" x="515" y="106" text-anchor="middle">bridge</text>
+  <text class="link-label" x="805" y="106" text-anchor="middle">LAN</text>
+  <text class="link-label" x="670" y="196" text-anchor="start">1 GbE</text>
+  <text class="link-label" x="142" y="184" text-anchor="start">HTTPS</text>
+  <text class="link-label link-label--accent" transform="translate(229 313) rotate(-90)" text-anchor="middle">outbound tunnel</text>
+  <text class="link-label link-label--accent" transform="translate(229 640) rotate(-90)" text-anchor="middle">WireGuard</text>
+  <text class="link-label" transform="translate(906 412) rotate(-90)" text-anchor="middle">Zigbee · MQTT</text>
+  <g transform="translate(946 572)">
+    <text class="kicker" x="0" y="0">Legend</text>
+    <line class="link" x1="0" y1="22" x2="34" y2="22"/><text class="legend" x="44" y="26">Ethernet</text>
+    <line class="link link--tunnel" x1="0" y1="48" x2="34" y2="48"/><text class="legend" x="44" y="52">Encrypted tunnel</text>
+    <line class="link link--radio" x1="0" y1="74" x2="34" y2="74"/><text class="legend" x="44" y="78">Wireless</text>
+  </g>
+  <g transform="translate(926 726)">
+    <rect class="tb" x="0" y="0" width="250" height="50"/>
+    <line class="rule" x1="0" y1="25" x2="250" y2="25"/>
+    <line class="rule" x1="180" y1="0" x2="180" y2="50"/>
+    <text class="kicker" x="10" y="17">FM-NW-001</text>
+    <text class="kicker" x="190" y="17">Rev C</text>
+    <text class="kicker" x="10" y="42">Network topology</text>
+    <text class="kicker" x="190" y="42">2026</text>
+  </g>
+<line class="gridline" x1="-40" y1="0" x2="-40" y2="800"/><line class="gridline" x1="1240" y1="0" x2="1240" y2="800"/>
+</svg>

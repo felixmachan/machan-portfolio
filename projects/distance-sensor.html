@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Zigbee ToF Distance Sensor · Felix Machán</title>
+    <meta name="description" content="Case study: a battery-powered Zigbee distance sensor with an ESP32-H2, a VL53L4CD time-of-flight sensor, a custom two-revision KiCad PCB, C firmware and Home Assistant integration." />
+    <link rel="canonical" href="https://felixmachan.hu/projects/distance-sensor.html" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Zigbee ToF Distance Sensor" />
+    <meta property="og:description" content="Case study: a battery-powered Zigbee distance sensor with an ESP32-H2, a VL53L4CD time-of-flight sensor, a custom two-revision KiCad PCB, C firmware and Home Assistant integration." />
+    <meta property="og:url" content="https://felixmachan.hu/projects/distance-sensor.html" />
+    <meta property="og:image" content="https://felixmachan.hu/assets/img/distancesensor/og.jpg" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <script>
+      (function () {
+        try {
+          var t = localStorage.getItem('theme');
+          if (!t) t = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+          document.documentElement.setAttribute('data-theme', t);
+        } catch (e) {}
+      })();
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../assets/css/style.css?v=20260924n" />
+  </head>
+  <body data-page="sensor">
+    <div class="progress" aria-hidden="true"><div class="progress__bar"></div></div>
+    <span class="sheet__mark sheet__mark--tl" aria-hidden="true"></span>
+    <span class="sheet__mark sheet__mark--tr" aria-hidden="true"></span>
+    <span class="sheet__mark sheet__mark--bl" aria-hidden="true"></span>
+    <span class="sheet__mark sheet__mark--br" aria-hidden="true"></span>
+
+    <div class="sheet">
+      <header class="nav">
+        <div class="container nav__inner">
+          <a class="nav__brand" href="../index.html">
+            <span class="nav__monogram" aria-hidden="true">FM</span>
+            <span class="nav__title">
+              <span class="nav__name">Felix Machán</span>
+              <span class="nav__doc">FM-EE-002 · Rev 2</span>
+            </span>
+          </a>
+          <nav class="nav__links" aria-label="Sections">
+            <a class="nav__link" href="../index.html#about" data-i18n="nav_about">About</a>
+            <a class="nav__link" href="../index.html#timeline" data-i18n="nav_timeline">Timeline</a>
+            <a class="nav__link is-active" href="../index.html#projects" data-i18n="nav_projects">Projects</a>
+            <a class="nav__link" href="../index.html#skills" data-i18n="nav_skills">Skills</a>
+            <a class="nav__link" href="../index.html#contact" data-i18n="nav_contact">Contact</a>
+          </nav>
+          <div class="nav__controls">
+            <button class="lang-toggle" type="button" aria-label="Language switch">
+              <span class="lang-toggle__opt" data-lang-option="hu">HU</span><span class="lang-toggle__sep">/</span><span class="lang-toggle__opt is-active" data-lang-option="en">EN</span>
+            </button>
+            <button class="theme-toggle" type="button" aria-label="Toggle dark mode" aria-pressed="false">
+              <svg class="theme-icon theme-icon--moon" aria-hidden="true" viewBox="0 0 24 24" fill="currentColor"><path d="M21.53 14.37a.75.75 0 0 0-.86-.3 7.5 7.5 0 0 1-9.79-9.8.75.75 0 0 0-1.16-.83 9.75 9.75 0 1 0 12.04 12.04.75.75 0 0 0-.23-1.11z"/></svg>
+              <svg class="theme-icon theme-icon--sun" aria-hidden="true" viewBox="0 0 24 24" fill="currentColor"><path d="M12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0-5a1 1 0 0 1 1 1v2a1 1 0 1 1-2 0V3a1 1 0 0 1 1-1zm0 18a1 1 0 0 1 1 1v2a1 1 0 1 1-2 0v-2a1 1 0 0 1 1-1zm10-9a1 1 0 0 1-1 1h-2a1 1 0 1 1 0-2h2a1 1 0 0 1 1 1zM5 12a1 1 0 0 1-1 1H2a1 1 0 1 1 0-2h2a1 1 0 0 1 1 1zm14.95-6.95a1 1 0 0 1 0 1.41l-1.42 1.42a1 1 0 1 1-1.41-1.42l1.41-1.41a1 1 0 0 1 1.42 0zM6.88 17.12a1 1 0 0 1 0 1.41L5.46 19.95a1 1 0 1 1-1.41-1.41l1.42-1.42a1 1 0 0 1 1.41 0zm12.07 1.41a1 1 0 0 1-1.41 0l-1.42-1.42a1 1 0 0 1 1.42-1.41l1.41 1.41a1 1 0 0 1 0 1.42zM7.29 6.88a1 1 0 0 1-1.41 0L4.46 5.46a1 1 0 1 1 1.41-1.41l1.42 1.42a1 1 0 0 1 0 1.41z"/></svg>
+            </button>
+            <button class="nav__burger" type="button" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+          </div>
+        </div>
+      </header>
+
+      <main>
+        <header class="doc-header">
+          <div class="container">
+            <nav class="breadcrumb" aria-label="Breadcrumb">
+              <a href="../index.html" data-i18n="crumb_index">Index</a>
+              <span class="sep">/</span>
+              <a href="../index.html#projects" data-i18n="crumb_projects">Projects</a>
+              <span class="sep">/</span>
+              <span class="current">FM-EE-002</span>
+            </nav>
+            <div class="doc-header__grid">
+              <div class="reveal">
+                <span class="eyebrow" data-i18n="dom_elec">Electrical</span>
+                <h1 class="doc-header__title" data-i18n="h1">Zigbee ToF Distance Sensor</h1>
+                <p class="doc-header__lead" data-i18n="lead">A fully custom smart-home sensor that measures distance to the millimetre with a laser time-of-flight chip and reports it over Zigbee into Home Assistant. I designed every layer myself: the schematic and PCB in KiCad, the power electronics for battery operation, the C firmware on ESP-IDF and the Zigbee2MQTT integration.</p>
+                <div class="doc-header__actions">
+                  <a class="btn" href="../index.html#projects" data-i18n="btn_back">Back to projects</a>
+                </div>
+                <div class="spec">
+                  <div class="spec__cell"><span class="spec__key" data-i18n="spec_dwg">DWG NO</span><span class="spec__value">FM-EE-002</span></div>
+                  <div class="spec__cell"><span class="spec__key" data-i18n="spec_status">Status</span><span class="spec__value status status--wip" data-i18n="st_fab">Ready for fab</span></div>
+                  <div class="spec__cell"><span class="spec__key" data-i18n="spec_domain">Domain</span><span class="spec__value" data-i18n="dom_elec">Electrical</span></div>
+                  <div class="spec__cell"><span class="spec__key" data-i18n="spec_tooling">Tooling</span><span class="spec__value">ESP32-H2 · KiCad · C</span></div>
+                </div>
+              </div>
+              <figure class="doc-header__figure reveal">
+                <img src="../assets/img/distancesensor/v2-iso.webp" class="case-hero-wide" width="1160" height="860" alt="3D render of the v2.0 sensor board with the ESP32-H2 module, boost converter and sensor header" />
+                <figcaption><span data-i18n="figcap">Fig. 01 — Board v2.0, 3D render from KiCad</span><span>FM-EE-002</span></figcaption>
+              </figure>
+            </div>
+
+            <div class="case-facts reveal" data-stagger>
+              <div class="case-fact"><span class="case-fact__value">1 mm</span><span class="case-fact__label" data-i18n="fact1">Distance resolution reported to Home Assistant</span></div>
+              <div class="case-fact"><span class="case-fact__value">2</span><span class="case-fact__label" data-i18n="fact2">Board revisions, both designed for battery power</span></div>
+              <div class="case-fact"><span class="case-fact__value">2 × AAA</span><span class="case-fact__label" data-i18n="fact3">Cells boosted to a stable 3.3 V rail</span></div>
+              <div class="case-fact"><span class="case-fact__value">5 mm</span><span class="case-fact__label" data-i18n="fact4">Change threshold that triggers a Zigbee report</span></div>
+              <div class="case-fact"><span class="case-fact__value">2 layers</span><span class="case-fact__label" data-i18n="fact5">PCB, with Gerbers, drill files and BOM ready</span></div>
+            </div>
+          </div>
+        </header>
+
+        <div class="container">
+          <nav class="case-contents" aria-label="Project contents">
+            <span class="eyebrow" data-i18n="case_contents">Inside the project</span>
+            <div>
+              <a href="#section-1"><span>01</span> <span data-i18n="section_1">The problem</span></a>
+              <a href="#section-2"><span>02</span> <span data-i18n="section_2">From v1 to v2</span></a>
+              <a href="#section-3"><span>03</span> <span data-i18n="section_3">Architecture</span></a>
+              <a href="#section-4"><span>04</span> <span data-i18n="section_4">Layout</span></a>
+              <a href="#section-5"><span>05</span> <span data-i18n="section_5">Firmware &amp; integration</span></a>
+              <a href="#section-6"><span>06</span> <span data-i18n="section_6">Status &amp; next steps</span></a>
+            </div>
+          </nav>
+        </div>
+
+        <!-- 01 -->
+        <section class="doc-section" id="section-1">
+          <div class="container">
+            <div class="doc-section__head reveal"><span class="doc-section__no">01</span><h2 class="doc-section__title" data-i18n="section_1">The problem</h2></div>
+            <p class="reveal case-intro" data-i18n="problem">Commercial Zigbee sensors cover doors, motion and climate. A precise distance measurement is surprisingly hard to buy off the shelf: is the car in the garage, how full is a tank, is a desk occupied? I wanted a small, reliable device that feeds millimetre-level readings straight into my existing Zigbee2MQTT and Home Assistant setup, running on my <a href="network.html">home server</a>.</p>
+            <p class="reveal case-intro" data-i18n="goal">It was also a deliberate exercise: one artefact that spans all three of my fields. Electrical design, embedded software and the integration layer all had to work together, with no off-the-shelf device in between.</p>
+          </div>
+        </section>
+
+        <!-- 02 -->
+        <section class="doc-section" id="section-2">
+          <div class="container">
+            <div class="doc-section__head reveal"><span class="doc-section__no">02</span><h2 class="doc-section__title" data-i18n="section_2">From v1 to v2</h2></div>
+            <div class="feature reveal">
+              <div class="feature__text">
+                <h3 class="feature__title" data-i18n="f1_t">v1: prove the chain works</h3>
+                <p data-i18n="f1_p1">A distance sensor is most useful where there is no socket: above a garage door, next to a tank, under a desk. So battery power was a requirement from the first revision. v1 was built around the ESP32-H2-MINI-1 module, which is both the Zigbee radio and the main processor, with ST's VL53L4CD time-of-flight sensor on I2C. A TPS61023 boost converter, a load switch for the sensor and reverse-polarity protection made up the power path. Its job was to prove the full chain: laser measurement, firmware, Zigbee mesh and a live value in Home Assistant.</p>
+              </div>
+              <figure class="fig fig--contain">
+                <img src="../assets/img/distancesensor/board-render.png" alt="Render of the first board revision" loading="lazy" />
+                <figcaption data-i18n="f1_cap">Fig. 02 — Board v1, ESP32-H2-MINI-1</figcaption>
+              </figure>
+            </div>
+            <div class="feature reveal">
+              <div class="feature__text">
+                <h3 class="feature__title" data-i18n="f2_t">v2: a smaller, cleaner board</h3>
+                <p data-i18n="f2_p1">For v2.0 (May 2026) I moved to the ESP32-H2-WROOM-02C module and the TLV61070A synchronous boost converter, and reworked the whole layout around them. The power path covers reverse-polarity protection, the boost stage from two cells to 3.3 V, a load switch that powers the ToF sensor only when it's needed, and a switchable divider for measuring the battery voltage.</p>
+                <p data-i18n="f2_p2">The board was shrunk to the minimum, with a keep-out zone around the antenna. Test points were added to every important net for bring-up, and the sensor sits on its own header so it can face the target while the board stays out of the way.</p>
+              </div>
+              <figure class="fig fig--contain">
+                <img src="../assets/img/distancesensor/v2-top.webp" alt="Top view render of board v2.0" loading="lazy" />
+                <figcaption data-i18n="f2_cap">Fig. 03 — Board v2.0, top view</figcaption>
+              </figure>
+            </div>
+          </div>
+        </section>
+
+        <!-- 03 -->
+        <section class="doc-section" id="section-3">
+          <div class="container">
+            <div class="doc-section__head reveal"><span class="doc-section__no">03</span><h2 class="doc-section__title" data-i18n="section_3">Architecture</h2></div>
+            <p class="reveal case-intro" data-i18n="s3_intro">The v2 design is organised into functional blocks, so every part has one clear job:</p>
+            <ul class="spec-list reveal" data-stagger>
+              <li data-i18n="b1"><strong>Boost</strong> — a TLV61070A synchronous boost converter turns 2–3 V from two cells into a stable 3.3 V rail. A P-MOSFET in front of it protects against a battery inserted the wrong way round. The inductor was chosen for saturation current and low DCR, not just inductance, because that's where boost efficiency is won or lost.</li>
+              <li data-i18n="b2"><strong>Load switch for the ToF</strong> — a TPS22917 switches the sensor's supply from a GPIO. Between measurements the laser module can be fully powered down instead of idling.</li>
+              <li data-i18n="b3"><strong>Battery measurement</strong> — a 1 MΩ / 1 MΩ divider into an ADC pin, enabled only while sampling, so the measurement doesn't drain the battery it measures.</li>
+              <li data-i18n="b4"><strong>ESP32-H2-WROOM-02C</strong> — Zigbee radio and MCU in one certified module, with decoupling next to the supply pins.</li>
+              <li data-i18n="b5"><strong>Interfaces</strong> — a 6-pin ToF header (I2C, interrupt, shutdown and power), a 6-pin TTL header for flashing and logs, EN and BOOT buttons, a separate Zigbee reset button and a status LED.</li>
+            </ul>
+            <figure class="fig case-banner reveal">
+              <img src="../assets/img/distancesensor/blocks-light.svg" data-light="../assets/img/distancesensor/blocks-light.svg" data-dark="../assets/img/distancesensor/blocks-dark.svg" width="1200" height="448" alt="Block diagram: battery, reverse-polarity protection, boost converter, battery sense, load switch, ToF header, ESP32-H2 module and interfaces" loading="lazy" decoding="async" />
+              <figcaption data-i18n="cap_4">Fig. 04 — Block diagram of the v2 board</figcaption>
+            </figure>
+          </div>
+        </section>
+
+        <!-- 04 -->
+        <section class="doc-section" id="section-4">
+          <div class="container">
+            <div class="doc-section__head reveal"><span class="doc-section__no">04</span><h2 class="doc-section__title" data-i18n="section_4">Layout</h2></div>
+            <p class="reveal case-intro" data-i18n="f3_p1">The two-layer layout keeps the boost converter's switching loop (input capacitor, inductor, converter and output capacitors) as tight as possible, to limit noise next to a 2.4 GHz radio. The antenna end of the module overhangs a copper-free keep-out area, following the vendor's guidelines.</p>
+            <p class="reveal case-intro" data-i18n="f3_p2">Headers, buttons and the battery input sit on accessible edges, and every net that matters during bring-up has a labelled test point. 3D STEP models of the board, battery holder and standoffs are ready for designing a printed enclosure around it.</p>
+            <figure class="fig case-banner case-banner--narrow reveal">
+                <img src="../assets/img/distancesensor/floorplan-light.svg" data-light="../assets/img/distancesensor/floorplan-light.svg" data-dark="../assets/img/distancesensor/floorplan-dark.svg" width="940" height="640" alt="Floorplan of the v2 board showing where the module, power stage, headers and buttons sit" loading="lazy" />
+                <figcaption data-i18n="f3_cap">Fig. 05 — Board floorplan, v2.0</figcaption>
+              </figure>
+          </div>
+        </section>
+
+        <!-- 05 -->
+        <section class="doc-section" id="section-5">
+          <div class="container">
+            <div class="doc-section__head reveal"><span class="doc-section__no">05</span><h2 class="doc-section__title" data-i18n="section_5">Firmware &amp; integration</h2></div>
+            <p class="reveal case-intro" data-i18n="fw_intro">The firmware is written in C on ESP-IDF and FreeRTOS. It is split into small, focused modules: sensor polling, Zigbee device logic, the status LED state machine, pairing button handling, and an I2C driver layer around ST's official VL53L4CD driver.</p>
+            <figure class="fig case-banner reveal">
+              <img src="../assets/img/distancesensor/dataflow-light.svg" data-light="../assets/img/distancesensor/dataflow-light.svg" data-dark="../assets/img/distancesensor/dataflow-dark.svg" width="1200" height="280" alt="Data flow: VL53L4CD, sensor task, Zigbee endpoint, coordinator, Zigbee2MQTT, Home Assistant" loading="lazy" decoding="async" />
+              <figcaption data-i18n="cap_6">Fig. 06 — From photons to a Home Assistant entity</figcaption>
+            </figure>
+            <ul class="spec-list reveal" data-stagger style="margin-top:1.6rem">
+              <li data-i18n="fw_li1"><strong>Zigbee device</strong> — the sensor joins the mesh and exposes distance as an Analog Input cluster value, a standard cluster that any coordinator can read.</li>
+              <li data-i18n="fw_li2"><strong>Continuous ranging</strong> — a FreeRTOS task polls the ToF sensor over I2C and publishes millimetre readings. Reporting is configurable: at least every 60 s, at most every 1 s, and only when the value changes by 5 mm or more.</li>
+              <li data-i18n="fw_li3"><strong>Pairing flow</strong> — holding the button for 3 seconds opens a 60-second pairing window, and the LED shows the pairing and joined states.</li>
+              <li data-i18n="fw_li4"><strong>Zigbee2MQTT converter</strong> — a custom external converter and configuration snippet make the sensor appear in Home Assistant as a native distance entity, with no manual MQTT plumbing.</li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- 06 -->
+        <section class="doc-section" id="section-6">
+          <div class="container">
+            <div class="doc-section__head reveal"><span class="doc-section__no">06</span><h2 class="doc-section__title" data-i18n="section_6">Status &amp; next steps</h2></div>
+            <p class="reveal case-intro" data-i18n="current">The firmware works end to end, and the sensor reports live distance into Home Assistant through its own converter. The v2 board was finished in May 2026. Gerbers, drill files, the BOM and the order sheet are ready for manufacturing.</p>
+            <p class="reveal case-intro" data-i18n="next"><strong>Next:</strong> assemble the first v2 batch and bring it up using the test points. Then move the firmware from an always-on router to a sleepy end device that uses the load switch and battery measurement, so a pair of cells lasts as long as possible. Finally, design a printed enclosure around the existing STEP models.</p>
+          </div>
+        </section>
+
+        <div class="container doc-next">
+          <a href="../index.html#projects">
+            <span class="doc-next__label" data-i18n="crumb_projects">Projects</span>
+            <span class="doc-next__title">← <span data-i18n="btn_back">Back to projects</span></span>
+          </a>
+          <a href="cheerlify.html" style="text-align: right;">
+            <span class="doc-next__label" data-i18n="next_label">Next project</span>
+            <span class="doc-next__title" data-i18n="card_cheerlify_t">Cheerlify — Live race tracking with voice cheers</span>
+          </a>
+        </div>
+      </main>
+      <footer class="titleblock">
+        <div class="titleblock__grid">
+          <div class="titleblock__cell"><span class="titleblock__key" data-i18n="tb_k_title">Title</span><span class="titleblock__value" data-i18n="h1">Zigbee ToF Distance Sensor</span></div>
+          <div class="titleblock__cell"><span class="titleblock__key" data-i18n="tb_k_drawn">Drawn by</span><span class="titleblock__value">F. Machán</span></div>
+          <div class="titleblock__cell"><span class="titleblock__key" data-i18n="tb_k_date">Date</span><span class="titleblock__value">2026</span></div>
+          <div class="titleblock__cell"><span class="titleblock__key" data-i18n="tb_k_sheet">Sheet</span><span class="titleblock__value">04 / 08</span></div>
+          <div class="titleblock__cell"><span class="titleblock__key" data-i18n="tb_k_rev">Rev</span><span class="titleblock__value"><span class="accent">3</span></span></div>
+        </div>
+        <div class="titleblock__copy">
+          <span data-i18n="tb_copy">© 2026 Felix Machán · All dimensions in mm unless otherwise noted</span>
+        </div>
+      </footer>
+    </div>
+
+    <script src="../assets/js/i18n.js?v=20260924n" defer></script>
+    <script src="../assets/js/app.js?v=20260924n" defer></script>
+  </body>
+</html>

@@ -1,0 +1,344 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Cheerlify — Live race tracking with voice cheers · Felix Machán</title>
+    <meta name="description" content="Case study: Cheerlify lets friends and family follow a runner live in the browser and send voice cheers that play in the runner's earbuds at the kilometre they choose. React Native, React, Django, PostGIS, SSE." />
+    <link rel="canonical" href="https://felixmachan.hu/projects/cheerlify.html" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Cheerlify — Live race tracking with voice cheers" />
+    <meta property="og:description" content="Supporters follow the runner live in the browser, with no app to install, and their voice cheers play in the runner's earbuds at the kilometre they choose." />
+    <meta property="og:url" content="https://felixmachan.hu/projects/cheerlify.html" />
+    <meta property="og:image" content="https://felixmachan.hu/assets/img/cheerlify/og.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <script>
+      (function () {
+        try {
+          var t = localStorage.getItem('theme');
+          if (!t) t = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+          document.documentElement.setAttribute('data-theme', t);
+        } catch (e) {}
+      })();
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../assets/css/style.css?v=20260924n" />
+  </head>
+  <body data-page="cheerlify">
+    <div class="progress" aria-hidden="true"><div class="progress__bar"></div></div>
+    <span class="sheet__mark sheet__mark--tl" aria-hidden="true"></span>
+    <span class="sheet__mark sheet__mark--tr" aria-hidden="true"></span>
+    <span class="sheet__mark sheet__mark--bl" aria-hidden="true"></span>
+    <span class="sheet__mark sheet__mark--br" aria-hidden="true"></span>
+
+    <div class="sheet">
+      <header class="nav">
+        <div class="container nav__inner">
+          <a class="nav__brand" href="../index.html">
+            <span class="nav__monogram" aria-hidden="true">FM</span>
+            <span class="nav__title">
+              <span class="nav__name">Felix Machán</span>
+              <span class="nav__doc">FM-SW-004 · Live</span>
+            </span>
+          </a>
+          <nav class="nav__links" aria-label="Sections">
+            <a class="nav__link" href="../index.html#about" data-i18n="nav_about">About</a>
+            <a class="nav__link" href="../index.html#timeline" data-i18n="nav_timeline">Timeline</a>
+            <a class="nav__link is-active" href="../index.html#projects" data-i18n="nav_projects">Projects</a>
+            <a class="nav__link" href="../index.html#skills" data-i18n="nav_skills">Skills</a>
+            <a class="nav__link" href="../index.html#contact" data-i18n="nav_contact">Contact</a>
+          </nav>
+          <div class="nav__controls">
+            <button class="lang-toggle" type="button" aria-label="Language switch">
+              <span class="lang-toggle__opt" data-lang-option="hu">HU</span><span class="lang-toggle__sep">/</span><span class="lang-toggle__opt is-active" data-lang-option="en">EN</span>
+            </button>
+            <button class="theme-toggle" type="button" aria-label="Toggle dark mode" aria-pressed="false">
+              <svg class="theme-icon theme-icon--moon" aria-hidden="true" viewBox="0 0 24 24" fill="currentColor"><path d="M21.53 14.37a.75.75 0 0 0-.86-.3 7.5 7.5 0 0 1-9.79-9.8.75.75 0 0 0-1.16-.83 9.75 9.75 0 1 0 12.04 12.04.75.75 0 0 0-.23-1.11z"/></svg>
+              <svg class="theme-icon theme-icon--sun" aria-hidden="true" viewBox="0 0 24 24" fill="currentColor"><path d="M12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0-5a1 1 0 0 1 1 1v2a1 1 0 1 1-2 0V3a1 1 0 0 1 1-1zm0 18a1 1 0 0 1 1 1v2a1 1 0 1 1-2 0v-2a1 1 0 0 1 1-1zm10-9a1 1 0 0 1-1 1h-2a1 1 0 1 1 0-2h2a1 1 0 0 1 1 1zM5 12a1 1 0 0 1-1 1H2a1 1 0 1 1 0-2h2a1 1 0 0 1 1 1zm14.95-6.95a1 1 0 0 1 0 1.41l-1.42 1.42a1 1 0 1 1-1.41-1.42l1.41-1.41a1 1 0 0 1 1.42 0zM6.88 17.12a1 1 0 0 1 0 1.41L5.46 19.95a1 1 0 1 1-1.41-1.41l1.42-1.42a1 1 0 0 1 1.41 0zm12.07 1.41a1 1 0 0 1-1.41 0l-1.42-1.42a1 1 0 0 1 1.42-1.41l1.41 1.41a1 1 0 0 1 0 1.42zM7.29 6.88a1 1 0 0 1-1.41 0L4.46 5.46a1 1 0 1 1 1.41-1.41l1.42 1.42a1 1 0 0 1 0 1.41z"/></svg>
+            </button>
+            <button class="nav__burger" type="button" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+          </div>
+        </div>
+      </header>
+
+      <main>
+        <header class="doc-header">
+          <div class="container">
+            <nav class="breadcrumb" aria-label="Breadcrumb">
+              <a href="../index.html" data-i18n="crumb_index">Index</a>
+              <span class="sep">/</span>
+              <a href="../index.html#projects" data-i18n="crumb_projects">Projects</a>
+              <span class="sep">/</span>
+              <span class="current">FM-SW-004</span>
+            </nav>
+            <div class="doc-header__grid">
+              <div class="reveal">
+                <span class="eyebrow" data-i18n="eyebrow">Software · Product · 2026</span>
+                <h1 class="doc-header__title" data-i18n="h1">Cheerlify — Live race tracking with voice cheers</h1>
+                <p class="doc-header__lead" data-i18n="lead">Friends and family follow a runner live in any browser. There's no app to install, but everyone joins under their own name through a private invite. They record a voice cheer, pin it to a kilometre, and it plays in the runner's earbuds right when that kilometre arrives. I designed and built the whole product: the mobile app, the web app, the backend and the infrastructure.</p>
+                <div class="doc-header__actions">
+                  <a class="btn" href="../index.html#projects" data-i18n="btn_back">Back to projects</a>
+                  <a class="btn btn--primary" href="https://cheerlify.com/en?utm_source=portfolio&amp;utm_medium=referral&amp;utm_campaign=case-study&amp;utm_content=header" data-href-hu="https://cheerlify.com/?utm_source=portfolio&amp;utm_medium=referral&amp;utm_campaign=case-study&amp;utm_content=header" target="_blank" rel="noopener" data-umami-event="outbound_cheerlify" data-umami-event-where="header"><span data-i18n="btn_see">See project</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5"/></svg></a>
+                </div>
+                <div class="spec">
+                  <div class="spec__cell"><span class="spec__key" data-i18n="spec_dwg">DWG NO</span><span class="spec__value">FM-SW-004</span></div>
+                  <div class="spec__cell"><span class="spec__key" data-i18n="spec_status">Status</span><span class="spec__value status status--live" data-i18n="status_val">Web live</span></div>
+                  <div class="spec__cell"><span class="spec__key" data-i18n="spec_role">Role</span><span class="spec__value" data-i18n="role_val">Solo founder &amp; engineer</span></div>
+                  <div class="spec__cell"><span class="spec__key" data-i18n="spec_tooling">Tooling</span><span class="spec__value">React Native · React · Django · PostGIS</span></div>
+                </div>
+              </div>
+              <figure class="doc-header__figure reveal">
+                <img src="../assets/img/cheerlify/feature-graphic.webp" class="case-hero-wide" width="1024" height="500" alt="Cheerlify: the runner's live map on an iPhone, with a voice cheer from Mum arriving at kilometre 30" />
+                <figcaption><span data-i18n="figcap">Fig. 01 — Store feature graphic</span><span>cheerlify.com</span></figcaption>
+              </figure>
+            </div>
+
+            <div class="case-facts reveal" data-stagger>
+              <div class="case-fact"><span class="case-fact__value">3</span><span class="case-fact__label" data-i18n="fact1">Clients (iOS, Android, web) on one Django backend</span></div>
+              <div class="case-fact"><span class="case-fact__value">0.23 s</span><span class="case-fact__label" data-i18n="fact2">Median delay from GPS batch to supporter's screen</span></div>
+              <div class="case-fact"><span class="case-fact__value">~1,250</span><span class="case-fact__label" data-i18n="fact3">Concurrent viewers per server with P95 under 1 s</span></div>
+              <div class="case-fact"><span class="case-fact__value">35 km</span><span class="case-fact__label" data-i18n="fact4">Field test: 4 h 17 min, 5,726 GPS points, 15 followers</span></div>
+              <div class="case-fact"><span class="case-fact__value">830+</span><span class="case-fact__label" data-i18n="fact5">Commits since June 2026</span></div>
+            </div>
+          </div>
+        </header>
+
+        <div class="container">
+          <nav class="case-contents" aria-label="Project contents">
+            <span class="eyebrow" data-i18n="case_contents">Inside the project</span>
+            <div>
+              <a href="#section-1"><span>01</span> <span data-i18n="section_1">The problem</span></a>
+              <a href="#section-2"><span>02</span> <span data-i18n="section_2">How it works</span></a>
+              <a href="#section-3"><span>03</span> <span data-i18n="section_3">The runner app</span></a>
+              <a href="#section-4"><span>04</span> <span data-i18n="section_4">The supporter side</span></a>
+              <a href="#section-5"><span>05</span> <span data-i18n="section_5">Engineering the live loop</span></a>
+              <a href="#section-6"><span>06</span> <span data-i18n="section_6">Scaling the live map</span></a>
+              <a href="#section-7"><span>07</span> <span data-i18n="section_7">The 35 km field test</span></a>
+              <a href="#section-8"><span>08</span> <span data-i18n="section_8">Business model &amp; operations</span></a>
+              <a href="#section-9"><span>09</span> <span data-i18n="section_9">Status &amp; lessons</span></a>
+            </div>
+          </nav>
+        </div>
+
+        <!-- 01 -->
+        <section class="doc-section" id="section-1">
+          <div class="container">
+            <div class="doc-section__head reveal"><span class="doc-section__no">01</span><h2 class="doc-section__title" data-i18n="section_1">The problem</h2></div>
+            <div class="feature reveal">
+              <div class="feature__text">
+                <p class="case-intro" data-i18n="s1_p1">A marathon takes three to five hours. The people who came to support you see you for maybe ten seconds at one corner, and they usually miss the moment you actually need them: kilometre 30, when your legs are gone and there's nobody at the roadside.</p>
+                <p class="case-intro" data-i18n="s1_p2">Existing race trackers show a dot on a map, but the communication only goes one way. Chip-timing apps update at timing mats every 5 km, and fitness apps want every supporter to install something and create an account. None of them let the people at home actually <strong>reach</strong> the runner.</p>
+                <p class="case-intro" data-i18n="s1_p3">Cheerlify closes that loop. Supporters follow the runner live, and their recorded voices arrive in the runner's earbuds at the kilometre they chose.</p>
+              </div>
+              <figure class="fig case-image"><img src="../assets/img/cheerlify/photo-spectators-cheer.webp" alt="Spectators cheering at the side of a city race" loading="lazy" decoding="async" /><figcaption><span data-i18n="cap_2">Fig. 02 — The roadside moment only lasts seconds</span><a class="fig__credit" href="https://unsplash.com/photos/RTMDQeVYo2A" target="_blank" rel="noopener"><span data-i18n="photo_by">Photo</span>: Leviosa Hou / Unsplash</a></figcaption></figure>
+            </div>
+          </div>
+        </section>
+
+        <!-- 02 -->
+        <section class="doc-section" id="section-2">
+          <div class="container">
+            <div class="doc-section__head reveal"><span class="doc-section__no">02</span><h2 class="doc-section__title" data-i18n="section_2">How it works</h2></div>
+            <p class="reveal case-intro" data-i18n="s2_intro">The whole product is built around one race-day loop. The runner does the setup once before the race. Everyone else just gets a link.</p>
+            <ol class="case-steps reveal">
+              <li data-i18n="step1"><strong>Create the race</strong>Upload a GPX file or pick an official course from the catalog (for example SPAR Budapest Marathon, 42.2 km).</li>
+              <li data-i18n="step2"><strong>Share one link</strong>The runner sends an invite link, or a race ID plus access code, to their own people. The event is private by default.</li>
+              <li data-i18n="step3"><strong>Supporters follow live</strong>The link opens in any browser with no app to install. Each supporter enters their name, then sees a live map, distance, pace, splits and estimated finish time.</li>
+              <li data-i18n="step4"><strong>They record a cheer</strong>A voice or video message with a trigger: instantly, at a chosen km, at halfway, in the last 5 km or in the last 1 km.</li>
+              <li data-i18n="step5"><strong>It plays at the right km</strong>When the runner reaches the trigger, the music ducks, a short spoken intro ("Cheer from Mum") plays, then the message. This works on the Lock Screen too.</li>
+            </ol>
+            <figure class="fig case-banner reveal"><img src="../assets/img/cheerlify/store-strip.webp" width="2400" height="1043" alt="Cheerlify App Store screenshot panorama: live tracking, supporters in the browser, a cheer playing at km 30, the race catalog and the recap" loading="lazy" decoding="async" /><figcaption data-i18n="cap_3">Fig. 03 — App Store screenshot set: the whole loop from start to finish on one course line</figcaption></figure>
+          </div>
+        </section>
+
+        <!-- 03 -->
+        <section class="doc-section" id="section-3">
+          <div class="container">
+            <div class="doc-section__head reveal"><span class="doc-section__no">03</span><h2 class="doc-section__title" data-i18n="section_3">The runner app</h2></div>
+            <div class="feature reveal">
+              <div class="feature__text">
+                <h3 class="feature__title" data-i18n="s3_f1_t">Set up before the start, then forget the phone</h3>
+                <p data-i18n="s3_f1_p1">The runner app (React Native + Expo, iOS and Android) has three tabs: Run, Follow and Profile. Before the race you choose the course, the entry mode and how cheers should behave: whether music ducks or pauses, how often claps are allowed, and who can see the live map.</p>
+                <p data-i18n="s3_f1_p2">Once tracking starts, the phone goes in a pocket or an armband. A single background location task uploads GPS batches <em>and</em> plays cheers that are due. It keeps running with the screen locked, because that's where the phone actually is during a race.</p>
+              </div>
+              <div class="case-gallery case-gallery--pair">
+                <figure class="fig case-image case-image--phone"><img src="../assets/img/cheerlify/phone-runner.webp" alt="Runner tracking screen with live map, distance, pace and ETA" loading="lazy" decoding="async" /><figcaption data-i18n="cap_4">Fig. 04 — Live tracking</figcaption></figure>
+                <figure class="fig case-image case-image--phone"><img src="../assets/img/cheerlify/phone-races.webp" alt="Race catalog with official SPAR Budapest Marathon courses" loading="lazy" decoding="async" /><figcaption data-i18n="cap_5">Fig. 05 — Race catalog</figcaption></figure>
+              </div>
+            </div>
+            <div class="feature reveal">
+              <div class="feature__text">
+                <h3 class="feature__title" data-i18n="s3_f2_t">Glanceable, even when locked</h3>
+                <p data-i18n="s3_f2_p1">An iOS Live Activity puts distance, pace, elapsed time and the latest cheer on the Lock Screen. The runner can see who just cheered without unlocking anything.</p>
+                <p data-i18n="s3_f2_p2">Claps (lightweight one-tap support) are bundled into one signal per time window. The default is at most one every 20 seconds and three per minute, enforced under a database row lock. Fifty excited friends therefore can't turn a race into a stream of notification sounds.</p>
+              </div>
+              <div class="case-gallery">
+                <figure class="fig case-image case-image--phone"><img src="../assets/img/cheerlify/phone-lock.webp" alt="iPhone Lock Screen with the Cheerlify Live Activity during a race" loading="lazy" decoding="async" /><figcaption data-i18n="cap_6">Fig. 06 — Live Activity on the Lock Screen</figcaption></figure>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 04 -->
+        <section class="doc-section" id="section-4">
+          <div class="container">
+            <div class="doc-section__head reveal"><span class="doc-section__no">04</span><h2 class="doc-section__title" data-i18n="section_4">The supporter side</h2></div>
+            <div class="feature reveal">
+              <div class="feature__text">
+                <h3 class="feature__title" data-i18n="s4_f1_t">No app to install, but never anonymous</h3>
+                <p data-i18n="s4_f1_p1">The people who follow a runner are parents, partners and colleagues, often opening the link on a phone minutes before the start. Every extra step loses some of them. So the follower experience is a web app (React + Vite): open the link, type your name, and you're in.</p>
+                <p data-i18n="s4_f1_p2">Behind the scenes, every supporter gets a named session scoped to that one race. There's no password to create, but the name is required and it travels with every cheer and clap. The runner decides how people get in: a signed invite link, a race ID plus an access code of up to 12 characters, or a public link for those who explicitly want one. Access to one race never grants access to another. MapLibre with OpenFreeMap tiles renders the live course.</p>
+              </div>
+              <div class="case-gallery">
+                <figure class="fig case-image case-image--phone"><img src="../assets/img/cheerlify/phone-follower.webp" alt="Follower view in Safari: live map of the runner, pace and number of people watching" loading="lazy" decoding="async" /><figcaption data-i18n="cap_7">Fig. 07 — Supporter view in the browser</figcaption></figure>
+              </div>
+            </div>
+            <div class="feature reveal">
+              <div class="feature__text">
+                <h3 class="feature__title" data-i18n="s4_f2_t">Cheers recorded in the browser</h3>
+                <p data-i18n="s4_f2_p1">Voice and video cheers are recorded with the browser's MediaRecorder API and uploaded to random, unguessable URLs. Each supporter can send up to three cheers per race, which keeps the queue personal and not spammy.</p>
+                <p data-i18n="s4_f2_p2">A separate <em>cheer-only</em> mode is for people who can't watch live. They record a message days in advance, pin it to a kilometre, and never open the tracking screen.</p>
+              </div>
+              <figure class="fig case-image"><img src="../assets/img/cheerlify/photo-spectator-phone.webp" alt="A spectator following a runner on their phone" loading="lazy" decoding="async" /><figcaption><span data-i18n="cap_9">Fig. 08 — Supporters join from wherever they are</span><a class="fig__credit" href="https://unsplash.com/photos/h_fn7OCKa7I" target="_blank" rel="noopener"><span data-i18n="photo_by">Photo</span>: Grace Anne Bobadilla / Unsplash</a></figcaption></figure>
+            </div>
+          </div>
+        </section>
+
+        <!-- 05 -->
+        <section class="doc-section" id="section-5">
+          <div class="container">
+            <div class="doc-section__head reveal"><span class="doc-section__no">05</span><h2 class="doc-section__title" data-i18n="section_5">Engineering the live loop</h2></div>
+            <p class="reveal case-intro" data-i18n="s5_intro">Drawing a moving dot is easy. The hard part is knowing <em>where on the course</em> the runner is, precisely enough that a cheer set for "km 30" plays at km 30, not at km 29.4 or on the way back from a turnaround.</p>
+            <div class="feature reveal">
+              <div class="feature__text">
+                <h3 class="feature__title" data-i18n="s5_f1_t">Sequential map matching</h3>
+                <p data-i18n="s5_f1_p1">GPS gives a position, not a distance along the route. The naive approach is to find the nearest point of the course line, for example with PostGIS <code>ST_LineLocatePoint</code>. That breaks on out-and-back and loop courses, where the nearest segment often belongs to a <em>later</em> part of the race.</p>
+                <p data-i18n="s5_f1_p2">Instead, the backend does a sticky, sequential projection in Python. Each ping is matched only within a plausible window ahead of the last known position. If the runner is lost (more than 35 m from the course), they are reacquired only when they are within 20 m and the implied pace is realistic (at most 1.8× the current pace).</p>
+                <p data-i18n="s5_f1_p3">In the 35 km test, a hairpin turn snapped the runner onto the return leg about 60 m too early. The fix uses GPS heading: a candidate segment that points the opposite way gets a 30 m virtual penalty above 1 m/s. When a ping has no heading, it is derived from the previous fixes. Rebuilding a 6,110-point run went from ~5 s to 0.82 s.</p>
+              </div>
+              <figure class="fig case-image"><img src="../assets/img/cheerlify/photo-runners-city.webp" alt="Runners on a city course" loading="lazy" decoding="async" /><figcaption><span data-i18n="cap_10">Fig. 09 — City courses double back on themselves</span><a class="fig__credit" href="https://unsplash.com/photos/8pNsZRjxtnw" target="_blank" rel="noopener"><span data-i18n="photo_by">Photo</span>: Henry Ren / Unsplash</a></figcaption></figure>
+            </div>
+            <div class="feature reveal">
+              <div class="feature__text">
+                <h3 class="feature__title" data-i18n="s5_f2_t">Background GPS that actually arrives</h3>
+                <p data-i18n="s5_f2_p1">The first long test showed supporters a frozen marker. The cause was subtle. Expo's deferred location updates combine the time and distance thresholds with AND, so the original "60 s and 400 m" setting was really bound by distance at running pace. Batches left the phone only every ~3 minutes, and the P95 GPS delay was 164 s.</p>
+                <p data-i18n="s5_f2_p2">The fix is a 20-second window with distance 0 on both platforms. Distance 0 also works as a heartbeat on Android, which pauses JavaScript timers in the background. An offline backlog holds up to 3,000 points for tunnels and dead zones. An adaptive "Eco" mode lowers GPS accuracy when nobody is watching, to save battery.</p>
+              </div>
+              <figure class="fig case-image"><img src="../assets/img/cheerlify/photo-runner-armband.webp" alt="Runner with a phone in an armband" loading="lazy" decoding="async" /><figcaption><span data-i18n="cap_11">Fig. 10 — The phone lives in a pocket or armband for hours</span><a class="fig__credit" href="https://unsplash.com/photos/XCkRGOX2VgM" target="_blank" rel="noopener"><span data-i18n="photo_by">Photo</span>: Filip Mroz / Unsplash</a></figcaption></figure>
+            </div>
+          </div>
+        </section>
+
+        <!-- 06 -->
+        <section class="doc-section" id="section-6">
+          <div class="container">
+            <div class="doc-section__head reveal"><span class="doc-section__no">06</span><h2 class="doc-section__title" data-i18n="section_6">Scaling the live map</h2></div>
+            <p class="reveal case-intro" data-i18n="s6_intro">A big city marathon means many races running at once, each with several people refreshing the map. I load-tested the stack with 100 simultaneous races and 5 viewers each, and rebuilt the live path in stages until it held up:</p>
+            <div class="case-table-wrap reveal">
+              <table class="case-table">
+                <thead><tr><th data-i18n="t_h1">Stage</th><th data-i18n="t_h2">Change</th><th data-i18n="t_h3">Result (100 races × 5 viewers)</th></tr></thead>
+                <tbody>
+                  <tr><td>Baseline</td><td data-i18n="t_r1c">Recompute the full progress history on every 3-second poll</td><td data-i18n="t_r1r">1,647 ms per request; 3,000 timeouts vs 36 successful</td></tr>
+                  <tr><td>Phase 1</td><td data-i18n="t_r2c">Incremental live state per event and participant</td><td data-i18n="t_r2r">9,844 successful, 0 errors; P50 0.6 s</td></tr>
+                  <tr><td>Phase 2</td><td data-i18n="t_r3c">Conditional polling with ETags, asynchronous commits</td><td data-i18n="t_r3r">P50 0.1 s</td></tr>
+                  <tr><td>Phase 2b</td><td data-i18n="t_r4c">Server-Sent Events push, fed by Postgres LISTEN/NOTIFY</td><td data-i18n="t_r4r">GPS → viewer P50 0.35 s</td></tr>
+                  <tr><td>Final</td><td data-i18n="t_r5c">Same architecture, tuned</td><td data-i18n="t_r5r">P50 0.23 s · P95 0.37 s · max 0.70 s · 0 errors</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="reveal case-note" data-i18n="s6_note">A capacity ladder from 250 to 2,000 viewers puts the ceiling at about <strong>1,250 concurrent viewers</strong> with P95 under one second, on a 4 vCPU / 6 GB virtual machine. Beyond that, the two SSE workers become the bottleneck while database connections stay flat. That tells me exactly what to scale next.</p>
+          </div>
+        </section>
+
+        <!-- 07 -->
+        <section class="doc-section" id="section-7">
+          <div class="container">
+            <div class="doc-section__head reveal"><span class="doc-section__no">07</span><h2 class="doc-section__title" data-i18n="section_7">The 35 km field test</h2></div>
+            <div class="feature reveal">
+              <div class="feature__text">
+                <p data-i18n="s7_p1">The simulator can't prove that background GPS, audio ducking and network recovery work together for four hours in a pocket. So I ran it: <strong>35 km, 4 h 17 min, 5,726 GPS points, 15 followers, 6 cheers played and 19 claps</strong>, with the backend averaging 2.6% CPU and zero server errors.</p>
+                <p data-i18n="s7_p2">The run produced 12 logged issues, including the hairpin snap, the batching delay, heartbeat pings being dropped as duplicates and a proxy header that broke media URLs in release builds. Eleven are fixed. The last one, a controlled battery test, is still open, and I don't publish a battery claim until it's measured properly.</p>
+              </div>
+              <figure class="fig case-image case-image--phone"><img src="../assets/img/cheerlify/phone-recap.webp" alt="Recap screen with distance, pace and every received voice cheer" loading="lazy" decoding="async" /><figcaption data-i18n="cap_12">Fig. 11 — The recap after the finish</figcaption></figure>
+            </div>
+            <div class="feature reveal">
+              <div class="feature__text">
+                <h3 class="feature__title" data-i18n="s7_f2_t">After the finish: the recap</h3>
+                <p data-i18n="s7_f2_p1">The recap page brings together the route, the stats, every cheer (playable again), an audience timeline showing how many people watched at each kilometre, and a shareable card.</p>
+                <p data-i18n="s7_f2_p2">An earlier version also rendered a recap video on the server with headless Chromium and ffmpeg. It worked, but it was too heavy for the hardware and ran inside the request thread. I shelved it deliberately rather than let it threaten the live path, which is the part people actually depend on.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 08 -->
+        <section class="doc-section" id="section-8">
+          <div class="container">
+            <div class="doc-section__head reveal"><span class="doc-section__no">08</span><h2 class="doc-section__title" data-i18n="section_8">Business model &amp; operations</h2></div>
+            <p class="reveal case-intro" data-i18n="s8_p1"><strong>Tracking is free. Cheers and reach are paid.</strong> Pricing tiers follow the number of <em>concurrent live viewers</em>, because viewers are what drive server cost. A free race supports 3 viewers and comes with 3 welcome cheers. A Race Pack (€4.99) gives 7 viewers and 10 cheers. A Marathon Pack (€12.99) gives 50 viewers, unlimited cheers, video, scheduled cheers and a custom race ID. A yearly Season Pass covers every race.</p>
+            <p class="reveal case-intro" data-i18n="s8_p2"><strong>Payments.</strong> I replaced Stripe with native in-app purchases. StoreKit transactions are verified on the backend against Apple's root certificates, and refunds arrive through App Store Server Notifications. Store prices are pinned by script so Apple and Google never drift apart.</p>
+            <p class="reveal case-intro" data-i18n="s8_p3"><strong>Operations.</strong> The backend runs Django + DRF on PostgreSQL/PostGIS, with a separate ASGI service for SSE. It's deployed with Docker Compose behind a Cloudflare Tunnel, with point-in-time-recovery backups plus an encrypted off-site copy, Sentry and transactional email. A founder control center covers metrics, moderation (DSA notice-and-action), incidents and a newsletter, with 2FA and roles.</p>
+            <p class="reveal case-intro" data-i18n="s8_p4"><strong>Privacy by design.</strong> A live GPS position is sensitive data, so access is the runner's decision. Races are private by default, entry is gated by a signed invite link or an access code, every supporter is identified by name, and a report from the runner or a moderator hides content instantly. Admin views never show a runner's GPS trace or access code. Analytics are self-hosted and cookie-less. Marketing attribution is first-party: UTM tags on the landing page carry through to the App Store campaign token, so I can see which channel actually produces installs.</p>
+            <ul class="spec-list reveal">
+              <li data-i18n="stack1"><strong>Mobile</strong> — React Native, Expo dev build, expo-location background task, expo-audio with ducking, Live Activities, Apple Maps / MapLibre</li>
+              <li data-i18n="stack2"><strong>Web</strong> — React, Vite, TypeScript, prerendered HU/EN marketing pages and blog, MapLibre + OpenFreeMap</li>
+              <li data-i18n="stack3"><strong>Backend</strong> — Django 6, DRF, PostgreSQL 16 + PostGIS, SSE over LISTEN/NOTIFY, a scheduler for periodic jobs</li>
+              <li data-i18n="stack4"><strong>Shared</strong> — a <code>@cheerlify/shared</code> TypeScript package with API types and translations for both clients</li>
+              <li data-i18n="stack5"><strong>Infrastructure</strong> — Docker Compose on Proxmox, Cloudflare Tunnel, WAL-G backups to R2, Sentry, Resend, self-hosted Umami</li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- 09 -->
+        <section class="doc-section" id="section-9">
+          <div class="container">
+            <div class="doc-section__head reveal"><span class="doc-section__no">09</span><h2 class="doc-section__title" data-i18n="section_9">Status &amp; lessons</h2></div>
+            <p class="reveal case-intro" data-i18n="s9_p1"><strong>Where it is now.</strong> The web platform is public at cheerlify.com. The iOS app has been submitted to the App Store, and the Android app is in Google Play closed testing. The first target event is the SPAR Budapest Marathon in October 2026.</p>
+            <p class="reveal case-intro" data-i18n="s9_p2"><strong>What I learned.</strong> The product only feels simple if four imperfect systems agree with each other: GPS, mobile background execution, browser recording and audio playback. Most of the real work went into the gaps between them. That meant measuring with benchmarks and a real 35 km run instead of trusting the simulator, and cutting features (a server-rendered video, heart rate, a Strava integration) when they put the core loop at risk.</p>
+            <div class="case-cta reveal">
+              <div>
+                <p class="case-cta__title" data-i18n="cta_t">Try it on your next race</p>
+                <p data-i18n="cta_p">Create a race, share the link, and let your people reach you at kilometre 30.</p>
+              </div>
+              <div class="case-cta__actions">
+                <a class="btn btn--primary" href="https://cheerlify.com/en?utm_source=portfolio&amp;utm_medium=referral&amp;utm_campaign=case-study&amp;utm_content=footer" data-href-hu="https://cheerlify.com/?utm_source=portfolio&amp;utm_medium=referral&amp;utm_campaign=case-study&amp;utm_content=footer" target="_blank" rel="noopener" data-umami-event="outbound_cheerlify" data-umami-event-where="footer"><span data-i18n="btn_see">See project</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5"/></svg></a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <div class="container doc-next">
+          <a href="../index.html#projects">
+            <span class="doc-next__label" data-i18n="crumb_projects">Projects</span>
+            <span class="doc-next__title">← <span data-i18n="btn_back">Back to projects</span></span>
+          </a>
+          <a href="vanoor.html" style="text-align: right;">
+            <span class="doc-next__label" data-i18n="next_label">Next project</span>
+            <span class="doc-next__title" data-i18n="card_vanoor_t">Vanoor — Apple Watch-first running</span>
+          </a>
+        </div>
+      </main>
+
+      <footer class="titleblock">
+        <div class="titleblock__grid">
+          <div class="titleblock__cell"><span class="titleblock__key" data-i18n="tb_k_title">Title</span><span class="titleblock__value" data-i18n="tb_title">Cheerlify — Live race tracking with voice cheers</span></div>
+          <div class="titleblock__cell"><span class="titleblock__key" data-i18n="tb_k_drawn">Drawn by</span><span class="titleblock__value">F. Machán</span></div>
+          <div class="titleblock__cell"><span class="titleblock__key" data-i18n="tb_k_date">Date</span><span class="titleblock__value">2026</span></div>
+          <div class="titleblock__cell"><span class="titleblock__key" data-i18n="tb_k_sheet">Sheet</span><span class="titleblock__value">02 / 08</span></div>
+          <div class="titleblock__cell"><span class="titleblock__key" data-i18n="tb_k_rev">Rev</span><span class="titleblock__value"><span class="accent">2</span></span></div>
+        </div>
+        <div class="titleblock__copy">
+          <span data-i18n="tb_copy">© 2026 Felix Machán · All dimensions in mm unless otherwise noted</span>
+        </div>
+      </footer>
+    </div>
+
+    <script src="../assets/js/i18n.js?v=20260924n" defer></script>
+    <script src="../assets/js/app.js?v=20260924n" defer></script>
+  </body>
+</html>

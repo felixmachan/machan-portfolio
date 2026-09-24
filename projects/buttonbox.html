@@ -1,184 +1,274 @@
-﻿<!doctype html>
-<html lang="en">
+<!doctype html>
+<html lang="en" data-theme="light">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Custom Sim Racing Button Box</title>
-    <meta
-      name="description"
-      content="Egyedi sim racing button box projekt: teljes NYÁK-tervezés a kapcsolási rajztól a huzalozásig."
-    />
+    <title>Custom Sim Racing Button Box · Felix Machán</title>
+    <meta name="description" content="Custom sim racing button box: a complete PCB design journey from schematic capture to routing." />
     <link rel="canonical" href="https://felixmachan.hu/projects/buttonbox.html" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
     <meta property="og:type" content="article" />
     <meta property="og:title" content="Custom Sim Racing Button Box" />
-    <meta
-      property="og:description"
-      content="Egyedi sim racing button box projekt: teljes NYÁK-tervezés a kapcsolási rajztól a huzalozásig."
-    />
+    <meta property="og:description" content="Custom sim racing button box: a complete PCB design journey from schematic capture to routing." />
     <meta property="og:url" content="https://felixmachan.hu/projects/buttonbox.html" />
     <meta property="og:image" content="https://felixmachan.hu/assets/img/buttonbox/pcb.avif" />
-    <meta property="og:locale" content="hu_HU" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Custom Sim Racing Button Box" />
-    <meta
-      name="twitter:description"
-      content="Egyedi sim racing button box projekt: teljes NYÁK-tervezés a kapcsolási rajztól a huzalozásig."
-    />
-    <meta name="twitter:image" content="https://felixmachan.hu/assets/img/buttonbox/pcb.avif" />
-    <link rel="stylesheet" href="../assets/css/variables.css" />
-    <link rel="stylesheet" href="../assets/css/base.css" />
-    <link rel="stylesheet" href="../assets/css/components.css" />
-    <link rel="stylesheet" href="../assets/css/project.css" />
-    <link rel="stylesheet" href="../assets/css/animations.css" />
-    <link rel="stylesheet" href="../assets/css/lightbox.css" />
+    <script>
+      (function () {
+        try {
+          var t = localStorage.getItem('theme');
+          if (!t) t = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+          document.documentElement.setAttribute('data-theme', t);
+        } catch (e) {}
+      })();
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../assets/css/style.css?v=20260924n" />
   </head>
-  <body>
-    <div class="progress-container">
-      <div class="progress-bar"></div>
-    </div>
-    <button class="lang-toggle" type="button" aria-label="Language switch">
-      <span class="lang-toggle__opt" data-lang-option="hu">HU</span><span class="lang-toggle__sep">/</span><span class="lang-toggle__opt is-active" data-lang-option="en">EN</span>
-    </button>
-    <button class="theme-toggle" type="button" aria-label="Switch to dark mode" aria-pressed="false">
-      <svg class="theme-icon theme-icon--moon" aria-hidden="true" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M21.53 14.37a.75.75 0 0 0-.86-.3 7.5 7.5 0 0 1-9.79-9.8.75.75 0 0 0-1.16-.83 9.75 9.75 0 1 0 12.04 12.04.75.75 0 0 0-.23-1.11z"/>
-      </svg>
-      <svg class="theme-icon theme-icon--sun" aria-hidden="true" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0-5a1 1 0 0 1 1 1v2a1 1 0 1 1-2 0V3a1 1 0 0 1 1-1zm0 18a1 1 0 0 1 1 1v2a1 1 0 1 1-2 0v-2a1 1 0 0 1 1-1zm10-9a1 1 0 0 1-1 1h-2a1 1 0 1 1 0-2h2a1 1 0 0 1 1 1zM5 12a1 1 0 0 1-1 1H2a1 1 0 1 1 0-2h2a1 1 0 0 1 1 1zm14.95-6.95a1 1 0 0 1 0 1.41l-1.42 1.42a1 1 0 1 1-1.41-1.42l1.41-1.41a1 1 0 0 1 1.42 0zM6.88 17.12a1 1 0 0 1 0 1.41L5.46 19.95a1 1 0 1 1-1.41-1.41l1.42-1.42a1 1 0 0 1 1.41 0zm12.07 1.41a1 1 0 0 1-1.41 0l-1.42-1.42a1 1 0 0 1 1.42-1.41l1.41 1.41a1 1 0 0 1 0 1.42zM7.29 6.88a1 1 0 0 1-1.41 0L4.46 5.46a1 1 0 1 1 1.41-1.41l1.42 1.42a1 1 0 0 1 0 1.41z"/>
-      </svg>
-    </button>
-    <main class="width">
-      <section class="section section--hero project-section" style="display: flex; justify-content: center; align-items: center;">
-        <div class="container" style="margin-top: 15px; margin-bottom: 30px; display: flex; justify-content: center; align-items: center;">
-          <div class="panel project-page" style="width: 85%;">
-            <div class="project-hero">
+  <body data-page="buttonbox">
+    <div class="progress" aria-hidden="true"><div class="progress__bar"></div></div>
+    <span class="sheet__mark sheet__mark--tl" aria-hidden="true"></span>
+    <span class="sheet__mark sheet__mark--tr" aria-hidden="true"></span>
+    <span class="sheet__mark sheet__mark--bl" aria-hidden="true"></span>
+    <span class="sheet__mark sheet__mark--br" aria-hidden="true"></span>
+
+    <div class="sheet">
+      <header class="nav">
+        <div class="container nav__inner">
+          <a class="nav__brand" href="../index.html">
+            <span class="nav__monogram" aria-hidden="true">FM</span>
+            <span class="nav__title">
+              <span class="nav__name">Felix Machán</span>
+              <span class="nav__doc">FM-EE-001 · Rev 2</span>
+            </span>
+          </a>
+          <nav class="nav__links" aria-label="Sections">
+            <a class="nav__link" href="../index.html#about" data-i18n="nav_about">About</a>
+            <a class="nav__link" href="../index.html#timeline" data-i18n="nav_timeline">Timeline</a>
+            <a class="nav__link is-active" href="../index.html#projects" data-i18n="nav_projects">Projects</a>
+            <a class="nav__link" href="../index.html#skills" data-i18n="nav_skills">Skills</a>
+            <a class="nav__link" href="../index.html#contact" data-i18n="nav_contact">Contact</a>
+          </nav>
+          <div class="nav__controls">
+            <button class="lang-toggle" type="button" aria-label="Language switch">
+              <span class="lang-toggle__opt" data-lang-option="hu">HU</span><span class="lang-toggle__sep">/</span><span class="lang-toggle__opt is-active" data-lang-option="en">EN</span>
+            </button>
+            <button class="theme-toggle" type="button" aria-label="Toggle dark mode" aria-pressed="false">
+              <svg class="theme-icon theme-icon--moon" aria-hidden="true" viewBox="0 0 24 24" fill="currentColor"><path d="M21.53 14.37a.75.75 0 0 0-.86-.3 7.5 7.5 0 0 1-9.79-9.8.75.75 0 0 0-1.16-.83 9.75 9.75 0 1 0 12.04 12.04.75.75 0 0 0-.23-1.11z"/></svg>
+              <svg class="theme-icon theme-icon--sun" aria-hidden="true" viewBox="0 0 24 24" fill="currentColor"><path d="M12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0-5a1 1 0 0 1 1 1v2a1 1 0 1 1-2 0V3a1 1 0 0 1 1-1zm0 18a1 1 0 0 1 1 1v2a1 1 0 1 1-2 0v-2a1 1 0 0 1 1-1zm10-9a1 1 0 0 1-1 1h-2a1 1 0 1 1 0-2h2a1 1 0 0 1 1 1zM5 12a1 1 0 0 1-1 1H2a1 1 0 1 1 0-2h2a1 1 0 0 1 1 1zm14.95-6.95a1 1 0 0 1 0 1.41l-1.42 1.42a1 1 0 1 1-1.41-1.42l1.41-1.41a1 1 0 0 1 1.42 0zM6.88 17.12a1 1 0 0 1 0 1.41L5.46 19.95a1 1 0 1 1-1.41-1.41l1.42-1.42a1 1 0 0 1 1.41 0zm12.07 1.41a1 1 0 0 1-1.41 0l-1.42-1.42a1 1 0 0 1 1.42-1.41l1.41 1.41a1 1 0 0 1 0 1.42zM7.29 6.88a1 1 0 0 1-1.41 0L4.46 5.46a1 1 0 1 1 1.41-1.41l1.42 1.42a1 1 0 0 1 0 1.41z"/></svg>
+            </button>
+            <button class="nav__burger" type="button" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+          </div>
+        </div>
+      </header>
+
+      <main>
+        <header class="doc-header">
+          <div class="container">
+            <nav class="breadcrumb" aria-label="Breadcrumb">
+              <a href="../index.html" data-i18n="crumb_index">Index</a>
+              <span class="sep">/</span>
+              <a href="../index.html#projects" data-i18n="crumb_projects">Projects</a>
+              <span class="sep">/</span>
+              <span class="current">FM-EE-001</span>
+            </nav>
+            <div class="doc-header__grid">
               <div class="reveal">
-                <img class="project-hero-image" src="../assets/img/buttonbox/pcb.avif" alt="Custom Sim Racing Button Box" />
-              </div>
-              <div class="project-hero-body reveal">
-                <a class="button secondary" href="../index.html#projects">Back to Projects</a>
-                <h1 style="margin-top: 20px;">Custom Sim Racing Button Box</h1>
-                <p class="section-lead" style="max-width: 100%; margin-top: 30px;">My first end-to-end PCB design, from schematic capture to routing.</p>
-                <div class="pill-container">
-                  <span class="pill">Hardware</span>
-                  <span class="pill">PCB Design</span>
-                  <span class="pill">KiCad</span>
+                <span class="eyebrow" data-i18n="dom_elec">Electrical</span>
+                <h1 class="doc-header__title" data-i18n="h1">Custom Sim Racing Button Box</h1>
+                <p class="doc-header__lead" data-i18n="lead">My first end-to-end PCB design, from schematic capture to routing.</p>
+                <div class="doc-header__actions">
+                  <a class="btn" href="../index.html#projects" data-i18n="btn_back">Back to projects</a>
                 </div>
+                <div class="spec">
+                  <div class="spec__cell"><span class="spec__key" data-i18n="spec_dwg">DWG NO</span><span class="spec__value">FM-EE-001</span></div>
+                  <div class="spec__cell"><span class="spec__key" data-i18n="spec_status">Status</span><span class="spec__value status status--wip" data-i18n="st_fab">Ready for fab</span></div>
+                  <div class="spec__cell"><span class="spec__key" data-i18n="spec_domain">Domain</span><span class="spec__value" data-i18n="dom_elec">Electrical</span></div>
+                  <div class="spec__cell"><span class="spec__key" data-i18n="spec_tooling">Tooling</span><span class="spec__value">KiCad · RP2040</span></div>
+                </div>
+              </div>
+              <figure class="doc-header__figure reveal">
+                <img src="../assets/img/buttonbox/pcb.avif" alt="Button box PCB 3D render" />
+                <figcaption><span data-i18n="figcap">Fig. 01 — Final PCB, 3D render</span><span>FM-EE-001</span></figcaption>
+              </figure>
+            </div>
+            <div class="case-facts reveal" data-stagger>
+              <div class="case-fact"><span class="case-fact__value">12 + 4</span><span class="case-fact__label" data-i18n="fact1">Push buttons and rotary encoders</span></div>
+              <div class="case-fact"><span class="case-fact__value">64</span><span class="case-fact__label" data-i18n="fact2">Per-control LEDs on a single data line</span></div>
+              <div class="case-fact"><span class="case-fact__value">16 / 30</span><span class="case-fact__label" data-i18n="fact3">RP2040 GPIO used, the rest free for expansion</span></div>
+              <div class="case-fact"><span class="case-fact__value">USB-C</span><span class="case-fact__label" data-i18n="fact4">Power and native USB HID over one cable</span></div>
+            </div>
+          </div>
+        </header>
+
+        <section class="doc-section">
+          <div class="container">
+            <div class="doc-section__head reveal">
+              <span class="doc-section__no">01</span>
+              <h2 class="doc-section__title" data-i18n="sec_problem">Problem</h2>
+            </div>
+            <p class="reveal" data-i18n="problem">Button boxes are essential peripherals in sim racing, enabling rapid access to controls and a more immersive workflow. Due to the niche market and low production volumes, commercially available options are limited. This gap motivated the decision to design and build a bespoke unit.</p>
+          </div>
+        </section>
+
+        <section class="doc-section">
+          <div class="container">
+            <div class="doc-section__head reveal">
+              <span class="doc-section__no">02</span>
+              <h2 class="doc-section__title" data-i18n="sec_goal">Goal</h2>
+            </div>
+            <p class="reveal" data-i18n="goal">Deliver a reliable, configurable button box tailored to my sim racing setup.</p>
+          </div>
+        </section>
+
+        <section class="doc-section">
+          <div class="container">
+            <div class="doc-section__head reveal">
+              <span class="doc-section__no">03</span>
+              <h2 class="doc-section__title" data-i18n="sec_arch">Architecture</h2>
+            </div>
+            <p class="reveal case-intro" data-i18n="arch_p1">One USB-C cable does everything: it powers the board and carries the data. A 3.3 V LDO feeds an RP2040, which boots from external QSPI flash and enumerates on the PC as a native USB HID game controller, so no driver or companion app is needed. Sim racing titles see it as just another set of joystick buttons.</p>
+            <figure class="fig case-banner reveal">
+              <img src="../assets/img/buttonbox/blocks-light.svg" data-light="../assets/img/buttonbox/blocks-light.svg" data-dark="../assets/img/buttonbox/blocks-dark.svg" width="1200" height="448" alt="Block diagram: USB-C, 3.3 V LDO, RP2040 with QSPI flash, button matrix, rotary encoders and LEDs, host PC" loading="lazy" decoding="async" />
+              <figcaption data-i18n="cap_arch1">Fig. 02 — Block diagram</figcaption>
+            </figure>
+            <p class="reveal case-intro" style="margin-top:1.6rem" data-i18n="arch_p2">The I/O budget shaped the design. Wiring 12 buttons directly would need 12 pins. As a 3 × 4 matrix they need only 7. Each encoder needs both quadrature channels, which takes 8 pins for four encoders. All 64 LEDs, four around every control, share one data line. That leaves 14 GPIO free, which is exactly the headroom the Pro Micro version never had.</p>
+            <figure class="fig case-banner reveal">
+              <img src="../assets/img/buttonbox/gpio-light.svg" data-light="../assets/img/buttonbox/gpio-light.svg" data-dark="../assets/img/buttonbox/gpio-dark.svg" width="1200" height="360" alt="GPIO allocation: 0 to 2 rows, 3 to 6 columns, 7 to 14 encoder channels, 15 LED data" loading="lazy" decoding="async" />
+              <figcaption data-i18n="cap_arch2">Fig. 03 — RP2040 GPIO allocation</figcaption>
+            </figure>
+          </div>
+        </section>
+
+        <section class="doc-section">
+          <div class="container">
+            <div class="doc-section__head reveal">
+              <span class="doc-section__no">04</span>
+              <h2 class="doc-section__title" data-i18n="sec_approach">Approach</h2>
+            </div>
+
+            <div class="feature reveal">
+              <div class="feature__text">
+                <h3 class="feature__title" data-i18n="f1_t">The point-to-point era</h3>
+                <p data-i18n="f1_p1">The initial concept used discrete buttons with an Arduino Pro Micro, which was selected for native HID support. However, its limited I/O required a button matrix, and the wiring effort became excessive. Each switch and encoder needed individual soldering, plus diode isolation to prevent key ghosting. The prototype was therefore paused before assembly.</p>
+              </div>
+              <figure class="fig">
+                <img src="../assets/img/buttonbox/IMG_6955.avif" alt="First iteration with Arduino Pro Micro" loading="lazy" />
+                <figcaption data-i18n="f1_cap">Fig. 04 — First iteration: Arduino Pro Micro</figcaption>
+              </figure>
+            </div>
+
+            <div class="feature reveal">
+              <div class="feature__text">
+                <h3 class="feature__title" data-i18n="f2_t">Schematic capture</h3>
+                <p data-i18n="f2_p1">At that point, I committed to a dedicated PCB design. I already had foundational experience with KiCad from university projects, which made it a practical choice for schematic and layout work.</p>
+                <p data-i18n="f2_p2">The first decision was the MCU. I selected the Raspberry RP2040 for its strong ecosystem and approachable development flow. Because fabrication was planned with JLCPCB, component selection and footprint validation were handled up front, followed by the schematic capture.</p>
+                <p data-i18n="f2_p3">Building the schematic was the most demanding learning phase. Understanding component constraints and proper wiring required iteration, but the design stabilized into a coherent system.</p>
+              </div>
+              <div class="fig-grid">
+                <figure class="fig"><img src="../assets/img/buttonbox/mcu.avif" alt="MCU schematic" loading="lazy" /><figcaption data-i18n="f2_cap1">Fig. 05 — MCU</figcaption></figure>
+                <figure class="fig"><img src="../assets/img/buttonbox/bmatrix.avif" alt="Button matrix schematic" loading="lazy" /><figcaption data-i18n="f2_cap2">Fig. 06 — Button matrix</figcaption></figure>
+                <figure class="fig"><img src="../assets/img/buttonbox/flash.avif" alt="Flash memory schematic" loading="lazy" /><figcaption data-i18n="f2_cap3">Fig. 07 — Flash memory</figcaption></figure>
+                <figure class="fig"><img src="../assets/img/buttonbox/power.avif" alt="Power schematic" loading="lazy" /><figcaption data-i18n="f2_cap4">Fig. 08 — Power</figcaption></figure>
+                <figure class="fig"><img src="../assets/img/buttonbox/encoders.avif" alt="Encoder schematic" loading="lazy" /><figcaption data-i18n="f2_cap5">Fig. 09 — Encoders</figcaption></figure>
+                <figure class="fig"><img src="../assets/img/buttonbox/crystal.avif" alt="Crystal schematic" loading="lazy" /><figcaption data-i18n="f2_cap6">Fig. 10 — Crystal</figcaption></figure>
               </div>
             </div>
-            <div class="project-detail reveal">
-              <div class="project-rows" style="margin-top: 0px;">
-                <div class="project-row">
-                  <h2>Problem</h2>
-                  <p  style="width: 100% !important;">Button boxes are essential peripherals in sim racing, enabling rapid access to controls and a more immersive workflow. Due to the niche market and low production volumes, commercially available options are limited. This gap motivated the decision to design and build a bespoke unit.</p>
-                </div>
-                <div class="project-row">
-                  <h2>Goal</h2>
-                  <p  style="width: 100% !important;">Deliver a reliable, configurable button box tailored to my sim racing setup.</p>
-                </div>
-                <div class="project-row">
-                  <h2 style="margin-bottom: 20px;">Approach</h2>
 
-                  <div class="project-feature reveal">
-                    <div class="project-feature__text">
-                      <h4>The Point-to-Point Era</h4>
-                      <p>The initial concept used discrete buttons with an Arduino Pro Micro, which was selected for native HID support. However, its limited I/O required a button matrix, and the wiring effort became excessive. Each switch and encoder needed individual soldering, plus diode isolation to prevent key ghosting. The prototype was therefore paused before assembly.</p>
-                    </div>
-                    <div data-tooltip="First iteration: Arduino Pro Micro">
-                    <img src="../assets/img/buttonbox/IMG_6955.avif" alt="Time-intensive wiring phase" class="project-feature__image" style="max-width: 400px;"/>
-                  </div>
-                  </div>
+            <div class="feature reveal">
+              <div class="feature__text">
+                <h3 class="feature__title" data-i18n="f3_t">PCB routing</h3>
+                <p data-i18n="f3_p1">Routing introduced a second major challenge. After several iterations of re-routing and reviewing best practices, the board reached a stable layout. The per-button and per-encoder LED plan increased routing complexity significantly, and I did not have access to a formal design review. The final layout reflects the best practices and constraints I could validate independently.</p>
+              </div>
+              <figure class="fig">
+                <img src="../assets/img/buttonbox/IMG_9404.avif" alt="PCB routing phase" loading="lazy" />
+                <figcaption data-i18n="f3_cap">Fig. 11 — Routing phase</figcaption>
+              </figure>
+            </div>
 
-                  <div class="project-feature reveal">
-                    <div class="project-feature__text">
-                      <h4>Schematic Capture</h4>
-                      <p>At that point, I committed to a dedicated PCB design. I already had foundational experience with KiCad from university projects, which made it a practical choice for schematic and layout work.</p>
-                      <p>The first decision was the MCU. I selected the Raspberry RP2040 for its strong ecosystem and approachable development flow. Because fabrication was planned with JLCPCB, component selection and footprint validation were handled up front, followed by the schematic capture.</p>
-                      <p>Building the schematic was the most demanding learning phase. Understanding component constraints and proper wiring required iteration, but the design stabilized into a coherent system.</p>
-                    </div>
-                    <div class="project-feature__image-group project-feature__image-group--cols-2">
-                      <div data-tooltip="MCU Schematic">
-                      <img src="../assets/img/buttonbox/mcu.avif" alt="MCU Schematic" class="project-gallery__image" />
-                      </div>
-                      <div data-tooltip="Button Matrix Schematic">
-                      <img src="../assets/img/buttonbox/bmatrix.avif" alt="Button Matrix Schematic" class="project-gallery__image" />
-                      </div>
-                      <div data-tooltip="Flash Schematic">
-                      <img src="../assets/img/buttonbox/flash.avif" alt="Flash Memory Schematic" class="project-gallery__image" />
-                      </div>
-                      <div data-tooltip="Power Schematic">
-                      <img src="../assets/img/buttonbox/power.avif" alt="Power Schematic" class="project-gallery__image" />
-                      </div>
-                      <div data-tooltip="Encoder Schematic">
-                      <img src="../assets/img/buttonbox/encoders.avif" alt="Encoder Schematic" class="project-gallery__image" />
-                      </div>
-                      <div data-tooltip="Crystal Schematic">
-                      <img src="../assets/img/buttonbox/crystal.avif" alt="Crystal Schematic" class="project-gallery__image" />
-                      </div>
-                    </div>
-                  </div>
+            <div class="feature reveal">
+              <div class="feature__text">
+                <h3 class="feature__title" data-i18n="f4_t">Final design</h3>
+                <p data-i18n="f4_p1">A 3D render of the final design is shown below. The next step is fabrication. The remaining decision is whether to order an assembled PCB or a bare board for manual assembly.</p>
+              </div>
+              <figure class="fig">
+                <img src="../assets/img/buttonbox/pcb.avif" alt="Final PCB 3D render" loading="lazy" />
+                <figcaption data-i18n="f4_cap">Fig. 12 — Final 3D render</figcaption>
+              </figure>
+            </div>
+          </div>
+        </section>
 
-                  <div class="project-feature reveal">
-                    <div class="project-feature__text">
-                      <h4>PCB Routing</h4>
-                      <p>Routing introduced a second major challenge. After several iterations of re-routing and reviewing best practices, the board reached a stable layout. The per-button and per-encoder LED plan increased routing complexity significantly, and I did not have access to a formal design review. The final layout reflects the best practices and constraints I could validate independently.</p>
-                    </div>
-                    <div data-tooltip="PCB Routing Phase">
-                    <img src="../assets/img/buttonbox/IMG_9404.avif" alt="PCB Routing" class="project-feature__image" style="max-width: 400px;"/>
-                    </div>
-                  </div>
+        <section class="doc-section">
+          <div class="container">
+            <div class="doc-section__head reveal">
+              <span class="doc-section__no">05</span>
+              <h2 class="doc-section__title" data-i18n="sec_result">Result</h2>
+            </div>
+            <p class="reveal" data-i18n="result">A completed button box PCB design ready for manufacturing.</p>
+          </div>
+        </section>
 
-                  <div class="project-feature reveal">
-                     <div class="project-feature__text">
-                      <h4>Final Design</h4>
-                      <p>A 3D render of the final design is shown below. The next step is fabrication. The remaining decision is whether to order an assembled PCB or a bare board for manual assembly.</p>
-                    </div>
-                    <div data-tooltip="Final PCB 3D Render">
-                    <img src="../assets/img/buttonbox/pcb.avif" alt="Final PCB 3D Render" class="project-feature__image" />
-                  </div>
-                  </div>
-                </div>
-                <div class="project-row">
-                  <h2>Result</h2>
-                  <p class="section-lead">A completed button box PCB design ready for manufacturing.</p>
-                </div>
-                <section class="project-row reveal">
-                    <h2>Final Assembly – Interactive 3D</h2>
-
-                    <div class="project-model-frame">
-                      <model-viewer
-                        id="pedal-viewer"
-                        src="../assets/models/pcbtrace.glb"
-                        alt="Pedal assembly 3D view"
-                        camera-controls
-                        touch-action="pan-y"
-                        environment-image="neutral"
-                        exposure="1"
-                        shadow-intensity="3"
-                        shadow-softness="0.7"
-                        camera-orbit="40deg 71deg 0.8m"
-                        interaction-prompt="none"
-                        auto-rotate
-                        camera-target="0m 0m 0m"
-                        class="project-model-viewer"
-                        loading="lazy"
-                      ></model-viewer>
-                    </div>
-                  </section>
+        <section class="doc-section">
+          <div class="container">
+            <div class="doc-section__head reveal">
+              <span class="doc-section__no">06</span>
+              <h2 class="doc-section__title" data-i18n="sec_3d">Final assembly — interactive 3D</h2>
+            </div>
+            <div class="model-frame reveal">
+              <model-viewer
+                src="../assets/models/pcbtrace.glb"
+                alt="Button box PCB 3D view"
+                camera-controls
+                touch-action="pan-y"
+                environment-image="neutral"
+                exposure="1"
+                shadow-intensity="3"
+                shadow-softness="0.7"
+                camera-orbit="40deg 71deg 0.8m"
+                interaction-prompt="none"
+                auto-rotate
+                camera-target="0m 0m 0m"
+                loading="lazy"
+              ></model-viewer>
+              <div class="model-frame__caption">
+                <span data-i18n="model_label">Interactive 3D view</span>
+                <span data-i18n="model_caption">Drag to orbit · scroll to zoom</span>
               </div>
             </div>
           </div>
-        </div>
-      </section>
-    </main>
+        </section>
 
-    <script src="../assets/js/reveal.js" defer></script>
-    <script src="../assets/js/main.js" defer></script>
-    <script src="../assets/js/lightbox.js" defer></script>
-    <script src="../assets/js/3d.js" defer></script>
-    <script
-      type="module"
-      src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js">
-    </script>
+        <div class="container doc-next">
+          <a href="../index.html#projects">
+            <span class="doc-next__label" data-i18n="crumb_projects">Projects</span>
+            <span class="doc-next__title">← <span data-i18n="btn_back">Back to projects</span></span>
+          </a>
+          <a href="distance-sensor.html" style="text-align: right;">
+            <span class="doc-next__label" data-i18n="next_label">Next project</span>
+            <span class="doc-next__title" data-i18n="card_sensor_t">Zigbee ToF Distance Sensor</span>
+          </a>
+        </div>
+      </main>
+
+      <footer class="titleblock">
+        <div class="titleblock__grid">
+          <div class="titleblock__cell"><span class="titleblock__key" data-i18n="tb_k_title">Title</span><span class="titleblock__value" data-i18n="h1">Custom Sim Racing Button Box</span></div>
+          <div class="titleblock__cell"><span class="titleblock__key" data-i18n="tb_k_drawn">Drawn by</span><span class="titleblock__value">F. Machán</span></div>
+          <div class="titleblock__cell"><span class="titleblock__key" data-i18n="tb_k_date">Date</span><span class="titleblock__value">2026</span></div>
+          <div class="titleblock__cell"><span class="titleblock__key" data-i18n="tb_k_sheet">Sheet</span><span class="titleblock__value">03 / 08</span></div>
+          <div class="titleblock__cell"><span class="titleblock__key" data-i18n="tb_k_rev">Rev</span><span class="titleblock__value"><span class="accent">2</span></span></div>
+        </div>
+        <div class="titleblock__copy">
+          <span data-i18n="tb_copy">© 2026 Felix Machán · All dimensions in mm unless otherwise noted</span>
+        </div>
+      </footer>
+    </div>
+
+    <script src="../assets/js/i18n.js?v=20260924n" defer></script>
+    <script src="../assets/js/app.js?v=20260924n" defer></script>
+    <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
   </body>
 </html>

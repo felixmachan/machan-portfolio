@@ -1,101 +1,160 @@
-﻿<!doctype html>
-<html lang="en">
+<!doctype html>
+<html lang="en" data-theme="light">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Talppont</title>
-    <meta
-      name="description"
-      content="Talppont masszázsszalon weboldal: letisztult, nyugodt hangulatú bemutatkozó oldal szolgáltatásfókusszal."
-    />
+    <title>Massage Parlour Website — Talppont · Felix Machán</title>
+    <meta name="description" content="A static website for Talppont, a massage parlour in Vác, focused on a calm, attractive design." />
     <link rel="canonical" href="https://felixmachan.hu/projects/talppont.html" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
     <meta property="og:type" content="article" />
-    <meta property="og:title" content="Talppont" />
-    <meta
-      property="og:description"
-      content="Talppont masszázsszalon weboldal: letisztult, nyugodt hangulatú bemutatkozó oldal szolgáltatásfókusszal."
-    />
+    <meta property="og:title" content="Massage Parlour Website — Talppont" />
+    <meta property="og:description" content="A static website for Talppont, a massage parlour in Vác, focused on a calm, attractive design." />
     <meta property="og:url" content="https://felixmachan.hu/projects/talppont.html" />
-    <meta property="og:image" content="https://felixmachan.hu/assets/img/talppont/talppont-welcome.avif" />
-    <meta property="og:locale" content="hu_HU" />
+    <meta property="og:image" content="https://felixmachan.hu/assets/img/talppont/talppont-welcome.jpg" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Talppont" />
-    <meta
-      name="twitter:description"
-      content="Talppont masszázsszalon weboldal: letisztult, nyugodt hangulatú bemutatkozó oldal szolgáltatásfókusszal."
-    />
-    <meta name="twitter:image" content="https://felixmachan.hu/assets/img/talppont/talppont-welcome.avif" />
-    <link rel="stylesheet" href="../assets/css/variables.css" />
-    <link rel="stylesheet" href="../assets/css/base.css" />
-    <link rel="stylesheet" href="../assets/css/components.css" />
-    <link rel="stylesheet" href="../assets/css/animations.css" />
-    <link rel="stylesheet" href="../assets/css/lightbox.css" />
-    <link rel="stylesheet" href="../assets/css/project.css" />
+    <script>
+      (function () {
+        try {
+          var t = localStorage.getItem('theme');
+          if (!t) t = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+          document.documentElement.setAttribute('data-theme', t);
+        } catch (e) {}
+      })();
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../assets/css/style.css?v=20260924n" />
   </head>
-  <body>
-    <div class="progress-container">
-      <div class="progress-bar"></div>
-    </div>
-    <button class="lang-toggle" type="button" aria-label="Language switch">
-      <span class="lang-toggle__opt" data-lang-option="hu">HU</span><span class="lang-toggle__sep">/</span><span class="lang-toggle__opt is-active" data-lang-option="en">EN</span>
-    </button>
-    <button class="theme-toggle" type="button" aria-label="Switch to dark mode" aria-pressed="false">
-      <svg class="theme-icon theme-icon--moon" aria-hidden="true" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M21.53 14.37a.75.75 0 0 0-.86-.3 7.5 7.5 0 0 1-9.79-9.8.75.75 0 0 0-1.16-.83 9.75 9.75 0 1 0 12.04 12.04.75.75 0 0 0-.23-1.11z"/>
-      </svg>
-      <svg class="theme-icon theme-icon--sun" aria-hidden="true" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0-5a1 1 0 0 1 1 1v2a1 1 0 1 1-2 0V3a1 1 0 0 1 1-1zm0 18a1 1 0 0 1 1 1v2a1 1 0 1 1-2 0v-2a1 1 0 0 1 1-1zm10-9a1 1 0 0 1-1 1h-2a1 1 0 1 1 0-2h2a1 1 0 0 1 1 1zM5 12a1 1 0 0 1-1 1H2a1 1 0 1 1 0-2h2a1 1 0 0 1 1 1zm14.95-6.95a1 1 0 0 1 0 1.41l-1.42 1.42a1 1 0 1 1-1.41-1.42l1.41-1.41a1 1 0 0 1 1.42 0zM6.88 17.12a1 1 0 0 1 0 1.41L5.46 19.95a1 1 0 1 1-1.41-1.41l1.42-1.42a1 1 0 0 1 1.41 0zm12.07 1.41a1 1 0 0 1-1.41 0l-1.42-1.42a1 1 0 0 1 1.42-1.41l1.41 1.41a1 1 0 0 1 0 1.42zM7.29 6.88a1 1 0 0 1-1.41 0L4.46 5.46a1 1 0 1 1 1.41-1.41l1.42 1.42a1 1 0 0 1 0 1.41z"/>
-      </svg>
-    </button>
-    <main>
-      <section class="section section--hero">
-        <div class="container" style="margin-top: 30px; margin-bottom: 30px;">
-          <div class="panel project-page">
-          <div class="project-hero">
-            <div class="reveal">
-              <img class="project-hero-image" src="../assets/img/talppont/talppont-welcome.avif" alt="Custom Sim Racing Pedals" />
-            </div>
-            <div class="project-hero-body reveal">
-              <div class="project-hero-actions">
-                <a class="button secondary" href="../index.html#projects">Back to Projects</a>
-                <a class="button pill-button" href="https://talppont.felixmachan.hu">Check project</a>
-              </div>
-              <h1>Massage parlour website -  Talppont</h1>
-                        <p class="section-lead" style="max-width: 100%; margin-top: 15px;">A static website for Talppont, a massage parlour in Vác, with the focus on calm and attracting design.</p>
-                <div class="pill-container">
-                  <span class="pill">Web Design</span>
-                  <span class="pill">Static Site</span>
-                  <span class="pill">UI/UX</span>
-                </div>
-          
-            
-            </div>
-          </div>
-          <div class="project-detail reveal">
-            <div class="project-rows">
-              <div class="project-row">
-                <h2>Problem</h2>
-                <p>One of my close friends' mother wanted a simple and calming website for her massage parlour. She knew I was in web development and asked for my help. This is the result.</p>
-              </div>
-              <div class="project-row">
-                <h2>Goal</h2>
-                <p>To design and develop a website, which makes it easy to get the most important information about the massage parlour and its services. For example the types of services and prices.</p>
-              </div>
-              <div class="project-row">
-                <h2>Approach</h2>
-                <p>The main colors of the brand are royal blue and baby blue, so I had to make design around these colors. I wanted to create a calming atmosphere with the help of colors, fonts and images. I used a lot of white space to make the content more digestible.</p>
-                </p>
-              </div>
-            </div>
-            </div>
-          </div>
-        </div>
-        </div>
-      </section>
-    </main>
+  <body data-page="talppont">
+    <div class="progress" aria-hidden="true"><div class="progress__bar"></div></div>
+    <span class="sheet__mark sheet__mark--tl" aria-hidden="true"></span>
+    <span class="sheet__mark sheet__mark--tr" aria-hidden="true"></span>
+    <span class="sheet__mark sheet__mark--bl" aria-hidden="true"></span>
+    <span class="sheet__mark sheet__mark--br" aria-hidden="true"></span>
 
-    <script src="../assets/js/reveal.js" defer></script>
-    <script src="../assets/js/main.js" defer></script>
-    <script src="../assets/js/lightbox.js" defer></script>
+    <div class="sheet">
+      <header class="nav">
+        <div class="container nav__inner">
+          <a class="nav__brand" href="../index.html">
+            <span class="nav__monogram" aria-hidden="true">FM</span>
+            <span class="nav__title">
+              <span class="nav__name">Felix Machán</span>
+              <span class="nav__doc">FM-SW-002 · Live</span>
+            </span>
+          </a>
+          <nav class="nav__links" aria-label="Sections">
+            <a class="nav__link" href="../index.html#about" data-i18n="nav_about">About</a>
+            <a class="nav__link" href="../index.html#timeline" data-i18n="nav_timeline">Timeline</a>
+            <a class="nav__link is-active" href="../index.html#projects" data-i18n="nav_projects">Projects</a>
+            <a class="nav__link" href="../index.html#skills" data-i18n="nav_skills">Skills</a>
+            <a class="nav__link" href="../index.html#contact" data-i18n="nav_contact">Contact</a>
+          </nav>
+          <div class="nav__controls">
+            <button class="lang-toggle" type="button" aria-label="Language switch">
+              <span class="lang-toggle__opt" data-lang-option="hu">HU</span><span class="lang-toggle__sep">/</span><span class="lang-toggle__opt is-active" data-lang-option="en">EN</span>
+            </button>
+            <button class="theme-toggle" type="button" aria-label="Toggle dark mode" aria-pressed="false">
+              <svg class="theme-icon theme-icon--moon" aria-hidden="true" viewBox="0 0 24 24" fill="currentColor"><path d="M21.53 14.37a.75.75 0 0 0-.86-.3 7.5 7.5 0 0 1-9.79-9.8.75.75 0 0 0-1.16-.83 9.75 9.75 0 1 0 12.04 12.04.75.75 0 0 0-.23-1.11z"/></svg>
+              <svg class="theme-icon theme-icon--sun" aria-hidden="true" viewBox="0 0 24 24" fill="currentColor"><path d="M12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0-5a1 1 0 0 1 1 1v2a1 1 0 1 1-2 0V3a1 1 0 0 1 1-1zm0 18a1 1 0 0 1 1 1v2a1 1 0 1 1-2 0v-2a1 1 0 0 1 1-1zm10-9a1 1 0 0 1-1 1h-2a1 1 0 1 1 0-2h2a1 1 0 0 1 1 1zM5 12a1 1 0 0 1-1 1H2a1 1 0 1 1 0-2h2a1 1 0 0 1 1 1zm14.95-6.95a1 1 0 0 1 0 1.41l-1.42 1.42a1 1 0 1 1-1.41-1.42l1.41-1.41a1 1 0 0 1 1.42 0zM6.88 17.12a1 1 0 0 1 0 1.41L5.46 19.95a1 1 0 1 1-1.41-1.41l1.42-1.42a1 1 0 0 1 1.41 0zm12.07 1.41a1 1 0 0 1-1.41 0l-1.42-1.42a1 1 0 0 1 1.42-1.41l1.41 1.41a1 1 0 0 1 0 1.42zM7.29 6.88a1 1 0 0 1-1.41 0L4.46 5.46a1 1 0 1 1 1.41-1.41l1.42 1.42a1 1 0 0 1 0 1.41z"/></svg>
+            </button>
+            <button class="nav__burger" type="button" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+          </div>
+        </div>
+      </header>
+
+      <main>
+        <header class="doc-header">
+          <div class="container">
+            <nav class="breadcrumb" aria-label="Breadcrumb">
+              <a href="../index.html" data-i18n="crumb_index">Index</a>
+              <span class="sep">/</span>
+              <a href="../index.html#projects" data-i18n="crumb_projects">Projects</a>
+              <span class="sep">/</span>
+              <span class="current">FM-SW-002</span>
+            </nav>
+            <div class="doc-header__grid">
+              <div class="reveal">
+                <span class="eyebrow" data-i18n="dom_soft">Software</span>
+                <h1 class="doc-header__title" data-i18n="h1">Massage Parlour Website — Talppont</h1>
+                <p class="doc-header__lead" data-i18n="lead">A static website for Talppont, a massage parlour in Vác, with a focus on a calm, attractive design.</p>
+                <div class="doc-header__actions">
+                  <a class="btn" href="../index.html#projects" data-i18n="btn_back">Back to projects</a>
+                  <a class="btn btn--primary" href="https://talppont.felixmachan.hu" target="_blank" rel="noopener noreferrer" data-i18n="btn_open">Open project</a>
+                </div>
+                <div class="spec">
+                  <div class="spec__cell"><span class="spec__key" data-i18n="spec_dwg">DWG NO</span><span class="spec__value">FM-SW-002</span></div>
+                  <div class="spec__cell"><span class="spec__key" data-i18n="spec_status">Status</span><span class="spec__value status status--live" data-i18n="st_live">Live</span></div>
+                  <div class="spec__cell"><span class="spec__key" data-i18n="spec_domain">Domain</span><span class="spec__value" data-i18n="dom_soft">Software</span></div>
+                  <div class="spec__cell"><span class="spec__key" data-i18n="spec_tooling">Tooling</span><span class="spec__value">HTML · CSS · JS</span></div>
+                </div>
+              </div>
+              <figure class="doc-header__figure reveal">
+                <img src="../assets/img/talppont/talppont-welcome.avif" alt="Talppont website welcome page" />
+                <figcaption><span data-i18n="figcap">Fig. 01 — Welcome page</span><span>FM-SW-002</span></figcaption>
+              </figure>
+            </div>
+          </div>
+        </header>
+
+        <section class="doc-section">
+          <div class="container">
+            <div class="doc-section__head reveal">
+              <span class="doc-section__no">01</span>
+              <h2 class="doc-section__title" data-i18n="sec_problem">Problem</h2>
+            </div>
+            <p class="reveal" data-i18n="problem">One of my close friends&rsquo; mother wanted a simple and calming website for her massage parlour. She knew I was in web development and asked for my help. This is the result.</p>
+          </div>
+        </section>
+
+        <section class="doc-section">
+          <div class="container">
+            <div class="doc-section__head reveal">
+              <span class="doc-section__no">02</span>
+              <h2 class="doc-section__title" data-i18n="sec_goal">Goal</h2>
+            </div>
+            <p class="reveal" data-i18n="goal">To design and develop a website that makes it easy to get the most important information about the massage parlour and its services — for example the types of treatments and prices.</p>
+          </div>
+        </section>
+
+        <section class="doc-section">
+          <div class="container">
+            <div class="doc-section__head reveal">
+              <span class="doc-section__no">03</span>
+              <h2 class="doc-section__title" data-i18n="sec_approach">Approach</h2>
+            </div>
+            <p class="reveal" data-i18n="approach">The main colors of the brand are royal blue and baby blue, so the design was built around them. The goal was a calming atmosphere through color, typography and imagery, with generous white space to keep the content digestible.</p>
+          </div>
+        </section>
+
+        <div class="container doc-next">
+          <a href="../index.html#projects">
+            <span class="doc-next__label" data-i18n="crumb_projects">Projects</span>
+            <span class="doc-next__title">← <span data-i18n="btn_back">Back to projects</span></span>
+          </a>
+          <a href="network.html" style="text-align: right;">
+            <span class="doc-next__label" data-i18n="next_label">Next project</span>
+            <span class="doc-next__title" data-i18n="card_network_t">Home Server &amp; Network</span>
+          </a>
+        </div>
+      </main>
+
+      <footer class="titleblock">
+        <div class="titleblock__grid">
+          <div class="titleblock__cell"><span class="titleblock__key" data-i18n="tb_k_title">Title</span><span class="titleblock__value" data-i18n="h1">Massage Parlour Website — Talppont</span></div>
+          <div class="titleblock__cell"><span class="titleblock__key" data-i18n="tb_k_drawn">Drawn by</span><span class="titleblock__value">F. Machán</span></div>
+          <div class="titleblock__cell"><span class="titleblock__key" data-i18n="tb_k_date">Date</span><span class="titleblock__value">2026</span></div>
+          <div class="titleblock__cell"><span class="titleblock__key" data-i18n="tb_k_sheet">Sheet</span><span class="titleblock__value">07 / 08</span></div>
+          <div class="titleblock__cell"><span class="titleblock__key" data-i18n="tb_k_rev">Rev</span><span class="titleblock__value"><span class="accent">1</span></span></div>
+        </div>
+        <div class="titleblock__copy">
+          <span data-i18n="tb_copy">© 2026 Felix Machán · All dimensions in mm unless otherwise noted</span>
+        </div>
+      </footer>
+    </div>
+
+    <script src="../assets/js/i18n.js?v=20260924n" defer></script>
+    <script src="../assets/js/app.js?v=20260924n" defer></script>
   </body>
 </html>

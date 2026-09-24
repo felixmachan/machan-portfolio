@@ -1,116 +1,274 @@
-﻿<!doctype html>
-<html lang="en">
+<!doctype html>
+<html lang="en" data-theme="light">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Home Network & Server Stack</title>
-    <meta
-      name="description"
-      content="Otthoni hálózat és szerver infrastruktúra projekt helyi szolgáltatásokkal, automatizálással és biztonságos távoli eléréssel."
-    />
+    <title>Home Server &amp; Network · Felix Machán</title>
+    <meta name="description" content="Case study: a Proxmox home server that runs my smart home and hosts production workloads behind a Cloudflare Tunnel, with layered security, encrypted off-site backups and monitoring." />
     <link rel="canonical" href="https://felixmachan.hu/projects/network.html" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
     <meta property="og:type" content="article" />
-    <meta property="og:title" content="Home Network & Server Stack" />
-    <meta
-      property="og:description"
-      content="Otthoni hálózat és szerver infrastruktúra projekt helyi szolgáltatásokkal, automatizálással és biztonságos távoli eléréssel."
-    />
+    <meta property="og:title" content="Home Server &amp; Network" />
+    <meta property="og:description" content="One small Proxmox box runs my smart home and hosts production workloads with zero open inbound ports." />
     <meta property="og:url" content="https://felixmachan.hu/projects/network.html" />
-    <meta property="og:image" content="https://felixmachan.hu/assets/img/MODEM.avif" />
-    <meta property="og:locale" content="hu_HU" />
+    <meta property="og:image" content="https://felixmachan.hu/assets/img/network/og.jpg" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Home Network & Server Stack" />
-    <meta
-      name="twitter:description"
-      content="Otthoni hálózat és szerver infrastruktúra projekt helyi szolgáltatásokkal, automatizálással és biztonságos távoli eléréssel."
-    />
-    <meta name="twitter:image" content="https://felixmachan.hu/assets/img/MODEM.avif" />
-    <link rel="stylesheet" href="../assets/css/variables.css" />
-    <link rel="stylesheet" href="../assets/css/base.css" />
-    <link rel="stylesheet" href="../assets/css/components.css" />
-    <link rel="stylesheet" href="../assets/css/animations.css" />
-    <link rel="stylesheet" href="../assets/css/lightbox.css" />
-    <link rel="stylesheet" href="../assets/css/project.css" />
+    <script>
+      (function () {
+        try {
+          var t = localStorage.getItem('theme');
+          if (!t) t = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+          document.documentElement.setAttribute('data-theme', t);
+        } catch (e) {}
+      })();
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../assets/css/style.css?v=20260924n" />
   </head>
-  <body>
-    <div class="progress-container">
-      <div class="progress-bar"></div>
+  <body data-page="network">
+    <div class="progress" aria-hidden="true"><div class="progress__bar"></div></div>
+    <span class="sheet__mark sheet__mark--tl" aria-hidden="true"></span>
+    <span class="sheet__mark sheet__mark--tr" aria-hidden="true"></span>
+    <span class="sheet__mark sheet__mark--bl" aria-hidden="true"></span>
+    <span class="sheet__mark sheet__mark--br" aria-hidden="true"></span>
+
+    <div class="sheet">
+      <header class="nav">
+        <div class="container nav__inner">
+          <a class="nav__brand" href="../index.html">
+            <span class="nav__monogram" aria-hidden="true">FM</span>
+            <span class="nav__title">
+              <span class="nav__name">Felix Machán</span>
+              <span class="nav__doc">FM-NW-001 · Operational</span>
+            </span>
+          </a>
+          <nav class="nav__links" aria-label="Sections">
+            <a class="nav__link" href="../index.html#about" data-i18n="nav_about">About</a>
+            <a class="nav__link" href="../index.html#timeline" data-i18n="nav_timeline">Timeline</a>
+            <a class="nav__link is-active" href="../index.html#projects" data-i18n="nav_projects">Projects</a>
+            <a class="nav__link" href="../index.html#skills" data-i18n="nav_skills">Skills</a>
+            <a class="nav__link" href="../index.html#contact" data-i18n="nav_contact">Contact</a>
+          </nav>
+          <div class="nav__controls">
+            <button class="lang-toggle" type="button" aria-label="Language switch">
+              <span class="lang-toggle__opt" data-lang-option="hu">HU</span><span class="lang-toggle__sep">/</span><span class="lang-toggle__opt is-active" data-lang-option="en">EN</span>
+            </button>
+            <button class="theme-toggle" type="button" aria-label="Toggle dark mode" aria-pressed="false">
+              <svg class="theme-icon theme-icon--moon" aria-hidden="true" viewBox="0 0 24 24" fill="currentColor"><path d="M21.53 14.37a.75.75 0 0 0-.86-.3 7.5 7.5 0 0 1-9.79-9.8.75.75 0 0 0-1.16-.83 9.75 9.75 0 1 0 12.04 12.04.75.75 0 0 0-.23-1.11z"/></svg>
+              <svg class="theme-icon theme-icon--sun" aria-hidden="true" viewBox="0 0 24 24" fill="currentColor"><path d="M12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0-5a1 1 0 0 1 1 1v2a1 1 0 1 1-2 0V3a1 1 0 0 1 1-1zm0 18a1 1 0 0 1 1 1v2a1 1 0 1 1-2 0v-2a1 1 0 0 1 1-1zm10-9a1 1 0 0 1-1 1h-2a1 1 0 1 1 0-2h2a1 1 0 0 1 1 1zM5 12a1 1 0 0 1-1 1H2a1 1 0 1 1 0-2h2a1 1 0 0 1 1 1zm14.95-6.95a1 1 0 0 1 0 1.41l-1.42 1.42a1 1 0 1 1-1.41-1.42l1.41-1.41a1 1 0 0 1 1.42 0zM6.88 17.12a1 1 0 0 1 0 1.41L5.46 19.95a1 1 0 1 1-1.41-1.41l1.42-1.42a1 1 0 0 1 1.41 0zm12.07 1.41a1 1 0 0 1-1.41 0l-1.42-1.42a1 1 0 0 1 1.42-1.41l1.41 1.41a1 1 0 0 1 0 1.42zM7.29 6.88a1 1 0 0 1-1.41 0L4.46 5.46a1 1 0 1 1 1.41-1.41l1.42 1.42a1 1 0 0 1 0 1.41z"/></svg>
+            </button>
+            <button class="nav__burger" type="button" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+          </div>
+        </div>
+      </header>
+
+      <main>
+        <header class="doc-header">
+          <div class="container">
+            <nav class="breadcrumb" aria-label="Breadcrumb">
+              <a href="../index.html" data-i18n="crumb_index">Index</a>
+              <span class="sep">/</span>
+              <a href="../index.html#projects" data-i18n="crumb_projects">Projects</a>
+              <span class="sep">/</span>
+              <span class="current">FM-NW-001</span>
+            </nav>
+            <div class="doc-header__grid doc-header__grid--single">
+              <div class="reveal">
+                <span class="eyebrow" data-i18n="dom_net">Infrastructure</span>
+                <h1 class="doc-header__title" data-i18n="h1">Home Server &amp; Network</h1>
+                <p class="doc-header__lead" data-i18n="lead">It started as a way to stop juggling five smart-home apps. Today one small Proxmox box runs my home automation, storage and media, and it also hosts the production backend of my own product and the analytics for my websites. The public sites are reachable from the internet without a single open port on my router.</p>
+                <div class="doc-header__actions">
+                  <a class="btn" href="../index.html#projects" data-i18n="btn_back">Back to projects</a>
+                </div>
+                <div class="spec">
+                  <div class="spec__cell"><span class="spec__key" data-i18n="spec_dwg">DWG NO</span><span class="spec__value">FM-NW-001</span></div>
+                  <div class="spec__cell"><span class="spec__key" data-i18n="spec_status">Status</span><span class="spec__value status status--live" data-i18n="st_op">Operational</span></div>
+                  <div class="spec__cell"><span class="spec__key" data-i18n="spec_domain">Domain</span><span class="spec__value" data-i18n="dom_net">Infrastructure</span></div>
+                  <div class="spec__cell"><span class="spec__key" data-i18n="spec_tooling">Tooling</span><span class="spec__value">Proxmox · Docker · Cloudflare</span></div>
+                </div>
+              </div>
+            </div>
+            <figure class="fig case-banner reveal">
+              <img src="../assets/img/network/topology-light.svg" data-light="../assets/img/network/topology-light.svg" data-dark="../assets/img/network/topology-dark.svg" width="1200" height="800" alt="Home network topology: Internet and Cloudflare, modem and router, the Proxmox host with its services, and the smart-home devices" />
+              <figcaption data-i18n="figcap">Fig. 01 — Network topology, Rev C</figcaption>
+            </figure>
+            <div class="case-facts reveal" data-stagger>
+              <div class="case-fact"><span class="case-fact__value">0</span><span class="case-fact__label" data-i18n="fact1">Inbound ports opened for the public sites</span></div>
+              <div class="case-fact"><span class="case-fact__value">12+</span><span class="case-fact__label" data-i18n="fact2">Services in VMs and LXC containers on one host</span></div>
+              <div class="case-fact"><span class="case-fact__value">≤ 5 min</span><span class="case-fact__label" data-i18n="fact3">Maximum database data loss (continuous WAL archiving)</span></div>
+              <div class="case-fact"><span class="case-fact__value">~3 min</span><span class="case-fact__label" data-i18n="fact4">Point-in-time restore in the last recovery drill</span></div>
+              <div class="case-fact"><span class="case-fact__value">35 W</span><span class="case-fact__label" data-i18n="fact5">CPU TDP of the whole server</span></div>
+            </div>
+          </div>
+        </header>
+
+        <div class="container">
+          <nav class="case-contents" aria-label="Project contents">
+            <span class="eyebrow" data-i18n="case_contents">Inside the project</span>
+            <div>
+              <a href="#section-1"><span>01</span> <span data-i18n="section_1">Why I built it</span></a>
+              <a href="#section-2"><span>02</span> <span data-i18n="section_2">The architecture</span></a>
+              <a href="#section-3"><span>03</span> <span data-i18n="section_3">Hosting my own products</span></a>
+              <a href="#section-4"><span>04</span> <span data-i18n="section_4">Security, layer by layer</span></a>
+              <a href="#section-5"><span>05</span> <span data-i18n="section_5">Backups that were actually restored</span></a>
+              <a href="#section-6"><span>06</span> <span data-i18n="section_6">Monitoring &amp; incidents</span></a>
+              <a href="#section-7"><span>07</span> <span data-i18n="section_7">The smart home layer</span></a>
+              <a href="#section-8"><span>08</span> <span data-i18n="section_8">Limits &amp; what's next</span></a>
+            </div>
+          </nav>
+        </div>
+
+        <!-- 01 -->
+        <section class="doc-section" id="section-1">
+          <div class="container">
+            <div class="doc-section__head reveal"><span class="doc-section__no">01</span><h2 class="doc-section__title" data-i18n="section_1">Why I built it</h2></div>
+            <p class="reveal case-intro" data-i18n="s1_p1">The first version solved a home problem. Lights, sensors and plugs from Philips Hue, IKEA and Sonoff each came with their own app and their own cloud. Automations fired late or not at all when a vendor's server had a bad day, and there was no single place to see what the house was doing. I wanted one local control plane that keeps working when the internet doesn't.</p>
+            <p class="reveal case-intro" data-i18n="s1_p2">A hypervisor was the obvious foundation. With Proxmox VE, each job gets its own virtual machine or container, can be snapshotted before an upgrade, and can be restored without touching the others. Home Assistant, storage, DNS filtering and remote access all moved onto one low-power Lenovo ThinkCentre Tiny.</p>
+            <p class="reveal case-intro" data-i18n="s1_p3">The second chapter came in 2026. When I started building <a href="cheerlify.html">Cheerlify</a>, I needed a real, internet-facing environment for betas and field tests without paying for cloud servers from day one. The home server became a small hosting platform, which meant it now had to be treated like production: hardened, backed up and monitored.</p>
+          </div>
+        </section>
+
+        <!-- 02 -->
+        <section class="doc-section" id="section-2">
+          <div class="container">
+            <div class="doc-section__head reveal"><span class="doc-section__no">02</span><h2 class="doc-section__title" data-i18n="section_2">The architecture</h2></div>
+            <p class="reveal case-intro" data-i18n="s2_intro">The diagram above is organised into four zones. Each boundary is also a trust boundary.</p>
+            <ul class="spec-list reveal" data-stagger>
+              <li data-i18n="z0"><strong>Z-0 · Outside</strong> — the internet, Cloudflare's edge and my own devices when I'm away. Nothing here can open a connection into the house directly.</li>
+              <li data-i18n="z1"><strong>Z-1 · Edge &amp; LAN</strong> — the ISP modem runs in bridge mode, so a single router of my own handles DHCP, NAT and Wi-Fi for every client.</li>
+              <li data-i18n="z2"><strong>Z-2 · Proxmox host</strong> — a ThinkCentre Tiny (Intel i5-6500T, 16 GB RAM) running VMs for the heavier workloads (TrueNAS, Home Assistant, the Cheerlify stack) and lightweight LXC containers for single-purpose services (Pi-hole, Tailscale, Nginx Proxy Manager, RustDesk, Umami).</li>
+              <li data-i18n="z3"><strong>Z-3 · Devices</strong> — the Zigbee mesh and the 3D printer. A Sonoff Zigbee coordinator is passed through over USB directly to the Home Assistant VM, so the radio belongs to exactly one system.</li>
+            </ul>
+            <p class="reveal case-intro" style="margin-top:1.4rem" data-i18n="s2_p2">The split between VMs and containers is deliberate. Anything that needs its own kernel, direct hardware access or a full OS image gets a VM. Anything that is one daemon and a config file gets an LXC container, which boots in seconds and uses a fraction of the memory.</p>
+          </div>
+        </section>
+
+        <!-- 03 -->
+        <section class="doc-section" id="section-3">
+          <div class="container">
+            <div class="doc-section__head reveal"><span class="doc-section__no">03</span><h2 class="doc-section__title" data-i18n="section_3">Hosting my own products</h2></div>
+            <p class="reveal case-intro" data-i18n="s3_p1"><strong>Cheerlify production.</strong> A dedicated Debian VM (4 vCPU, 6 GB) runs the whole backend as a Docker Compose stack: PostgreSQL with PostGIS, the Django API under gunicorn, a separate ASGI service for live updates, a scheduler, an nginx front end and the backup jobs. It serves <code>cheerlify.com</code> and the admin panel.</p>
+            <p class="reveal case-intro" data-i18n="s3_p2"><strong>Shared analytics.</strong> A self-hosted, cookie-less Umami instance runs in its own LXC container with its own tunnel. It collects the traffic and campaign data for both cheerlify.com and vanoor.app. The data never goes to a third-party analytics vendor.</p>
+            <p class="reveal case-intro" data-i18n="s3_p3"><strong>Knowing what doesn't belong at home.</strong> Static sites such as this portfolio and the Vanoor landing page are served from external static hosting instead. They need global caching, not a database, and they shouldn't go down when my house loses power.</p>
+            <figure class="fig case-banner reveal">
+              <img src="../assets/img/network/request-path-light.svg" data-light="../assets/img/network/request-path-light.svg" data-dark="../assets/img/network/request-path-dark.svg" width="1200" height="280" alt="Request path: visitor to Cloudflare, through an outbound tunnel to cloudflared, nginx, Django and PostGIS" loading="lazy" decoding="async" />
+              <figcaption data-i18n="cap_2">Fig. 02 — Request path of a public request, from the browser to the database</figcaption>
+            </figure>
+          </div>
+        </section>
+
+        <!-- 04 -->
+        <section class="doc-section" id="section-4">
+          <div class="container">
+            <div class="doc-section__head reveal"><span class="doc-section__no">04</span><h2 class="doc-section__title" data-i18n="section_4">Security, layer by layer</h2></div>
+            <p class="reveal case-intro" data-i18n="s4_intro">A home connection is a hostile place to publish from. So there is no single wall. Each layer assumes the one in front of it might fail.</p>
+            <div class="case-table-wrap reveal">
+              <table class="case-table">
+                <thead><tr><th data-i18n="t_h1">Layer</th><th data-i18n="t_h2">What protects it</th></tr></thead>
+                <tbody>
+                  <tr><td data-i18n="l1">Edge</td><td data-i18n="l1d">All public traffic enters through Cloudflare: TLS 1.2 minimum, HSTS and nosniff, and the public hostnames point to Cloudflare, never to my home IP.</td></tr>
+                  <tr><td data-i18n="l2">Ingress</td><td data-i18n="l2d">A <strong>Cloudflare Tunnel</strong> connector on the VM dials <em>out</em> to Cloudflare. There is no port forwarding on the router for the public sites, so a port scan of my home IP finds nothing to attack.</td></tr>
+                  <tr><td data-i18n="l3">Access</td><td data-i18n="l3d">Admin surfaces sit behind <strong>Cloudflare Access</strong> (one-time email codes for allowed users only), plus TOTP two-factor authentication and re-authentication for sensitive actions inside the app. During the private beta the whole site was behind Access, and switching that back on is the documented emergency response.</td></tr>
+                  <tr><td data-i18n="l4">Origin</td><td data-i18n="l4d">nginx adds a Content-Security-Policy, HSTS, X-Frame-Options, Referrer-Policy and Permissions-Policy. Application ports listen on localhost only, and the database has no published port at all.</td></tr>
+                  <tr><td data-i18n="l5">Host</td><td data-i18n="l5d">Key-only SSH with forwarding disabled. An nftables firewall drops incoming traffic by default and allows administration only from the home LAN, with an automatic rollback so a bad rule can't lock me out. Secrets live in permission-restricted files outside Git.</td></tr>
+                  <tr><td data-i18n="l6">Remote admin</td><td data-i18n="l6d">When I'm away I reach the LAN through <strong>Tailscale</strong> (WireGuard) as a subnet router, not through an open SSH or dashboard port. RustDesk covers remote desktop.</td></tr>
+                  <tr><td data-i18n="l7">Data</td><td data-i18n="l7d">Backups are encrypted on the VM before they leave the house. The decryption keys are kept only in a password manager, never next to the backups.</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="reveal case-note" data-i18n="s4_note">In September 2026, before opening Cheerlify to the public, I ran a security audit of my own stack. It found services listening more widely than they needed to and a few defaults that were fine for development but not for production. All of them were fixed, and the hardening is now a repeatable script instead of a list of manual steps.</p>
+          </div>
+        </section>
+
+        <!-- 05 -->
+        <section class="doc-section" id="section-5">
+          <div class="container">
+            <div class="doc-section__head reveal"><span class="doc-section__no">05</span><h2 class="doc-section__title" data-i18n="section_5">Backups that were actually restored</h2></div>
+            <p class="reveal case-intro" data-i18n="s5_p1">A backup you have never restored is a hope, not a backup. The database is protected three ways. A nightly <code>pg_dump</code> keeps 14 copies and rejects suspiciously small dumps. <strong>WAL-G</strong> archives the write-ahead log continuously, at most every five minutes, with a weekly base backup, which makes point-in-time recovery possible. An hourly <code>rclone</code> job copies uploaded media and the VM configuration.</p>
+            <p class="reveal case-intro" data-i18n="s5_p2">Everything is encrypted locally and stored in a Cloudflare R2 bucket in the EU jurisdiction. On 23 September 2026 I rehearsed a point-in-time restore: the download took about three minutes, and the row counts matched the live database. Rebuilding a whole VM from scratch hasn't been rehearsed yet, and it's the next drill on the list.</p>
+            <figure class="fig case-banner reveal">
+              <img src="../assets/img/network/backup-pipeline-light.svg" data-light="../assets/img/network/backup-pipeline-light.svg" data-dark="../assets/img/network/backup-pipeline-dark.svg" width="1200" height="420" alt="Backup pipeline: pg_dump, WAL-G and rclone, encrypted on the VM, stored in Cloudflare R2, verified with a restore drill" loading="lazy" decoding="async" />
+              <figcaption data-i18n="cap_3">Fig. 03 — Backup pipeline, from the database to off-site storage</figcaption>
+            </figure>
+          </div>
+        </section>
+
+        <!-- 06 -->
+        <section class="doc-section" id="section-6">
+          <div class="container">
+            <div class="doc-section__head reveal"><span class="doc-section__no">06</span><h2 class="doc-section__title" data-i18n="section_6">Monitoring &amp; incidents</h2></div>
+            <p class="reveal case-intro" data-i18n="s6_p1">Netdata on the Proxmox host watches the machine and sends email alerts. It runs HTTP checks against Home Assistant, TrueNAS, Pi-hole, the proxy and the public sites, and raises an alarm if the CPU passes 75 °C. An external uptime monitor watches the public endpoints from outside, and application errors go to Sentry.</p>
+            <p class="reveal case-intro" data-i18n="s6_p2">Most of that monitoring exists because something went wrong first. The incident log:</p>
+            <div class="case-table-wrap reveal">
+              <table class="case-table">
+                <thead><tr><th data-i18n="i_h1">Incident</th><th data-i18n="i_h2">What happened</th><th data-i18n="i_h3">Fix</th></tr></thead>
+                <tbody>
+                  <tr><td data-i18n="i1">Silent outage</td><td data-i18n="i1w">After a host reboot, the Cheerlify VM stayed powered off for four days and nobody noticed.</td><td data-i18n="i1f">Start-on-boot for every production guest, plus an external uptime monitor that emails me.</td></tr>
+                  <tr><td data-i18n="i2">502 after reboot</td><td data-i18n="i2w">The VM came back, but the database container had no restart policy, so the site returned 502 errors.</td><td data-i18n="i2f">Restart policies on every service, and Docker live-restore on the host.</td></tr>
+                  <tr><td data-i18n="i3">Lost SSH</td><td data-i18n="i3w">The VM's DHCP address changed and my SSH config broke. The public site stayed up, because the tunnel dials out and doesn't care about the local IP.</td><td data-i18n="i3f">A static DHCP lease on the router, and resolving the address through the Proxmox guest agent.</td></tr>
+                  <tr><td data-i18n="i4">Database stalls</td><td data-i18n="i4w">On the spinning HDD, each commit's fsync took 20–30 ms. Under memory pressure, commits stalled for over 30 seconds.</td><td data-i18n="i4f">Batched writes and relaxed synchronous commit for non-critical data. An NVMe SSD is the real fix.</td></tr>
+                  <tr><td data-i18n="i5">Worker exhaustion</td><td data-i18n="i5w">The tunnel pointed straight at Django and bypassed nginx, so long-lived live-update connections used up the API workers.</td><td data-i18n="i5f">All hostnames now route through nginx, which sends live traffic to the dedicated ASGI service.</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- 07 -->
+        <section class="doc-section" id="section-7">
+          <div class="container">
+            <div class="doc-section__head reveal"><span class="doc-section__no">07</span><h2 class="doc-section__title" data-i18n="section_7">The smart home layer</h2></div>
+            <p class="reveal case-intro" data-i18n="s7_p1">The original purpose still runs every day. Home Assistant is the single control plane for the Philips Hue, IKEA and Sonoff devices on the Zigbee mesh and for the Bambu Lab printer over the local network. Device state and automation logic live in one place, and they keep working when the internet is down.</p>
+            <ul class="spec-list reveal" data-stagger>
+              <li data-i18n="svc2"><strong>Home Assistant</strong> — the automation brain, with the Zigbee coordinator passed through over USB.</li>
+              <li data-i18n="svc3"><strong>Zigbee2MQTT + MQTT</strong> — local device communication without any vendor cloud in the loop.</li>
+              <li data-i18n="svc9"><strong>Pi-hole</strong> — network-wide ad blocking and DNS filtering for every device in the house.</li>
+              <li data-i18n="svc10"><strong>Nginx Proxy Manager</strong> — reverse proxies, SSL certificates and local DNS names for the internal services.</li>
+              <li data-i18n="svc4"><strong>TrueNAS</strong> — file shares, backups and central storage for projects and media.</li>
+              <li data-i18n="svc7"><strong>Plex</strong> — streaming my own media library to every screen.</li>
+              <li data-i18n="svc5"><strong>Vaultwarden</strong> — self-hosted password manager for credentials and internal secrets.</li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- 08 -->
+        <section class="doc-section" id="section-8">
+          <div class="container">
+            <div class="doc-section__head reveal"><span class="doc-section__no">08</span><h2 class="doc-section__title" data-i18n="section_8">Limits &amp; what's next</h2></div>
+            <p class="reveal case-intro" data-i18n="s8_p1">I try to be honest about what this is. It's one host, one hard drive, one internet connection and no UPS. That's a good fit for development, betas and field tests, but it isn't a high-availability platform, and my product docs say so. The architecture is built so that moving the Cheerlify stack to a cloud VM is a restore from backup, not a rewrite.</p>
+            <p class="reveal case-intro" data-i18n="s8_p2"><strong>Next on the list:</strong> an NVMe SSD for the database, a UPS, a heartbeat that alerts me if a backup job silently stops, and a full "rebuild the VM from nothing" drill.</p>
+            <p class="reveal case-intro" data-i18n="s8_p3"><strong>What I learned.</strong> Running your own server teaches you what managed platforms hide. Reboots, IP changes, disk latency and restart policies all turned into real outages before they turned into checklists. Every layer on this page exists because I either measured a problem or lived through one.</p>
+          </div>
+        </section>
+
+        <div class="container doc-next">
+          <a href="../index.html#projects">
+            <span class="doc-next__label" data-i18n="crumb_projects">Projects</span>
+            <span class="doc-next__title">← <span data-i18n="btn_back">Back to projects</span></span>
+          </a>
+          <a href="custom-sim-racing-pedals.html" style="text-align: right;">
+            <span class="doc-next__label" data-i18n="next_label">Next project</span>
+            <span class="doc-next__title" data-i18n="card_pedals_t">Custom Sim Racing Pedals — ME1</span>
+          </a>
+        </div>
+      </main>
+      <footer class="titleblock">
+        <div class="titleblock__grid">
+          <div class="titleblock__cell"><span class="titleblock__key" data-i18n="tb_k_title">Title</span><span class="titleblock__value" data-i18n="h1">Home Server &amp; Network</span></div>
+          <div class="titleblock__cell"><span class="titleblock__key" data-i18n="tb_k_drawn">Drawn by</span><span class="titleblock__value">F. Machán</span></div>
+          <div class="titleblock__cell"><span class="titleblock__key" data-i18n="tb_k_date">Date</span><span class="titleblock__value">2026</span></div>
+          <div class="titleblock__cell"><span class="titleblock__key" data-i18n="tb_k_sheet">Sheet</span><span class="titleblock__value">08 / 08</span></div>
+          <div class="titleblock__cell"><span class="titleblock__key" data-i18n="tb_k_rev">Rev</span><span class="titleblock__value"><span class="accent">3</span></span></div>
+        </div>
+        <div class="titleblock__copy">
+          <span data-i18n="tb_copy">© 2026 Felix Machán · All dimensions in mm unless otherwise noted</span>
+        </div>
+      </footer>
     </div>
-    <button class="lang-toggle" type="button" aria-label="Language switch">
-      <span class="lang-toggle__opt" data-lang-option="hu">HU</span><span class="lang-toggle__sep">/</span><span class="lang-toggle__opt is-active" data-lang-option="en">EN</span>
-    </button>
-    <button class="theme-toggle" type="button" aria-label="Switch to dark mode" aria-pressed="false">
-      <svg class="theme-icon theme-icon--moon" aria-hidden="true" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M21.53 14.37a.75.75 0 0 0-.86-.3 7.5 7.5 0 0 1-9.79-9.8.75.75 0 0 0-1.16-.83 9.75 9.75 0 1 0 12.04 12.04.75.75 0 0 0-.23-1.11z"/>
-      </svg>
-      <svg class="theme-icon theme-icon--sun" aria-hidden="true" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0-5a1 1 0 0 1 1 1v2a1 1 0 1 1-2 0V3a1 1 0 0 1 1-1zm0 18a1 1 0 0 1 1 1v2a1 1 0 1 1-2 0v-2a1 1 0 0 1 1-1zm10-9a1 1 0 0 1-1 1h-2a1 1 0 1 1 0-2h2a1 1 0 0 1 1 1zM5 12a1 1 0 0 1-1 1H2a1 1 0 1 1 0-2h2a1 1 0 0 1 1 1zm14.95-6.95a1 1 0 0 1 0 1.41l-1.42 1.42a1 1 0 1 1-1.41-1.42l1.41-1.41a1 1 0 0 1 1.42 0zM6.88 17.12a1 1 0 0 1 0 1.41L5.46 19.95a1 1 0 1 1-1.41-1.41l1.42-1.42a1 1 0 0 1 1.41 0zm12.07 1.41a1 1 0 0 1-1.41 0l-1.42-1.42a1 1 0 0 1 1.42-1.41l1.41 1.41a1 1 0 0 1 0 1.42zM7.29 6.88a1 1 0 0 1-1.41 0L4.46 5.46a1 1 0 1 1 1.41-1.41l1.42 1.42a1 1 0 0 1 0 1.41z"/>
-      </svg>
-    </button>
-    <main>
-      <section class="section section--hero">
-        <div class="container" style="margin-top: 15px; margin-bottom: 30px;">
-          <div class="panel project-page">
-          <div class="project-hero">
-            <div class="reveal">
-              <img class="project-hero-image" src="../assets/img/MODEM.avif" alt="Home network architecture diagram" />
-            </div>
-            <div class="project-hero-body reveal">
-              <a class="button secondary" href="../index.html#projects">Back to Projects</a>
-              <h1>Home network and server stack</h1>
-              <p class="section-lead" style="max-width: 100%;">A local, reliable, and scalable setup that anchors smart home automation and lab projects on solid infrastructure.</p>
-              <div class="pill-container">
-                <span class="pill">Networking</span>
-                <span class="pill">HomeLab</span>
-                <span class="pill">Infra</span>
-              </div>
-        
-            
-            </div>
-          </div>
-          <div class="project-detail reveal">
-            <div class="project-rows">
-              <div class="project-row">
-                <h2>Problem</h2>
-                <p>Home devices were scattered across separate apps and protocols. Cloud dependency, imprecise automation timing, and weak observability made the system fragile. Without a centralized, local-first backbone, it was hard to build stable, expandable automations.</p>
-              </div>
-              <div class="project-row">
-                <h2>Goal</h2>
-                <p>The goal was a home stack where services run isolated, every device can be controlled locally, and remote access is secure. Reliability, data ownership, and a single control plane were non-negotiable.</p>
-              </div>
-              <div class="project-row">
-                <h2>Approach</h2>
-                <p>The stack is anchored by Proxmox VE, which provides a virtualization layer so services are isolated and recoverable. The router handles traffic and internal segments, while the server hosts dedicated VMs and containers for each function.</p>
-                <p>Services and why they exist:</p>
-                <ul class="service-list" style="margin-bottom: 20px;">
-                  <li><strong>Proxmox VE</strong> - hypervisor that separates VMs and enables snapshots for quick recovery.</li>
-                  <li><strong>Home Assistant</strong> - the automation brain for Hue, IKEA, Sonoff, and other devices.</li>
-                  <li><strong>Zigbee2MQTT</strong> - stable local device communication engine for Zigbee devices without cloud dependency.</li>
-                  <li><strong>TrueNAS</strong> - file sharing, backups, and centralized data for projects and media.</li>
-                  <li><strong>Vaultwarden</strong> - secure storage for credentials and internal secrets.</li>
-                  <li><strong>Tailscale</strong> - secure access from outside the network over encrypted tunnels.</li>
-                  <li><strong>Plex</strong> - For streaming my own media to various devices.</li>
-                  <li><strong>RustDesk</strong> - For remote desktop access to devices within the network.</li>
-                  <li><strong>PiHole</strong> - Network-wide ad blocking and DNS filtering.</li>
-                  <li><strong>Nginx Proxy Manager</strong> - For managing reverse proxies and SSL certificates. Making local dns records to easily find my important services via a subdomain of machan.hu.</li>
 
-                </ul>
-                <p>The Bambu Lab printer and Hue, IKEA, and Sonoff ecosystems are all integrated under a single control plane, keeping real-time status and automation logic in one place.</p>
-              </div>
-              <div class="project-row">
-                <h2>Result</h2>
-                <p>A stable, maintainable, and future-proof home infrastructure where services are separated yet operate as one system, updated regularly. It delivers daily smart home reliability while supporting development and hobby projects with confidence.</p>
-              </div>
-            </div>
-            </div>
-          </div>
-        </div>
-        </div>
-      </section>
-    </main>
-
-    <script src="../assets/js/reveal.js" defer></script>
-    <script src="../assets/js/main.js" defer></script>
-    <script src="../assets/js/lightbox.js" defer></script>
+    <script src="../assets/js/i18n.js?v=20260924n" defer></script>
+    <script src="../assets/js/app.js?v=20260924n" defer></script>
   </body>
 </html>
