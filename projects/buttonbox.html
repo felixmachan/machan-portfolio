@@ -25,10 +25,9 @@
         } catch (e) {}
       })();
     </script>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="../assets/css/style.css?v=20260924n" />
+    <link rel="preload" href="../assets/fonts/archivo-normal-100-900-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="../assets/fonts/ibm-plex-mono-normal-500-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="stylesheet" href="../assets/css/style.min.css?v=20260924o" />
   </head>
   <body data-page="buttonbox">
     <div class="progress" aria-hidden="true"><div class="progress__bar"></div></div>
@@ -55,7 +54,7 @@
             <a class="nav__link" href="../index.html#contact" data-i18n="nav_contact">Contact</a>
           </nav>
           <div class="nav__controls">
-            <button class="lang-toggle" type="button" aria-label="Language switch">
+            <button class="lang-toggle" type="button" title="Language: Hungarian / English">
               <span class="lang-toggle__opt" data-lang-option="hu">HU</span><span class="lang-toggle__sep">/</span><span class="lang-toggle__opt is-active" data-lang-option="en">EN</span>
             </button>
             <button class="theme-toggle" type="button" aria-label="Toggle dark mode" aria-pressed="false">
@@ -270,8 +269,8 @@
       </footer>
     </div>
 
-    <script src="../assets/js/i18n.js?v=20260924n" defer></script>
-    <script src="../assets/js/app.js?v=20260924n" defer></script>
+    <script src="../assets/js/i18n.js?v=20260924o" defer></script>
+    <script src="../assets/js/app.js?v=20260924o" defer></script>
     <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
   </body>
 </html>
