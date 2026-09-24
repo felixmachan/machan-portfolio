@@ -2182,3 +2182,19 @@ button {
   .case-banner--narrow img[src$=".svg"] { width: 620px; }
   .case-banner:has(img[src$=".svg"]) figcaption { position: sticky; left: 0; max-width: calc(100vw - 4rem); }
 }
+
+/* ---------- Equations & code (pedal case study) ---------- */
+.eq { margin: 1.4rem 0; padding: 1rem 1.25rem; border-left: 2px solid var(--accent); background: var(--surface); overflow-x: auto; max-width: 100%; }
+.eq img { max-width: none; height: auto; display: block; }
+.eq figcaption { margin-top: .6rem; font-family: var(--font-mono); font-size: .66rem; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+.code-block { margin: 1.4rem 0; border: 1px solid var(--line-strong); background: var(--surface); max-width: 100%; }
+.code-block figcaption { display: flex; justify-content: space-between; gap: 1rem; padding: .55rem .9rem; border-bottom: 1px solid var(--line); font-family: var(--font-mono); font-size: .66rem; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+.code-block pre { margin: 0; padding: 1rem 1.1rem; overflow-x: auto; font-family: var(--font-mono); font-size: .82rem; line-height: 1.65; color: var(--ink); }
+.code-block .c-com { color: var(--muted); font-style: italic; }
+.code-block .c-kw { color: var(--accent); }
+.code-block .c-num { color: color-mix(in srgb, var(--accent) 70%, var(--ink)); }
+.case-duo { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; margin-top: 1.6rem; align-items: start; }
+.case-duo .fig img { width: 100%; height: auto; object-fit: contain; max-height: 620px; }
+@media (max-width: 720px) { .case-duo { grid-template-columns: 1fr; } }
+.feature__text { min-width: 0; }
+@media (max-width: 780px) { .feature { grid-template-columns: minmax(0, 1fr); } }
