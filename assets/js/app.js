@@ -287,6 +287,26 @@
     });
   }
 
+  /* ---------- 3D viewer: load model-viewer only when it is about to scroll into view ---------- */
+  function initModelViewer() {
+    var viewers = document.querySelectorAll('model-viewer');
+    if (!viewers.length) return;
+    var loaded = false;
+    function load() {
+      if (loaded) return;
+      loaded = true;
+      var s = document.createElement('script');
+      s.type = 'module';
+      s.src = 'https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js';
+      document.head.appendChild(s);
+    }
+    if (!('IntersectionObserver' in window)) { load(); return; }
+    var io = new IntersectionObserver(function (entries) {
+      if (entries.some(function (e) { return e.isIntersecting; })) { load(); io.disconnect(); }
+    }, { rootMargin: '600px 0px' });
+    viewers.forEach(function (v) { io.observe(v); });
+  }
+
   /* ---------- Boot ---------- */
   initTheme();
   initLang();
@@ -296,4 +316,5 @@
   initProgress();
   initLightbox();
   initForm();
+  initModelViewer();
 })();

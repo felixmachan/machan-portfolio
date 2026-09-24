@@ -25,7 +25,8 @@
         } catch (e) {}
       })();
     </script>
-    <link rel="stylesheet" href="../assets/css/style.min.css?v=20260924o" />
+    <link rel="preload" as="image" href="../assets/img/buttonbox/pcb.avif" imagesrcset="../assets/img/buttonbox/pcb-640.webp 640w, ../assets/img/buttonbox/pcb.avif 1000w" imagesizes="(max-width: 900px) 92vw, 560px" fetchpriority="high" />
+    <link rel="stylesheet" href="../assets/css/style.min.css?v=20260924p" />
   </head>
   <body data-page="buttonbox">
     <div class="progress" aria-hidden="true"><div class="progress__bar"></div></div>
@@ -90,7 +91,7 @@
                 </div>
               </div>
               <figure class="doc-header__figure reveal">
-                <img src="../assets/img/buttonbox/pcb.avif" alt="Button box PCB 3D render" />
+                <img fetchpriority="high" width="1000" height="648" src="../assets/img/buttonbox/pcb.avif" srcset="../assets/img/buttonbox/pcb-640.webp 640w, ../assets/img/buttonbox/pcb.avif 1000w" sizes="(max-width: 900px) 92vw, 560px" alt="Button box PCB 3D render" />
                 <figcaption><span data-i18n="figcap">Fig. 01 — Final PCB, 3D render</span><span>FM-EE-001</span></figcaption>
               </figure>
             </div>
@@ -155,7 +156,7 @@
                 <p data-i18n="f1_p1">The initial concept used discrete buttons with an Arduino Pro Micro, which was selected for native HID support. However, its limited I/O required a button matrix, and the wiring effort became excessive. Each switch and encoder needed individual soldering, plus diode isolation to prevent key ghosting. The prototype was therefore paused before assembly.</p>
               </div>
               <figure class="fig">
-                <img src="../assets/img/buttonbox/IMG_6955.avif" alt="First iteration with Arduino Pro Micro" loading="lazy" />
+                <img width="1080" height="1080" src="../assets/img/buttonbox/IMG_6955.avif" srcset="../assets/img/buttonbox/IMG_6955-640.webp 640w, ../assets/img/buttonbox/IMG_6955.avif 1080w" sizes="(max-width: 780px) 92vw, 600px" alt="First iteration with Arduino Pro Micro" loading="lazy" />
                 <figcaption data-i18n="f1_cap">Fig. 04 — First iteration: Arduino Pro Micro</figcaption>
               </figure>
             </div>
@@ -168,12 +169,12 @@
                 <p data-i18n="f2_p3">Building the schematic was the most demanding learning phase. Understanding component constraints and proper wiring required iteration, but the design stabilized into a coherent system.</p>
               </div>
               <div class="fig-grid">
-                <figure class="fig"><img src="../assets/img/buttonbox/mcu.avif" alt="MCU schematic" loading="lazy" /><figcaption data-i18n="f2_cap1">Fig. 05 — MCU</figcaption></figure>
-                <figure class="fig"><img src="../assets/img/buttonbox/bmatrix.avif" alt="Button matrix schematic" loading="lazy" /><figcaption data-i18n="f2_cap2">Fig. 06 — Button matrix</figcaption></figure>
-                <figure class="fig"><img src="../assets/img/buttonbox/flash.avif" alt="Flash memory schematic" loading="lazy" /><figcaption data-i18n="f2_cap3">Fig. 07 — Flash memory</figcaption></figure>
-                <figure class="fig"><img src="../assets/img/buttonbox/power.avif" alt="Power schematic" loading="lazy" /><figcaption data-i18n="f2_cap4">Fig. 08 — Power</figcaption></figure>
-                <figure class="fig"><img src="../assets/img/buttonbox/encoders.avif" alt="Encoder schematic" loading="lazy" /><figcaption data-i18n="f2_cap5">Fig. 09 — Encoders</figcaption></figure>
-                <figure class="fig"><img src="../assets/img/buttonbox/crystal.avif" alt="Crystal schematic" loading="lazy" /><figcaption data-i18n="f2_cap6">Fig. 10 — Crystal</figcaption></figure>
+                <figure class="fig"><img width="799" height="796" src="../assets/img/buttonbox/mcu.avif" srcset="../assets/img/buttonbox/mcu-640.webp 640w, ../assets/img/buttonbox/mcu.avif 799w" sizes="(max-width: 780px) 92vw, 600px" alt="MCU schematic" loading="lazy" /><figcaption data-i18n="f2_cap1">Fig. 05 — MCU</figcaption></figure>
+                <figure class="fig"><img width="678" height="605" src="../assets/img/buttonbox/bmatrix.avif" alt="Button matrix schematic" loading="lazy" /><figcaption data-i18n="f2_cap2">Fig. 06 — Button matrix</figcaption></figure>
+                <figure class="fig"><img width="1025" height="803" src="../assets/img/buttonbox/flash.avif" srcset="../assets/img/buttonbox/flash-640.webp 640w, ../assets/img/buttonbox/flash.avif 1025w" sizes="(max-width: 780px) 92vw, 600px" alt="Flash memory schematic" loading="lazy" /><figcaption data-i18n="f2_cap3">Fig. 07 — Flash memory</figcaption></figure>
+                <figure class="fig"><img width="774" height="861" src="../assets/img/buttonbox/power.avif" srcset="../assets/img/buttonbox/power-640.webp 640w, ../assets/img/buttonbox/power.avif 774w" sizes="(max-width: 780px) 92vw, 600px" alt="Power schematic" loading="lazy" /><figcaption data-i18n="f2_cap4">Fig. 08 — Power</figcaption></figure>
+                <figure class="fig"><img width="1325" height="372" src="../assets/img/buttonbox/encoders.avif" srcset="../assets/img/buttonbox/encoders-640.webp 640w, ../assets/img/buttonbox/encoders.avif 1325w" sizes="(max-width: 780px) 92vw, 600px" alt="Encoder schematic" loading="lazy" /><figcaption data-i18n="f2_cap5">Fig. 09 — Encoders</figcaption></figure>
+                <figure class="fig"><img width="656" height="492" src="../assets/img/buttonbox/crystal.avif" alt="Crystal schematic" loading="lazy" /><figcaption data-i18n="f2_cap6">Fig. 10 — Crystal</figcaption></figure>
               </div>
             </div>
 
@@ -183,7 +184,7 @@
                 <p data-i18n="f3_p1">Routing introduced a second major challenge. After several iterations of re-routing and reviewing best practices, the board reached a stable layout. The per-button and per-encoder LED plan increased routing complexity significantly, and I did not have access to a formal design review. The final layout reflects the best practices and constraints I could validate independently.</p>
               </div>
               <figure class="fig">
-                <img src="../assets/img/buttonbox/IMG_9404.avif" alt="PCB routing phase" loading="lazy" />
+                <img width="600" height="600" src="../assets/img/buttonbox/IMG_9404.avif" alt="PCB routing phase" loading="lazy" />
                 <figcaption data-i18n="f3_cap">Fig. 11 — Routing phase</figcaption>
               </figure>
             </div>
@@ -194,7 +195,7 @@
                 <p data-i18n="f4_p1">A 3D render of the final design is shown below. The next step is fabrication. The remaining decision is whether to order an assembled PCB or a bare board for manual assembly.</p>
               </div>
               <figure class="fig">
-                <img src="../assets/img/buttonbox/pcb.avif" alt="Final PCB 3D render" loading="lazy" />
+                <img width="1000" height="648" src="../assets/img/buttonbox/pcb.avif" srcset="../assets/img/buttonbox/pcb-640.webp 640w, ../assets/img/buttonbox/pcb.avif 1000w" sizes="(max-width: 780px) 92vw, 600px" alt="Final PCB 3D render" loading="lazy" />
                 <figcaption data-i18n="f4_cap">Fig. 12 — Final 3D render</figcaption>
               </figure>
             </div>
@@ -267,8 +268,7 @@
       </footer>
     </div>
 
-    <script src="../assets/js/i18n.js?v=20260924o" defer></script>
-    <script src="../assets/js/app.js?v=20260924o" defer></script>
-    <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+    <script src="../assets/js/i18n.js?v=20260924p" defer></script>
+    <script src="../assets/js/app.js?v=20260924p" defer></script>
   </body>
 </html>

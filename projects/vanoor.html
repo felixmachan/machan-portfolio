@@ -27,7 +27,8 @@
         } catch (e) {}
       })();
     </script>
-    <link rel="stylesheet" href="../assets/css/style.min.css?v=20260924o" />
+    <link rel="preload" as="image" href="../assets/img/vanoor/og-hero.webp" imagesrcset="../assets/img/vanoor/og-hero-640.webp 640w, ../assets/img/vanoor/og-hero.webp 1200w" imagesizes="(max-width: 900px) 92vw, 560px" fetchpriority="high" />
+    <link rel="stylesheet" href="../assets/css/style.min.css?v=20260924p" />
   </head>
   <body data-page="vanoor">
     <div class="progress" aria-hidden="true"><div class="progress__bar"></div></div>
@@ -94,7 +95,7 @@
                 </div>
               </div>
               <figure class="doc-header__figure reveal">
-                <img src="../assets/img/vanoor/og-hero.webp" class="case-hero-wide" width="1200" height="630" alt="Vanoor on an Apple Watch: offline route map with current pace 5:12 per km and heart rate 151" />
+                <img fetchpriority="high" src="../assets/img/vanoor/og-hero.webp" srcset="../assets/img/vanoor/og-hero-640.webp 640w, ../assets/img/vanoor/og-hero.webp 1200w" sizes="(max-width: 900px) 92vw, 560px" class="case-hero-wide" width="1200" height="630" alt="Vanoor on an Apple Watch: offline route map with current pace 5:12 per km and heart rate 151" />
                 <figcaption><span data-i18n="figcap">Fig. 01 — Launch key visual</span><span>vanoor.app</span></figcaption>
               </figure>
             </div>
@@ -135,7 +136,7 @@
                 <p class="case-intro" data-i18n="s1_p2">Many runners end up buying a second watch just for that. The alternatives on the App Store tend to be subscription-based, account-based or cluttered with social features.</p>
                 <p class="case-intro" data-i18n="s1_p3">Vanoor's premise is simple: <strong>Apple Workout simplicity, plus GPX route following, configurable running screens and race pacing</strong>. You plan on the iPhone, run with the Watch, and the data goes to Apple Health and Strava. There's no account, no server and no subscription.</p>
               </div>
-              <figure class="fig case-image"><img src="../assets/img/vanoor/ph-01.webp" alt="Follow any GPX route: offline map on the wrist, no phone and no signal needed" loading="lazy" decoding="async" /><figcaption data-i18n="cap_2">Fig. 02 — Product Hunt gallery: the core promise</figcaption></figure>
+              <figure class="fig case-image"><img width="1270" height="760" src="../assets/img/vanoor/ph-01.webp" srcset="../assets/img/vanoor/ph-01-640.webp 640w, ../assets/img/vanoor/ph-01.webp 1270w" sizes="(max-width: 780px) 92vw, 600px" alt="Follow any GPX route: offline map on the wrist, no phone and no signal needed" loading="lazy" decoding="async" /><figcaption data-i18n="cap_2">Fig. 02 — Product Hunt gallery: the core promise</figcaption></figure>
             </div>
           </div>
         </section>
@@ -151,8 +152,8 @@
                 <p data-i18n="s2_f1_p2">For routes that don't exist yet, the route planner lets you tap to draw. MapKit snaps each leg to streets and paths, with live distance and kilometre markers. Routes are stored on the device and synced through the user's private iCloud with CloudKit.</p>
               </div>
               <div class="case-gallery case-gallery--pair">
-                <figure class="fig case-image case-image--phone"><img src="../assets/img/vanoor/iphone-routes-portrait.webp" alt="Route library on iPhone" loading="lazy" decoding="async" /><figcaption data-i18n="cap_3">Fig. 03 — Route library</figcaption></figure>
-                <figure class="fig case-image case-image--phone"><img src="../assets/img/vanoor/iphone-route-planner-portrait.webp" alt="Tap-to-draw route planner snapping to streets" loading="lazy" decoding="async" /><figcaption data-i18n="cap_4">Fig. 04 — Route planner</figcaption></figure>
+                <figure class="fig case-image case-image--phone"><img width="850" height="1675" src="../assets/img/vanoor/iphone-routes-portrait.webp" srcset="../assets/img/vanoor/iphone-routes-portrait-640.webp 640w, ../assets/img/vanoor/iphone-routes-portrait.webp 850w" sizes="(max-width: 780px) 92vw, 600px" alt="Route library on iPhone" loading="lazy" decoding="async" /><figcaption data-i18n="cap_3">Fig. 03 — Route library</figcaption></figure>
+                <figure class="fig case-image case-image--phone"><img width="779" height="1600" src="../assets/img/vanoor/iphone-route-planner-portrait.webp" srcset="../assets/img/vanoor/iphone-route-planner-portrait-640.webp 640w, ../assets/img/vanoor/iphone-route-planner-portrait.webp 779w" sizes="(max-width: 780px) 92vw, 600px" alt="Tap-to-draw route planner snapping to streets" loading="lazy" decoding="async" /><figcaption data-i18n="cap_4">Fig. 04 — Route planner</figcaption></figure>
               </div>
             </div>
           </div>
@@ -169,8 +170,8 @@
                 <p data-i18n="s3_f1_p2">The route itself travels over WatchConnectivity in a versioned envelope with a checksum, so a half-transferred or outdated file is rejected before it can mislead someone at kilometre 25. If you drift more than 40 m off the course, the Watch taps your wrist, and repeats every 30 seconds until you're back.</p>
               </div>
               <div class="case-gallery case-gallery--pair">
-                <figure class="fig case-image case-image--watch"><img src="../assets/img/vanoor/watch-map.webp" alt="Offline route map on the Watch" loading="lazy" decoding="async" /><figcaption data-i18n="cap_5">Fig. 05 — Route map</figcaption></figure>
-                <figure class="fig case-image case-image--watch"><img src="../assets/img/vanoor/watch-elevation.webp" alt="Elevation profile on the Watch" loading="lazy" decoding="async" /><figcaption data-i18n="cap_6">Fig. 06 — Elevation profile</figcaption></figure>
+                <figure class="fig case-image case-image--watch"><img width="540" height="860" src="../assets/img/vanoor/watch-map.webp" alt="Offline route map on the Watch" loading="lazy" decoding="async" /><figcaption data-i18n="cap_5">Fig. 05 — Route map</figcaption></figure>
+                <figure class="fig case-image case-image--watch"><img width="540" height="860" src="../assets/img/vanoor/watch-elevation.webp" alt="Elevation profile on the Watch" loading="lazy" decoding="async" /><figcaption data-i18n="cap_6">Fig. 06 — Elevation profile</figcaption></figure>
               </div>
             </div>
             <div class="feature reveal">
@@ -180,15 +181,15 @@
                 <p data-i18n="s3_f2_p2">Every custom screen is limited to four metrics, and the iPhone shows a miniature preview while you build it. Information density on a 45 mm display is a design decision, not a settings problem.</p>
               </div>
               <div class="case-gallery">
-                <figure class="fig case-image case-image--phone"><img src="../assets/img/vanoor/appstore-05.webp" alt="App Store panel: Your screens. Your numbers. Classic, Big Metric, heart-rate zone and running dynamics screens" loading="lazy" decoding="async" /><figcaption data-i18n="cap_7">Fig. 07 — App Store panel: configurable screens</figcaption></figure>
+                <figure class="fig case-image case-image--phone"><img width="645" height="1398" src="../assets/img/vanoor/appstore-05.webp" alt="App Store panel: Your screens. Your numbers. Classic, Big Metric, heart-rate zone and running dynamics screens" loading="lazy" decoding="async" /><figcaption data-i18n="cap_7">Fig. 07 — App Store panel: configurable screens</figcaption></figure>
               </div>
             </div>
             <div class="case-row case-row--watch reveal" data-stagger>
-              <figure class="fig case-image"><img src="../assets/img/vanoor/marquee-watch-classic-graphitestainlesssteel.webp" alt="Classic five-metric screen" loading="lazy" decoding="async" /><figcaption>Classic</figcaption></figure>
-              <figure class="fig case-image"><img src="../assets/img/vanoor/marquee-watch-bigMetric-starlightaluminum.webp" alt="Big metric screen" loading="lazy" decoding="async" /><figcaption>Big Metric</figcaption></figure>
-              <figure class="fig case-image"><img src="../assets/img/vanoor/watch-heartRate.webp" alt="Heart-rate zones screen" loading="lazy" decoding="async" /><figcaption data-i18n="cap_hr">HR zones</figcaption></figure>
-              <figure class="fig case-image"><img src="../assets/img/vanoor/marquee-watch-effort-ultra2-blue.webp" alt="Effort screen on Apple Watch Ultra" loading="lazy" decoding="async" /><figcaption data-i18n="cap_effort">Effort</figcaption></figure>
-              <figure class="fig case-image"><img src="../assets/img/vanoor/marquee-watch-metronome-ultra2-orange.webp" alt="Cadence metronome screen" loading="lazy" decoding="async" /><figcaption data-i18n="cap_metro">Metronome</figcaption></figure>
+              <figure class="fig case-image"><img width="531" height="900" src="../assets/img/vanoor/marquee-watch-classic-graphitestainlesssteel.webp" alt="Classic five-metric screen" loading="lazy" decoding="async" /><figcaption>Classic</figcaption></figure>
+              <figure class="fig case-image"><img width="530" height="900" src="../assets/img/vanoor/marquee-watch-bigMetric-starlightaluminum.webp" alt="Big metric screen" loading="lazy" decoding="async" /><figcaption>Big Metric</figcaption></figure>
+              <figure class="fig case-image"><img width="540" height="860" src="../assets/img/vanoor/watch-heartRate.webp" alt="Heart-rate zones screen" loading="lazy" decoding="async" /><figcaption data-i18n="cap_hr">HR zones</figcaption></figure>
+              <figure class="fig case-image"><img width="546" height="900" src="../assets/img/vanoor/marquee-watch-effort-ultra2-blue.webp" alt="Effort screen on Apple Watch Ultra" loading="lazy" decoding="async" /><figcaption data-i18n="cap_effort">Effort</figcaption></figure>
+              <figure class="fig case-image"><img width="564" height="900" src="../assets/img/vanoor/marquee-watch-metronome-ultra2-orange.webp" alt="Cadence metronome screen" loading="lazy" decoding="async" /><figcaption data-i18n="cap_metro">Metronome</figcaption></figure>
             </div>
           </div>
         </section>
@@ -204,14 +205,14 @@
                 <p data-i18n="s4_f1_p2">On the Watch, the Pacer page shows the current split and its target pace band, and tells you when you drift out of it. Preparation turns into one clear decision at the moment you need it: speed up, hold, or back off.</p>
               </div>
               <div class="case-gallery case-gallery--pair">
-                <figure class="fig case-image case-image--phone"><img src="../assets/img/vanoor/race-negative.webp" alt="Race builder with a negative split plan" loading="lazy" decoding="async" /><figcaption data-i18n="cap_8">Fig. 08 — Negative split plan</figcaption></figure>
-                <figure class="fig case-image case-image--watch"><img src="../assets/img/vanoor/watch-pacer.webp" alt="Pacer screen on the Watch" loading="lazy" decoding="async" /><figcaption data-i18n="cap_9">Fig. 09 — Pacer on the wrist</figcaption></figure>
+                <figure class="fig case-image case-image--phone"><img width="584" height="1200" src="../assets/img/vanoor/race-negative.webp" alt="Race builder with a negative split plan" loading="lazy" decoding="async" /><figcaption data-i18n="cap_8">Fig. 08 — Negative split plan</figcaption></figure>
+                <figure class="fig case-image case-image--watch"><img width="540" height="860" src="../assets/img/vanoor/watch-pacer.webp" alt="Pacer screen on the Watch" loading="lazy" decoding="async" /><figcaption data-i18n="cap_9">Fig. 09 — Pacer on the wrist</figcaption></figure>
               </div>
             </div>
             <div class="case-row reveal" data-stagger>
-              <figure class="fig case-image"><img src="../assets/img/vanoor/race-even.webp" alt="Even split plan" loading="lazy" decoding="async" /><figcaption data-i18n="cap_even">Even split</figcaption></figure>
-              <figure class="fig case-image"><img src="../assets/img/vanoor/race-positive.webp" alt="Positive split plan" loading="lazy" decoding="async" /><figcaption data-i18n="cap_pos">Positive split</figcaption></figure>
-              <figure class="fig case-image"><img src="../assets/img/vanoor/appstore-03.webp" alt="App Store panel: Plan the race. Hold the split." loading="lazy" decoding="async" /><figcaption data-i18n="cap_as3">Store panel 03</figcaption></figure>
+              <figure class="fig case-image"><img width="584" height="1200" src="../assets/img/vanoor/race-even.webp" alt="Even split plan" loading="lazy" decoding="async" /><figcaption data-i18n="cap_even">Even split</figcaption></figure>
+              <figure class="fig case-image"><img width="584" height="1200" src="../assets/img/vanoor/race-positive.webp" alt="Positive split plan" loading="lazy" decoding="async" /><figcaption data-i18n="cap_pos">Positive split</figcaption></figure>
+              <figure class="fig case-image"><img width="645" height="1398" src="../assets/img/vanoor/appstore-03.webp" alt="App Store panel: Plan the race. Hold the split." loading="lazy" decoding="async" /><figcaption data-i18n="cap_as3">Store panel 03</figcaption></figure>
             </div>
           </div>
         </section>
@@ -227,7 +228,7 @@
                 <p data-i18n="s5_f1_p2">Planned runs upload to Strava with the workout's name and a readable description of the structure, so training partners can see what the session actually was.</p>
               </div>
               <div class="case-gallery">
-                <figure class="fig case-image case-image--phone"><img src="../assets/img/vanoor/iphone-workout-editor-portrait.webp" alt="Structured workout editor on iPhone" loading="lazy" decoding="async" /><figcaption data-i18n="cap_10">Fig. 10 — Workout editor</figcaption></figure>
+                <figure class="fig case-image case-image--phone"><img width="812" height="1600" src="../assets/img/vanoor/iphone-workout-editor-portrait.webp" srcset="../assets/img/vanoor/iphone-workout-editor-portrait-640.webp 640w, ../assets/img/vanoor/iphone-workout-editor-portrait.webp 812w" sizes="(max-width: 780px) 92vw, 600px" alt="Structured workout editor on iPhone" loading="lazy" decoding="async" /><figcaption data-i18n="cap_10">Fig. 10 — Workout editor</figcaption></figure>
               </div>
             </div>
             <div class="feature reveal">
@@ -237,8 +238,8 @@
                 <p data-i18n="s5_f2_p2">Pace outside the band, heart rate outside the zone and distance milestones each have their own alert pattern, so the wrist tells you which problem it is before you look.</p>
               </div>
               <div class="case-gallery case-gallery--pair">
-                <figure class="fig case-image case-image--watch"><img src="../assets/img/vanoor/cue-work.webp" alt="Work interval cue" loading="lazy" decoding="async" /><figcaption data-i18n="cap_11">Fig. 11 — Work cue</figcaption></figure>
-                <figure class="fig case-image case-image--watch"><img src="../assets/img/vanoor/cue-nutrition.webp" alt="Nutrition reminder" loading="lazy" decoding="async" /><figcaption data-i18n="cap_12">Fig. 12 — Fuel cue</figcaption></figure>
+                <figure class="fig case-image case-image--watch"><img width="540" height="860" src="../assets/img/vanoor/cue-work.webp" alt="Work interval cue" loading="lazy" decoding="async" /><figcaption data-i18n="cap_11">Fig. 11 — Work cue</figcaption></figure>
+                <figure class="fig case-image case-image--watch"><img width="540" height="860" src="../assets/img/vanoor/cue-nutrition.webp" alt="Nutrition reminder" loading="lazy" decoding="async" /><figcaption data-i18n="cap_12">Fig. 12 — Fuel cue</figcaption></figure>
               </div>
             </div>
           </div>
@@ -255,8 +256,8 @@
                 <p data-i18n="s6_f1_p2">The data isn't locked in. FIT and GPX files are encoded on the device, with heart rate included, and shared with the system share sheet. Because Strava ignores third-party workouts in Apple Health, Vanoor uploads to Strava directly through OAuth, with tokens kept in the Keychain.</p>
               </div>
               <div class="case-gallery case-gallery--pair">
-                <figure class="fig case-image case-image--phone"><img src="../assets/img/vanoor/iphone-activity-portrait.webp" alt="Activity history on iPhone" loading="lazy" decoding="async" /><figcaption data-i18n="cap_13">Fig. 13 — Activity history</figcaption></figure>
-                <figure class="fig case-image case-image--watch"><img src="../assets/img/vanoor/watch-dynamics.webp" alt="Running dynamics on the Watch" loading="lazy" decoding="async" /><figcaption data-i18n="cap_14">Fig. 14 — Running dynamics</figcaption></figure>
+                <figure class="fig case-image case-image--phone"><img width="609" height="1200" src="../assets/img/vanoor/iphone-activity-portrait.webp" alt="Activity history on iPhone" loading="lazy" decoding="async" /><figcaption data-i18n="cap_13">Fig. 13 — Activity history</figcaption></figure>
+                <figure class="fig case-image case-image--watch"><img width="540" height="860" src="../assets/img/vanoor/watch-dynamics.webp" alt="Running dynamics on the Watch" loading="lazy" decoding="async" /><figcaption data-i18n="cap_14">Fig. 14 — Running dynamics</figcaption></figure>
               </div>
             </div>
           </div>
@@ -289,7 +290,7 @@
             <div class="doc-section__head reveal"><span class="doc-section__no">08</span><h2 class="doc-section__title" data-i18n="section_8">Shipping it</h2></div>
             <p class="reveal case-intro" data-i18n="s8_p1"><strong>Business model.</strong> Free download, a 7-day trial, then a one-time $9.99 unlock via StoreKit 2, with Family Sharing. The trial clock is stored in the Keychain, so reinstalling doesn't reset it. When the trial ends, the app doesn't lock you out of your data: history, routes and exports stay available, and only starting a new run on the Watch requires the unlock.</p>
             <p class="reveal case-intro" data-i18n="s8_p2"><strong>Go-to-market.</strong> I produced the App Store screenshot set, the Product Hunt gallery, a landing site with pace calculators and running guides, and first-party attribution. UTM tags on vanoor.app become App Store campaign tokens, and cookie-less analytics run on my own server. That way App Store Analytics shows which channel actually produced a download.</p>
-            <figure class="fig case-banner reveal"><img src="../assets/img/vanoor/appstore-strip.webp" width="2400" height="743" alt="The seven-panel Vanoor App Store screenshot set" loading="lazy" decoding="async" /><figcaption data-i18n="cap_15">Fig. 15 — The seven-panel App Store screenshot set</figcaption></figure>
+            <figure class="fig case-banner reveal"><img src="../assets/img/vanoor/appstore-strip.webp" srcset="../assets/img/vanoor/appstore-strip-640.webp 640w, ../assets/img/vanoor/appstore-strip.webp 2400w" sizes="(max-width: 720px) 92vw, 1280px" width="2400" height="743" alt="The seven-panel Vanoor App Store screenshot set" loading="lazy" decoding="async" /><figcaption data-i18n="cap_15">Fig. 15 — The seven-panel App Store screenshot set</figcaption></figure>
             <p class="reveal case-intro" style="margin-top:1.6rem" data-i18n="s8_p3"><strong>Timeline.</strong> First commit on 7 July 2026. A web-first version was dropped the next day in favour of native apps only. The first TestFlight build came on 15 July, the Strava integration in August, and a 35 km field test and battery pass in September. The app was approved and went live on the App Store on 23 September 2026, as version 1.0.</p>
             <p class="reveal case-intro" data-i18n="s8_p4"><strong>What I learned.</strong> On a watch, reliability <em>is</em> the interface. A false auto-pause or a missed haptic costs more trust than any visual polish can win back. The best decisions in this project were often removals: the web platform, in-app Bluetooth pairing, and every metric that didn't earn its place on a 45 mm screen.</p>
             <div class="case-cta reveal">
@@ -331,7 +332,7 @@
       </footer>
     </div>
 
-    <script src="../assets/js/i18n.js?v=20260924o" defer></script>
-    <script src="../assets/js/app.js?v=20260924o" defer></script>
+    <script src="../assets/js/i18n.js?v=20260924p" defer></script>
+    <script src="../assets/js/app.js?v=20260924p" defer></script>
   </body>
 </html>
